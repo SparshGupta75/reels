@@ -165,71 +165,111 @@ IDEAS_SCHEMA = {
         "properties": {
             "fact": {"type": "STRING"},
             "why": {"type": "STRING"},
+            "wow": {"type": "INTEGER"},
             "familiarity": {"type": "INTEGER"},
             "certainty": {"type": "INTEGER"},
             "filmable": {"type": "INTEGER"},
         },
-        "required": ["fact", "why", "familiarity", "certainty", "filmable"]}}},
+        "required": ["fact", "why", "wow", "familiarity", "certainty", "filmable"]}}},
     "required": ["facts"],
 }
 
 
-def gemini(system, user, schema, check):
-    """Ask Gemini for JSON. check(reply) returns an error string to retry, or None."""
+def gemini(system, user, schema=None, check=None, search=False):
+    """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
+    check(reply) returns an error string to retry, or None. search=True lets it use Google."""
     body = {
         "systemInstruction": {"parts": [{"text": system}]},
         "contents": [{"role": "user", "parts": [{"text": user}]}],
-        "generationConfig": {"temperature": 1, "responseMimeType": "application/json",
-                             "responseSchema": schema},
+        "generationConfig": {"temperature": 1 if schema else 0},
     }
-    # Free Gemini models are often briefly overloaded: keep trying for ~25 minutes.
-    # The backup model writes worse scripts, so it only gets every fourth attempt.
-    main, backup = CFG["gemini_models"][0], CFG["gemini_models"][-1]
+    if schema:
+        body["generationConfig"].update(responseMimeType="application/json", responseSchema=schema)
+    if search:
+        body["tools"] = [{"google_search": {}}]
+    # Free models are often overloaded or out of free quota: walk down the list of
+    # models (best first), and go round the list again after a pause, for ~25 minutes.
     last = "no attempt"
-    for attempt in range(14):
-        if attempt:
-            time.sleep(min(30 * attempt, 150))
-        model = backup if attempt % 4 == 3 else main
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        try:
-            r = requests.post(url, json=body, timeout=180,
-                              headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
-        except requests.RequestException as e:
-            last = type(e).__name__
-            continue
-        if r.status_code != 200:
-            last = f"{model}: HTTP {r.status_code} {r.text[:300]}"
-            log(f"Gemini attempt {attempt + 1} failed ({model}: HTTP {r.status_code})")
-            continue
-        try:
-            reply = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
-        except (KeyError, IndexError, ValueError) as e:
-            last = f"unreadable reply ({type(e).__name__})"
-            continue
-        last = check(reply)
-        if last is None:
-            log(f"Written by {model}")
-            return reply
-        log(f"Gemini attempt {attempt + 1} rejected: {last}")
+    for round_no in range(6):
+        if round_no:
+            time.sleep(min(60 * round_no, 240))
+        for model in CFG["gemini_models"]:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+            try:
+                r = requests.post(url, json=body, timeout=180,
+                                  headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
+            except requests.RequestException as e:
+                last = f"{model}: {type(e).__name__}"
+                continue
+            if r.status_code != 200:
+                last = f"{model}: HTTP {r.status_code} {r.text[:200]}"
+                log(f"Gemini {model}: HTTP {r.status_code}")
+                continue
+            try:
+                parts = r.json()["candidates"][0]["content"]["parts"]
+                text = "".join(part.get("text", "") for part in parts)
+                reply = json.loads(text) if schema else text.strip()
+            except (KeyError, IndexError, ValueError) as e:
+                last = f"{model}: unreadable reply ({type(e).__name__})"
+                continue
+            last = check(reply) if check else None
+            if last is None:
+                log(f"Answered by {model}")
+                return reply
+            log(f"Gemini {model} rejected: {last}")
     raise RuntimeError(f"Gemini failed: {last}")
 
 
+def verify(fact):
+    """Second opinion on a fact, using Google Search when the free tier allows it.
+    Returns the fact (possibly reworded to be precise) or None if it is not solid."""
+    system = ("You are a strict fact checker. Check the claim against reliable sources. "
+              "Line 1 of your reply must be exactly one word: TRUE, FALSE or UNSURE. Use TRUE only "
+              "if the claim is correct as stated or with a small wording fix, and is well established. "
+              "Line 2: one sentence on why. Line 3, only if TRUE: the claim restated accurately in one "
+              "plain sentence, with the correct numbers.")
+    user = f"Claim: {fact['fact']}\nExplanation given: {fact['why']}"
+
+    def check(reply):
+        return None if reply.split()[:1] and reply.split()[0].strip(".:*").upper() in ("TRUE", "FALSE", "UNSURE") \
+            else "no verdict"
+
+    try:
+        reply = gemini(system, user, check=check, search=True)
+    except RuntimeError as e:
+        log(f"Fact check with search unavailable ({str(e)[:120]}); checking without search")
+        reply = gemini(system, user, check=check)
+    lines = [x.strip() for x in reply.splitlines() if x.strip()]
+    verdict = lines[0].strip(".:*").upper()
+    log(f"Fact check: {verdict}. {lines[1] if len(lines) > 1 else ''}")
+    if verdict != "TRUE":
+        return None
+    return lines[2] if len(lines) > 2 else fact["fact"]
+
+
 def pick_fact(state):
-    """Step 1: brainstorm many facts, have each rated, and keep the least-known sure one."""
+    """Step 1: brainstorm many facts, have each rated, then fact-check the best ones."""
     system = open(os.path.join(ROOT, "pipeline", "ideas_prompt.txt")).read()
     recent = [p["title"] for p in state["posts"][-CFG["remember_topics"]:]]
     user = (f"Topic area: {CFG['niche']}\n"
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
     def good(f):
-        return f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 7
+        return f["familiarity"] <= 4 and f["certainty"] >= 9 and f["filmable"] >= 7 and f["wow"] >= 7
 
-    reply = gemini(system, user, IDEAS_SCHEMA,
-                   lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
-    facts = sorted(reply["facts"], key=lambda f: (f["familiarity"], -f["filmable"]))
-    for f in facts:
-        log(f"  known {f['familiarity']}/10, sure {f['certainty']}/10, filmable {f['filmable']}/10: {f['fact']}")
-    return next(f for f in facts if good(f))
+    for _ in range(3):
+        reply = gemini(system, user, IDEAS_SCHEMA,
+                       lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
+        facts = sorted(reply["facts"], key=lambda f: (-f["wow"], f["familiarity"]))
+        for f in facts:
+            log(f"  wow {f['wow']}, known {f['familiarity']}, sure {f['certainty']}, "
+                f"filmable {f['filmable']}: {f['fact']}")
+        for f in [f for f in facts if good(f)][:4]:
+            log(f"Checking: {f['fact']}")
+            checked = verify(f)
+            if checked:
+                return {**f, "fact": checked}
+    raise RuntimeError("no fact survived the fact check")
 
 
 def write_script(state):
