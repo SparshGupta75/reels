@@ -175,7 +175,7 @@ IDEAS_SCHEMA = {
 }
 
 
-def gemini(system, user, schema=None, check=None, search=False):
+def gemini(system, user, schema=None, check=None, search=False, rounds=6):
     """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
     check(reply) returns an error string to retry, or None. search=True lets it use Google."""
     body = {
@@ -190,7 +190,7 @@ def gemini(system, user, schema=None, check=None, search=False):
     # Free models are often overloaded or out of free quota: walk down the list of
     # models (best first), and go round the list again after a pause, for ~25 minutes.
     last = "no attempt"
-    for round_no in range(6):
+    for round_no in range(rounds):
         if round_no:
             time.sleep(min(60 * round_no, 240))
         for model in CFG["gemini_models"]:
@@ -235,9 +235,9 @@ def verify(fact):
             else "no verdict"
 
     try:
-        reply = gemini(system, user, check=check, search=True)
+        reply = gemini(system, user, check=check, search=True, rounds=1)
     except RuntimeError as e:
-        log(f"Fact check with search unavailable ({str(e)[:120]}); checking without search")
+        log("Fact check with Google Search is not available on the free tier; checking without it")
         reply = gemini(system, user, check=check)
     lines = [x.strip() for x in reply.splitlines() if x.strip()]
     verdict = lines[0].strip(".:*").upper()
