@@ -40,10 +40,9 @@ SCHEMA = {
             "type": "OBJECT", "properties": {"prompt": {"type": "STRING"}}, "required": ["prompt"]}},
         "caption": {"type": "STRING"},
         "hashtags": {"type": "ARRAY", "items": {"type": "STRING"}},
-        "repost_note": {"type": "STRING"},
     },
-    "propertyOrdering": ["title", "narration", "scenes", "caption", "hashtags", "repost_note"],
-    "required": ["title", "narration", "scenes", "caption", "hashtags", "repost_note"],
+    "propertyOrdering": ["title", "narration", "scenes", "caption", "hashtags"],
+    "required": ["title", "narration", "scenes", "caption", "hashtags"],
 }
 
 
@@ -437,21 +436,6 @@ def publish(path, caption, token):
     raise RuntimeError(f"Instagram did not accept the video ({last})")
 
 
-def remind_repost(post, link):
-    """Instagram's Repost button cannot be pressed by outside tools, so email the owner
-    (via a GitHub issue) the link and a ready-made short note to do it by hand."""
-    if not (REPO and link and post.get("repost_note")):
-        return
-    owner = REPO.split("/")[0]
-    body = (f"A new Reel is live: **{post['title']}**\n\n"
-            f"1. Open it: {link}\n"
-            f"2. Tap the Repost button (the two arrows under the Reel).\n"
-            f"3. Add this note:\n\n> {post['repost_note']}\n\ncc @{owner}")
-    r = gh("issue", "create", "--repo", REPO, "--assignee", owner,
-           "--title", f"Repost: {post['repost_note']}", "--body", body, check=False)
-    log("Repost reminder sent" if r.returncode == 0 else f"Repost reminder failed: {r.stderr.strip()[:150]}")
-
-
 # --- main ---------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser()
@@ -498,7 +482,6 @@ def main():
             "narration": plan["narration"],
             # Models sometimes write the two characters "\\n" instead of a real line break.
             "caption": f"{plan['caption'].replace(chr(92) + 'n', chr(10)).strip()}\n\n{tags} #aigenerated",
-            "repost_note": " ".join(plan["repost_note"].split()[:5]),
         }
         log(f"Topic: {plan['title']}")
         log(f"Narration: {plan['narration']}")
@@ -523,7 +506,6 @@ def main():
 
     media_id, link = publish(video, pending["caption"], token)
     log(f"Published: {link or media_id}")
-    remind_repost(pending, link)
     state["posts"].append({**pending, "media_id": media_id, "permalink": link,
                            "posted_at": now().isoformat(timespec="seconds")})
     state["pending"] = None
