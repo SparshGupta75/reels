@@ -5,7 +5,10 @@
   "voice": "am_michael",
   "kaggle_user": "sparshgupta75",
   "kernel_slug": "reel-maker",
-  "gemini_model": "gemini-flash-latest",
+  "gemini_models": [
+    "gemini-flash-latest",
+    "gemini-flash-lite-latest"
+  ],
   "remember_topics": 60,
   "min_posts_for_feedback": 6,
   "render_timeout_minutes": 270

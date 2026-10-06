@@ -171,11 +171,15 @@ def write_script(state):
         "generationConfig": {"temperature": 1, "responseMimeType": "application/json",
                              "responseSchema": SCHEMA},
     }
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{CFG['gemini_model']}:generateContent"
+    # Free Gemini models are often briefly overloaded: keep trying for ~25 minutes,
+    # alternating between the models in the config.
+    models = CFG["gemini_models"]
     last = "no attempt"
-    for attempt in range(4):
+    for attempt in range(14):
         if attempt:
-            time.sleep(20 * attempt)
+            time.sleep(min(30 * attempt, 150))
+        model = models[attempt % len(models)]
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         try:
             r = requests.post(url, json=body, timeout=120,
                               headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
@@ -183,7 +187,8 @@ def write_script(state):
             last = type(e).__name__
             continue
         if r.status_code != 200:
-            last = f"HTTP {r.status_code} {r.text[:300]}"
+            last = f"{model}: HTTP {r.status_code} {r.text[:300]}"
+            log(f"Gemini attempt {attempt + 1} failed ({model}: HTTP {r.status_code})")
             continue
         try:
             plan = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
