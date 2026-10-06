@@ -212,7 +212,6 @@ def make_clips(prompts, seconds, quality):
     from diffusers.utils import export_to_video
     from transformers import UMT5EncoderModel
 
-    import copy
     from concurrent.futures import ThreadPoolExecutor
 
     width, height, steps = QUALITY.get(quality, QUALITY["fast"])
@@ -264,7 +263,6 @@ def make_clips(prompts, seconds, quality):
     for dev in devices[1:]:
         pipes.append(load_pipe(dev, text_encoder=None))
         pipes[-1].transformer.to(dev)
-    video_processor = pipes[0].video_processor
     z = vae.config.z_dim
     lat_mean = torch.tensor(vae.config.latents_mean).view(1, z, 1, 1, 1)
     lat_std = torch.tensor(vae.config.latents_std).view(1, z, 1, 1, 1)
@@ -289,31 +287,53 @@ def make_clips(prompts, seconds, quality):
     run_on_all(denoise)
 
     # Step 2: a transformer and a VAE decode don't fit on one T4 together, so drop the
-    # transformers first, then decode on every GPU in parallel.
+    # transformers first. Decoding on two GPUs from threads crashed CUDA, so each GPU
+    # gets its own process.
+    for i, lat in enumerate(latents):
+        torch.save(lat, os.path.join(WORK, f"latent{i}.pt"))
     pipes.clear()
+    del vae, latents
     gc.collect()
     torch.cuda.empty_cache()
-    vaes = [vae] + [copy.deepcopy(vae) for _ in devices[1:]]
-    for v, dev in zip(vaes, devices):
-        v.to(dev)
-        v.enable_tiling()
-        log(f"{dev}: {torch.cuda.memory_allocated(dev) / 2**30:.1f} GB in use before decoding")
-    paths = [None] * count
 
-    def decode(w):
-        dev = devices[w]
-        for i in range(w, count, len(devices)):
-            t0 = time.time()
-            with torch.no_grad():
-                video = vaes[w].decode(latents[i].to(dev), return_dict=False)[0].cpu()
-            frames = video_processor.postprocess_video(video, output_type="np")[0]
-            paths[i] = os.path.join(WORK, f"clip{i}.mp4")
-            export_to_video(frames, paths[i], fps=GEN_FPS)
-            log(f"Clip {i + 1} decoded in {time.time() - t0:.0f}s")
-            torch.cuda.empty_cache()
+    def start(w):
+        mine = [str(i) for i in range(w, count, len(devices))]
+        env = {**os.environ, "CUDA_VISIBLE_DEVICES": str(w)}
+        return subprocess.Popen([sys.executable, os.path.abspath(globals().get("__file__") or sys.argv[0]), "--decode", *mine], env=env)
 
-    run_on_all(decode)
-    return paths
+    workers = [start(w) for w in range(len(devices))]
+    for w, proc in enumerate(workers):
+        if proc.wait() != 0:
+            log(f"Decoder on GPU {w} failed, trying once more")
+            if start(w).wait() != 0:
+                raise RuntimeError(f"decoding failed on GPU {w}")
+    return [os.path.join(WORK, f"clip{i}.mp4") for i in range(count)]
+
+
+def decode_worker(indices):
+    """Runs in its own process on one GPU: turn saved latents into clip files."""
+    import torch
+    from diffusers import AutoencoderKLWan
+    from diffusers.utils import export_to_video
+    from diffusers.video_processor import VideoProcessor
+
+    vae = AutoencoderKLWan.from_pretrained(MODEL_ID, subfolder="vae", torch_dtype=torch.float32).to("cuda")
+    vae.enable_tiling()
+    processor = VideoProcessor(vae_scale_factor=16)
+    for i in indices:
+        path = os.path.join(WORK, f"clip{i}.mp4")
+        if os.path.exists(path):
+            continue
+        t0 = time.time()
+        latents = torch.load(os.path.join(WORK, f"latent{i}.pt")).to("cuda")
+        with torch.no_grad():
+            video = vae.decode(latents, return_dict=False)[0].cpu()
+        frames = processor.postprocess_video(video, output_type="np")[0]
+        export_to_video(frames, path + ".tmp.mp4", fps=GEN_FPS)
+        os.replace(path + ".tmp.mp4", path)
+        log(f"Clip {i + 1} decoded in {time.time() - t0:.0f}s")
+        del video, latents
+        torch.cuda.empty_cache()
 
 
 def fake_clips(prompts, seconds):
@@ -365,6 +385,8 @@ def assemble(clips, seconds, voice_wav, ass_path, out_path):
 
 
 def main():
+    if sys.argv[1:2] == ["--decode"]:
+        return decode_worker([int(x) for x in sys.argv[2:]])
     t0 = time.time()
     job = load_job()
     os.makedirs(WORK, exist_ok=True)

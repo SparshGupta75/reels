@@ -287,7 +287,26 @@ def write_script(state):
             return "caption or hashtags too short"
         return None
 
-    return gemini(system, user, SCHEMA, check)
+    plan = gemini(system, user, SCHEMA, check)
+
+    # A second pass removes details the writer may have made up (names, places, years,
+    # numbers) and absolute claims the checked fact does not support.
+    editor = ("You are a strict fact-checking editor for short video scripts. You get a checked fact, "
+              "then a narration and a caption written from it. Rewrite both so that every claim is "
+              "supported by the checked fact or is something you are certain is true. Delete or soften "
+              "any name, institution, place, year or number you are not certain of, and any absolute "
+              "claim (only, never, cannot, always) that the checked fact does not support. Keep the "
+              "style, tone, structure, line breaks and length; change as little as possible.")
+    edit_schema = {"type": "OBJECT", "properties": {"narration": {"type": "STRING"}, "caption": {"type": "STRING"}},
+                   "required": ["narration", "caption"]}
+    try:
+        fixed = gemini(editor, f"Checked fact: {fact['fact']}\nWhy: {fact['why']}\n\n"
+                               f"Narration: {plan['narration']}\n\nCaption: {plan['caption']}",
+                       edit_schema, lambda r: check({**plan, **r}), rounds=2)
+        plan.update(fixed)
+    except RuntimeError as e:
+        log(f"Editing pass skipped ({str(e)[:100]})")
+    return plan
 
 
 # --- render (Kaggle) ----------------------------------------------------------
