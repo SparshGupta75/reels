@@ -255,7 +255,7 @@ def pick_fact(state):
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
     def good(f):
-        return f["familiarity"] <= 4 and f["certainty"] >= 9 and f["filmable"] >= 7 and f["wow"] >= 7
+        return f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
 
     for _ in range(3):
         reply = gemini(system, user, IDEAS_SCHEMA,
@@ -296,10 +296,12 @@ def write_script(state):
     # numbers) and absolute claims the checked fact does not support.
     editor = ("You are a strict fact-checking editor for short video scripts. You get a checked fact, "
               "then a narration and a caption written from it. Rewrite both so that every claim is "
-              "supported by the checked fact or is something you are certain is true. Delete or soften "
-              "any name, institution, place, year or number you are not certain of, and any absolute "
+              "supported by the checked fact or is something you are certain is true. Remove every "
+              "person's name, institution and year that is not in the checked fact. Delete or soften "
+              "any place or number you are not certain of, and any absolute "
               "claim (only, never, cannot, always) that the checked fact does not support. Keep the "
-              "style, tone, structure, line breaks and length; change as little as possible.")
+              "style, tone, structure, line breaks and length, and keep the sentences flowing naturally; "
+              "change as little as possible.")
     edit_schema = {"type": "OBJECT", "properties": {"narration": {"type": "STRING"}, "caption": {"type": "STRING"}},
                    "required": ["narration", "caption"]}
     try:
