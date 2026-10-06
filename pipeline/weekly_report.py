@@ -110,9 +110,12 @@ def main():
               f"[See the run history](https://github.com/{REPO}/actions/workflows/{WORKFLOW})"]
 
     p.save_state(state)
-    body = "\n".join(lines)
+    # Mentioning and assigning the owner makes GitHub email them even if they
+    # are not watching the repository.
+    owner = REPO.split("/")[0]
+    body = "\n".join(lines) + f"\n\ncc @{owner}"
     print(body)
-    subprocess.run(["gh", "issue", "create", "--repo", REPO,
+    subprocess.run(["gh", "issue", "create", "--repo", REPO, "--assignee", owner,
                     "--title", f"Weekly Reel report, {today.strftime('%d %b %Y')}",
                     "--body", body], check=True)
 
