@@ -379,7 +379,16 @@ def main():
     ap.add_argument("--reuse-render", action="store_true",
                     help="skip writing and rendering; use the Reel from the last run")
     ap.add_argument("--script-only", action="store_true", help="write the script and stop")
+    ap.add_argument("--list-models", action="store_true", help="print the Gemini models this key can use")
     args = ap.parse_args()
+
+    if args.list_models:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
+                         headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]}, timeout=60)
+        for m in r.json().get("models", []):
+            if "generateContent" in m.get("supportedGenerationMethods", []):
+                print(m["name"].split("/")[-1])
+        return
 
     state = load_state()
     token = os.environ.get("IG_TOKEN", "")

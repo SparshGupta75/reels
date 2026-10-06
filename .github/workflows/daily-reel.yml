@@ -14,6 +14,10 @@ on:
         description: "Only write the script (no video, no post)"
         type: boolean
         default: false
+      list_models:
+        description: "Only list the Gemini models available"
+        type: boolean
+        default: false
       reuse_render:
         description: "Skip rendering and use the Reel from the last run"
         type: boolean
@@ -52,6 +56,7 @@ jobs:
           ${{ (github.event_name == 'schedule' || inputs.publish) && '--publish' || '' }}
           ${{ inputs.reuse_render && '--reuse-render' || '' }}
           ${{ inputs.script_only && '--script-only' || '' }}
+          ${{ inputs.list_models && '--list-models' || '' }}
 
       - name: Save history
         if: always()
