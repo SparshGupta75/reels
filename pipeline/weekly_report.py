@@ -48,7 +48,7 @@ def main():
     elif not auto:
         lines += ["**Status: not switched on yet.** The daily schedule is waiting to be turned on."]
     else:
-        lines += ["**Status: running.** One Reel is posted every day.", "",
+        lines += ["**Status: running.** Two Reels are posted every day.", "",
                   button("pause", "Pause the automation", "d73a49")]
     lines.append("")
 

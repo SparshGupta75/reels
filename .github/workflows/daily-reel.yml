@@ -2,8 +2,9 @@ name: Daily Reel
 
 on:
   schedule:
-    # 11:30 UTC = 17:00 IST. Making the Reel takes about an hour, so it posts around 18:00 IST.
-    - cron: "30 11 * * *"
+    # Two Reels a day. Making one takes about an hour, so they post around 12:00 and 18:00 IST.
+    - cron: "30 5 * * *"    # 11:00 IST
+    - cron: "30 11 * * *"   # 17:00 IST
   workflow_dispatch:
     inputs:
       publish:
