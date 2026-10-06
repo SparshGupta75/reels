@@ -10,6 +10,10 @@ on:
         description: "Post to Instagram (off = render only)"
         type: boolean
         default: false
+      script_only:
+        description: "Only write the script (no video, no post)"
+        type: boolean
+        default: false
       reuse_render:
         description: "Skip rendering and use the Reel from the last run"
         type: boolean
@@ -47,6 +51,7 @@ jobs:
           python pipeline/post_reel.py
           ${{ (github.event_name == 'schedule' || inputs.publish) && '--publish' || '' }}
           ${{ inputs.reuse_render && '--reuse-render' || '' }}
+          ${{ inputs.script_only && '--script-only' || '' }}
 
       - name: Save history
         if: always()

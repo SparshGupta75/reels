@@ -34,7 +34,6 @@ TMP_BRANCH = "tmp-video"
 SCHEMA = {
     "type": "OBJECT",
     "properties": {
-        "candidates": {"type": "ARRAY", "items": {"type": "STRING"}},
         "title": {"type": "STRING"},
         "narration": {"type": "STRING"},
         "scenes": {"type": "ARRAY", "items": {
@@ -42,8 +41,8 @@ SCHEMA = {
         "caption": {"type": "STRING"},
         "hashtags": {"type": "ARRAY", "items": {"type": "STRING"}},
     },
-    "propertyOrdering": ["candidates", "title", "narration", "scenes", "caption", "hashtags"],
-    "required": ["candidates", "title", "narration", "scenes", "caption", "hashtags"],
+    "propertyOrdering": ["title", "narration", "scenes", "caption", "hashtags"],
+    "required": ["title", "narration", "scenes", "caption", "hashtags"],
 }
 
 
@@ -159,29 +158,41 @@ def feedback_text(state):
 
 
 # --- script (Gemini) ----------------------------------------------------------
-def write_script(state):
-    system = open(os.path.join(ROOT, "pipeline", "system_prompt.txt")).read()
-    recent = [p["title"] for p in state["posts"][-CFG["remember_topics"]:]]
-    user = (f"Niche: {CFG['niche']}\nNumber of scenes: {CFG['scenes']}\n"
-            f"Do not repeat these recent topics: {'; '.join(recent) or 'none'}"
-            + feedback_text(state))
+IDEAS_SCHEMA = {
+    "type": "OBJECT",
+    "properties": {"facts": {"type": "ARRAY", "items": {
+        "type": "OBJECT",
+        "properties": {
+            "fact": {"type": "STRING"},
+            "why": {"type": "STRING"},
+            "familiarity": {"type": "INTEGER"},
+            "certainty": {"type": "INTEGER"},
+            "filmable": {"type": "INTEGER"},
+        },
+        "required": ["fact", "why", "familiarity", "certainty", "filmable"]}}},
+    "required": ["facts"],
+}
+
+
+def gemini(system, user, schema, check):
+    """Ask Gemini for JSON. check(reply) returns an error string to retry, or None."""
     body = {
         "systemInstruction": {"parts": [{"text": system}]},
         "contents": [{"role": "user", "parts": [{"text": user}]}],
         "generationConfig": {"temperature": 1, "responseMimeType": "application/json",
-                             "responseSchema": SCHEMA},
+                             "responseSchema": schema},
     }
-    # Free Gemini models are often briefly overloaded: keep trying for ~25 minutes,
-    # alternating between the models in the config.
-    models = CFG["gemini_models"]
+    # Free Gemini models are often briefly overloaded: keep trying for ~25 minutes.
+    # The backup model writes worse scripts, so it only gets every fourth attempt.
+    main, backup = CFG["gemini_models"][0], CFG["gemini_models"][-1]
     last = "no attempt"
     for attempt in range(14):
         if attempt:
             time.sleep(min(30 * attempt, 150))
-        model = models[attempt % len(models)]
+        model = backup if attempt % 4 == 3 else main
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         try:
-            r = requests.post(url, json=body, timeout=120,
+            r = requests.post(url, json=body, timeout=180,
                               headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
         except requests.RequestException as e:
             last = type(e).__name__
@@ -191,16 +202,52 @@ def write_script(state):
             log(f"Gemini attempt {attempt + 1} failed ({model}: HTTP {r.status_code})")
             continue
         try:
-            plan = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
+            reply = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
         except (KeyError, IndexError, ValueError) as e:
             last = f"unreadable reply ({type(e).__name__})"
             continue
+        last = check(reply)
+        if last is None:
+            log(f"Written by {model}")
+            return reply
+        log(f"Gemini attempt {attempt + 1} rejected: {last}")
+    raise RuntimeError(f"Gemini failed: {last}")
+
+
+def pick_fact(state):
+    """Step 1: brainstorm many facts, have each rated, and keep the least-known sure one."""
+    system = open(os.path.join(ROOT, "pipeline", "ideas_prompt.txt")).read()
+    recent = [p["title"] for p in state["posts"][-CFG["remember_topics"]:]]
+    user = (f"Topic area: {CFG['niche']}\n"
+            f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
+
+    def good(f):
+        return f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 7
+
+    reply = gemini(system, user, IDEAS_SCHEMA,
+                   lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
+    facts = sorted(reply["facts"], key=lambda f: (f["familiarity"], -f["filmable"]))
+    for f in facts:
+        log(f"  known {f['familiarity']}/10, sure {f['certainty']}/10, filmable {f['filmable']}/10: {f['fact']}")
+    return next(f for f in facts if good(f))
+
+
+def write_script(state):
+    fact = pick_fact(state)
+    log(f"Chosen fact: {fact['fact']}")
+    system = open(os.path.join(ROOT, "pipeline", "system_prompt.txt")).read()
+    user = (f"The fact: {fact['fact']}\nWhy it is true: {fact['why']}\n"
+            f"Number of scenes: {CFG['scenes']}")
+
+    def check(plan):
         words = len(plan["narration"].split())
         if len(plan["scenes"]) < CFG["scenes"] or not 40 <= words <= 95:
-            last = f"bad plan: {len(plan['scenes'])} scenes, {words} words"
-            continue
-        return plan
-    raise RuntimeError(f"Gemini failed: {last}")
+            return f"bad plan: {len(plan['scenes'])} scenes, {words} words"
+        if len(plan["caption"].strip()) < 150 or len(plan["hashtags"]) < 3:
+            return "caption or hashtags too short"
+        return None
+
+    return gemini(system, user, SCHEMA, check)
 
 
 # --- render (Kaggle) ----------------------------------------------------------
@@ -331,6 +378,7 @@ def main():
     ap.add_argument("--publish", action="store_true", help="post to Instagram (otherwise render only)")
     ap.add_argument("--reuse-render", action="store_true",
                     help="skip writing and rendering; use the Reel from the last run")
+    ap.add_argument("--script-only", action="store_true", help="write the script and stop")
     args = ap.parse_args()
 
     state = load_state()
@@ -366,6 +414,8 @@ def main():
         log(f"Caption:\n{pending['caption']}")
         for i, s in enumerate(plan["scenes"][:CFG["scenes"]], 1):
             log(f"Scene {i}: {s['prompt']}")
+        if args.script_only:
+            return
         state["pending"] = pending
         save_state(state)
         render({"id": job_id, "narration": plan["narration"],
