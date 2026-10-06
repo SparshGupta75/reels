@@ -88,6 +88,12 @@ def install_deps():
     if not FAKE_VIDEO:
         pkgs += ["diffusers>=0.35.0", "transformers", "accelerate"]
     run([sys.executable, "-m", "pip", "install", "-q", "-U", *pkgs])
+    if not FAKE_VIDEO:
+        # Kaggle's torchao is too old for new diffusers and breaks its import; it is unused here.
+        subprocess.run([sys.executable, "-m", "pip", "uninstall", "-q", "-y", "torchao"], check=False)
+        frozen = subprocess.run([sys.executable, "-m", "pip", "freeze"], capture_output=True, text=True).stdout
+        log("Versions: " + ", ".join(x for x in frozen.split() if x.split("==")[0] in
+                                     ("diffusers", "transformers", "accelerate", "torch")))
     # Kokoro needs Python < 3.13 and Kaggle runs 3.13, so it gets its own 3.12 env.
     run([sys.executable, "-m", "pip", "install", "-q", "uv"])
     run([sys.executable, "-m", "uv", "venv", "-q", "--seed", "--python", "3.12", KOKORO_ENV])

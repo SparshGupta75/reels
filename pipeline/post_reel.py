@@ -456,7 +456,8 @@ def main():
             "title": plan["title"],
             "hook": plan["narration"].split(". ")[0][:120],
             "narration": plan["narration"],
-            "caption": f"{plan['caption']}\n\n{tags} #aigenerated",
+            # Models sometimes write the two characters "\\n" instead of a real line break.
+            "caption": f"{plan['caption'].replace(chr(92) + 'n', chr(10)).strip()}\n\n{tags} #aigenerated",
         }
         log(f"Topic: {plan['title']}")
         log(f"Narration: {plan['narration']}")
