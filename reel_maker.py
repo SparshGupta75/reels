@@ -86,7 +86,8 @@ def load_job():
 def install_deps():
     pkgs = ["faster-whisper", "ftfy"]
     if not FAKE_VIDEO:
-        pkgs += ["diffusers>=0.35.0", "transformers", "accelerate"]
+        # Exact versions from a run that worked; newer releases have broken on Kaggle before.
+        pkgs += ["diffusers==0.41.0", "transformers==5.18.0", "accelerate==1.15.0"]
     run([sys.executable, "-m", "pip", "install", "-q", "-U", *pkgs])
     if not FAKE_VIDEO:
         # Kaggle's torchao is too old for new diffusers and breaks its import; it is unused here.

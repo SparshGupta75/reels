@@ -285,6 +285,9 @@ def write_script(state):
             return f"bad plan: {len(plan['scenes'])} scenes, {words} words"
         if len(plan["caption"].strip()) < 150 or len(plan["hashtags"]) < 3:
             return "caption or hashtags too short"
+        caption = plan["caption"].lower()
+        if caption.lstrip().startswith("did you know") or "\u2014" in caption or "follow for more" in caption:
+            return "caption breaks the style rules"
         return None
 
     plan = gemini(system, user, SCHEMA, check)
