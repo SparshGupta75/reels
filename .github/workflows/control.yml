@@ -1,0 +1,35 @@
+name: Pause or resume
+
+# The Pause/Resume button in the weekly report opens a pre-filled issue titled "pause"
+# or "resume". Only the repository owner's issues are acted on.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  actions: write
+  issues: write
+
+jobs:
+  control:
+    if: >
+      github.actor == github.repository_owner &&
+      contains(fromJSON('["pause", "resume"]'), github.event.issue.title)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      ACTION: ${{ github.event.issue.title }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - name: Pause or resume the daily Reel
+        run: |
+          if [ "$ACTION" = "pause" ]; then
+            gh workflow disable daily-reel.yml
+            MSG="The automation is paused. No Reels will be made or posted until you resume it."
+          else
+            gh workflow enable daily-reel.yml
+            MSG="The automation is running again. The next Reel will be made at 4 PM India time."
+          fi
+          gh issue close "$ISSUE" --comment "$MSG"

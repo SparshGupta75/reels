@@ -206,79 +206,107 @@ def make_clips(prompts, seconds, quality):
     from diffusers.utils import export_to_video
     from transformers import UMT5EncoderModel
 
-    width, height, steps = QUALITY.get(quality, QUALITY["fast"])
-    gpus = torch.cuda.device_count()
-    log(f"GPUs: {gpus} x {torch.cuda.get_device_name(0)}")
+    import copy
+    from concurrent.futures import ThreadPoolExecutor
 
-    class Pipe(WanPipeline):
-        # The parts live on different devices, so say where denoising happens.
-        @property
-        def _execution_device(self):
-            return torch.device("cuda:0")
+    width, height, steps = QUALITY.get(quality, QUALITY["fast"])
+    devices = [f"cuda:{i}" for i in range(min(torch.cuda.device_count(), 2))]
+    log(f"GPUs: {len(devices)} x {torch.cuda.get_device_name(0)}")
+    count = len(prompts)
+
+    def run_on_all(work):
+        """Run work(w) once per GPU at the same time; GPU w handles clips w, w+N, ..."""
+        with ThreadPoolExecutor(len(devices)) as ex:
+            for future in [ex.submit(work, w) for w in range(len(devices))]:
+                future.result()
+
+    def load_pipe(dev, **kw):
+        class Pipe(WanPipeline):
+            # The parts live on different devices, so say where denoising happens.
+            @property
+            def _execution_device(self):
+                return torch.device(dev)
+
+        pipe = Pipe.from_pretrained(MODEL_ID, vae=vae, torch_dtype=torch.float16, **kw)
+        pipe.set_progress_bar_config(disable=True)
+        return pipe
 
     # T4 has no fast bf16: transformer runs in fp16. The T5 text encoder overflows in
     # fp16, so it runs once in bf16 (slow on a T4, far slower on the CPU) and is then
     # thrown away to make room for the transformer.
     te = UMT5EncoderModel.from_pretrained(MODEL_ID, subfolder="text_encoder", torch_dtype=torch.bfloat16)
     vae = AutoencoderKLWan.from_pretrained(MODEL_ID, subfolder="vae", torch_dtype=torch.float32)
-    pipe = Pipe.from_pretrained(MODEL_ID, text_encoder=te, vae=vae, torch_dtype=torch.float16)
+    pipes = [load_pipe(devices[0], text_encoder=te)]
 
     log("Encoding prompts")
-    te.to("cuda:0")
+    te.to(devices[0])
     embeds = []
     with torch.no_grad():
-        for p in prompts:
-            pe, ne = pipe.encode_prompt(prompt=p, negative_prompt=NEGATIVE,
-                                        do_classifier_free_guidance=True,
-                                        max_sequence_length=512,
-                                        device=torch.device("cuda:0"), dtype=torch.float16)
+        for prompt in prompts:
+            pe, ne = pipes[0].encode_prompt(prompt=prompt, negative_prompt=NEGATIVE,
+                                            do_classifier_free_guidance=True,
+                                            max_sequence_length=512,
+                                            device=torch.device(devices[0]), dtype=torch.float16)
             embeds.append((pe.cpu(), ne.cpu()))
-    pipe.text_encoder = None
+    pipes[0].text_encoder = None
     del te
     gc.collect()
     torch.cuda.empty_cache()
 
-    # Transformer + VAE decode don't fit on one T4 together: decode on the second GPU
-    # if there is one, otherwise swap the transformer out while decoding.
-    vae_dev = "cuda:1" if gpus > 1 else "cuda:0"
-    pipe.transformer.to("cuda:0")
-    if gpus > 1:
-        vae.to(vae_dev)
-    vae.enable_tiling()
+    # Step 1: one transformer per GPU turns the prompts into latents, in parallel.
+    pipes[0].transformer.to(devices[0])
+    for dev in devices[1:]:
+        pipes.append(load_pipe(dev, text_encoder=None))
+        pipes[-1].transformer.to(dev)
+    video_processor = pipes[0].video_processor
     z = vae.config.z_dim
     lat_mean = torch.tensor(vae.config.latents_mean).view(1, z, 1, 1, 1)
     lat_std = torch.tensor(vae.config.latents_std).view(1, z, 1, 1, 1)
+    latents = [None] * count
 
-    paths = []
-    for i, ((pe, ne), secs) in enumerate(zip(embeds, seconds)):
-        n = frames_for(secs)
-        log(f"Clip {i + 1}/{len(prompts)}: {width}x{height}, {n} frames, {steps} steps")
-        t0 = time.time()
-        latents = pipe(prompt_embeds=pe.to("cuda:0"), negative_prompt_embeds=ne.to("cuda:0"),
-                       height=height, width=width, num_frames=n,
-                       guidance_scale=5.0, num_inference_steps=steps, output_type="latent",
-                       generator=torch.Generator("cuda:0").manual_seed(1000 + i)).frames
-        if not torch.isfinite(latents).all():
-            raise RuntimeError(f"clip {i + 1}: NaN/inf latents (fp16 overflow)")
-        log(f"Clip {i + 1} denoised in {time.time() - t0:.0f}s")
-        latents = latents.float().cpu() * lat_std + lat_mean
-        if gpus < 2:
-            pipe.transformer.to("cpu")
+    def denoise(w):
+        dev = devices[w]
+        for i in range(w, count, len(devices)):
+            n = frames_for(seconds[i])
+            log(f"Clip {i + 1}/{count} on {dev}: {width}x{height}, {n} frames, {steps} steps")
+            t0 = time.time()
+            pe, ne = embeds[i]
+            out = pipes[w](prompt_embeds=pe.to(dev), negative_prompt_embeds=ne.to(dev),
+                           height=height, width=width, num_frames=n,
+                           guidance_scale=5.0, num_inference_steps=steps, output_type="latent",
+                           generator=torch.Generator(dev).manual_seed(1000 + i)).frames
+            if not torch.isfinite(out).all():
+                raise RuntimeError(f"clip {i + 1}: NaN/inf latents (fp16 overflow)")
+            latents[i] = out.float().cpu() * lat_std + lat_mean
+            log(f"Clip {i + 1} denoised in {time.time() - t0:.0f}s")
+
+    run_on_all(denoise)
+
+    # Step 2: a transformer and a VAE decode don't fit on one T4 together, so drop the
+    # transformers first, then decode on every GPU in parallel.
+    pipes.clear()
+    gc.collect()
+    torch.cuda.empty_cache()
+    vaes = [vae] + [copy.deepcopy(vae) for _ in devices[1:]]
+    for v, dev in zip(vaes, devices):
+        v.to(dev)
+        v.enable_tiling()
+        log(f"{dev}: {torch.cuda.memory_allocated(dev) / 2**30:.1f} GB in use before decoding")
+    paths = [None] * count
+
+    def decode(w):
+        dev = devices[w]
+        for i in range(w, count, len(devices)):
+            t0 = time.time()
+            with torch.no_grad():
+                video = vaes[w].decode(latents[i].to(dev), return_dict=False)[0].cpu()
+            frames = video_processor.postprocess_video(video, output_type="np")[0]
+            paths[i] = os.path.join(WORK, f"clip{i}.mp4")
+            export_to_video(frames, paths[i], fps=GEN_FPS)
+            log(f"Clip {i + 1} decoded in {time.time() - t0:.0f}s")
             torch.cuda.empty_cache()
-            vae.to(vae_dev)
-        with torch.no_grad():
-            video = vae.decode(latents.to(vae_dev), return_dict=False)[0].cpu()
-        if gpus < 2:
-            vae.to("cpu")
-            torch.cuda.empty_cache()
-            pipe.transformer.to("cuda:0")
-        frames = pipe.video_processor.postprocess_video(video, output_type="np")[0]
-        del video, latents
-        path = os.path.join(WORK, f"clip{i}.mp4")
-        export_to_video(frames, path, fps=GEN_FPS)
-        log(f"Clip {i + 1} done in {time.time() - t0:.0f}s")
-        paths.append(path)
-        torch.cuda.empty_cache()
+
+    run_on_all(decode)
     return paths
 
 
