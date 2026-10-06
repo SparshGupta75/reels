@@ -1,0 +1,12 @@
+{
+  "niche": "surprising, little-known facts about familiar things: animals, the human body, space, weather, food and history",
+  "scenes": 6,
+  "quality": "fast",
+  "voice": "am_michael",
+  "kaggle_user": "sparshgupta75",
+  "kernel_slug": "reel-maker",
+  "gemini_model": "gemini-flash-latest",
+  "remember_topics": 60,
+  "min_posts_for_feedback": 6,
+  "render_timeout_minutes": 270
+}
