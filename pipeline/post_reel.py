@@ -443,6 +443,8 @@ def main():
     ap.add_argument("--reuse-render", action="store_true",
                     help="skip writing and rendering; use the Reel from the last run")
     ap.add_argument("--script-only", action="store_true", help="write the script and stop")
+    ap.add_argument("--scheduled", action="store_true",
+                    help="started by the timer: skip if this half of the day already has a Reel")
     ap.add_argument("--list-models", action="store_true", help="print the Gemini models this key can use")
     args = ap.parse_args()
 
@@ -455,6 +457,15 @@ def main():
         return
 
     state = load_state()
+    if args.scheduled:
+        # GitHub's timer is unreliable, so it is set to fire several times per slot.
+        # The first run that succeeds posts; the later ones stop here.
+        def slot(t):
+            return (t.date(), t.hour < 10)   # before 10:00 UTC = the morning Reel
+
+        if any(slot(dt.datetime.fromisoformat(p["posted_at"])) == slot(now()) for p in state["posts"]):
+            log("This slot already has a Reel; nothing to do")
+            return
     token = os.environ.get("IG_TOKEN", "")
     if args.publish and not (token and os.environ.get("IG_USER_ID")):
         raise SystemExit("IG_TOKEN and IG_USER_ID secrets are needed to publish")
