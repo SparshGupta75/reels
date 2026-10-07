@@ -112,6 +112,17 @@ def refresh_token(token):
 
 def collect_metrics(state, token):
     """Record how each Reel did: once after 48 hours, and a final time after 7 days."""
+    # A post whose ID was not saved (the history save failed that day) is found again by its link.
+    if any(not p.get("media_id") and p.get("permalink") for p in state["posts"]):
+        try:
+            media = ig("GET", f"{os.environ['IG_USER_ID']}/media", token, fields="id,permalink", limit=50)["data"]
+            ids = {m.get("permalink", "").rstrip("/"): m["id"] for m in media}
+            for p in state["posts"]:
+                if not p.get("media_id") and p.get("permalink", "").rstrip("/") in ids:
+                    p["media_id"] = ids[p["permalink"].rstrip("/")]
+                    log(f"Recovered the Instagram ID for '{p['title']}'")
+        except (RuntimeError, KeyError) as e:
+            log(f"Could not look up missing post IDs: {str(e)[:120]}")
     for post in state["posts"]:
         if not post.get("media_id"):
             continue
@@ -543,7 +554,7 @@ def main():
         return
 
     media_id, link = publish(video, pending["caption"], token)
-    log(f"Published: {link or media_id}")
+    log(f"Published: {link or media_id} (id {media_id})")
     state["posts"].append({**pending, "media_id": media_id, "permalink": link,
                            "posted_at": now().isoformat(timespec="seconds")})
     state["pending"] = None

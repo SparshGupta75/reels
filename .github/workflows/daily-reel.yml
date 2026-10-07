@@ -69,7 +69,7 @@ jobs:
           git add state
           git diff --cached --quiet && exit 0
           git commit -q -m "Update Reel history"
-          git pull -q --rebase
+          git pull -q --rebase -X theirs
           git push -q
 
       - name: Keep the video for review
