@@ -12,6 +12,10 @@ on:
         description: "Post to Instagram (off = render only)"
         type: boolean
         default: false
+      scheduled:
+        description: "Started by an outside timer: skip if this half of the day already has a Reel"
+        type: boolean
+        default: false
       script_only:
         description: "Only write the script (no video, no post)"
         type: boolean
@@ -56,7 +60,7 @@ jobs:
         run: >
           python pipeline/post_reel.py
           ${{ (github.event_name == 'schedule' || inputs.publish) && '--publish' || '' }}
-          ${{ github.event_name == 'schedule' && '--scheduled' || '' }}
+          ${{ (github.event_name == 'schedule' || inputs.scheduled) && '--scheduled' || '' }}
           ${{ inputs.reuse_render && '--reuse-render' || '' }}
           ${{ inputs.script_only && '--script-only' || '' }}
           ${{ inputs.list_models && '--list-models' || '' }}
