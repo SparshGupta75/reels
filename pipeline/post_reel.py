@@ -247,10 +247,34 @@ def verify(fact):
     return lines[2] if len(lines) > 2 else fact["fact"]
 
 
+STOPWORDS = set("""a an the of to in on at for from by with and or but is are was were be been being it its
+this that these those as than then so not no can could will would do does did has have had they them their you
+your we our he she his her up down out into over under about more most very only just also even when while if
+because which who what how why when where there here actually really every each one two""".split())
+
+
+def keywords(text):
+    words = "".join(c.lower() if c.isalnum() else " " for c in text).split()
+    return {w.rstrip("s") for w in words if len(w) > 2 and w not in STOPWORDS}
+
+
+def already_used(fact, used):
+    """True when a fact shares most of its key words with one posted before."""
+    new = keywords(fact)
+    for old in used:
+        seen = keywords(old)
+        if new and seen and len(new & seen) / min(len(new), len(seen)) >= 0.5:
+            log(f"Skipping a repeat of an earlier Reel: {fact}")
+            return True
+    return False
+
+
 def pick_fact(state):
     """Step 1: brainstorm many facts, have each rated, then fact-check the best ones."""
     system = open(os.path.join(ROOT, "pipeline", "ideas_prompt.txt")).read()
-    recent = [p["title"] for p in state["posts"][-CFG["remember_topics"]:]]
+    # Every fact ever used is remembered, not just recent ones.
+    used = [p.get("fact") or p["title"] for p in state["posts"]]
+    recent = used
     user = (f"Topic area: {CFG['niche']}\n"
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
@@ -264,7 +288,8 @@ def pick_fact(state):
         for f in facts:
             log(f"  wow {f['wow']}, known {f['familiarity']}, sure {f['certainty']}, "
                 f"filmable {f['filmable']}: {f['fact']}")
-        for f in [f for f in facts if good(f)][:4]:
+        fresh = [f for f in facts if good(f) and not already_used(f["fact"], used)]
+        for f in fresh[:4]:
             log(f"Checking: {f['fact']}")
             checked = verify(f)
             if checked:
@@ -311,6 +336,7 @@ def write_script(state):
         plan.update(fixed)
     except RuntimeError as e:
         log(f"Editing pass skipped ({str(e)[:100]})")
+    plan["fact"] = fact["fact"]
     return plan
 
 
@@ -490,6 +516,7 @@ def main():
             "id": job_id,
             "title": plan["title"],
             "hook": plan["narration"].split(". ")[0][:120],
+            "fact": plan["fact"],
             "narration": plan["narration"],
             # Models sometimes write the two characters "\\n" instead of a real line break.
             "caption": f"{plan['caption'].replace(chr(92) + 'n', chr(10)).strip()}\n\n{tags} #aigenerated",

@@ -13,7 +13,6 @@
     "gemini-3.5-flash",
     "gemini-flash-lite-latest"
   ],
-  "remember_topics": 60,
   "min_posts_for_feedback": 6,
   "render_timeout_minutes": 270
 }
