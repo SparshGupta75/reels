@@ -186,7 +186,7 @@ IDEAS_SCHEMA = {
 }
 
 
-def gemini(system, user, schema=None, check=None, search=False, rounds=6):
+def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True):
     """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
     check(reply) returns an error string to retry, or None. search=True lets it use Google."""
     body = {
@@ -204,7 +204,8 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6):
     for round_no in range(rounds):
         if round_no:
             time.sleep(min(60 * round_no, 240))
-        for model in CFG["gemini_models"]:
+        # The last model in the list is the weakest; creative steps leave it out at first.
+        for model in CFG["gemini_models"] if weakest else CFG["gemini_models"][:-1]:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
             try:
                 r = requests.post(url, json=body, timeout=180,
@@ -229,6 +230,16 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6):
                 return reply
             log(f"Gemini {model} rejected: {last}")
     raise RuntimeError(f"Gemini failed: {last}")
+
+
+def creative(system, user, schema, check):
+    """For the steps where quality matters most: wait ~25 minutes for a strong model
+    before settling for the weakest one."""
+    try:
+        return gemini(system, user, schema, check, weakest=False)
+    except RuntimeError as e:
+        log(f"Strong models unavailable ({str(e)[:80]}); using the backup model")
+        return gemini(system, user, schema, check, rounds=2)
 
 
 def verify(fact):
@@ -293,8 +304,8 @@ def pick_fact(state):
         return f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
 
     for _ in range(3):
-        reply = gemini(system, user, IDEAS_SCHEMA,
-                       lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
+        reply = creative(system, user, IDEAS_SCHEMA,
+                         lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
         facts = sorted(reply["facts"], key=lambda f: (-f["wow"], f["familiarity"]))
         for f in facts:
             log(f"  wow {f['wow']}, known {f['familiarity']}, sure {f['certainty']}, "
@@ -326,7 +337,7 @@ def write_script(state):
             return "caption breaks the style rules"
         return None
 
-    plan = gemini(system, user, SCHEMA, check)
+    plan = creative(system, user, SCHEMA, check)
 
     # A second pass removes details the writer may have made up (names, places, years,
     # numbers) and absolute claims the checked fact does not support.
