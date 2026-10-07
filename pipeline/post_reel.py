@@ -243,7 +243,7 @@ def creative(system, user, schema, check):
 
 
 def verify(fact):
-    """Second opinion on a fact, using Google Search when the free tier allows it.
+    """Second opinion on a fact.
     Returns the fact (possibly reworded to be precise) or None if it is not solid."""
     system = ("You are a strict fact checker. Check the claim against reliable sources. "
               "Line 1 of your reply must be exactly one word: TRUE, FALSE or UNSURE. Use TRUE only "
@@ -256,10 +256,15 @@ def verify(fact):
         return None if reply.split()[:1] and reply.split()[0].strip(".:*").upper() in ("TRUE", "FALSE", "UNSURE") \
             else "no verdict"
 
-    try:
-        reply = gemini(system, user, check=check, search=True, rounds=1)
-    except RuntimeError as e:
-        log("Fact check with Google Search is not available on the free tier; checking without it")
+    # Google Search grounding is refused on the free tier (HTTP 429 on every model), so the
+    # check runs without it unless "search_fact_check" is switched on in the config.
+    reply = None
+    if CFG.get("search_fact_check"):
+        try:
+            reply = gemini(system, user, check=check, search=True, rounds=1)
+        except RuntimeError:
+            log("Fact check with Google Search was refused; checking without it")
+    if reply is None:
         reply = gemini(system, user, check=check)
     lines = [x.strip() for x in reply.splitlines() if x.strip()]
     verdict = lines[0].strip(".:*").upper()
