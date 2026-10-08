@@ -53,6 +53,9 @@ NEGATIVE = (
 MAX_CLIP_FRAMES = 121              # ~5 s; longer shots get slowed down slightly
 
 WORK = "/tmp/reel"
+FONT_DIR = WORK + "/fonts"
+TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE = "DejaVu Sans", -1, 118, 180
+COVER_TAG = "MIND BLOWN REELS"
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 OUT_DIR = "/kaggle/working" if os.path.isdir("/kaggle/working") else os.path.abspath("out")
 FAKE_VIDEO = os.environ.get("REEL_FAKE_VIDEO") == "1"   # local test: colour bars instead of AI clips
@@ -97,7 +100,8 @@ def install_deps():
                                      ("diffusers", "transformers", "accelerate", "torch")))
     # Kokoro needs Python < 3.13 and Kaggle runs 3.13, so it gets its own 3.12 env.
     run([sys.executable, "-m", "pip", "install", "-q", "uv"])
-    run([sys.executable, "-m", "uv", "venv", "-q", "--seed", "--python", "3.12", KOKORO_ENV])
+    if not os.path.exists(KOKORO_PY):
+        run([sys.executable, "-m", "uv", "venv", "-q", "--seed", "--python", "3.12", KOKORO_ENV])
     run([sys.executable, "-m", "uv", "pip", "install", "-q", "--python", KOKORO_PY,
          "--torch-backend", "cpu", "kokoro>=0.9.4", "soundfile",
          "transformers>=4.40,<5"])   # without the pin uv picks a 2021 transformers
@@ -160,17 +164,31 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def make_ass(words, path, max_words=3, max_chars=16):
-    """Bold, centred, 2-3 word captions with a small pop-in, TikTok style."""
+YELLOW = "&H0AD6FF&"     # ASS colours are BGR
+
+
+def mark_up(text):
+    """Turn "SQUIRRELS HAVE *BACKWARD* ANKLES" into ASS text with the starred word in yellow."""
+    text = text.upper().replace("{", "(").replace("}", ")").replace("\n", "\\N")
+    parts = text.split("*")
+    if len(parts) != 3:
+        return text.replace("*", "")
+    return parts[0] + "{\\c" + YELLOW + "}" + parts[1] + "{\\c&HFFFFFF&}" + parts[2]
+
+
+def make_ass(words, path, hook="", max_words=3, max_chars=16):
+    """Bold, centred, 2-3 word captions with a small pop-in, TikTok style, plus an
+    optional big hook line across the top for the first two seconds."""
     header = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {OUT_W}
 PlayResY: {OUT_H}
-WrapStyle: 2
+WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,DejaVu Sans,96,&H00FFFFFF,&H000000FF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,2,60,60,560,1
+Style: Hook,{TITLE_FONT},{HOOK_SIZE},&H00FFFFFF,&H000000FF,&H00000000,&H64000000,{TITLE_BOLD},0,0,0,100,100,1,0,1,10,4,8,70,70,250,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -187,6 +205,12 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         groups.append(cur)
 
     lines = []
+    if hook.strip():
+        hw = hook.split()
+        if len(hw) > 2:                       # two balanced lines read better than one long one
+            hook = " ".join(hw[:(len(hw) + 1) // 2]) + "\n" + " ".join(hw[(len(hw) + 1) // 2:])
+        lines.append(f"Dialogue: 1,{ass_time(0)},{ass_time(2.2)},Hook,,0,0,0,,"
+                     + r"{\fad(0,250)}" + mark_up(hook))
     for i, g in enumerate(groups):
         start = g[0][0]
         end = groups[i + 1][0][0] if i + 1 < len(groups) else g[-1][1] + 0.3
@@ -196,6 +220,55 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Cap,,0,0,0,,{pop}{text}")
     with open(path, "w", encoding="utf-8") as f:
         f.write(header + "\n".join(lines) + "\n")
+
+
+def make_cover(joined, at, text, path):
+    """A still for the profile grid: a clean frame (no captions) with two or three huge words."""
+    stacked = mark_up(text).replace(" ", "\\N")     # one word per line
+    ass = os.path.join(WORK, "cover.ass")
+    with open(ass, "w", encoding="utf-8") as f:
+        f.write(f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {OUT_W}
+PlayResY: {OUT_H}
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Big,{TITLE_FONT},{COVER_SIZE},&H00FFFFFF,&H000000FF,&H00000000,&H64000000,{TITLE_BOLD},0,0,0,100,100,1,0,1,13,5,5,60,60,0,1
+Style: Tag,DejaVu Sans,44,&H00000000,&H000000FF,{YELLOW[:-1].replace("&H", "&H00")},{YELLOW[:-1].replace("&H", "&H00")},-1,0,0,0,100,100,2,0,3,14,0,8,60,60,520,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,9:00:00.00,Tag,,0,0,0,,{COVER_TAG}
+Dialogue: 0,0:00:00.00,9:00:00.00,Big,,0,0,0,,{{\\pos({OUT_W // 2},{int(OUT_H * 0.66)})}}{stacked}
+""")
+    run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{at:.2f}", "-i", joined,
+         "-vf", f"eq=brightness=-0.06:saturation=1.1,{ass_filter(ass)}", "-frames:v", "1", "-q:v", "2", path])
+
+
+def ass_filter(ass_path):
+    return f"ass={ass_path}" + (f":fontsdir={FONT_DIR}" if os.listdir(FONT_DIR) else "")
+
+
+def setup_fonts():
+    """Anton is the tall poster typeface used for hooks and covers; fall back to DejaVu Bold."""
+    global TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE
+    os.makedirs(FONT_DIR, exist_ok=True)
+    for src in ("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"):
+        if os.path.exists(src):
+            shutil.copy(src, FONT_DIR)
+    anton = os.path.join(FONT_DIR, "Anton-Regular.ttf")
+    try:
+        import urllib.request
+        urllib.request.urlretrieve("https://github.com/google/fonts/raw/main/ofl/anton/Anton-Regular.ttf", anton)
+        if os.path.getsize(anton) < 50_000:
+            raise OSError("font download too small")
+        TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE = "Anton", 0, 164, 260
+    except Exception as e:
+        log(f"Poster font unavailable ({e}); using DejaVu Bold")
+        if os.path.exists(anton):
+            os.remove(anton)
 
 
 # --- 3. AI video clips --------------------------------------------------------
@@ -382,14 +455,13 @@ def assemble(clips, seconds, voice_wav, ass_path, out_path):
     run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", concat,
          "-c", "copy", joined])
 
-    fonts = "/usr/share/fonts/truetype/dejavu"
-    ass_filter = f"ass={ass_path}" + (f":fontsdir={fonts}" if os.path.isdir(fonts) else "")
     run(["ffmpeg", "-y", "-loglevel", "error", "-i", joined, "-i", voice_wav,
-         "-vf", ass_filter, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",
+         "-vf", ass_filter(ass_path), "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",
          "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "20",
          "-pix_fmt", "yuv420p", "-r", str(OUT_FPS),
          "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
          "-shortest", "-movflags", "+faststart", out_path])
+    return joined
 
 
 def main():
@@ -403,21 +475,29 @@ def main():
 
     voice_wav = os.path.join(WORK, "voice.wav")
     speech = make_voice(job["narration"], job["voice"], voice_wav)
-    total = speech + 0.6
+    total = speech + 0.3      # short tail so the end runs straight back into the start
     log(f"Voiceover: {speech:.1f}s")
 
     words = word_timings(voice_wav, job["narration"])
     ass_path = os.path.join(WORK, "captions.ass")
-    make_ass(words, ass_path)
+    setup_fonts()
+    make_ass(words, ass_path, job.get("hook_text", ""))
     log(f"Captions: {len(words)} words")
 
     prompts = [s["prompt"] if isinstance(s, dict) else str(s) for s in job["scenes"]]
     seconds = [total / len(prompts)] * len(prompts)
     clips = make_clips(prompts, seconds, job["quality"])
 
-    # Unique name so n8n never picks up an older run's video by mistake.
+    # Unique name so the pipeline never picks up an older run's video by mistake.
     out_path = os.path.join(OUT_DIR, f"reel-{job['id']}.mp4")
-    assemble(clips, seconds, voice_wav, ass_path, out_path)
+    joined = assemble(clips, seconds, voice_wav, ass_path, out_path)
+    if job.get("cover_text"):
+        # Second scene, a little way in: usually the clearest view of the subject.
+        at = seconds[0] + seconds[1] * 0.4 if len(seconds) > 1 else seconds[0] * 0.5
+        try:
+            make_cover(joined, at, job["cover_text"], os.path.join(OUT_DIR, f"cover-{job['id']}.jpg"))
+        except subprocess.CalledProcessError as e:
+            log(f"Cover image failed ({e}); the Reel is fine without it")
 
     size_mb = os.path.getsize(out_path) / 1e6
     info = {"id": job["id"], "seconds": round(duration(out_path), 2), "size_mb": round(size_mb, 1),

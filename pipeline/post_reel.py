@@ -40,9 +40,11 @@ SCHEMA = {
             "type": "OBJECT", "properties": {"prompt": {"type": "STRING"}}, "required": ["prompt"]}},
         "caption": {"type": "STRING"},
         "hashtags": {"type": "ARRAY", "items": {"type": "STRING"}},
+        "hook_text": {"type": "STRING"},
+        "cover_text": {"type": "STRING"},
     },
-    "propertyOrdering": ["title", "narration", "scenes", "caption", "hashtags"],
-    "required": ["title", "narration", "scenes", "caption", "hashtags"],
+    "propertyOrdering": ["title", "narration", "scenes", "caption", "hashtags", "hook_text", "cover_text"],
+    "required": ["title", "narration", "scenes", "caption", "hashtags", "hook_text", "cover_text"],
 }
 
 
@@ -186,7 +188,7 @@ IDEAS_SCHEMA = {
 }
 
 
-def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True):
+def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True, backwards=False):
     """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
     check(reply) returns an error string to retry, or None. search=True lets it use Google."""
     body = {
@@ -205,7 +207,8 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
         if round_no:
             time.sleep(min(60 * round_no, 240))
         # The last model in the list is the weakest; creative steps leave it out at first.
-        for model in CFG["gemini_models"] if weakest else CFG["gemini_models"][:-1]:
+        models = CFG["gemini_models"] if weakest else CFG["gemini_models"][:-1]
+        for model in reversed(models[:-1]) if backwards else models:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
             try:
                 r = requests.post(url, json=body, timeout=180,
@@ -271,7 +274,20 @@ def verify(fact):
     log(f"Fact check: {verdict}. {lines[1] if len(lines) > 1 else ''}")
     if verdict != "TRUE":
         return None
-    return lines[2] if len(lines) > 2 else fact["fact"]
+    checked = lines[2] if len(lines) > 2 else fact["fact"]
+
+    # One checker has passed a claim that another rejected, so a second, sceptical one
+    # (asked a different way, starting from a different model) must agree as well.
+    sceptic = ("You debunk popular 'amazing facts'. Many are myths, exaggerations, or true only in "
+               "rare cases. Decide whether this claim is literally true for the ordinary, typical case, "
+               "exactly as worded. Line 1 of your reply must be exactly one word: TRUE, FALSE or UNSURE. "
+               "Answer FALSE if any part is wrong or only true in unusual cases, and UNSURE if you cannot "
+               "be certain. Line 2: one sentence on why.")
+    second = gemini(sceptic, f"Claim: {checked}", check=check, backwards=True)
+    verdict2 = second.split()[0].strip(".:*").upper()
+    reason = " ".join(second.split()[1:])[:300]
+    log(f"Second opinion: {verdict2}. {reason}")
+    return checked if verdict2 == "TRUE" else None
 
 
 STOPWORDS = set("""a an the of to in on at for from by with and or but is are was were be been being it its
@@ -333,7 +349,8 @@ def write_script(state):
 
     def check(plan):
         words = len(plan["narration"].split())
-        if len(plan["scenes"]) < CFG["scenes"] or not 40 <= words <= 95:
+        low, high = CFG["narration_words"]
+        if len(plan["scenes"]) < CFG["scenes"] or not low <= words <= high:
             return f"bad plan: {len(plan['scenes'])} scenes, {words} words"
         if len(plan["caption"].strip()) < 150 or len(plan["hashtags"]) < 3:
             return "caption or hashtags too short"
@@ -457,22 +474,52 @@ def unhost_branch(path):
     gh("api", "-X", "DELETE", f"repos/{REPO}/git/refs/heads/{TMP_BRANCH}", check=False)
 
 
-def publish(path, caption, token):
+def wait_container(container, token):
+    """Wait for Instagram to finish processing an upload. Returns None when ready, else why not."""
+    st = {}
+    for _ in range(40):
+        time.sleep(30)
+        st = ig("GET", container, token, fields="status_code,status")
+        if st.get("status_code") in ("FINISHED", "ERROR", "EXPIRED"):
+            break
+    return None if st.get("status_code") == "FINISHED" else f"{st.get('status_code')} {st.get('status', '')}"
+
+
+def share_to_story(url, token):
+    """Also put the Reel's video on the account's Story. Never allowed to fail the run."""
+    user = os.environ["IG_USER_ID"]
+    try:
+        container = ig("POST", f"{user}/media", token, media_type="STORIES", video_url=url)["id"]
+        problem = wait_container(container, token)
+        if problem:
+            log(f"Story not shared: Instagram said {problem}")
+            return
+        ig("POST", f"{user}/media_publish", token, creation_id=container)
+        log("Shared to Story")
+    except RuntimeError as e:
+        log(f"Story not shared: {str(e)[:300]}")
+
+
+def publish(path, caption, token, cover=None):
     user = os.environ["IG_USER_ID"]
     last = "no host tried"
     for host, unhost in ((host_release, unhost_release), (host_branch, unhost_branch)):
+        hosted_cover = False
         try:
             url = host(path)
             log(f"Video hosted via {host.__name__}")
+            extra = {}
+            if cover and host is host_release:
+                try:
+                    extra["cover_url"] = host_release(cover)
+                    hosted_cover = True
+                except subprocess.CalledProcessError:
+                    log("Cover image could not be hosted; posting without it")
             container = ig("POST", f"{user}/media", token, media_type="REELS",
-                           video_url=url, caption=caption)["id"]
-            for _ in range(40):
-                time.sleep(30)
-                st = ig("GET", container, token, fields="status_code,status")
-                if st.get("status_code") in ("FINISHED", "ERROR", "EXPIRED"):
-                    break
-            if st.get("status_code") != "FINISHED":
-                last = f"{host.__name__}: Instagram said {st.get('status_code')} {st.get('status', '')}"
+                           video_url=url, caption=caption, **extra)["id"]
+            problem = wait_container(container, token)
+            if problem:
+                last = f"{host.__name__}: Instagram said {problem}"
                 log(last)
                 continue
             media_id = ig("POST", f"{user}/media_publish", token, creation_id=container)["id"]
@@ -480,12 +527,16 @@ def publish(path, caption, token):
                 link = ig("GET", media_id, token, fields="permalink").get("permalink", "")
             except RuntimeError:
                 link = ""
+            if CFG.get("share_to_story"):
+                share_to_story(url, token)
             return media_id, link
         except (RuntimeError, subprocess.CalledProcessError) as e:
             last = f"{host.__name__}: {str(e)[:300]}"
             log(last)
         finally:
             unhost(path)
+            if hosted_cover:
+                unhost_release(cover)
     raise RuntimeError(f"Instagram did not accept the video ({last})")
 
 
@@ -546,10 +597,15 @@ def main():
             "fact": plan["fact"],
             "narration": plan["narration"],
             # Models sometimes write the two characters "\\n" instead of a real line break.
-            "caption": f"{plan['caption'].replace(chr(92) + 'n', chr(10)).strip()}\n\n{tags} #aigenerated",
+            "caption": (f"{plan['caption'].replace(chr(92) + 'n', chr(10)).strip()}\n\n"
+                        f"{CFG['caption_follow_line']}\n\n{tags} #aigenerated"),
+            # At most 6 words on screen and 3 on the cover, whatever the writer returned.
+            "hook_text": " ".join(plan["hook_text"].split()[:6]),
+            "cover_text": " ".join(plan["cover_text"].split()[:3]),
         }
         log(f"Topic: {plan['title']}")
         log(f"Narration: {plan['narration']}")
+        log(f"Hook on screen: {pending['hook_text']} | Cover: {pending['cover_text']}")
         log(f"Caption:\n{pending['caption']}")
         for i, s in enumerate(plan["scenes"][:CFG["scenes"]], 1):
             log(f"Scene {i}: {s['prompt']}")
@@ -559,7 +615,8 @@ def main():
         save_state(state)
         render({"id": job_id, "narration": plan["narration"],
                 "scenes": [{"prompt": s["prompt"]} for s in plan["scenes"][:CFG["scenes"]]],
-                "voice": CFG["voice"], "quality": CFG["quality"]})
+                "voice": CFG["voice"], "quality": CFG["quality"],
+                "hook_text": pending["hook_text"], "cover_text": pending["cover_text"]})
         video = fetch_output(job_id)
         if not video:
             raise RuntimeError("Kaggle finished but produced no Reel file")
@@ -569,7 +626,8 @@ def main():
         log("Render-only run: not posting. Download the video from this run's artifacts.")
         return
 
-    media_id, link = publish(video, pending["caption"], token)
+    cover = os.path.join(OUT_DIR, f"cover-{pending['id']}.jpg")
+    media_id, link = publish(video, pending["caption"], token, cover if os.path.exists(cover) else None)
     log(f"Published: {link or media_id} (id {media_id})")
     state["posts"].append({**pending, "media_id": media_id, "permalink": link,
                            "posted_at": now().isoformat(timespec="seconds")})
