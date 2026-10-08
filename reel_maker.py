@@ -285,6 +285,13 @@ def make_clips(prompts, seconds, quality):
             latents[i] = out.float().cpu() * lat_std + lat_mean
             log(f"Clip {i + 1} denoised in {time.time() - t0:.0f}s")
 
+    # PyTorch sets up its linear-algebra library the first time it is used, and crashes
+    # ("lazy wrapper should be called at most once") if two threads trigger that at the
+    # same moment. Trigger it here, once, before the threads start.
+    for dev in ["cpu", *devices]:
+        torch.linalg.solve(torch.eye(2, device=dev), torch.ones(2, 1, device=dev))
+        torch.linalg.inv(torch.eye(2, device=dev))
+
     run_on_all(denoise)
 
     # Step 2: a transformer and a VAE decode don't fit on one T4 together, so drop the
