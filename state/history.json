@@ -9,7 +9,17 @@
       "media_id": "18019413749927335",
       "permalink": "https://www.instagram.com/reel/DeJ4vEZj0c_/",
       "posted_at": "2026-10-06T13:26:04+00:00",
-      "fact": "The Great Pyramid of Giza has eight sides due to its slightly concave faces, which are visible from the air during the spring and autumn equinoxes."
+      "fact": "The Great Pyramid of Giza has eight sides due to its slightly concave faces, which are visible from the air during the spring and autumn equinoxes.",
+      "metrics": {
+        "views": 207,
+        "reach": 148,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 1,
+        "ig_reels_avg_watch_time": 9700
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610070754",
@@ -65,6 +75,19 @@
       "media_id": "18021484880934077",
       "permalink": "https://www.instagram.com/reel/DePKF-tjfYm/",
       "posted_at": "2026-10-08T14:33:54+00:00"
+    },
+    {
+      "id": "202610090628",
+      "title": "Leatherback Turtle Throat Spikes",
+      "hook": "Leatherback sea turtles have mouths and esophaguses lined with sharp spikes",
+      "fact": "Leatherback sea turtles have hundreds of sharp, backward-pointing spikes called papillae lining their mouth and esophagus to trap jellyfish.",
+      "narration": "Leatherback sea turtles have mouths and esophaguses lined with sharp spikes. Picture hundreds of soft, backward-pointing spikes called papillae acting like a trap. Because jellyfish are slippery, these inward points hold the food inside while excess seawater gets squeezed right back out. It sounds totally wild, which is why...",
+      "caption": "Inside a leatherback sea turtle's mouth looks like something out of a movie.\n\nThey eat slippery jellyfish. To keep them from sliding back out, the turtle's mouth and esophagus are lined with hundreds of sharp, backward-pointing spikes called papillae. As they feed, excess seawater is squeezed back out, while those backward points trap the prey inside. Honestly, I had no idea sea turtles had such intense adaptations.\n\nWould you be creeped out seeing inside one of their mouths?\n\nFollow for a new one every day.\n\n#seaturtle #oceanlife #leatherbackturtle #leatherback #marinebiology #aigenerated",
+      "hook_text": "TURTLES HAVE *SPIKED* THROATS",
+      "cover_text": "*SPIKED* TURTLE THROATS",
+      "media_id": "18477708814114385",
+      "permalink": "https://www.instagram.com/reel/DeQ9Z6Wkk2T/",
+      "posted_at": "2026-10-09T07:22:06+00:00"
     }
   ],
   "pending": null
