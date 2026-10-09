@@ -569,6 +569,11 @@ def main():
             ist = t.astimezone(dt.timezone(dt.timedelta(hours=5, minutes=30)))
             return (ist.date(), 0 if ist.hour < 14 else 1 if ist.hour < 18 else 2)
 
+        # GitHub's spare timer can fire many hours late; never post in the middle of the night.
+        ist_hour = now().astimezone(dt.timezone(dt.timedelta(hours=5, minutes=30))).hour
+        if not 10 <= ist_hour < 22:
+            log("Outside posting hours (10:00-22:00 India time); nothing to do")
+            return
         if any(slot(dt.datetime.fromisoformat(p["posted_at"])) == slot(now()) for p in state["posts"]):
             log("This slot already has a Reel; nothing to do")
             return
