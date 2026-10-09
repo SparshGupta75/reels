@@ -30,7 +30,17 @@
       "fact": "Reindeer eyes change color from golden brown in the summer to deep blue in the winter to improve their vision in constant polar darkness.",
       "media_id": "18087817529311521",
       "permalink": "https://www.instagram.com/reel/DeL_bdKDnND/",
-      "posted_at": "2026-10-07T09:03:00+00:00"
+      "posted_at": "2026-10-07T09:03:00+00:00",
+      "metrics": {
+        "views": 152,
+        "reach": 134,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6498
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610071257",
@@ -88,6 +98,19 @@
       "media_id": "18477708814114385",
       "permalink": "https://www.instagram.com/reel/DeQ9Z6Wkk2T/",
       "posted_at": "2026-10-09T07:22:06+00:00"
+    },
+    {
+      "id": "202610091148",
+      "title": "The Secret Weapon of Ladybugs",
+      "hook": "Ladybugs bleed yellow fluid from their leg joints",
+      "fact": "When threatened, ladybugs can emit a foul-smelling, toxic yellow fluid from their leg joints to deter predators through a process called reflex bleeding.",
+      "narration": "Ladybugs bleed yellow fluid from their leg joints. When something tries to threaten them, they emit this foul-smelling fluid. It is actually their own blood, packed with a terrible taste that deters birds. That is why, whenever they are threatened...",
+      "caption": "I'm not looking at ladybugs the same way again.\n\nThey're usually seen as cute garden helpers, but they have a pretty gross defense mechanism. When they're in danger, they leak toxic yellow blood right out of their leg joints. It tastes terrible and smells foul to scare away hungry birds. I had no idea such a tiny bug could pull off a stunt like that. 🐞\n\nHave you ever seen that yellow liquid when holding one?\n\nFollow for a new one every day.\n\n#insects #nature #ladybug #animalfacts #buglife #aigenerated",
+      "hook_text": "LADYBUGS BLEED *YELLOW* GOO",
+      "cover_text": "*YELLOW* LADYBUG BLOOD",
+      "media_id": "18196850869390013",
+      "permalink": "https://www.instagram.com/reel/DeRhCVtjewc/",
+      "posted_at": "2026-10-09T12:33:29+00:00"
     }
   ],
   "pending": null
