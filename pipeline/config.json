@@ -1,6 +1,6 @@
 {
   "niche": "surprising, little-known facts about familiar things: animals, the human body, space, weather, food and history",
-  "scenes": 4,
+  "scenes": 6,
   "quality": "fast",
   "voice": "am_michael",
   "kaggle_user": "sparshgupta75",
@@ -20,5 +20,6 @@
     58
   ],
   "share_to_story": true,
-  "caption_follow_line": "Follow for a new one every day."
+  "caption_follow_line": "Follow for a new one every day.",
+  "visual": "stills"
 }

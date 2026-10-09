@@ -50,6 +50,9 @@ NEGATIVE = (
     "blurry, low quality, distorted, deformed, watermark, text, subtitles, logo, "
     "static frame, jpeg artifacts, extra limbs, bad anatomy, overexposed"
 )
+IMAGE_MODEL = "SG161222/RealVisXL_V5.0"     # photoreal SDXL; chosen in a side-by-side test on a T4
+IMAGE_NEGATIVE = ("blurry, low quality, deformed, distorted, watermark, text, letters, logo, cartoon, "
+                  "illustration, painting, extra limbs, bad anatomy, duplicate, frame, border")
 MAX_CLIP_FRAMES = 121              # ~5 s; longer shots get slowed down slightly
 
 WORK = "/tmp/reel"
@@ -377,18 +380,25 @@ def make_clips(prompts, seconds, quality):
     gc.collect()
     torch.cuda.empty_cache()
 
-    def start(w):
-        mine = [str(i) for i in range(w, count, len(devices))]
-        env = {**os.environ, "CUDA_VISIBLE_DEVICES": str(w)}
-        return subprocess.Popen([sys.executable, os.path.abspath(globals().get("__file__") or sys.argv[0]), "--decode", *mine], env=env)
+    run_per_gpu("--decode", count, len(devices))
+    return [os.path.join(WORK, f"clip{i}.mp4") for i in range(count)]
 
-    workers = [start(w) for w in range(len(devices))]
+
+def run_per_gpu(flag, count, gpus):
+    """Run this script once per GPU as its own process (threads sharing CUDA crashed);
+    GPU w handles items w, w+gpus, ... A failed worker gets one more try."""
+    def start(w):
+        mine = [str(i) for i in range(w, count, gpus)]
+        env = {**os.environ, "CUDA_VISIBLE_DEVICES": str(w)}
+        script = os.path.abspath(globals().get("__file__") or sys.argv[0])
+        return subprocess.Popen([sys.executable, script, flag, *mine], env=env)
+
+    workers = [start(w) for w in range(min(gpus, count))]
     for w, proc in enumerate(workers):
         if proc.wait() != 0:
-            log(f"Decoder on GPU {w} failed, trying once more")
+            log(f"Worker on GPU {w} failed, trying once more")
             if start(w).wait() != 0:
-                raise RuntimeError(f"decoding failed on GPU {w}")
-    return [os.path.join(WORK, f"clip{i}.mp4") for i in range(count)]
+                raise RuntimeError(f"{flag} failed on GPU {w}")
 
 
 def decode_worker(indices):
@@ -415,6 +425,91 @@ def decode_worker(indices):
         log(f"Clip {i + 1} decoded in {time.time() - t0:.0f}s")
         del video, latents
         torch.cuda.empty_cache()
+
+
+# --- 3b. still images with slow camera moves --------------------------------------
+MOVES = [   # (zoom, x, y) expressions for ffmpeg's zoompan; N is the number of frames
+    ("1+0.14*on/N", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"),              # push in
+    ("1.14", "iw/2-(iw/zoom/2)", "(ih-ih/zoom)*(1-on/N)"),                # drift up
+    ("1.14-0.14*on/N", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"),           # pull out
+    ("1.14", "(iw-iw/zoom)*on/N", "ih/2-(ih/zoom/2)"),                    # drift right
+    ("1+0.14*on/N", "iw/2-(iw/zoom/2)", "(ih-ih/zoom)*0.35"),             # push in, a little high
+    ("1.14", "(iw-iw/zoom)*(1-on/N)", "ih/2-(ih/zoom/2)"),                # drift left
+]
+
+
+def still_clips(images, seconds):
+    """Turn each still image into a clip with a slow zoom or drift."""
+    paths = []
+    for i, (img, secs) in enumerate(zip(images, seconds)):
+        n = math.ceil(secs * OUT_FPS) + 2
+        z, x, y = (e.replace("N", str(n)) for e in MOVES[i % len(MOVES)])
+        path = os.path.join(WORK, f"clip{i}.mp4")
+        # Zooming a 2x enlarged copy keeps the motion smooth instead of jittery.
+        vf = (f"scale={OUT_W * 2}:{OUT_H * 2}:force_original_aspect_ratio=increase:flags=lanczos,"
+              f"crop={OUT_W * 2}:{OUT_H * 2},"
+              f"zoompan=z='{z}':x='{x}':y='{y}':d={n}:s={OUT_W}x{OUT_H}:fps={OUT_FPS},format=yuv420p")
+        run(["ffmpeg", "-y", "-loglevel", "error", "-i", img, "-vf", vf, "-frames:v", str(n),
+             "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", path])
+        paths.append(path)
+    return paths
+
+
+def fake_stills(prompts):
+    paths = []
+    for i, _ in enumerate(prompts):
+        path = os.path.join(WORK, f"img{i}.jpg")
+        run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc2=size=1088x1920:rate=1",
+             "-frames:v", "1", path])
+        paths.append(path)
+    return paths
+
+
+def make_stills(prompts):
+    if FAKE_VIDEO:
+        return fake_stills(prompts)
+    import torch
+
+    with open(os.path.join(WORK, "prompts.json"), "w") as f:
+        json.dump(prompts, f)
+    gpus = max(torch.cuda.device_count(), 1)
+    log(f"Making {len(prompts)} pictures with {IMAGE_MODEL} on {gpus} GPU(s)")
+    run_per_gpu("--stills", len(prompts), gpus)
+    return [os.path.join(WORK, f"img{i}.jpg") for i in range(len(prompts))]
+
+
+def stills_worker(indices):
+    """Runs in its own process on one GPU: draw the pictures for the given scenes."""
+    import torch
+    from diffusers import AutoencoderKL, StableDiffusionXLImg2ImgPipeline, StableDiffusionXLPipeline
+
+    prompts = json.load(open(os.path.join(WORK, "prompts.json")))
+    # SDXL's own VAE overflows in fp16; this fixed one does not.
+    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16)
+    try:
+        pipe = StableDiffusionXLPipeline.from_pretrained(IMAGE_MODEL, vae=vae, torch_dtype=torch.float16,
+                                                         variant="fp16")
+    except Exception:
+        pipe = StableDiffusionXLPipeline.from_pretrained(IMAGE_MODEL, vae=vae, torch_dtype=torch.float16)
+    pipe.to("cuda")
+    pipe.vae.enable_tiling()
+    pipe.set_progress_bar_config(disable=True)
+    refine = StableDiffusionXLImg2ImgPipeline(**pipe.components)
+    refine.set_progress_bar_config(disable=True)
+    for i in indices:
+        path = os.path.join(WORK, f"img{i}.jpg")
+        if os.path.exists(path):
+            continue
+        t0 = time.time()
+        g = torch.Generator("cuda").manual_seed(1000 + i)
+        # Draw at the size the model was trained on, then redraw lightly at full Reel size for sharpness.
+        img = pipe(prompt=prompts[i], negative_prompt=IMAGE_NEGATIVE, width=768, height=1344,
+                   num_inference_steps=30, guidance_scale=5.0, generator=g).images[0]
+        img = refine(prompt=prompts[i], negative_prompt=IMAGE_NEGATIVE, image=img.resize((1088, 1920)),
+                     strength=0.3, num_inference_steps=30, guidance_scale=5.0, generator=g).images[0]
+        img.save(path + ".tmp.jpg", quality=95)
+        os.replace(path + ".tmp.jpg", path)
+        log(f"Picture {i + 1} made in {time.time() - t0:.0f}s")
 
 
 def fake_clips(prompts, seconds):
@@ -467,6 +562,8 @@ def assemble(clips, seconds, voice_wav, ass_path, out_path):
 def main():
     if sys.argv[1:2] == ["--decode"]:
         return decode_worker([int(x) for x in sys.argv[2:]])
+    if sys.argv[1:2] == ["--stills"]:
+        return stills_worker([int(x) for x in sys.argv[2:]])
     t0 = time.time()
     job = load_job()
     os.makedirs(WORK, exist_ok=True)
@@ -486,7 +583,10 @@ def main():
 
     prompts = [s["prompt"] if isinstance(s, dict) else str(s) for s in job["scenes"]]
     seconds = [total / len(prompts)] * len(prompts)
-    clips = make_clips(prompts, seconds, job["quality"])
+    if job.get("visual") == "stills":
+        clips = still_clips(make_stills(prompts), seconds)
+    else:
+        clips = make_clips(prompts, seconds, job["quality"])
 
     # Unique name so the pipeline never picks up an older run's video by mistake.
     out_path = os.path.join(OUT_DIR, f"reel-{job['id']}.mp4")

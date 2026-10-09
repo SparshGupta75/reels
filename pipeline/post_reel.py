@@ -615,7 +615,7 @@ def main():
         save_state(state)
         render({"id": job_id, "narration": plan["narration"],
                 "scenes": [{"prompt": s["prompt"]} for s in plan["scenes"][:CFG["scenes"]]],
-                "voice": CFG["voice"], "quality": CFG["quality"],
+                "voice": CFG["voice"], "quality": CFG["quality"], "visual": CFG["visual"],
                 "hook_text": pending["hook_text"], "cover_text": pending["cover_text"]})
         video = fetch_output(job_id)
         if not video:
