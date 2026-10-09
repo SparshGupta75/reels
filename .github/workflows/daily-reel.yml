@@ -44,6 +44,8 @@ jobs:
     timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # newest commit, even if this run waited in a queue
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -70,10 +72,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Merge into the newest history on GitHub so no other run's entries are lost.
+          cp state/history.json "$RUNNER_TEMP/mine.json"
+          git checkout -q -- state
+          git pull -q --rebase
+          python pipeline/merge_state.py "$RUNNER_TEMP/mine.json" state/history.json
           git add state
           git diff --cached --quiet && exit 0
           git commit -q -m "Update Reel history"
-          git pull -q --rebase -X theirs
           git push -q
 
       - name: Keep the video for review
