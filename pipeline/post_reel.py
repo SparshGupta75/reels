@@ -565,7 +565,9 @@ def main():
         # GitHub's timer is unreliable, so it is set to fire several times per slot.
         # The first run that succeeds posts; the later ones stop here.
         def slot(t):
-            return (t.date(), t.hour < 10)   # before 10:00 UTC = the morning Reel
+            # Three Reels a day, India time: morning (before 14:00), afternoon (14:00-18:00), evening.
+            ist = t.astimezone(dt.timezone(dt.timedelta(hours=5, minutes=30)))
+            return (ist.date(), 0 if ist.hour < 14 else 1 if ist.hour < 18 else 2)
 
         if any(slot(dt.datetime.fromisoformat(p["posted_at"])) == slot(now()) for p in state["posts"]):
             log("This slot already has a Reel; nothing to do")

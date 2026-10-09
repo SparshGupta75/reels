@@ -30,6 +30,6 @@ jobs:
             MSG="The automation is paused. No Reels will be made or posted until you resume it."
           else
             gh workflow enable daily-reel.yml
-            MSG="The automation is running again. Reels are posted around 12 noon and 6 PM India time."
+            MSG="The automation is running again. Reels are posted around 11 AM, 3 PM and 7 PM India time."
           fi
           gh issue close "$ISSUE" --comment "$MSG"

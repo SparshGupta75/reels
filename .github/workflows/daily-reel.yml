@@ -2,10 +2,10 @@ name: Daily Reel
 
 on:
   schedule:
-    # Two Reels a day, posting around 12:00 and 18:00 IST. GitHub's timer often fires late
-    # or not at all, so each slot gets six tries (10:37-13:07 IST and 16:37-19:07 IST);
-    # the script skips a try when that slot already has a Reel.
-    - cron: "7,37 5-7,11-13 * * *"
+    # Three Reels a day, around 11:00, 15:00 and 19:00 IST. The runs are normally started by an
+    # outside timer (Google Apps Script) because GitHub's own timer fires hours late or not at
+    # all; these are spare tries. The script skips a try when that slot already has a Reel.
+    - cron: "7,37 5-6,9-10,13-14 * * *"
   workflow_dispatch:
     inputs:
       publish:
