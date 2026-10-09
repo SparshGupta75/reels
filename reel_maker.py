@@ -143,21 +143,58 @@ def make_voice(text, voice, path):
 
 # --- 2. word timings for captions ---------------------------------------------
 def word_timings(wav_path, narration):
-    from faster_whisper import WhisperModel
+    """Time every word of the narration. Whisper listens to the voiceover for the timing, but
+    the words shown are always the script's own: Whisper sometimes skips whole sentences or
+    mishears words, so its output is only lined up against the script, never shown directly."""
+    import difflib
 
     import numpy as np
+    from faster_whisper import WhisperModel
 
     # Decode with ffmpeg: faster-whisper's own decoder breaks on Kaggle's PyAV version.
     pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", wav_path, "-f", "f32le",
                           "-ac", "1", "-ar", "16000", "-"], capture_output=True, check=True).stdout
     audio = np.frombuffer(pcm, dtype=np.float32)
+    total = len(audio) / 16000
     model = WhisperModel("small.en", device="cpu", compute_type="int8")
-    segments, _ = model.transcribe(audio, word_timestamps=True,
-                                   initial_prompt=narration, vad_filter=False)
-    words = [(w.start, w.end, w.word.strip()) for s in segments for w in s.words if w.word.strip()]
+    segments, _ = model.transcribe(audio, word_timestamps=True, vad_filter=False,
+                                   condition_on_previous_text=False)
+    heard = [(w.start, w.end, w.word) for s in segments for w in s.words if w.word.strip()]
     del model
     gc.collect()
-    return words
+
+    def norm(w):
+        return "".join(c for c in w.lower() if c.isalnum())
+
+    script = narration.split()
+    times = [None] * len(script)
+    matcher = difflib.SequenceMatcher(a=[norm(w) for w in script], b=[norm(h[2]) for h in heard],
+                                      autojunk=False)
+    for block in matcher.get_matching_blocks():
+        for k in range(block.size):
+            times[block.a + k] = heard[block.b + k][:2]
+    log(f"Caption timing: {sum(t is not None for t in times)} of {len(script)} words heard clearly")
+
+    # Words Whisper missed share the gap between their timed neighbours, by length.
+    i = 0
+    while i < len(script):
+        if times[i] is not None:
+            i += 1
+            continue
+        j = i
+        while j < len(script) and times[j] is None:
+            j += 1
+        start = times[i - 1][1] if i else 0.0
+        end = times[j][0] if j < len(script) else total
+        end = max(end, start + 0.05 * (j - i))
+        weights = [len(w) + 1 for w in script[i:j]]
+        t = start
+        for k in range(i, j):
+            step = (end - start) * weights[k - i] / sum(weights)
+            times[k] = (t, t + step)
+            t += step
+        i = j
+    return [(times[k][0], times[k][1], script[k]) for k in range(len(script))]
 
 
 def ass_time(t):

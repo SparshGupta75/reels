@@ -352,6 +352,9 @@ def write_script(state):
         low, high = CFG["narration_words"]
         if len(plan["scenes"]) < CFG["scenes"] or not low <= words <= high:
             return f"bad plan: {len(plan['scenes'])} scenes, {words} words"
+        jargon = [w for w in CFG["jargon_words"] if w in plan["narration"].lower()]
+        if jargon:
+            return f"narration uses science-class words: {', '.join(jargon)}"
         if len(plan["caption"].strip()) < 150 or len(plan["hashtags"]) < 3:
             return "caption or hashtags too short"
         caption = plan["caption"].lower()
