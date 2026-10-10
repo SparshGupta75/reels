@@ -50,7 +50,8 @@ NEGATIVE = (
     "blurry, low quality, distorted, deformed, watermark, text, subtitles, logo, "
     "static frame, jpeg artifacts, extra limbs, bad anatomy, overexposed"
 )
-IMAGE_MODEL = "SG161222/RealVisXL_V5.0"     # photoreal SDXL; chosen in a side-by-side test on a T4
+KLEIN_MODEL = "black-forest-labs/FLUX.2-klein-4B"   # Apache 2.0, no sign-up; best at following descriptions
+IMAGE_MODEL = "SG161222/RealVisXL_V5.0"     # photoreal SDXL; the fallback if FLUX.2 klein fails
 IMAGE_NEGATIVE = ("blurry, low quality, deformed, distorted, watermark, text, letters, logo, cartoon, "
                   "illustration, painting, extra limbs, bad anatomy, duplicate, frame, border")
 MAX_CLIP_FRAMES = 121              # ~5 s; longer shots get slowed down slightly
@@ -510,9 +511,42 @@ def make_stills(prompts):
     with open(os.path.join(WORK, "prompts.json"), "w") as f:
         json.dump(prompts, f)
     gpus = max(torch.cuda.device_count(), 1)
-    log(f"Making {len(prompts)} pictures with {IMAGE_MODEL} on {gpus} GPU(s)")
+    paths = [os.path.join(WORK, f"img{i}.jpg") for i in range(len(prompts))]
+    script = os.path.abspath(globals().get("__file__") or sys.argv[0])
+    # First choice: FLUX.2 klein, which follows descriptions far better. It needs both T4s at
+    # once, so it runs as one process. If it fails for any reason, fall back to the SDXL model.
+    if gpus >= 2:
+        log(f"Making {len(prompts)} pictures with {KLEIN_MODEL}")
+        subprocess.run([sys.executable, script, "--klein"])
+        if all(os.path.exists(x) for x in paths):
+            return paths
+        log("FLUX.2 klein did not finish; falling back to the SDXL model for the missing pictures")
+    log(f"Making pictures with {IMAGE_MODEL} on {gpus} GPU(s)")
     run_per_gpu("--stills", len(prompts), gpus)
-    return [os.path.join(WORK, f"img{i}.jpg") for i in range(len(prompts))]
+    return paths
+
+
+def klein_worker():
+    """Runs in its own process: FLUX.2 klein with its parts spread across both GPUs."""
+    import numpy as np
+    import torch
+    from diffusers import Flux2KleinPipeline
+
+    prompts = json.load(open(os.path.join(WORK, "prompts.json")))
+    # bf16 is slow on a T4 but fp16 was not tested; about 70 s per picture.
+    pipe = Flux2KleinPipeline.from_pretrained(KLEIN_MODEL, torch_dtype=torch.bfloat16, device_map="balanced")
+    pipe.set_progress_bar_config(disable=True)
+    for i, prompt in enumerate(prompts):
+        path = os.path.join(WORK, f"img{i}.jpg")
+        t0 = time.time()
+        # 768x1344 is the largest size that fitted in memory in testing; it is enlarged afterwards.
+        img = pipe(prompt=prompt, width=768, height=1344, num_inference_steps=4, guidance_scale=1.0,
+                   generator=torch.Generator("cpu").manual_seed(1000 + i)).images[0].convert("RGB")
+        if np.asarray(img).std() < 4:
+            raise RuntimeError(f"picture {i + 1} came out blank")
+        img.resize((1088, 1920), resample=3).save(path + ".tmp.jpg", quality=95)     # 3 = bicubic
+        os.replace(path + ".tmp.jpg", path)
+        log(f"Picture {i + 1} made in {time.time() - t0:.0f}s")
 
 
 def stills_worker(indices):
@@ -601,6 +635,8 @@ def main():
         return decode_worker([int(x) for x in sys.argv[2:]])
     if sys.argv[1:2] == ["--stills"]:
         return stills_worker([int(x) for x in sys.argv[2:]])
+    if sys.argv[1:2] == ["--klein"]:
+        return klein_worker()
     t0 = time.time()
     job = load_job()
     os.makedirs(WORK, exist_ok=True)
