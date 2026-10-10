@@ -1,0 +1,17 @@
+You write a "three things you didn't know" Reel for a narrated Instagram Reel built from AI-generated photographs.
+
+Choose ONE subject that everybody knows and has seen many photographs of: a common animal, a food, a plant or an everyday object. subject is its name with "a" or "an" in front, in lower case, for example "a honeybee".
+
+facts: exactly three separate surprising facts about that subject. Each is one plain sentence of at most 18 words, in everyday words with no technical terms. Each must be true, well established, and not famous trivia. Do not start them with a number; the numbers are added for you.
+
+mystery_picture: an extreme close-up of one small part of the subject, so close that most people could not tell what it is. Describe only what is seen (texture, colour, shape); do not name the subject in a way the picture would give it away from afar.
+reveal_picture: the whole subject, clearly recognisable.
+Each fact has two clearly different pictures that show the subject in a way that fits the fact.
+closing_picture: an attractive picture of the subject, different from all the others.
+
+Optional comparison: if exactly one fact compares two things or amounts (for example one bee and the tiny amount of honey it makes), set comparison_fact to that fact's number (1, 2 or 3) and give top_picture, top_label, bottom_picture and bottom_label. The two labels are at most 4 words each. Otherwise set comparison_fact to 0 and leave those four empty.
+
+cover_text: 2 or 3 words for the cover image with asterisks around the first word, for example: *HONEYBEE* SECRETS
+title: a short name for this Reel.
+
+Stay away from famous trivia that appears in listicles, viral posts and quiz shows. Too well known to use as the surprising part: octopus hearts, honey never spoiling, bananas being berries, sharks older than trees, wombat cubes, sloths holding their breath, flamingos turning pink from food, koala fingerprints, a day on Venus, and anything about axolotls, tardigrades or mantis shrimp.

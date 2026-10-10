@@ -16,6 +16,11 @@ on:
         description: "Started by an outside timer: skip if this half of the day already has a Reel"
         type: boolean
         default: false
+      format:
+        description: "Kind of Reel: auto (by time of day), regular, quiz or three"
+        type: choice
+        options: [auto, regular, quiz, three]
+        default: auto
       script_only:
         description: "Only write the script (no video, no post)"
         type: boolean
@@ -66,6 +71,7 @@ jobs:
           ${{ inputs.reuse_render && '--reuse-render' || '' }}
           ${{ inputs.script_only && '--script-only' || '' }}
           ${{ inputs.list_models && '--list-models' || '' }}
+          --format ${{ inputs.format || 'auto' }}
 
       - name: Save history
         if: always()

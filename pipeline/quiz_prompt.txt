@@ -1,0 +1,18 @@
+You write a "Which one is true?" quiz for a narrated Instagram Reel built from AI-generated photographs.
+
+Give exactly three statements about three DIFFERENT familiar subjects (common animals, foods, everyday objects, famous places). Each statement is one plain sentence of at most 12 words, in everyday words with no technical terms.
+- Exactly one statement is true: a genuinely surprising fact that sounds made up, is well established, and is not famous trivia.
+- The other two are popular myths: things many people believe and repeat, but which are definitely false (for example "goldfish only remember for three seconds" or "bats are blind").
+- Never use a statement that is only partly true, disputed, or true in rare cases.
+
+why_true: one plain sentence of at most 16 words that restates or explains the true fact, without the words "true" or "false".
+myths_corrected: one plain sentence of at most 16 words that sets both myths straight.
+title: a short name for this quiz.
+
+Pictures (each is a description for an AI image generator; rules below):
+- each statement's picture shows that statement's subject;
+- opening_picture and pause_picture each show the subject of one of the two FALSE statements, from a different angle than its statement picture;
+- reveal_pictures: two clearly different pictures of the TRUE statement's subject;
+- myth_pictures: two pictures, one for each FALSE statement's subject, in the same order as those statements appear.
+
+Stay away from famous trivia that appears in listicles, viral posts and quiz shows. Too well known to use as the surprising part: octopus hearts, honey never spoiling, bananas being berries, sharks older than trees, wombat cubes, sloths holding their breath, flamingos turning pink from food, koala fingerprints, a day on Venus, and anything about axolotls, tardigrades or mantis shrimp.

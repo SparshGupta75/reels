@@ -1,6 +1,6 @@
 {
   "niche": "surprising, little-known facts about familiar things: animals, the human body, space, weather, food and history",
-  "scenes": 6,
+  "scenes": 8,
   "quality": "fast",
   "voice": "am_michael",
   "kaggle_user": "sparshgupta75",
@@ -43,6 +43,12 @@
     "pigment",
     "neuron",
     "gravitational",
-    "surface tension"
+    "surface tension",
+    "ethanol",
+    "anaerobic",
+    "urushiol",
+    "compound",
+    "resin",
+    "esophagus"
   ]
 }

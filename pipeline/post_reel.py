@@ -387,6 +387,186 @@ def write_script(state):
     return plan
 
 
+# --- the other formats: quiz and three-things -----------------------------------
+GREEN = "&H50D050&"
+FORMATS = ["regular", "quiz", "three"]          # morning, afternoon, evening
+
+
+def ist_slot(t):
+    """Three Reels a day, India time: morning (before 14:00), afternoon (14:00-18:00), evening."""
+    ist = t.astimezone(dt.timezone(dt.timedelta(hours=5, minutes=30)))
+    return (ist.date(), 0 if ist.hour < 14 else 1 if ist.hour < 18 else 2)
+
+
+def shared_rules():
+    """The picture, caption and hashtag rules, taken from the main prompt so every format shares them."""
+    text = open(os.path.join(ROOT, "pipeline", "system_prompt.txt")).read()
+    pictures = text[text.index("Each scene prompt"):text.index("The caption must read")]
+    caption = text[text.index("The caption must read"):text.index("hook_text is")]
+    return ("\n\nRules for every picture description. " + pictures.replace("Each scene prompt describes", "Each one describes")
+            + "\n" + caption)
+
+
+def verify_many(claims, expected):
+    """Two independent checks of several claims at once. Returns None if every verdict matches
+    `expected` (a list of "TRUE"/"FALSE") in both checks, else a description of the mismatch."""
+    schema = {"type": "OBJECT", "properties": {"verdicts": {"type": "ARRAY", "items": {"type": "STRING"}}},
+              "required": ["verdicts"]}
+    listing = "\n".join(f"{i + 1}. {c}" for i, c in enumerate(claims))
+    prompts = [
+        ("You are a strict fact checker. For each numbered claim answer TRUE only if it is correct as stated "
+         "and well established, FALSE if it is wrong, UNSURE otherwise. Return one verdict per claim, in order.", False),
+        ("You debunk popular 'amazing facts'. Many are myths, exaggerations, or true only in rare cases. For each "
+         "numbered claim decide whether it is literally true for the ordinary, typical case exactly as worded: "
+         "TRUE, FALSE (any part wrong, or a known myth) or UNSURE. Return one verdict per claim, in order.", True),
+    ]
+    for system, backwards in prompts:
+        reply = gemini(system, listing, schema,
+                       lambda r: None if len(r["verdicts"]) == len(claims) else "wrong number of verdicts",
+                       backwards=backwards)
+        got = [v.strip().upper() for v in reply["verdicts"]]
+        log(f"Fact check: {got}")
+        if got != expected:
+            return f"check gave {got}, needed {expected}"
+    return None
+
+
+def plain(text):
+    return [w for w in CFG["jargon_words"] if w in text.lower()]
+
+
+def str_list(n):
+    return {"type": "ARRAY", "items": {"type": "STRING"}}
+
+
+def write_quiz(state, seed):
+    import random
+
+    used = [p.get("fact") or p["title"] for p in state["posts"]]
+    system = open(os.path.join(ROOT, "pipeline", "quiz_prompt.txt")).read() + shared_rules()
+    schema = {"type": "OBJECT", "properties": {
+        "title": {"type": "STRING"},
+        "statements": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
+            "text": {"type": "STRING"}, "is_true": {"type": "BOOLEAN"}, "picture": {"type": "STRING"}},
+            "required": ["text", "is_true", "picture"]}},
+        "why_true": {"type": "STRING"}, "myths_corrected": {"type": "STRING"},
+        "opening_picture": {"type": "STRING"}, "pause_picture": {"type": "STRING"},
+        "reveal_pictures": str_list(2), "myth_pictures": str_list(2),
+        "caption": {"type": "STRING"}, "hashtags": str_list(5)},
+        "required": ["title", "statements", "why_true", "myths_corrected", "opening_picture", "pause_picture",
+                     "reveal_pictures", "myth_pictures", "caption", "hashtags"]}
+    user = (f"Topic area: {CFG['niche']}\nAlready used, do not repeat any of these facts or myths: "
+            f"{'; '.join(used) or 'none'}")
+
+    def check(q):
+        st = q["statements"]
+        if len(st) != 3 or sum(x["is_true"] for x in st) != 1:
+            return "need exactly three statements with exactly one true"
+        if any(len(x["text"].split()) > 14 for x in st):
+            return "a statement is too long"
+        if len(q["reveal_pictures"]) < 2 or len(q["myth_pictures"]) < 2:
+            return "missing pictures"
+        words = " ".join([x["text"] for x in st] + [q["why_true"], q["myths_corrected"]])
+        if plain(words):
+            return f"science-class words: {', '.join(plain(words))}"
+        if len(q["caption"].strip()) < 150 or q["caption"].lower().lstrip().startswith("did you know"):
+            return "caption breaks the rules"
+        if any(already_used(x["text"], used) for x in st if x["is_true"]):
+            return "the true fact was used before"
+        return None
+
+    for _ in range(3):
+        q = creative(system, user, schema, check)
+        true = next(x for x in q["statements"] if x["is_true"])
+        myths = [x for x in q["statements"] if not x["is_true"]]
+        for x in q["statements"]:
+            log(f"  {'TRUE ' if x['is_true'] else 'MYTH '} {x['text']}")
+        problem = verify_many([true["text"]] + [m["text"] for m in myths], ["TRUE", "FALSE", "FALSE"])
+        if problem:
+            log(f"Quiz rejected: {problem}")
+            continue
+        order = q["statements"][:]
+        random.Random(seed).shuffle(order)                 # the true one lands on a different letter each day
+        letter = "ABC"[order.index(true)]
+        segments = [{"say": "Two of these are myths. Which one is true?", "header": "WHICH ONE IS *TRUE?*",
+                     "pics": [q["opening_picture"]]}]
+        for name, x in zip("ABC", order):
+            segments.append({"say": f"{name}. {x['text']}", "header": f"*{name}*", "pics": [x["picture"]]})
+        segments += [
+            {"say": "Got your answer?", "header": "GOT YOUR *ANSWER?*", "pics": [q["pause_picture"]]},
+            {"say": f"It's {letter}. {q['why_true']}", "header": f"*{letter} IS TRUE*", "header_colour": GREEN,
+             "chime": True, "pics": q["reveal_pictures"][:2]},
+            {"say": q["myths_corrected"], "split": [[q["myth_pictures"][0], "MYTH"], [q["myth_pictures"][1], "MYTH"]]},
+        ]
+        return {"title": q["title"], "caption": q["caption"], "hashtags": q["hashtags"], "segments": segments,
+                "fact": f"{true['text']} (myths: {myths[0]['text']} / {myths[1]['text']})",
+                "hook_text": "", "cover_text": "*TRUE* OR MYTH", "mood": "tense"}
+    raise RuntimeError("no quiz passed the fact check")
+
+
+def write_three(state):
+    used = [p.get("fact") or p["title"] for p in state["posts"]]
+    system = open(os.path.join(ROOT, "pipeline", "three_prompt.txt")).read() + shared_rules()
+    schema = {"type": "OBJECT", "properties": {
+        "title": {"type": "STRING"}, "subject": {"type": "STRING"},
+        "mystery_picture": {"type": "STRING"}, "reveal_picture": {"type": "STRING"},
+        "facts": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
+            "text": {"type": "STRING"}, "pictures": str_list(2)}, "required": ["text", "pictures"]}},
+        "comparison_fact": {"type": "INTEGER"},
+        "top_picture": {"type": "STRING"}, "top_label": {"type": "STRING"},
+        "bottom_picture": {"type": "STRING"}, "bottom_label": {"type": "STRING"},
+        "closing_picture": {"type": "STRING"}, "cover_text": {"type": "STRING"},
+        "caption": {"type": "STRING"}, "hashtags": str_list(5)},
+        "required": ["title", "subject", "mystery_picture", "reveal_picture", "facts", "comparison_fact",
+                     "top_picture", "top_label", "bottom_picture", "bottom_label", "closing_picture",
+                     "cover_text", "caption", "hashtags"]}
+    user = (f"Topic area: {CFG['niche']}\nSubjects and facts already used, choose a different subject: "
+            f"{'; '.join(used) or 'none'}")
+
+    def check(t):
+        if len(t["facts"]) != 3 or any(len(f["pictures"]) < 1 for f in t["facts"]):
+            return "need exactly three facts, each with pictures"
+        if any(len(f["text"].split()) > 22 for f in t["facts"]):
+            return "a fact is too long"
+        words = " ".join(f["text"] for f in t["facts"])
+        if plain(words):
+            return f"science-class words: {', '.join(plain(words))}"
+        if len(t["caption"].strip()) < 150 or t["caption"].lower().lstrip().startswith("did you know"):
+            return "caption breaks the rules"
+        if any(already_used(f["text"], used) for f in t["facts"]):
+            return "one of the facts was used before"
+        return None
+
+    for _ in range(3):
+        t = creative(system, user, schema, check)
+        subject = t["subject"].strip().rstrip(".")
+        name = subject.split(" ", 1)[-1]
+        for f in t["facts"]:
+            log(f"  {f['text']}")
+        problem = verify_many([f"About {subject}: {f['text']}" for f in t["facts"]], ["TRUE"] * 3)
+        if problem:
+            log(f"Rejected: {problem}")
+            continue
+        segments = [
+            {"say": "Can you tell what this is?", "header": "WHAT IS *THIS?*", "pics": [t["mystery_picture"]]},
+            {"say": f"It's {subject}, and here are three things you didn't know about it.", "chime": True,
+             "pics": [t["reveal_picture"]]},
+        ]
+        for n, (word, f) in enumerate(zip(("One", "Two", "Three"), t["facts"]), 1):
+            seg = {"say": f"{word}. {f['text']}", "header": f"*{n}* / 3"}
+            if t["comparison_fact"] == n and t["top_picture"].strip() and t["bottom_picture"].strip():
+                seg["split"] = [[t["top_picture"], " ".join(t["top_label"].upper().split()[:4])],
+                                [t["bottom_picture"], " ".join(t["bottom_label"].upper().split()[:4])]]
+            else:
+                seg["pics"] = f["pictures"][:2]
+            segments.append(seg)
+        segments.append({"say": "Which one surprised you most?", "pics": [t["closing_picture"]]})
+        return {"title": t["title"], "caption": t["caption"], "hashtags": t["hashtags"], "segments": segments,
+                "fact": f"{name}: " + " / ".join(f["text"] for f in t["facts"]),
+                "hook_text": "", "cover_text": t["cover_text"], "mood": "curious"}
+    raise RuntimeError("no three-things script passed the fact check")
+
+
 # --- render (Kaggle) ----------------------------------------------------------
 def kaggle(*args, check=True):
     return sh(["kaggle", *args], check=check)
@@ -591,6 +771,8 @@ def main():
     ap.add_argument("--scheduled", action="store_true",
                     help="started by the timer: skip if this half of the day already has a Reel")
     ap.add_argument("--list-models", action="store_true", help="print the Gemini models this key can use")
+    ap.add_argument("--format", default="auto", choices=["auto", *FORMATS],
+                    help="which kind of Reel to make; auto = by time of day (morning regular, afternoon quiz, evening three)")
     ap.add_argument("--post-files", metavar="JSON",
                     help="post ready-made videos already uploaded to the hosting release (hand-made Reels)")
     args = ap.parse_args()
@@ -610,11 +792,7 @@ def main():
     if args.scheduled:
         # GitHub's timer is unreliable, so it is set to fire several times per slot.
         # The first run that succeeds posts; the later ones stop here.
-        def slot(t):
-            # Three Reels a day, India time: morning (before 14:00), afternoon (14:00-18:00), evening.
-            ist = t.astimezone(dt.timezone(dt.timedelta(hours=5, minutes=30)))
-            return (ist.date(), 0 if ist.hour < 14 else 1 if ist.hour < 18 else 2)
-
+        slot = ist_slot
         # GitHub's spare timer can fire many hours late; never post in the middle of the night.
         ist_hour = now().astimezone(dt.timezone(dt.timedelta(hours=5, minutes=30))).hour
         if not 10 <= ist_hour < 22:
@@ -640,8 +818,17 @@ def main():
         if not video:
             raise SystemExit(f"Kaggle no longer has reel-{pending['id']}.mp4")
     else:
-        plan = write_script(state)
         job_id = now().strftime("%Y%m%d%H%M")
+        fmt = FORMATS[ist_slot(now())[1]] if args.format == "auto" else args.format
+        log(f"Format: {fmt}")
+        if fmt == "quiz":
+            plan = write_quiz(state, job_id)
+        elif fmt == "three":
+            plan = write_three(state)
+        else:
+            plan = write_script(state)
+        if plan.get("segments"):
+            plan["narration"] = " ".join(seg["say"] for seg in plan["segments"])
         tags = " ".join("#" + str(t).lstrip("#").replace(" ", "") for t in plan["hashtags"])
         pending = {
             "id": job_id,
@@ -660,16 +847,23 @@ def main():
         log(f"Narration: {plan['narration']}")
         log(f"Hook on screen: {pending['hook_text']} | Cover: {pending['cover_text']}")
         log(f"Caption:\n{pending['caption']}")
-        for i, s in enumerate(plan["scenes"][:CFG["scenes"]], 1):
+        for i, s in enumerate(plan.get("scenes", [])[:CFG["scenes"]], 1):
             log(f"Scene {i}: {s['prompt']}")
+        for i, seg in enumerate(plan.get("segments", []), 1):
+            shown = seg.get("pics") or [f"{label}: {prompt}" for prompt, label in seg["split"]]
+            log(f"Part {i} [{seg.get('header', '')}] {seg['say']} || " + " | ".join(shown))
         if args.script_only:
             return
         state["pending"] = pending
         save_state(state)
-        render({"id": job_id, "narration": plan["narration"],
-                "scenes": [{"prompt": s["prompt"]} for s in plan["scenes"][:CFG["scenes"]]],
-                "voice": CFG["voice"], "quality": CFG["quality"], "visual": CFG["visual"],
-                "hook_text": pending["hook_text"], "cover_text": pending["cover_text"]})
+        job = {"id": job_id, "voice": CFG["voice"], "quality": CFG["quality"], "visual": CFG["visual"],
+               "hook_text": pending["hook_text"], "cover_text": pending["cover_text"]}
+        if plan.get("segments"):
+            job.update(segments=plan["segments"], mood=plan["mood"])
+        else:
+            job.update(narration=plan["narration"],
+                       scenes=[{"prompt": s["prompt"]} for s in plan["scenes"][:CFG["scenes"]]])
+        render(job)
         video = fetch_output(job_id)
         if not video:
             raise RuntimeError("Kaggle finished but produced no Reel file")

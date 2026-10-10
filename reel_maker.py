@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import sys
 import time
+import wave
 
 JOB_B64 = "__JOB_B64__"
 
@@ -60,6 +61,7 @@ WORK = "/tmp/reel"
 FONT_DIR = WORK + "/fonts"
 TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE = "DejaVu Sans", -1, 118, 180
 COVER_TAG = "MIND BLOWN REELS"
+SR = 48000                         # sample rate of the mixed soundtrack
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 OUT_DIR = "/kaggle/working" if os.path.isdir("/kaggle/working") else os.path.abspath("out")
 FAKE_VIDEO = os.environ.get("REEL_FAKE_VIDEO") == "1"   # local test: colour bars instead of AI clips
@@ -85,8 +87,8 @@ def load_job():
     job.setdefault("id", time.strftime("%Y%m%d-%H%M%S"))
     job.setdefault("voice", "am_michael")
     job.setdefault("quality", "fast")
-    if not job.get("narration") or not job.get("scenes"):
-        raise ValueError("job needs 'narration' and a non-empty 'scenes' list")
+    if not job.get("segments") and (not job.get("narration") or not job.get("scenes")):
+        raise ValueError("job needs 'segments', or 'narration' and a non-empty 'scenes' list")
     return job
 
 
@@ -259,6 +261,144 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         text = " ".join(x[2] for x in g).upper().replace("{", "(").replace("}", ")")
         pop = r"{\fscx85\fscy85\t(0,90,\fscx100\fscy100)}"
         lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Cap,,0,0,0,,{pop}{text}")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(header + "\n".join(lines) + "\n")
+
+
+# --- sound: a quiet original music bed under the voice --------------------------------
+def music_bed(seconds, mood):
+    """A simple original backing track made from scratch (no licence needed): soft chords,
+    a plucked pattern and a light pulse."""
+    import numpy as np
+
+    n = int(seconds * SR)
+    t = np.arange(n) / SR
+    bpm = 92 if mood == "curious" else 78
+    beat = 60 / bpm
+    chords = ([[220.0, 261.6, 329.6], [174.6, 220.0, 261.6], [261.6, 329.6, 392.0], [196.0, 246.9, 293.7]]
+              if mood == "curious" else
+              [[146.8, 174.6, 220.0], [116.5, 146.8, 174.6], [130.8, 155.6, 196.0], [110.0, 138.6, 164.8]])
+    bar = beat * 4
+    out = np.zeros(n)
+    for b in range(int(seconds / bar) + 1):
+        chord = chords[b % len(chords)]
+        a, e = int(b * bar * SR), min(int((b + 1) * bar * SR), n)
+        if a >= n:
+            break
+        tt = t[a:e] - b * bar
+        env = np.minimum(1, tt / 0.5) * np.minimum(1, (bar - tt) / 0.5).clip(0, 1)
+        pad = sum(np.sin(2 * np.pi * f * tt) + 0.5 * np.sin(2 * np.pi * f * 1.004 * tt) for f in chord)
+        out[a:e] += 0.10 * pad * env
+        steps = 8
+        for s in range(steps):                                   # plucked eighth notes
+            f = chord[[0, 2, 1, 2, 0, 1, 2, 1][s]] * 2
+            pa = a + int(s * beat / 2 * SR)
+            pe = min(pa + int(0.35 * SR), n)
+            if pa >= n:
+                break
+            pt = np.arange(pe - pa) / SR
+            out[pa:pe] += (0.16 if mood == "curious" else 0.10) * np.exp(-pt * 9) * (
+                np.sin(2 * np.pi * f * pt) + 0.3 * np.sin(4 * np.pi * f * pt))
+        for k in (0, 2):                                         # soft pulse on beats 1 and 3
+            ka = a + int(k * beat * SR)
+            ke = min(ka + int(0.25 * SR), n)
+            if ka >= n:
+                break
+            kt = np.arange(ke - ka) / SR
+            out[ka:ke] += 0.35 * np.exp(-kt * 16) * np.sin(2 * np.pi * (48 + 60 * np.exp(-kt * 30)) * kt)
+    fade = int(0.6 * SR)
+    out[:fade] *= np.linspace(0, 1, fade)
+    out[-fade:] *= np.linspace(1, 0, fade)
+    return out
+
+
+def ding():
+    import numpy as np
+
+    t = np.arange(int(0.9 * SR)) / SR
+    return np.exp(-t * 5) * (np.sin(2 * np.pi * 880 * t) + 0.6 * np.sin(2 * np.pi * 1320 * t) + 0.3 * np.sin(2 * np.pi * 1760 * t))
+
+
+def mix_audio(voice_wav, total, mood, path, chimes=()):
+    """Voice plus a quiet music bed, as one track; a chime at each time in `chimes`."""
+    import numpy as np
+
+    pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", voice_wav, "-f", "f32le", "-ac", "1",
+                          "-ar", str(SR), "-"], capture_output=True, check=True).stdout
+    n = int(total * SR)
+    voice = np.zeros(n)
+    v = np.frombuffer(pcm, dtype=np.float32)[:n]
+    voice[:len(v)] = v / max(np.abs(v).max(), 1e-6) * 0.85
+    out = voice + 0.16 * music_bed(total, mood)
+    bell = ding()
+    for t in chimes:
+        a = int(max(t, 0) * SR)
+        e = min(a + len(bell), n)
+        if e > a:
+            out[a:e] += 0.22 * bell[:e - a]
+    out = np.clip(out, -1, 1)
+    with wave.open(path, "wb") as f:
+        f.setnchannels(1)
+        f.setsampwidth(2)
+        f.setframerate(SR)
+        f.writeframes((out * 32767).astype("<i2").tobytes())
+
+
+# --- captions: two or three words on screen, the spoken one lit up -------------------
+def make_word_ass(words, path, hook, headers):
+    header = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {OUT_W}
+PlayResY: {OUT_H}
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Word,{TITLE_FONT},{int(HOOK_SIZE * 0.8)},&H00FFFFFF,&H000000FF,&H00000000,&H64000000,{TITLE_BOLD},0,0,0,100,100,1,0,1,9,3,2,60,60,540,1
+Style: Hook,{TITLE_FONT},{HOOK_SIZE},&H00FFFFFF,&H000000FF,&H00000000,&H64000000,{TITLE_BOLD},0,0,0,100,100,1,0,1,10,4,8,70,70,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    def clean(w):
+        return w.upper().replace("{", "(").replace("}", ")").strip(".,;:!")
+
+    groups, cur = [], []
+    for w in words:
+        text = " ".join(clean(x[2]) for x in cur + [w])
+        if cur and (len(cur) >= 3 or len(text) > 15 or cur[-1][2].endswith((".", ",", "?", "!", ":"))):
+            groups.append(cur)
+            cur = []
+        cur.append(w)
+    if cur:
+        groups.append(cur)
+
+    lines = []
+    if hook.strip():
+        hw = hook.split()
+        if len(hw) > 2:
+            hook = " ".join(hw[:(len(hw) + 1) // 2]) + "\n" + " ".join(hw[(len(hw) + 1) // 2:])
+        lines.append(f"Dialogue: 1,{ass_time(0)},{ass_time(2.2)},Hook,,0,0,0,," + r"{\fad(0,250)}" + mark_up(hook))
+    for start, end, text, colour in headers:
+        marked = mark_up(text) if colour is None else "{\\c" + colour + "}" + text.upper().replace("*", "")
+        if len(text.replace("*", "").strip()) == 1:
+            marked = "{\\fs" + str(HOOK_SIZE * 2) + "}" + marked
+        lines.append(f"Dialogue: 1,{ass_time(start)},{ass_time(end)},Hook,,0,0,0,," + r"{\fad(120,120)}" + marked)
+    flat = [(g, j) for g in groups for j in range(len(g))]
+    for n, (g, j) in enumerate(flat):
+        start = g[j][0]
+        if n + 1 < len(flat):
+            end = flat[n + 1][0][flat[n + 1][1]][0]
+            if j == len(g) - 1:
+                end = min(end, g[j][1] + 0.5)
+        else:
+            end = g[j][1] + 0.4
+        parts = []
+        for k, w in enumerate(g):
+            word = clean(w[2])
+            parts.append("{\\c" + YELLOW + "}" + word + "{\\c&HFFFFFF&}" if k == j else word)
+        pop = r"{\fscx92\fscy92\t(0,70,\fscx100\fscy100)}" if j == 0 else ""
+        lines.append(f"Dialogue: 0,{ass_time(start)},{ass_time(max(end, start + 0.05))},Word,,0,0,0,,{pop}{' '.join(parts)}")
     with open(path, "w", encoding="utf-8") as f:
         f.write(header + "\n".join(lines) + "\n")
 
@@ -495,12 +635,24 @@ def still_clips(images, seconds):
 
 def fake_stills(prompts):
     paths = []
-    for i, _ in enumerate(prompts):
+    for i, entry in enumerate(prompts):
         path = os.path.join(WORK, f"img{i}.jpg")
-        run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc2=size=1088x1920:rate=1",
-             "-frames:v", "1", path])
+        _, width, height, enlarge = picture_spec(entry)
+        width, height = enlarge or (width, height)
+        run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i",
+             f"testsrc2=size={width}x{height}:rate=1,hue=h={i * 41}", "-frames:v", "1", path])
         paths.append(path)
     return paths
+
+
+def picture_spec(entry):
+    """A picture request is either a description (full-height picture) or
+    {"prompt": ..., "half": True} for one half of a split screen.
+    Returns (description, width, height, size to enlarge to or None)."""
+    if isinstance(entry, dict) and entry.get("half"):
+        return entry["prompt"], 1024, 896, None
+    prompt = entry["prompt"] if isinstance(entry, dict) else entry
+    return prompt, 768, 1344, (1088, 1920)
 
 
 def make_stills(prompts):
@@ -536,15 +688,20 @@ def klein_worker():
     # bf16 is slow on a T4 but fp16 was not tested; about 70 s per picture.
     pipe = Flux2KleinPipeline.from_pretrained(KLEIN_MODEL, torch_dtype=torch.bfloat16, device_map="balanced")
     pipe.set_progress_bar_config(disable=True)
-    for i, prompt in enumerate(prompts):
+    for i, entry in enumerate(prompts):
         path = os.path.join(WORK, f"img{i}.jpg")
+        if os.path.exists(path):
+            continue
+        prompt, width, height, enlarge = picture_spec(entry)
         t0 = time.time()
         # 768x1344 is the largest size that fitted in memory in testing; it is enlarged afterwards.
-        img = pipe(prompt=prompt, width=768, height=1344, num_inference_steps=4, guidance_scale=1.0,
+        img = pipe(prompt=prompt, width=width, height=height, num_inference_steps=4, guidance_scale=1.0,
                    generator=torch.Generator("cpu").manual_seed(1000 + i)).images[0].convert("RGB")
         if np.asarray(img).std() < 4:
             raise RuntimeError(f"picture {i + 1} came out blank")
-        img.resize((1088, 1920), resample=3).save(path + ".tmp.jpg", quality=95)     # 3 = bicubic
+        if enlarge:
+            img = img.resize(enlarge, resample=3)     # 3 = bicubic
+        img.save(path + ".tmp.jpg", quality=95)
         os.replace(path + ".tmp.jpg", path)
         log(f"Picture {i + 1} made in {time.time() - t0:.0f}s")
 
@@ -574,13 +731,89 @@ def stills_worker(indices):
         t0 = time.time()
         g = torch.Generator("cuda").manual_seed(1000 + i)
         # Draw at the size the model was trained on, then redraw lightly at full Reel size for sharpness.
-        img = pipe(prompt=prompts[i], negative_prompt=IMAGE_NEGATIVE, width=768, height=1344,
+        prompt, width, height, enlarge = picture_spec(prompts[i])
+        img = pipe(prompt=prompt, negative_prompt=IMAGE_NEGATIVE, width=width, height=height,
                    num_inference_steps=30, guidance_scale=5.0, generator=g).images[0]
-        img = refine(prompt=prompts[i], negative_prompt=IMAGE_NEGATIVE, image=img.resize((1088, 1920)),
-                     strength=0.3, num_inference_steps=30, guidance_scale=5.0, generator=g).images[0]
+        if enlarge:
+            img = refine(prompt=prompt, negative_prompt=IMAGE_NEGATIVE, image=img.resize(enlarge),
+                         strength=0.3, num_inference_steps=30, guidance_scale=5.0, generator=g).images[0]
         img.save(path + ".tmp.jpg", quality=95)
         os.replace(path + ".tmp.jpg", path)
         log(f"Picture {i + 1} made in {time.time() - t0:.0f}s")
+
+
+def split_picture(top, bottom, labels, path):
+    """Two pictures stacked with a divider and a label on each: the split-screen comparison."""
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
+
+    half_h = (1920 - 12) // 2
+    canvas = Image.new("RGB", (1088, 1920), (0, 0, 0))
+    anton = os.path.join(FONT_DIR, "Anton-Regular.ttf")
+    try:
+        font = ImageFont.truetype(anton, 96)
+    except OSError:
+        font = ImageFont.load_default()
+    for k, (src, label) in enumerate(zip((top, bottom), labels)):
+        img = ImageOps.fit(Image.open(src).convert("RGB"), (1088, half_h), Image.LANCZOS)
+        y0 = k * (half_h + 12)
+        canvas.paste(img, (0, y0))
+        d = ImageDraw.Draw(canvas)
+        w = d.textlength(label, font=font)
+        d.text(((1088 - w) / 2, y0 + 40), label, font=font, fill=(255, 214, 10),
+               stroke_width=9, stroke_fill=(0, 0, 0))
+    canvas.save(path, quality=95)
+
+
+def build_segments(job, voice_wav, words, total):
+    """For Reels made of parts that each have their own words, pictures and on-screen label
+    (the quiz and the three-things formats). Returns (clips, seconds, headers, chime times)."""
+    segments = job["segments"]
+    starts, k = [], 0
+    for seg in segments:                       # each part starts when its first word is spoken
+        starts.append(0.0 if not starts else max(words[k][0] - 0.08, starts[-1] + 0.3))
+        k += len(seg["say"].split())
+    ends = starts[1:] + [total]
+
+    entries, owners = [], []                   # every picture needed, and which part it is for
+    for i, seg in enumerate(segments):
+        if seg.get("split"):
+            for prompt, _ in seg["split"]:
+                entries.append({"prompt": prompt, "half": True})
+                owners.append(i)
+        else:
+            for prompt in seg["pics"]:
+                entries.append(prompt)
+                owners.append(i)
+    made = make_stills(entries)
+
+    clips, seconds, headers, chimes, moving = [], [], [], [], 0
+    for i, (seg, a, e) in enumerate(zip(segments, starts, ends)):
+        mine = [p for p, o in zip(made, owners) if o == i]
+        if seg.get("split"):
+            joined = os.path.join(WORK, f"split{i}.jpg")
+            split_picture(mine[0], mine[1], [label for _, label in seg["split"]], joined)
+            mine = [joined]
+        elif seg.get("header"):
+            headers.append((a, e, seg["header"], seg.get("header_colour")))
+        if seg.get("chime"):
+            chimes.append(a)
+        for img in mine:
+            secs = (e - a) / len(mine)
+            frames = math.ceil(secs * OUT_FPS) + 2
+            if seg.get("split"):
+                z, x, y = "1", "0", "0"        # a split screen stays still so its labels stay in view
+            else:
+                z, x, y = (m.replace("N", str(frames)) for m in MOVES[moving % len(MOVES)])
+                moving += 1
+            path = os.path.join(WORK, f"clip{len(clips)}.mp4")
+            vf = (f"scale={OUT_W * 2}:{OUT_H * 2}:force_original_aspect_ratio=increase:flags=lanczos,"
+                  f"crop={OUT_W * 2}:{OUT_H * 2},"
+                  f"zoompan=z='{z}':x='{x}':y='{y}':d={frames}:s={OUT_W}x{OUT_H}:fps={OUT_FPS},format=yuv420p")
+            run(["ffmpeg", "-y", "-loglevel", "error", "-i", img, "-vf", vf, "-frames:v", str(frames),
+                 "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", path])
+            clips.append(path)
+            seconds.append(secs)
+    return clips, seconds, headers, chimes
 
 
 def fake_clips(prompts, seconds):
@@ -643,27 +876,39 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     install_deps()
 
+    segmented = bool(job.get("segments"))
+    if segmented:
+        job["narration"] = " ".join(seg["say"] for seg in job["segments"])
     voice_wav = os.path.join(WORK, "voice.wav")
     speech = make_voice(job["narration"], job["voice"], voice_wav)
-    total = speech + 0.3      # short tail so the end runs straight back into the start
+    total = speech + (0.4 if segmented else 0.3)      # short tail so the end runs straight back into the start
     log(f"Voiceover: {speech:.1f}s")
 
     words = word_timings(voice_wav, job["narration"])
     ass_path = os.path.join(WORK, "captions.ass")
     setup_fonts()
-    make_ass(words, ass_path, job.get("hook_text", ""))
     log(f"Captions: {len(words)} words")
 
-    prompts = [s["prompt"] if isinstance(s, dict) else str(s) for s in job["scenes"]]
-    seconds = [total / len(prompts)] * len(prompts)
-    if job.get("visual") == "stills":
-        clips = still_clips(make_stills(prompts), seconds)
+    headers, chimes = [], []
+    if segmented:
+        clips, seconds, headers, chimes = build_segments(job, voice_wav, words, total)
     else:
-        clips = make_clips(prompts, seconds, job["quality"])
+        prompts = [s["prompt"] if isinstance(s, dict) else str(s) for s in job["scenes"]]
+        seconds = [total / len(prompts)] * len(prompts)
+        if job.get("visual") == "stills":
+            clips = still_clips(make_stills(prompts), seconds)
+        else:
+            clips = make_clips(prompts, seconds, job["quality"])
+
+    make_word_ass(words, ass_path, job.get("hook_text", ""), headers)
+    # Music is chosen by the job id, so it varies from Reel to Reel but a re-run is identical.
+    mood = job.get("mood") or ["curious", "tense"][sum(map(ord, str(job["id"]))) % 2]
+    mixed_wav = os.path.join(WORK, "mixed.wav")
+    mix_audio(voice_wav, total, mood, mixed_wav, chimes)
 
     # Unique name so the pipeline never picks up an older run's video by mistake.
     out_path = os.path.join(OUT_DIR, f"reel-{job['id']}.mp4")
-    joined = assemble(clips, seconds, voice_wav, ass_path, out_path)
+    joined = assemble(clips, seconds, mixed_wav, ass_path, out_path)
     if job.get("cover_text"):
         # Second scene, a little way in: usually the clearest view of the subject.
         at = seconds[0] + seconds[1] * 0.4 if len(seconds) > 1 else seconds[0] * 0.5
