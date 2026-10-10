@@ -543,6 +543,44 @@ def publish(path, caption, token, cover=None):
     raise RuntimeError(f"Instagram did not accept the video ({last})")
 
 
+def post_ready_made(listing):
+    """Post videos that were made by hand and uploaded to the hosting release beforehand."""
+    token = refresh_token(os.environ["IG_TOKEN"])
+    user = os.environ["IG_USER_ID"]
+    state = load_state()
+    done = {p["id"] for p in state["posts"]}
+    failed = []
+    for item in json.load(open(os.path.join(ROOT, listing))):
+        if item["id"] in done:
+            log(f"{item['id']} is already posted; skipping")
+            continue
+        url = f"https://github.com/{REPO}/releases/download/{RELEASE_TAG}/{item['file']}"
+        try:
+            container = ig("POST", f"{user}/media", token, media_type="REELS", video_url=url,
+                           caption=item["caption"])["id"]
+            problem = wait_container(container, token)
+            if problem:
+                raise RuntimeError(f"Instagram said {problem}")
+            media_id = ig("POST", f"{user}/media_publish", token, creation_id=container)["id"]
+            try:
+                link = ig("GET", media_id, token, fields="permalink").get("permalink", "")
+            except RuntimeError:
+                link = ""
+            if CFG.get("share_to_story"):
+                share_to_story(url, token)
+            log(f"Published {item['id']}: {link or media_id} (id {media_id})")
+            state["posts"].append({k: item[k] for k in ("id", "title", "hook", "fact", "narration", "caption")}
+                                  | {"media_id": media_id, "permalink": link,
+                                     "posted_at": now().isoformat(timespec="seconds")})
+            save_state(state)
+            gh("release", "delete-asset", RELEASE_TAG, item["file"], "--repo", REPO, "-y", check=False)
+        except RuntimeError as e:
+            log(f"{item['id']} FAILED: {str(e)[:300]}")
+            failed.append(item["id"])
+    if failed:
+        raise RuntimeError(f"not posted: {', '.join(failed)}")
+
+
 # --- main ---------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser()
@@ -553,6 +591,8 @@ def main():
     ap.add_argument("--scheduled", action="store_true",
                     help="started by the timer: skip if this half of the day already has a Reel")
     ap.add_argument("--list-models", action="store_true", help="print the Gemini models this key can use")
+    ap.add_argument("--post-files", metavar="JSON",
+                    help="post ready-made videos already uploaded to the hosting release (hand-made Reels)")
     args = ap.parse_args()
 
     if args.list_models:
@@ -562,6 +602,9 @@ def main():
             if "generateContent" in m.get("supportedGenerationMethods", []):
                 print(m["name"].split("/")[-1])
         return
+
+    if args.post_files:
+        return post_ready_made(args.post_files)
 
     state = load_state()
     if args.scheduled:
