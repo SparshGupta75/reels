@@ -262,5 +262,11 @@
       "posted_at": "2026-10-11T06:53:50+00:00"
     }
   ],
-  "pending": null
+  "pending": null,
+  "followers": [
+    {
+      "date": "2026-10-11",
+      "count": 1
+    }
+  ]
 }
