@@ -140,7 +140,85 @@ sf.write(path, np.concatenate(parts), 24000)
 """
 
 
+# Chatterbox: a bigger, more natural-sounding voice. It needs its own Python 3.11 env and a GPU,
+# and it sometimes slurs or drops words, so every recording is checked and Kokoro is the fallback.
+CHATTER_ENV = "/tmp/chatter-env"
+CHATTER_PY = CHATTER_ENV + "/bin/python"
+CHATTER_SCRIPT = r"""
+import re, sys
+import torch, torchaudio
+from chatterbox.tts import ChatterboxTTS
+
+text, path, seed = sys.argv[1], sys.argv[2], int(sys.argv[3])
+model = ChatterboxTTS.from_pretrained(device="cuda" if torch.cuda.is_available() else "cpu")
+chunks, cur = [], ""
+for sentence in re.split(r"(?<=[.!?])\s+", text.strip()):     # a few sentences at a time
+    if cur and len(cur) + len(sentence) > 240:
+        chunks.append(cur)
+        cur = ""
+    cur = (cur + " " + sentence).strip()
+if cur:
+    chunks.append(cur)
+parts = []
+for i, chunk in enumerate(chunks):
+    torch.manual_seed(seed + i)
+    wav = model.generate(chunk, exaggeration=0.45, cfg_weight=0.4).cpu()
+    parts += [wav, torch.zeros(1, int(model.sr * 0.22))]
+torchaudio.save(path, torch.cat(parts[:-1], dim=1), model.sr)
+"""
+
+
+def heard_fraction(wav_path, narration):
+    """How much of the script a listener (Whisper) can make out in the recording, 0 to 1."""
+    import difflib
+
+    import numpy as np
+    from faster_whisper import WhisperModel
+
+    pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", wav_path, "-f", "f32le",
+                          "-ac", "1", "-ar", "16000", "-"], capture_output=True, check=True).stdout
+    model = WhisperModel("small.en", device="cpu", compute_type="int8")
+    segments, _ = model.transcribe(np.frombuffer(pcm, dtype=np.float32), vad_filter=False,
+                                   condition_on_previous_text=False)
+    heard = " ".join(s.text for s in segments)
+    del model
+    gc.collect()
+
+    def norm(t):
+        return ["".join(c for c in w.lower() if c.isalnum()) for w in t.split()]
+
+    a, b = norm(narration), norm(heard)
+    same = sum(m.size for m in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_matching_blocks())
+    extra = max(0, len(b) - len(a)) / max(len(a), 1)             # made-up extra words count against it
+    return same / max(len(a), 1) - extra
+
+
+def chatter_voice(text, path):
+    if not os.path.exists(CHATTER_PY):
+        run([sys.executable, "-m", "uv", "venv", "-q", "--python", "3.11", CHATTER_ENV])
+        run([sys.executable, "-m", "uv", "pip", "install", "-q", "--python", CHATTER_PY,
+             "chatterbox-tts", "setuptools<81"])
+    raw = path + ".raw.wav"
+    for seed in (7, 21):
+        subprocess.run([CHATTER_PY, "-c", CHATTER_SCRIPT, text, raw, str(seed)], check=True)
+        got = heard_fraction(raw, text)
+        log(f"New voice, try with seed {seed}: {got:.0%} of the script heard clearly")
+        if got >= 0.93:
+            # It speaks a little fast for captions; slow it slightly without changing pitch.
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", "atempo=0.95", path], check=True)
+            return True
+    return False
+
+
 def make_voice(text, voice, path):
+    if voice == "chatterbox":
+        try:
+            if chatter_voice(text, path):
+                return duration(path)
+            log("New voice was not clear enough; using the usual voice")
+        except Exception as e:
+            log(f"New voice failed ({e}); using the usual voice")
+        voice = "am_michael"
     subprocess.run([KOKORO_PY, "-c", KOKORO_SCRIPT, text, voice, path], check=True)
     return duration(path)
 
