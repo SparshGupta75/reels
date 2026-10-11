@@ -60,6 +60,7 @@ MAX_CLIP_FRAMES = 121              # ~5 s; longer shots get slowed down slightly
 WORK = "/tmp/reel"
 FONT_DIR = WORK + "/fonts"
 TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE = "DejaVu Sans", -1, 118, 180
+POSTER_FILE = "Mulish-Black.ttf"
 COVER_TAG = "MIND BLOWN REELS"
 SR = 48000                         # sample rate of the mixed soundtrack
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
@@ -433,23 +434,23 @@ def ass_filter(ass_path):
 
 
 def setup_fonts():
-    """Anton is the tall poster typeface used for hooks and covers; fall back to DejaVu Bold."""
+    """Mulish Black is the rounded heavy typeface used for hooks, captions and covers; fall back to DejaVu Bold."""
     global TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE
     os.makedirs(FONT_DIR, exist_ok=True)
     for src in ("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"):
         if os.path.exists(src):
             shutil.copy(src, FONT_DIR)
-    anton = os.path.join(FONT_DIR, "Anton-Regular.ttf")
+    poster = os.path.join(FONT_DIR, POSTER_FILE)
     try:
         import urllib.request
-        urllib.request.urlretrieve("https://github.com/google/fonts/raw/main/ofl/anton/Anton-Regular.ttf", anton)
-        if os.path.getsize(anton) < 50_000:
+        urllib.request.urlretrieve("https://github.com/googlefonts/mulish/raw/main/fonts/ttf/" + POSTER_FILE, poster)
+        if os.path.getsize(poster) < 50_000:
             raise OSError("font download too small")
-        TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE = "Anton", 0, 164, 260
+        TITLE_FONT, TITLE_BOLD, HOOK_SIZE, COVER_SIZE = "Mulish Black", 0, 108, 160
     except Exception as e:
         log(f"Poster font unavailable ({e}); using DejaVu Bold")
-        if os.path.exists(anton):
-            os.remove(anton)
+        if os.path.exists(poster):
+            os.remove(poster)
 
 
 # --- 3. AI video clips --------------------------------------------------------
@@ -748,9 +749,8 @@ def split_picture(top, bottom, labels, path):
 
     half_h = (1920 - 12) // 2
     canvas = Image.new("RGB", (1088, 1920), (0, 0, 0))
-    anton = os.path.join(FONT_DIR, "Anton-Regular.ttf")
     try:
-        font = ImageFont.truetype(anton, 96)
+        font = ImageFont.truetype(os.path.join(FONT_DIR, POSTER_FILE), 64)
     except OSError:
         font = ImageFont.load_default()
     for k, (src, label) in enumerate(zip((top, bottom), labels)):
