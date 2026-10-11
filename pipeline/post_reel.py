@@ -798,7 +798,9 @@ def main():
         if not 10 <= ist_hour < 22:
             log("Outside posting hours (10:00-22:00 India time); nothing to do")
             return
-        if any(slot(dt.datetime.fromisoformat(p["posted_at"])) == slot(now()) for p in state["posts"]):
+        # A Reel marked "extra" was posted by hand on top of the day's three and does not use up a slot.
+        if any(slot(dt.datetime.fromisoformat(p["posted_at"])) == slot(now())
+               for p in state["posts"] if not p.get("extra")):
             log("This slot already has a Reel; nothing to do")
             return
     token = os.environ.get("IG_TOKEN", "")
