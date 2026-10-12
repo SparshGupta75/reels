@@ -252,7 +252,17 @@
       "cover_text": "*PIGEON* MILK",
       "media_id": "17990959830064877",
       "permalink": "https://www.instagram.com/reel/DeT5IXMibHB/",
-      "posted_at": "2026-10-10T10:42:28+00:00"
+      "posted_at": "2026-10-10T10:42:28+00:00",
+      "metrics": {
+        "views": 118,
+        "reach": 102,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4101
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "sample-A-owl",
@@ -363,6 +373,19 @@
       "media_id": "17901861351606726",
       "permalink": "https://www.instagram.com/reel/DeYqRePjayd/",
       "posted_at": "2026-10-12T07:08:51+00:00"
+    },
+    {
+      "id": "202610121305",
+      "title": "Ballpoint Pen Facts",
+      "hook": "Can you tell what this is? It's a ballpoint pen, and here are three things you didn't know about it",
+      "fact": "ballpoint pen: A single standard ballpoint pen contains enough ink to draw a line almost two miles long. / The tiny rolling metal sphere inside a ballpoint pen tip is almost as hard as a diamond. / Ballpoint pen ink is made with thick oil so it dries almost instantly on paper without smudging.",
+      "narration": "Can you tell what this is? It's a ballpoint pen, and here are three things you didn't know about it. One. A single standard ballpoint pen contains enough ink to draw a line almost two miles long. Two. The tiny rolling metal sphere inside a ballpoint pen tip is almost as hard as a diamond. Three. Ballpoint pen ink is made with thick oil so it dries almost instantly on paper without smudging. Which one surprised you most?",
+      "caption": "I was writing a grocery list today and wondered how these things actually work.\n\nTurns out ballpoint pen ink is basically a heavy oil paste rather than liquid ink. That tiny ball at the tip rolls through the reservoir and transfers just enough paste onto the paper. Because it is oil-based, the solvent evaporates almost instantly so you do not smear it with your hand. One regular pen has enough paste stored inside to draw a continuous line for about two miles before it runs dry. Honestly, I had no idea how engineered a simple pen really is. 🖋️\n\nWho do you know that always loses their pen within two days?\n\nFollow for a new one every day.\n\n#stationery #everydayobjects #ballpointpen #pens #penfacts #aigenerated",
+      "hook_text": "",
+      "cover_text": "*PEN* SECRETS",
+      "media_id": "18077486717473817",
+      "permalink": "https://www.instagram.com/reel/DeZXI37Aai2/",
+      "posted_at": "2026-10-12T13:41:27+00:00"
     }
   ],
   "pending": null,
