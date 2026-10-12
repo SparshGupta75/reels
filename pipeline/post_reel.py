@@ -323,7 +323,7 @@ def pick_fact(state):
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
     def good(f):
-        return (f["familiarity"] <= 4 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
+        return (f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
                 and f["personal"] >= 8)
 
     for _ in range(3):
