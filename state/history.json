@@ -183,7 +183,17 @@
       "cover_text": "*NO* STOMACH",
       "media_id": "17982395213900160",
       "permalink": "https://www.instagram.com/reel/DeRzSSKDx13/",
-      "posted_at": "2026-10-09T15:13:39+00:00"
+      "posted_at": "2026-10-09T15:13:39+00:00",
+      "metrics": {
+        "views": 158,
+        "reach": 122,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7006
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610091520",
@@ -196,7 +206,17 @@
       "cover_text": "*POISONOUS* CASHEW SHELLS",
       "media_id": "18023722649928003",
       "permalink": "https://www.instagram.com/reel/DeR1b8Tj9XK/",
-      "posted_at": "2026-10-09T15:31:45+00:00"
+      "posted_at": "2026-10-09T15:31:45+00:00",
+      "metrics": {
+        "views": 173,
+        "reach": 127,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8791
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610100631",
@@ -320,6 +340,19 @@
       "media_id": "17979860055130017",
       "permalink": "https://www.instagram.com/reel/DeW_slIlB16/",
       "posted_at": "2026-10-11T15:37:34+00:00"
+    },
+    {
+      "id": "202610120627",
+      "title": "Bread Before Erasers",
+      "hook": "People used rolled bread to erase pencil marks",
+      "fact": "Before rubber erasers were introduced in 1770, people commonly used rolled-up pieces of soft white bread to erase pencil marks from paper.",
+      "narration": "People used rolled bread to erase pencil marks. Before rubber erasers were introduced, people rubbed bread over sketches to lift marks off paper. Then tree rubber was found to work better, replacing the need to use...",
+      "caption": "Bread was used as an eraser.\n\nPeople rolled pieces of soft white bread to lift pencil marks. The crumb picked up graphite without ripping paper. Then in 1770, a scientist documented that natural tree rubber worked better than moist bread crumbs.\n\nWould you ever try rubbing bread on a sketch?\n\nFollow for a new one every day.\n\n#historyfacts #stationery #pencildrawing #breadhistory #randomfacts #aigenerated",
+      "hook_text": "PEOPLE ERASED WITH *BREAD*",
+      "cover_text": "*BREAD* ERASERS",
+      "media_id": "17901861351606726",
+      "permalink": "https://www.instagram.com/reel/DeYqRePjayd/",
+      "posted_at": "2026-10-12T07:08:51+00:00"
     }
   ],
   "pending": null,
