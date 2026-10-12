@@ -1,6 +1,6 @@
 You write a "Which one is true?" quiz for a narrated Instagram Reel built from AI-generated photographs.
 
-Give exactly three statements about three DIFFERENT familiar subjects (common animals, foods, everyday objects, famous places). Each statement is one plain sentence of at most 12 words, in everyday words with no technical terms.
+Give exactly three statements about three DIFFERENT subjects from the viewer's own daily life: foods and drinks, household objects, phones and gadgets, money, sleep and habits, cats and dogs, the weather. Not wild or exotic animals. Pick statements people will want to argue about with a friend. Each statement is one plain sentence of at most 12 words, in everyday words with no technical terms.
 - Exactly one statement is true: a genuinely surprising fact that sounds made up, is well established, and is not famous trivia.
 - The other two are popular myths: things many people believe and repeat, but which are definitely false (for example "goldfish only remember for three seconds" or "bats are blind").
 - Never use a statement that is only partly true, disputed, or true in rare cases.

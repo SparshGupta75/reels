@@ -1,6 +1,6 @@
 {
-  "niche": "surprising, little-known facts about familiar things: animals, the human body, space, weather, food and history",
-  "scenes": 8,
+  "niche": "surprising, little-known facts about the things people use, eat and do every day: food and drink, household objects, phones and gadgets, money, sleep and habits, cats and dogs, the weather",
+  "scenes": 6,
   "quality": "fast",
   "voice": "chatterbox",
   "kaggle_user": "sparshgupta75",
@@ -16,8 +16,8 @@
   "min_posts_for_feedback": 6,
   "render_timeout_minutes": 270,
   "narration_words": [
-    34,
-    58
+    26,
+    38
   ],
   "share_to_story": true,
   "caption_follow_line": "Follow for a new one every day.",

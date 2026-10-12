@@ -179,11 +179,12 @@ IDEAS_SCHEMA = {
             "fact": {"type": "STRING"},
             "why": {"type": "STRING"},
             "wow": {"type": "INTEGER"},
+            "personal": {"type": "INTEGER"},
             "familiarity": {"type": "INTEGER"},
             "certainty": {"type": "INTEGER"},
             "filmable": {"type": "INTEGER"},
         },
-        "required": ["fact", "why", "wow", "familiarity", "certainty", "filmable"]}}},
+        "required": ["fact", "why", "wow", "personal", "familiarity", "certainty", "filmable"]}}},
     "required": ["facts"],
 }
 
@@ -322,14 +323,15 @@ def pick_fact(state):
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
     def good(f):
-        return f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
+        return (f["familiarity"] <= 4 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
+                and f["personal"] >= 8)
 
     for _ in range(3):
         reply = creative(system, user, IDEAS_SCHEMA,
                          lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
-        facts = sorted(reply["facts"], key=lambda f: (-f["wow"], f["familiarity"]))
+        facts = sorted(reply["facts"], key=lambda f: (-f["wow"] - f["personal"], f["familiarity"]))
         for f in facts:
-            log(f"  wow {f['wow']}, known {f['familiarity']}, sure {f['certainty']}, "
+            log(f"  wow {f['wow']}, personal {f['personal']}, known {f['familiarity']}, sure {f['certainty']}, "
                 f"filmable {f['filmable']}: {f['fact']}")
         fresh = [f for f in facts if good(f) and not already_used(f["fact"], used)]
         for f in fresh[:4]:
