@@ -229,7 +229,17 @@
       "cover_text": "*CHILDBIRTH* CHAINSAW",
       "media_id": "18106266227262256",
       "permalink": "https://www.instagram.com/reel/DeTdqMICL6l/",
-      "posted_at": "2026-10-10T06:42:24+00:00"
+      "posted_at": "2026-10-10T06:42:24+00:00",
+      "metrics": {
+        "views": 139,
+        "reach": 106,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7336
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610101033",
