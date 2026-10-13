@@ -382,7 +382,17 @@
       "cover_text": "*TRUE* OR MYTH",
       "media_id": "18117273049812329",
       "permalink": "https://www.instagram.com/reel/DeWeUdFjffp/",
-      "posted_at": "2026-10-11T10:45:57+00:00"
+      "posted_at": "2026-10-11T10:45:57+00:00",
+      "metrics": {
+        "views": 143,
+        "reach": 106,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8814
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610111237",
@@ -462,6 +472,19 @@
       "media_id": "17952313992273415",
       "permalink": "https://www.instagram.com/reel/DebolqQCP4N/",
       "posted_at": "2026-10-13T10:52:41+00:00"
+    },
+    {
+      "id": "202610131238",
+      "title": "House Cat Secrets",
+      "hook": "Can you tell what this is? It's a house cat, and here are three things you didn't know about it",
+      "fact": "house cat: Cats cannot taste sweet flavors because they lack the specific taste receptors for sweetness. / A cat walks by moving both right legs together, then both left legs. / A cat can squeeze through tiny spaces because its collarbone is not attached to other bones.",
+      "narration": "Can you tell what this is? It's a house cat, and here are three things you didn't know about it. One. Cats cannot taste sweet flavors because they lack the specific taste receptors for sweetness. Two. A cat walks by moving both right legs together, then both left legs. Three. A cat can squeeze through tiny spaces because its collarbone is not attached to other bones. Which one surprised you most?",
+      "caption": "I spent half my morning reading about house cats and I can't look at mine the same way. Scientists found that cats have a gene mutation that turns off their sweetness taste buds completely. Their collarbones are actually free-floating and held only by muscle, letting their shoulders fold inward to pass through narrow spaces. That's why a ten-pound cat can squeeze through a gap under three inches wide. I felt so silly trying to spot their leg movement in the kitchen. Who do you know that has a cat that squeezes into tiny cardboard boxes? 🐱\n\nFollow for a new one every day.\n\n#cats #pets #catfacts #catbehavior #felines #aigenerated",
+      "hook_text": "",
+      "cover_text": "*CAT* TRUTHS",
+      "media_id": "18644236912043984",
+      "permalink": "https://www.instagram.com/reel/Deb6cwZj702/",
+      "posted_at": "2026-10-13T13:28:26+00:00"
     }
   ],
   "pending": null,
