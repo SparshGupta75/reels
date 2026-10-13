@@ -359,7 +359,17 @@
       "cover_text": "*SWALLOWING* EYES",
       "media_id": "17882228295628317",
       "permalink": "https://www.instagram.com/reel/DeWDsu4jFCR/",
-      "posted_at": "2026-10-11T06:53:50+00:00"
+      "posted_at": "2026-10-11T06:53:50+00:00",
+      "metrics": {
+        "views": 148,
+        "reach": 120,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4993
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610111026",
@@ -439,6 +449,19 @@
       "media_id": "18127661335856430",
       "permalink": "https://www.instagram.com/reel/DebNM-sD9Op/",
       "posted_at": "2026-10-13T06:52:34+00:00"
+    },
+    {
+      "id": "202610131026",
+      "title": "Everyday Truths",
+      "hook": "Two of these are myths",
+      "fact": "An average fluffy cumulus cloud weighs about a million pounds. (myths: Drinking regular coffee dehydrates your body throughout the day. / Reading in dim light causes permanent damage to your eyes.)",
+      "narration": "Two of these are myths. Which one is true? A. An average fluffy cumulus cloud weighs about a million pounds. B. Drinking regular coffee dehydrates your body throughout the day. C. Reading in dim light causes permanent damage to your eyes. Got your answer? It's A. Water droplets across a typical one kilometer cloud add up to five hundred metric tons. Coffee hydrates you like water, and dim light only causes temporary eye strain.",
+      "caption": "Clouds look like cotton balls, but they are ridiculously heavy.\n\nA typical fluffy cumulus cloud is about one kilometer across in every direction. That space holds roughly a billion cubic meters of air filled with microscopic water droplets. When scientists measure the water density, it adds up to about five hundred thousand kilograms floating overhead. That is roughly the weight of a fully loaded passenger jet held up purely by warm air rising from the ground.\n\nWho do you know that stares out airplane windows at clouds every single flight?\n\nFollow for a new one every day.\n\n#weather #nature #clouds #cumulus #meteorology #aigenerated",
+      "hook_text": "",
+      "cover_text": "*TRUE* OR MYTH",
+      "media_id": "17952313992273415",
+      "permalink": "https://www.instagram.com/reel/DebolqQCP4N/",
+      "posted_at": "2026-10-13T10:52:41+00:00"
     }
   ],
   "pending": null,
