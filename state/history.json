@@ -32,15 +32,15 @@
       "permalink": "https://www.instagram.com/reel/DeL_bdKDnND/",
       "posted_at": "2026-10-07T09:03:00+00:00",
       "metrics": {
-        "views": 152,
+        "views": 155,
         "reach": 134,
         "likes": 1,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 6498
+        "ig_reels_avg_watch_time": 6515
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610071257",
@@ -452,7 +452,17 @@
       "cover_text": "*BREAD* ERASERS",
       "media_id": "17901861351606726",
       "permalink": "https://www.instagram.com/reel/DeYqRePjayd/",
-      "posted_at": "2026-10-12T07:08:51+00:00"
+      "posted_at": "2026-10-12T07:08:51+00:00",
+      "metrics": {
+        "views": 186,
+        "reach": 136,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6683
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610121305",
@@ -518,6 +528,19 @@
       "media_id": "17911981635542650",
       "permalink": "https://www.instagram.com/reel/Dedyl1Sjh-y/",
       "posted_at": "2026-10-14T06:57:44+00:00"
+    },
+    {
+      "id": "202610141005",
+      "title": "Everyday Myths Quiz",
+      "hook": "Two of these are myths",
+      "fact": "Black, green, and white peppercorns come from the same plant. (myths: Glass is a slow-moving liquid that flows downward over centuries. / Dogs can only see in black and white shades.)",
+      "narration": "Two of these are myths. Which one is true? A. Glass is a slow-moving liquid that flows downward over centuries. B. Dogs can only see in black and white shades. C. Black, green, and white peppercorns come from the same plant. Got your answer? It's C. Harvest time and processing create different peppercorn colors from one vine species. Glass is a solid material, while dogs see shades of blue and yellow.",
+      "caption": "I always thought black and white pepper were totally different spices.\n\nTurns out they're all harvested from the exact same plant. Green peppercorns are picked fresh when they're still green. Black ones get dried in the sun for days until they turn dark and wrinkled. White pepper is just the inner seed of the fully ripe red berry. I honestly had no clue my pepper shaker held so much science. 🌶️\n\nWho in your house adds black pepper to literally every meal?\n\nFollow for a new one every day.\n\n#foodfacts #cooking #blackpepper #peppercorn #kitchenscience #aigenerated",
+      "hook_text": "",
+      "cover_text": "*TRUE* OR MYTH",
+      "media_id": "18019589189732657",
+      "permalink": "https://www.instagram.com/reel/DeeM74gjK-h/",
+      "posted_at": "2026-10-14T10:48:20+00:00"
     }
   ],
   "pending": null,
