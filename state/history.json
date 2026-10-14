@@ -11,15 +11,15 @@
       "posted_at": "2026-10-06T13:26:04+00:00",
       "fact": "The Great Pyramid of Giza has eight sides due to its slightly concave faces, which are visible from the air during the spring and autumn equinoxes.",
       "metrics": {
-        "views": 207,
+        "views": 214,
         "reach": 148,
         "likes": 1,
         "comments": 0,
         "saved": 0,
         "shares": 1,
-        "ig_reels_avg_watch_time": 9700
+        "ig_reels_avg_watch_time": 9677
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610070754",
@@ -406,7 +406,17 @@
       "extra": true,
       "media_id": "18125132284817854",
       "permalink": "https://www.instagram.com/reel/DeWvnMejbis/",
-      "posted_at": "2026-10-11T13:17:02+00:00"
+      "posted_at": "2026-10-11T13:17:02+00:00",
+      "metrics": {
+        "views": 188,
+        "reach": 123,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 5,
+        "ig_reels_avg_watch_time": 9812
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610111513",
@@ -419,7 +429,17 @@
       "cover_text": "*CHICKEN* SECRETS",
       "media_id": "17979860055130017",
       "permalink": "https://www.instagram.com/reel/DeW_slIlB16/",
-      "posted_at": "2026-10-11T15:37:34+00:00"
+      "posted_at": "2026-10-11T15:37:34+00:00",
+      "metrics": {
+        "views": 141,
+        "reach": 115,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7928
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610120627",
@@ -485,6 +505,19 @@
       "media_id": "18644236912043984",
       "permalink": "https://www.instagram.com/reel/Deb6cwZj702/",
       "posted_at": "2026-10-13T13:28:26+00:00"
+    },
+    {
+      "id": "202610140627",
+      "title": "Why Dogs Align North-South",
+      "hook": "Your dog poops facing north and south",
+      "fact": "Research tracking 70 dogs over two years demonstrated that dogs naturally align themselves along Earth's north-south magnetic axis when defecating or urinating during stable geomagnetic conditions.",
+      "narration": "Your dog poops facing north and south. Why do they circle around first? They sense Earth's magnetic axis, turning like a compass until lined up, which is why...",
+      "caption": "Your dog uses the planet to go potty. Research tracking dogs demonstrated they naturally align themselves along Earth's north-south magnetic axis when defecating or urinating during stable geomagnetic conditions.\n\nFollow for a new one every day.\n\n#dogbehavior #animalscience #magnetoreception #dogfacts #dogresearch #aigenerated",
+      "hook_text": "YOUR DOG POOPS FACING *NORTH*",
+      "cover_text": "*MAGNETIC* DOGS",
+      "media_id": "17911981635542650",
+      "permalink": "https://www.instagram.com/reel/Dedyl1Sjh-y/",
+      "posted_at": "2026-10-14T06:57:44+00:00"
     }
   ],
   "pending": null,
