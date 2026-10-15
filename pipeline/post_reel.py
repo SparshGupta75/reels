@@ -243,7 +243,7 @@ def creative(system, user, schema, check):
         return gemini(system, user, schema, check, weakest=False)
     except RuntimeError as e:
         log(f"Strong models unavailable ({str(e)[:80]}); using the backup model")
-        return gemini(system, user, schema, check, rounds=2)
+        return gemini(system, user, schema, check, rounds=4)
 
 
 def verify(fact):
@@ -522,8 +522,10 @@ def write_three(state):
         "required": ["title", "subject", "mystery_picture", "reveal_picture", "facts", "comparison_fact",
                      "top_picture", "top_label", "bottom_picture", "bottom_label", "closing_picture",
                      "cover_text", "caption", "hashtags"]}
+    recent = [p["title"] for p in state["posts"][-20:]]
     user = (f"Topic area: {CFG['niche']}\nSubjects and facts already used, choose a different subject: "
-            f"{'; '.join(used) or 'none'}")
+            f"{'; '.join(used) or 'none'}\nRecent Reels; do not pick any subject they are about: "
+            f"{'; '.join(recent) or 'none'}")
 
     def check(t):
         if len(t["facts"]) != 3 or any(len(f["pictures"]) < 1 for f in t["facts"]):
@@ -825,11 +827,18 @@ def main():
         job_id = now().strftime("%Y%m%d%H%M")
         fmt = FORMATS[ist_slot(now())[1]] if args.format == "auto" else args.format
         log(f"Format: {fmt}")
-        if fmt == "quiz":
-            plan = write_quiz(state, job_id)
-        elif fmt == "three":
-            plan = write_three(state)
-        else:
+        try:
+            if fmt == "quiz":
+                plan = write_quiz(state, job_id)
+            elif fmt == "three":
+                plan = write_three(state)
+            else:
+                plan = write_script(state)
+        except RuntimeError as e:
+            # Better a regular Reel than an empty slot.
+            if fmt == "regular":
+                raise
+            log(f"The {fmt} Reel could not be written ({str(e)[:120]}); making a regular Reel instead")
             plan = write_script(state)
         if plan.get("segments"):
             plan["narration"] = " ".join(seg["say"] for seg in plan["segments"])
