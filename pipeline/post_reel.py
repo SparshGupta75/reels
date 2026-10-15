@@ -807,6 +807,18 @@ def main():
                for p in state["posts"] if not p.get("extra")):
             log("This slot already has a Reel; nothing to do")
             return
+        # After the account was disabled and restored, posting builds back up slowly:
+        # "daily_cap" lists [first day, Reels per day] steps, India dates.
+        today = slot(now())[0]
+        cap = 3
+        for day, n in CFG.get("daily_cap", []):
+            if dt.date.fromisoformat(day) <= today:
+                cap = n
+        done_today = sum(1 for p in state["posts"]
+                         if not p.get("extra") and slot(dt.datetime.fromisoformat(p["posted_at"]))[0] == today)
+        if done_today >= cap:
+            log(f"Already {done_today} Reel(s) today, the most allowed for now ({cap}); nothing to do")
+            return
     token = os.environ.get("IG_TOKEN", "")
     if args.publish and not (token and os.environ.get("IG_USER_ID")):
         raise SystemExit("IG_TOKEN and IG_USER_ID secrets are needed to publish")
