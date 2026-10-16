@@ -553,7 +553,16 @@
       "posted_at": "2026-10-14T10:48:20+00:00"
     }
   ],
-  "pending": null,
+  "pending": {
+    "id": "202610160627",
+    "title": "Why Chocolate Melts on Your Tongue",
+    "hook": "Dark chocolate melts right in your mouth",
+    "fact": "Dark chocolate melts in the mouth because cocoa butter has a sharp melting point between 34 °C and 36 °C (93 °F to 97 °F), which is just below normal human body temperature of approximately 37 °C (98.6 °F).",
+    "narration": "Dark chocolate melts right in your mouth. Why does that happen? Cocoa butter stays solid until your body heat warms it just enough to turn liquid. That is why...",
+    "caption": "Dark chocolate melts just below your body temperature.\n\nCocoa butter turns liquid between 93 and 97 degrees Fahrenheit. That sits right below normal human body temperature at roughly 98.6 degrees. When you put a square in your mouth, your heat melts it down smoothly. I honestly never realized how sharp that melting point actually is.\n\nWho do you know that eats dark chocolate every single night? 🍫\n\nFollow for a new one every day.\n\n#foodscience #chocolate #darkchocolate #cocoabutter #chocolatelovers #aigenerated",
+    "hook_text": "CHOCOLATE MELTS AT *YOUR* TEMPERATURE",
+    "cover_text": "*PERFECT* MELT"
+  },
   "followers": [
     {
       "date": "2026-10-11",
