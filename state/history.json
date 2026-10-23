@@ -554,14 +554,14 @@
     }
   ],
   "pending": {
-    "id": "202610230627",
-    "title": "Vanilla Hand Pollination",
-    "hook": "Your vanilla comes from flowers pollinated by human hands",
-    "fact": "Almost all commercial vanilla grown worldwide must be hand-pollinated by humans using a tiny pointed stick because its natural pollinator, the Melipona bee, is only native to Mexico.",
-    "narration": "Your vanilla comes from flowers pollinated by human hands. So why do they need this help? Because the tiny bee that does this naturally is native to Mexico.",
-    "caption": "I had no idea vanilla took this effort to grow. Every bean you buy comes from a flower that someone had to manually pollinate with a tiny stick because the native bee is native to Mexico. The blossom stays open for a short time, leaving farmers a window to do this by hand. Who do you know that puts vanilla in everything they bake?\n\nFollow for a new one every day.\n\n#baking #farming #vanilla #plants #agriculture #aigenerated",
-    "hook_text": "VANILLA IS *ALWAYS* POLLINATED BY HAND",
-    "cover_text": "*HAND* POLLINATED"
+    "id": "202610230951",
+    "title": "Everyday Life Myth Quiz",
+    "hook": "Two of these are myths",
+    "fact": "Humans lose their sense of smell while sleeping deeply. (myths: One human year equals seven dog years. / Microwaves cook food from the inside out.)",
+    "narration": "Two of these are myths. Which one is true? A. Humans lose their sense of smell while sleeping deeply. B. Microwaves cook food from the inside out. C. One human year equals seven dog years. Got your answer? It's A. The brain stops processing olfactory signals during deep sleep, so scents cannot wake you. Dogs age faster early in life, and microwaves heat food from the outside inward.",
+    "caption": "Your brain completely stops processing smells the moment you're asleep.\n\nResearchers tested people with strong scents like peppermint and smoke during sleep, and zero participants woke up or even noticed them. Your brain keeps listening for loud noises or feeling touch, but the olfactory system doesn't register anything. That's why smoke alarms use loud beeps instead of scent to wake people up. I honestly thought our noses worked all night long.\n\nWho do you know that could sleep right through anything?\n\nFollow for a new one every day.\n\n#sleepscience #humanbody #senseofsmell #sleepfacts #brainfacts #aigenerated",
+    "hook_text": "",
+    "cover_text": "*TRUE* OR MYTH"
   },
   "followers": [
     {
