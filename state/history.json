@@ -554,12 +554,12 @@
     }
   ],
   "pending": {
-    "id": "202610240922",
-    "title": "Everyday Life Myth Quiz",
+    "id": "202610241026",
+    "title": "Everyday Science Quiz",
     "hook": "Two of these are myths",
-    "fact": "Plain soap does not kill bacteria on your skin. (myths: Lightning never strikes the exact same place twice. / Eating carrots gives you superior vision in the dark.)",
-    "narration": "Two of these are myths. Which one is true? A. Plain soap does not kill bacteria on your skin. B. Lightning never strikes the exact same place twice. C. Eating carrots gives you superior vision in the dark. Got your answer? It's A. It lifts bacteria off your skin so running water can rinse them away. Lightning hits tall spots repeatedly, while carrots only prevent vitamin A deficiency.",
-    "caption": "Most people get this totally wrong about washing hands.\n\nRegular soap is actually just a sliver of slippery fat and oil. It binds to dirt and germ membranes on one side while grabbing water on the other. That mechanical rinse washes off up to 99 percent of skin microbes down the drain without needing to destroy them. I honestly always thought soap worked like tiny disinfectant bombs.\n\nHow many times a day do you wash your hands without thinking about it?\n\nFollow for a new one every day.\n\n#hygiene #sciencefacts #soapscience #handwashing #germfacts #aigenerated",
+    "fact": "Tonic water glows bright neon blue when exposed to ultraviolet light. (myths: Swallowed chewing gum stays inside your stomach for seven whole years. / Lightning never strikes the exact same place more than one time.)",
+    "narration": "Two of these are myths. Which one is true? A. Tonic water glows bright neon blue when exposed to ultraviolet light. B. Swallowed chewing gum stays inside your stomach for seven whole years. C. Lightning never strikes the exact same place more than one time. Got your answer? It's A. Quinine in tonic water absorbs invisible ultraviolet rays and emits visible bright blue light. Swallowed gum passes within days, and lightning repeatedly strikes the same tall spots.",
+    "caption": "I tested this in my kitchen last night and it actually worked.\n\nTonic water contains quinine, a bitter compound originally extracted from tree bark to treat malaria. When ultraviolet blacklight hits quinine molecules, they absorb the invisible radiation and instantly kick it back out as visible bright blue light. Even a tiny splash diluted in a whole pitcher of water will still light up in the dark. It looks totally radioactive on the counter, but you can drink it right up.\n\nWho do you know that orders gin and tonic every single time they go out?\n\nFollow for a new one every day.\n\n#foodscience #kitchenscience #tonicwater #quinine #blacklight #aigenerated",
     "hook_text": "",
     "cover_text": "*TRUE* OR MYTH"
   },
