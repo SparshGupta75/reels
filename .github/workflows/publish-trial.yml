@@ -1,0 +1,75 @@
+name: Publish Trial Reel
+
+# Publishes a trial Reel that was already rendered and reviewed, using the exact
+# file from that run's artifact. Does not re-render.
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run that produced the artifact"
+        type: string
+        required: true
+      trial:
+        description: "Trial name (the artifact is trial-<name>)"
+        type: string
+        default: airplane-bathroom
+      confirm:
+        description: "Type PUBLISH to post to Instagram"
+        type: string
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: publish-trial
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: inputs.confirm == 'PUBLISH'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+
+      - name: Fetch the reviewed video
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out
+          gh run download "${{ inputs.run_id }}" --repo "${{ github.repository }}" \
+            -n "trial-${{ inputs.trial }}" -D out
+          ls -l out
+
+      - name: Post it
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          SECRETS_PAT: ${{ secrets.SECRETS_PAT }}
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          python pipeline/publish_trial.py
+          pipeline/trials/${{ inputs.trial }}.json
+          "$(ls out/reel-*.mp4 | head -1)"
+          "$(ls out/caption-*.txt | head -1)"
+
+      - name: Save history
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp state/history.json "$RUNNER_TEMP/mine.json"
+          git checkout -q -- state
+          git pull -q --rebase
+          python pipeline/merge_state.py "$RUNNER_TEMP/mine.json" state/history.json
+          git add state
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Update Reel history"
+          git push -q
