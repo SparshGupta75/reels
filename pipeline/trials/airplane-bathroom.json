@@ -1,0 +1,25 @@
+{
+  "title": "Airplane Bathrooms Have No Window",
+  "series": "Why Is There No...",
+  "slug": "reel-trial-airplane",
+  "caption": "Airplane bathrooms have no window\n\nEvery other part of the cabin has one, and the bathroom does not. A window is a hole cut into the fuselage, and every hole needs extra structure around it so the shell keeps its strength. That is weight the plane carries on every single flight, for a room you use for two minutes. The bathroom also sits deep inside the cabin, well away from the outer wall, so there is nothing to look through anyway.\n\nNext time you are in one, the missing window is not an oversight.\n\nSend this to the person you always fly with.\n\nFollow for a new one every day.\n\n#airplane #aviation #airtravel #planedesign #windowseat #aigenerated",
+  "job": {
+    "id": "trial-airplane-1025",
+    "voice": "chatterbox",
+    "quality": "fast",
+    "visual": "stills",
+    "hook_text": "AIRPLANE BATHROOMS HAVE NO *WINDOW*",
+    "cover_text": "*NO* WINDOW",
+    "narration": "Most airplane bathrooms have no window. A window means extra weight and a weak spot in the plane's shell. The bathroom sits deep inside anyway. So the window was left out.",
+    "scenes": [
+      {"prompt": "Interior of a small airplane bathroom, narrow and bright, showing a white sink, a mirror and a toilet, plain grey wall where a window would be, interior photograph, even fluorescent light."},
+      {"prompt": "Close-up of the plain grey wall panel inside an airplane bathroom, smooth surface with no window, interior photograph, soft overhead light."},
+      {"prompt": "The aisle of a passenger airplane cabin with seats and a row of small oval windows along the wall, wide interior photograph, daylight from the windows."},
+      {"prompt": "The outside of a white passenger airplane fuselage with a long row of small oval windows, side view, clear blue sky, sharp photograph."},
+      {"prompt": "The wing of an airplane over white clouds seen through an oval cabin window, close-up photograph, bright daylight."},
+      {"prompt": "A narrow airplane bathroom door in the cabin wall, closed, grey plastic panel, interior photograph, cabin lighting."},
+      {"prompt": "Interior of a passenger airplane cabin seen from the back, rows of seats and oval windows on both sides, wide photograph, soft daylight."},
+      {"prompt": "Close-up of a small white sink and metal tap inside an airplane bathroom, interior photograph, bright overhead light."}
+    ]
+  }
+}

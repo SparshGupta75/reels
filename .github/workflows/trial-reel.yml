@@ -1,0 +1,48 @@
+name: Trial Reel
+
+# Renders the hand-written trial Reels in pipeline/trials/ for review only.
+# Nothing is published to Instagram and no Gemini key is needed.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trial-reel
+  cancel-in-progress: false
+
+jobs:
+  trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      matrix:
+        trial: [jeans-pocket, airplane-bathroom]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q kaggle requests
+
+      - name: Make the trial Reel
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/render_trial.py pipeline/trials/${{ matrix.trial }}.json
+
+      - name: Keep the video for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trial-${{ matrix.trial }}
+          path: |
+            out/*.mp4
+            out/cover-*.jpg
+            out/caption-*.txt
+            out/result.json
+          if-no-files-found: ignore
+          retention-days: 14

@@ -149,9 +149,11 @@ def collect_metrics(state, token):
 
 
 def score(post):
+    """Rank past Reels by the signals that actually grow reach, not raw views."""
     m = post.get("metrics") or {}
-    engagement = m.get("likes", 0) + 2 * m.get("comments", 0) + 3 * m.get("saved", 0) + 3 * m.get("shares", 0)
-    return m.get("views", 0) + 10 * engagement
+    reach = max(m.get("reach", 0), 1)
+    return (5 * m.get("shares", 0) + 4 * m.get("saved", 0)
+            + 2 * m.get("comments", 0) + 0.5 * m.get("likes", 0)) / reach
 
 
 def feedback_text(state):
@@ -162,11 +164,12 @@ def feedback_text(state):
     rated.sort(key=score, reverse=True)
 
     def line(p):
-        return f"- {p['title']} | hook: {p['hook']} | {json.dumps(p['metrics'])}"
+        return f"- [{p.get('series', '?')}] {p['title']} | hook: {p['hook']} | {json.dumps(p['metrics'])}"
 
-    return ("\n\nHow our past Reels performed with our audience (learn from this: lean towards the "
-            "subjects, hook style and tone of the best ones and away from the worst, but never "
-            "repeat a topic).\nBest:\n" + "\n".join(line(p) for p in rated[:3])
+    return ("\n\nHow our past Reels performed with our audience. The ranking is by shares and saves "
+            "per person reached, not by views. Lean towards the subjects, series, hook style and tone "
+            "of the best ones and away from the worst, but never repeat a topic.\nBest:\n"
+            + "\n".join(line(p) for p in rated[:3])
             + "\nWorst:\n" + "\n".join(line(p) for p in rated[-3:]))
 
 
@@ -176,15 +179,20 @@ IDEAS_SCHEMA = {
     "properties": {"facts": {"type": "ARRAY", "items": {
         "type": "OBJECT",
         "properties": {
+            "series": {"type": "STRING", "enum": CFG["series"]},
             "fact": {"type": "STRING"},
             "why": {"type": "STRING"},
+            "subject_familiarity": {"type": "INTEGER"},
             "wow": {"type": "INTEGER"},
             "personal": {"type": "INTEGER"},
             "familiarity": {"type": "INTEGER"},
             "certainty": {"type": "INTEGER"},
             "filmable": {"type": "INTEGER"},
         },
-        "required": ["fact", "why", "wow", "personal", "familiarity", "certainty", "filmable"]}}},
+        "required": ["series", "fact", "why", "subject_familiarity", "wow", "personal",
+                     "familiarity", "certainty", "filmable"]}}},
+    "propertyOrdering": ["series", "fact", "why", "subject_familiarity", "wow", "personal",
+                        "familiarity", "certainty", "filmable"],
     "required": ["facts"],
 }
 
@@ -320,19 +328,33 @@ def pick_fact(state):
     used = [p.get("fact") or p["title"] for p in state["posts"]]
     recent = used
     user = (f"Topic area: {CFG['niche']}\n"
+            f"Series: {', '.join(CFG['series'])}\n"
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
+    # Each series has its own bar. Familiarity is about the subject (the higher the better);
+    # "familiarity" is about the detail (the lower the better).
+    BARS = {
+        "The Hidden Feature": dict(subject=8, personal=9, wow=8, known=6, filmable=8),
+        "The Label Decoder": dict(subject=8, personal=9, wow=7, known=5, filmable=7),
+        "Why Is There No...": dict(subject=8, personal=7, wow=8, known=4, filmable=8),
+        "That Shouldn't Work": dict(subject=8, personal=8, wow=8, known=4, filmable=8),
+    }
+
     def good(f):
-        return (f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8 and f["wow"] >= 8
-                and f["personal"] >= 8)
+        bar = BARS.get(f.get("series"), BARS["The Hidden Feature"])
+        return (f.get("subject_familiarity", 0) >= bar["subject"] and f["personal"] >= bar["personal"]
+                and f["wow"] >= bar["wow"] and f["familiarity"] <= bar["known"]
+                and f["certainty"] >= 9 and f["filmable"] >= bar["filmable"])
 
     for _ in range(3):
         reply = creative(system, user, IDEAS_SCHEMA,
                          lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
-        facts = sorted(reply["facts"], key=lambda f: (-f["wow"] - f["personal"], f["familiarity"]))
+        facts = sorted(reply["facts"],
+                       key=lambda f: (-f["wow"] - f["personal"] - f.get("subject_familiarity", 0), f["familiarity"]))
         for f in facts:
-            log(f"  wow {f['wow']}, personal {f['personal']}, known {f['familiarity']}, sure {f['certainty']}, "
-                f"filmable {f['filmable']}: {f['fact']}")
+            log(f"  [{f.get('series', '?')}] wow {f['wow']}, personal {f['personal']}, "
+                f"subject {f.get('subject_familiarity', '?')}, known {f['familiarity']}, "
+                f"sure {f['certainty']}, filmable {f['filmable']}: {f['fact']}")
         fresh = [f for f in facts if good(f) and not already_used(f["fact"], used)]
         for f in fresh[:4]:
             log(f"Checking: {f['fact']}")
@@ -344,9 +366,10 @@ def pick_fact(state):
 
 def write_script(state):
     fact = pick_fact(state)
-    log(f"Chosen fact: {fact['fact']}")
+    log(f"Chosen fact [{fact['series']}]: {fact['fact']}")
     system = open(os.path.join(ROOT, "pipeline", "system_prompt.txt")).read()
-    user = (f"The fact: {fact['fact']}\nWhy it is true: {fact['why']}\n"
+    user = (f"Series: {fact['series']}\n"
+            f"The fact: {fact['fact']}\nWhy it is true: {fact['why']}\n"
             f"Number of scenes: {CFG['scenes']}")
 
     def check(plan):
@@ -386,6 +409,7 @@ def write_script(state):
     except RuntimeError as e:
         log(f"Editing pass skipped ({str(e)[:100]})")
     plan["fact"] = fact["fact"]
+    plan["series"] = fact["series"]
     return plan
 
 
@@ -576,8 +600,9 @@ def kaggle(*args, check=True):
     return sh(["kaggle", *args], check=check)
 
 
-def render(job):
-    slug = f"{CFG['kaggle_user']}/{CFG['kernel_slug']}"
+def render(job, slug=None):
+    slug = slug or f"{CFG['kaggle_user']}/{CFG['kernel_slug']}"
+    title = slug.split("/")[-1]
     script = open(os.path.join(ROOT, "reel_maker.py")).read()
     if MARKER not in script:
         raise RuntimeError("reel_maker.py is missing the JOB_B64 placeholder")
@@ -587,7 +612,7 @@ def render(job):
     with open(os.path.join(kdir, "reel_maker.py"), "w") as f:
         f.write(script.replace(MARKER, f'JOB_B64 = "{b64}"'))
     with open(os.path.join(kdir, "kernel-metadata.json"), "w") as f:
-        json.dump({"id": slug, "title": CFG["kernel_slug"], "code_file": "reel_maker.py",
+        json.dump({"id": slug, "title": title, "code_file": "reel_maker.py",
                    "language": "python", "kernel_type": "script", "is_private": True,
                    "enable_gpu": True, "enable_internet": True, "dataset_sources": [],
                    "competition_sources": [], "kernel_sources": [], "model_sources": []}, f)
@@ -607,7 +632,7 @@ def render(job):
         if "COMPLETE" in status:
             return
         if "ERROR" in status or "CANCEL" in status:
-            fetch_output()
+            fetch_output(slug=slug)
             for path in glob.glob(os.path.join(OUT_DIR, "*.log")):
                 try:
                     lines = [e["data"].rstrip() for e in json.load(open(path))]
@@ -619,9 +644,10 @@ def render(job):
     raise RuntimeError("Kaggle render timed out")
 
 
-def fetch_output(job_id=None):
+def fetch_output(job_id=None, slug=None):
     os.makedirs(OUT_DIR, exist_ok=True)
-    kaggle("kernels", "output", f"{CFG['kaggle_user']}/{CFG['kernel_slug']}", "-p", OUT_DIR, check=False)
+    slug = slug or f"{CFG['kaggle_user']}/{CFG['kernel_slug']}"
+    kaggle("kernels", "output", slug, "-p", OUT_DIR, check=False)
     pattern = f"reel-{job_id}.mp4" if job_id else "reel-*.mp4"
     found = glob.glob(os.path.join(OUT_DIR, pattern))
     return found[0] if found else None
@@ -837,7 +863,9 @@ def main():
             raise SystemExit(f"Kaggle no longer has reel-{pending['id']}.mp4")
     else:
         job_id = now().strftime("%Y%m%d%H%M")
-        fmt = FORMATS[ist_slot(now())[1]] if args.format == "auto" else args.format
+        # The growth plan is a single-fact Reel every slot; quiz and three-things stay
+        # available by hand (--format quiz / three) until a series proves itself.
+        fmt = "regular" if args.format == "auto" else args.format
         log(f"Format: {fmt}")
         try:
             if fmt == "quiz":
@@ -854,10 +882,12 @@ def main():
             plan = write_script(state)
         if plan.get("segments"):
             plan["narration"] = " ".join(seg["say"] for seg in plan["segments"])
+        plan.setdefault("series", fmt.capitalize())
         tags = " ".join("#" + str(t).lstrip("#").replace(" ", "") for t in plan["hashtags"])
         pending = {
             "id": job_id,
             "title": plan["title"],
+            "series": plan.get("series", ""),
             "hook": plan["narration"].split(". ")[0][:120],
             "fact": plan["fact"],
             "narration": plan["narration"],

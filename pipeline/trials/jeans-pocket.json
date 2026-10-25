@@ -1,0 +1,26 @@
+{
+  "title": "Jeans Have a Watch Pocket",
+  "series": "The Hidden Feature",
+  "slug": "reel-trial-jeans",
+  "caption": "Jeans have a tiny pocket built for a pocket watch\n\nIt is the small square pocket sitting above the right front pocket, and almost nobody uses it for its original job. Before wristwatches were common, people carried a pocket watch and needed somewhere to keep it safe. Denim makers stitched that little compartment in for exactly that. When watches moved to the wrist, the pocket stayed, because the design was already famous.\n\nNow it holds a lighter, a ticket, a coin or nothing at all. Look at your own jeans and you will find it there.\n\nSend this to the person who always wondered what that pocket was for.\n\nFollow for a new one every day.\n\n#denim #jeans #pocketwatch #hiddenfeatures #everydayobjects #aigenerated",
+  "job": {
+    "id": "trial-jeans-1025",
+    "voice": "chatterbox",
+    "quality": "fast",
+    "visual": "stills",
+    "hook_text": "JEANS HAVE A *WATCH* POCKET",
+    "cover_text": "*WATCH* POCKET",
+    "narration": "That tiny jeans pocket is not for coins. It was built for a pocket watch. When watches moved to the wrist, the pocket stayed. And that is why it is still there.",
+    "scenes": [
+      {"prompt": "Extreme close-up of the small square fifth pocket inside the front pocket of a pair of plain blue denim jeans, empty, sharp macro photograph, soft daylight."},
+      {"prompt": "A pair of plain blue jeans laid flat on a pale wooden floor, the small watch pocket visible beside the waistband, medium photograph, soft window light."},
+      {"prompt": "Close-up of the stitching around the tiny watch pocket on plain blue denim jeans, fine detail photograph, natural daylight."},
+      {"prompt": "Plain blue jeans folded neatly in an open wooden drawer, the front pocket area facing up, medium photograph, warm indoor light."},
+      {"prompt": "Plain blue denim jeans hanging from a clothesline outdoors, full view of the front pockets, bright afternoon light, photograph."},
+      {"prompt": "Close-up of blue denim fabric texture beside the small watch pocket seam, sharp macro photograph, side light showing the weave."},
+      {"prompt": "Plain blue jeans draped over a wooden chair beside a window, front pockets visible, medium photograph, soft morning light."},
+      {"prompt": "A pair of plain blue jeans standing upright against a plain light grey wall, full front view showing all the pockets, sharp product photograph."},
+      {"prompt": "A neat stack of folded plain blue jeans on a wooden shelf, front pockets facing out, medium photograph, soft shop lighting."}
+    ]
+  }
+}
