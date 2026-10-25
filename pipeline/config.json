@@ -22,8 +22,8 @@
   "min_posts_for_feedback": 6,
   "render_timeout_minutes": 270,
   "narration_words": [
-    24,
-    32
+    30,
+    38
   ],
   "share_to_story": true,
   "caption_follow_line": "Follow for a new one every day.",
