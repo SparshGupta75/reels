@@ -43,6 +43,7 @@ DEMO_JOB = {
 MODEL_ID = "Wan-AI/Wan2.2-TI2V-5B-Diffusers"
 GEN_FPS = 24                       # Wan 2.2 5B is trained at 24 fps
 OUT_W, OUT_H, OUT_FPS = 1080, 1920, 30
+VOICE_SPEED = 0.8                  # narration pace; 0.8 turns ~30 words into ~12 seconds
 QUALITY = {                        # (width, height, steps) of the generated clips
     "fast": (480, 832, 30),        # ~a few minutes per clip on a T4 (estimate)
     "high": (704, 1280, 40),       # sharper, roughly 3x slower
@@ -959,6 +960,17 @@ def main():
         job["narration"] = " ".join(seg["say"] for seg in job["segments"])
     voice_wav = os.path.join(WORK, "voice.wav")
     speech = make_voice(job["narration"], job["voice"], voice_wav)
+    # The voice reads at about 3.2 words a second; slowing it to ~2.6 is what turns a
+    # 30-word script into a 12-second Reel. Done before the captions are timed so
+    # they stay in sync.
+    speed = float(job.get("voice_speed") or VOICE_SPEED)
+    if abs(speed - 1.0) > 0.01:
+        slowed = os.path.join(WORK, "voice-slow.wav")
+        run(["ffmpeg", "-y", "-loglevel", "error", "-i", voice_wav,
+             "-filter:a", f"atempo={speed}", "-ar", "44100", "-ac", "1", slowed])
+        os.replace(slowed, voice_wav)
+        speech = duration(voice_wav)
+        log(f"Voice slowed to {speed:.2f}x for pacing")
     total = speech + (0.4 if segmented else 0.3)      # short tail so the end runs straight back into the start
     log(f"Voiceover: {speech:.1f}s")
 
