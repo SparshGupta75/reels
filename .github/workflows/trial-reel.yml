@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        trial: [jeans-pocket, airplane-bathroom]
+        trial: [jacket-button]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

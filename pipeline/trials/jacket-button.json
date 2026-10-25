@@ -1,0 +1,26 @@
+{
+  "title": "Your Jacket Hides a Spare Button",
+  "series": "The Hidden Feature",
+  "slug": "reel-trial-jacket",
+  "caption": "A spare button is hidden inside your jacket\n\nTurn the jacket inside out and look along the inside seam. Many jackets and coats come with one extra button sewn into the lining, matching the ones on the front. It is there so a lost button does not ruin the jacket years later, when the exact button is impossible to buy. The maker adds it for almost nothing, and it saves the whole garment.\n\nLook in the side seam near the hem, or under the collar.\n\nSend this to the person who owns a jacket with a loose button.\n\nFollow for a new one every day.\n\n#jacket #sewing #menswear #hiddenfeatures #everydayobjects #aigenerated",
+  "job": {
+    "id": "trial-jacket-1025",
+    "voice": "chatterbox",
+    "quality": "fast",
+    "visual": "stills",
+    "voice_speed": 0.8,
+    "hook_text": "JACKETS HIDE A *SPARE* BUTTON",
+    "cover_text": "*SPARE* BUTTON",
+    "narration": "That button inside your jacket is not decoration. It is a spare, sewn into the lining so you can replace one you lose. Matching buttons are hard to find years later. Check your jacket and you will find one.",
+    "scenes": [
+      {"prompt": "Extreme close-up of a single small dark button sewn into the inside lining seam of a dark jacket, seen from very close, sharp macro photograph, soft daylight."},
+      {"prompt": "A dark navy jacket hanging on a wooden hanger against a plain pale wall, medium photograph, soft daylight."},
+      {"prompt": "The inside lining of a dark jacket held open at an angle, showing a long seam along the side, detail photograph, soft indoor light."},
+      {"prompt": "A dark jacket laid open on a bed with the lining facing up, medium photograph from above, warm indoor light."},
+      {"prompt": "Close-up of the row of dark buttons down the front of a dark jacket, fine detail photograph, soft side light."},
+      {"prompt": "A dark jacket draped over the back of a wooden chair beside a window, medium photograph, soft morning light."},
+      {"prompt": "A single dark button with a needle and a spool of thread on a pale wooden table, sharp still-life photograph, soft daylight."},
+      {"prompt": "A dark jacket folded on a wooden shelf, medium photograph, soft indoor light."}
+    ]
+  }
+}
