@@ -197,50 +197,6 @@ IDEAS_SCHEMA = {
 }
 
 
-# Backup writer: GitHub's free AI models, reached with the workflow's own GitHub token. Used
-# whenever every Gemini model fails in a round (Gemini's free allowance is now ~20 requests a day).
-GITHUB_MODELS = ["openai/gpt-4.1", "openai/gpt-4.1-mini"]
-
-
-def github_model(system, user, schema, check):
-    """Returns (reply, None) on success, else (None, reason)."""
-    token = os.environ.get("GH_TOKEN")
-    if not token:
-        return None, "no GitHub token"
-    if schema:
-        system += ("\n\nReply with one JSON object only, following this schema (types are written in capitals): "
-                   + json.dumps(schema))
-    last = "not tried"
-    for model in GITHUB_MODELS:
-        body = {"model": model, "temperature": 1 if schema else 0,
-                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
-        if schema:
-            body["response_format"] = {"type": "json_object"}
-        try:
-            r = requests.post("https://models.github.ai/inference/chat/completions", json=body, timeout=180,
-                              headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
-        except requests.RequestException as e:
-            last = f"{model}: {type(e).__name__}"
-            continue
-        if r.status_code != 200:
-            last = f"{model}: HTTP {r.status_code} {r.text[:200]}"
-            log(f"GitHub {model}: HTTP {r.status_code}")
-            continue
-        try:
-            text = r.json()["choices"][0]["message"]["content"]
-            reply = json.loads(text) if schema else text.strip()
-            last = check(reply) if check else None
-        except (KeyError, IndexError, TypeError, ValueError) as e:
-            last = f"{model}: unusable reply ({type(e).__name__})"
-            log(f"GitHub {last}")
-            continue
-        if last is None:
-            log(f"Answered by {model} (GitHub)")
-            return reply, None
-        log(f"GitHub {model} rejected: {last}")
-    return None, last
-
-
 def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True, backwards=False):
     """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
     check(reply) returns an error string to retry, or None. search=True lets it use Google."""
@@ -285,10 +241,6 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
                 log(f"Answered by {model}")
                 return reply
             log(f"Gemini {model} rejected: {last}")
-        reply, why = github_model(system, user, schema, check)
-        if why is None:
-            return reply
-        last = f"GitHub {why}"
     raise RuntimeError(f"Gemini failed: {last}")
 
 

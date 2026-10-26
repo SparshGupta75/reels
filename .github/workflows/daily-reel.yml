@@ -36,7 +36,6 @@ on:
 
 permissions:
   contents: write
-  models: read      # GitHub's free AI models, the backup script writer
 
 concurrency:
   group: daily-reel-${{ github.ref_name }}
