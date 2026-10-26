@@ -813,6 +813,12 @@ def main():
         for m in r.json().get("models", []):
             if "generateContent" in m.get("supportedGenerationMethods", []):
                 print(m["name"].split("/")[-1])
+        # Then a one-word test of every model in the config, showing Google's full answer on failure.
+        for model in CFG["gemini_models"]:
+            t = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                              json={"contents": [{"role": "user", "parts": [{"text": "Say OK"}]}]}, timeout=60,
+                              headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
+            print(f"TEST {model}: HTTP {t.status_code} {' '.join(t.text.split())[:400] if t.status_code != 200 else 'works'}")
         return
 
     if args.post_files:
