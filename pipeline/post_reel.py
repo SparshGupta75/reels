@@ -889,6 +889,11 @@ def main():
         for m in r.json().get("models", []):
             if "generateContent" in m.get("supportedGenerationMethods", []):
                 print(m["name"].split("/")[-1])
+        if os.environ.get("GROQ_API_KEY"):
+            g = requests.get("https://api.groq.com/openai/v1/models", timeout=60,
+                             headers={"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"})
+            for m in g.json().get("data", []):
+                print("GROQ", m.get("id"))
         # Then a one-word test of every model in the config, showing Google's full answer on failure.
         for model in CFG["gemini_models"]:
             try:
