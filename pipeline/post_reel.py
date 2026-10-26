@@ -197,6 +197,47 @@ IDEAS_SCHEMA = {
 }
 
 
+# Backup writer: Groq's free models, used when every Gemini model fails in a round.
+# Needs the GROQ_API_KEY secret; without it this step is skipped.
+def groq(system, user, schema, check):
+    """Returns (reply, None) on success, else (None, reason)."""
+    key = os.environ.get("GROQ_API_KEY")
+    if not key:
+        return None, "no Groq key"
+    if schema:
+        system += ("\n\nReply with one JSON object only, following this schema (types are written in capitals): "
+                   + json.dumps(schema))
+    last = "not tried"
+    for model in CFG.get("groq_models", []):
+        body = {"model": model, "temperature": 1 if schema else 0,
+                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
+        if schema:
+            body["response_format"] = {"type": "json_object"}
+        try:
+            r = requests.post("https://api.groq.com/openai/v1/chat/completions", json=body, timeout=180,
+                              headers={"Authorization": f"Bearer {key}"})
+        except requests.RequestException as e:
+            last = f"{model}: {type(e).__name__}"
+            continue
+        if r.status_code != 200:
+            last = f"{model}: HTTP {r.status_code} {r.text[:200]}"
+            log(f"Groq {model}: HTTP {r.status_code}")
+            continue
+        try:
+            text = r.json()["choices"][0]["message"]["content"]
+            reply = json.loads(text) if schema else text.strip()
+            last = check(reply) if check else None
+        except (KeyError, IndexError, TypeError, ValueError) as e:
+            last = f"{model}: unusable reply ({type(e).__name__})"
+            log(f"Groq {last}")
+            continue
+        if last is None:
+            log(f"Answered by {model} (Groq)")
+            return reply, None
+        log(f"Groq {model} rejected: {last}")
+    return None, last
+
+
 def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True, backwards=False):
     """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
     check(reply) returns an error string to retry, or None. search=True lets it use Google."""
@@ -241,6 +282,11 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
                 log(f"Answered by {model}")
                 return reply
             log(f"Gemini {model} rejected: {last}")
+        if os.environ.get("GROQ_API_KEY"):
+            reply, why = groq(system, user, schema, check)
+            if why is None:
+                return reply
+            last = f"Groq {why}"
     raise RuntimeError(f"Gemini failed: {last}")
 
 
@@ -355,12 +401,15 @@ def pick_fact(state):
             log(f"  [{f.get('series', '?')}] wow {f['wow']}, personal {f['personal']}, "
                 f"subject {f.get('subject_familiarity', '?')}, known {f['familiarity']}, "
                 f"sure {f['certainty']}, filmable {f['filmable']}: {f['fact']}")
-        fresh = [f for f in facts if good(f) and not already_used(f["fact"], used)]
-        for f in fresh[:4]:
+        fresh = [f for f in facts if good(f) and not already_used(f["fact"], used)][:3]
+        if not fresh:
+            continue
+        # The best few are checked together: two requests in all, instead of two per fact.
+        for f in fresh:
             log(f"Checking: {f['fact']}")
-            checked = verify(f)
-            if checked:
-                return {**f, "fact": checked}
+        for f, ok in zip(fresh, both_checks([f["fact"] for f in fresh])):
+            if ok:
+                return f
     raise RuntimeError("no fact survived the fact check")
 
 
@@ -431,6 +480,33 @@ def shared_rules():
     caption = text[text.index("The caption must read"):text.index("hook_text is")]
     return ("\n\nRules for every picture description. " + pictures.replace("Each scene prompt describes", "Each one describes")
             + "\n" + caption)
+
+
+def checker_verdicts(claims):
+    """Both fact checkers' verdicts on several claims, two requests in all: a list of pairs."""
+    schema = {"type": "OBJECT", "properties": {"verdicts": {"type": "ARRAY", "items": {"type": "STRING"}}},
+              "required": ["verdicts"]}
+    listing = "\n".join(f"{i + 1}. {c}" for i, c in enumerate(claims))
+    prompts = [
+        ("You are a strict fact checker. For each numbered claim answer TRUE only if it is correct as stated "
+         "and well established, FALSE if it is wrong, UNSURE otherwise. Return one verdict per claim, in order.", False),
+        ("You debunk popular 'amazing facts'. Many are myths, exaggerations, or true only in rare cases. For each "
+         "numbered claim decide whether it is literally true for the ordinary, typical case exactly as worded: "
+         "TRUE, FALSE (any part wrong, or a known myth) or UNSURE. Return one verdict per claim, in order.", True),
+    ]
+    out = []
+    for system, backwards in prompts:
+        reply = gemini(system, listing, schema,
+                       lambda r: None if len(r["verdicts"]) == len(claims) else "wrong number of verdicts",
+                       backwards=backwards)
+        got = [v.strip().upper() for v in reply["verdicts"]]
+        log(f"Fact check: {got}")
+        out.append(got)
+    return list(zip(*out))
+
+
+def both_checks(claims):
+    return [a == b == "TRUE" for a, b in checker_verdicts(claims)]
 
 
 def verify_many(claims, expected):
