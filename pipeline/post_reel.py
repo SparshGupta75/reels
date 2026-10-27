@@ -199,7 +199,7 @@ IDEAS_SCHEMA = {
 
 # Backup writer: Groq's free models, used when every Gemini model fails in a round.
 # Needs the GROQ_API_KEY secret; without it this step is skipped.
-def groq(system, user, schema, check):
+def groq(system, user, schema, check, models=None):
     """Returns (reply, None) on success, else (None, reason)."""
     key = os.environ.get("GROQ_API_KEY")
     if not key:
@@ -208,7 +208,7 @@ def groq(system, user, schema, check):
         system += ("\n\nReply with one JSON object only, following this schema (types are written in capitals): "
                    + json.dumps(schema))
     last = "not tried"
-    for model in CFG.get("groq_models", []):
+    for model in CFG.get("groq_models", []) if models is None else models:
         body = {"model": model, "temperature": 1 if schema else 0,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
         if schema:
@@ -258,7 +258,19 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
             time.sleep(min(60 * round_no, 240))
         # The last model in the list is the weakest; creative steps leave it out at first.
         models = CFG["gemini_models"] if weakest else CFG["gemini_models"][:-1]
-        for model in reversed(models[:-1]) if backwards else models:
+        order = list(reversed(models[:-1])) if backwards else list(models)
+        # Groq's strongest model is asked before Google's small "lite" models: it checks facts
+        # more carefully, and Gemini's main models still write first.
+        lite = [m for m in order if "lite" in m]
+        order = [m for m in order if "lite" not in m] + (["groq:strong"] if lite else []) + lite
+        for model in order:
+            if model == "groq:strong":
+                if os.environ.get("GROQ_API_KEY") and CFG.get("groq_models"):
+                    reply, why = groq(system, user, schema, check, CFG["groq_models"][:1])
+                    if why is None:
+                        return reply
+                    last = f"Groq {why}"
+                continue
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
             try:
                 r = requests.post(url, json=body, timeout=180,
@@ -283,7 +295,7 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
                 return reply
             log(f"Gemini {model} rejected: {last}")
         if os.environ.get("GROQ_API_KEY"):
-            reply, why = groq(system, user, schema, check)
+            reply, why = groq(system, user, schema, check, CFG.get("groq_models", [])[1:])
             if why is None:
                 return reply
             last = f"Groq {why}"
