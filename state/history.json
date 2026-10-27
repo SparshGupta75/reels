@@ -637,7 +637,17 @@
       "cover_text": "*NO* WINDOW",
       "media_id": "18176005468455363",
       "permalink": "https://www.instagram.com/reel/De6Q0bQPcGk/",
-      "posted_at": "2026-10-25T08:21:34+00:00"
+      "posted_at": "2026-10-25T08:21:34+00:00",
+      "metrics": {
+        "views": 483,
+        "reach": 339,
+        "likes": 4,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8569
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610261026",
@@ -680,6 +690,20 @@
       "media_id": "18344327671287382",
       "permalink": "https://www.instagram.com/reel/De_Qxk4zsYg/",
       "posted_at": "2026-10-27T06:56:23+00:00"
+    },
+    {
+      "id": "202610271007",
+      "title": "The Hidden Date Stamped on Your Tires",
+      "series": "The Label Decoder",
+      "hook": "Your car tires carry a secret age",
+      "fact": "The DOT code on a tire’s sidewall ends with four digits that represent the week and year the tire was manufactured (e.g., 3219 = 32nd week of 2019).",
+      "narration": "Your car tires carry a secret age. So how do you read it? The last four digits stamped on the side work like a carton date, where two show the week and two show the year, proving that",
+      "caption": "The hidden car tire date code tells you how old your rubber is.\n\nThe DOT code on a tire's sidewall ends with four digits. The first two digits show the week of production, while the final two show the year. So if you see 3219, your tire was made in the 32nd week of 2019. Rubber can degrade over time even if the tread looks untouched, which totally caught me off guard.\n\nSave this for the next time you inspect your car or buy used tires.\n\nFollow for a new one every day.\n\n#carmaintenance #autosafety #tirecare #tiresafety #dotcode #aigenerated",
+      "hook_text": "YOUR TIRES HAVE AN *EXPIRATION* DATE",
+      "cover_text": "*EXPIRATION* DATE",
+      "media_id": "18180237301433380",
+      "permalink": "https://www.instagram.com/reel/De_qbYpKTna/",
+      "posted_at": "2026-10-27T10:40:34+00:00"
     }
   ],
   "pending": null,
