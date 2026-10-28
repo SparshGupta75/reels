@@ -216,15 +216,23 @@ def groq(system, user, schema, check, models=None):
         try:
             r = requests.post("https://api.groq.com/openai/v1/chat/completions", json=body, timeout=180,
                               headers={"Authorization": f"Bearer {key}"})
+            if r.status_code == 400 and schema:
+                # Groq's strict JSON mode often refuses gpt-oss output; ask again without it.
+                log(f"Groq {model}: JSON mode refused ({' '.join(r.text.split())[:120]}); retrying as plain text")
+                body.pop("response_format", None)
+                r = requests.post("https://api.groq.com/openai/v1/chat/completions", json=body, timeout=180,
+                                  headers={"Authorization": f"Bearer {key}"})
         except requests.RequestException as e:
             last = f"{model}: {type(e).__name__}"
             continue
         if r.status_code != 200:
             last = f"{model}: HTTP {r.status_code} {r.text[:200]}"
-            log(f"Groq {model}: HTTP {r.status_code}")
+            log(f"Groq {model}: HTTP {r.status_code} {' '.join(r.text.split())[:150]}")
             continue
         try:
             text = r.json()["choices"][0]["message"]["content"]
+            if schema:
+                text = text[text.index("{"):text.rindex("}") + 1]     # drop any words or fences around the JSON
             reply = json.loads(text) if schema else text.strip()
             last = check(reply) if check else None
         except (KeyError, IndexError, TypeError, ValueError) as e:
@@ -404,7 +412,7 @@ def pick_fact(state):
                 and f["wow"] >= bar["wow"] and f["familiarity"] <= bar["known"]
                 and f["certainty"] >= 9 and f["filmable"] >= bar["filmable"])
 
-    for _ in range(3):
+    for _ in range(5):
         reply = creative(system, user, IDEAS_SCHEMA,
                          lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
         facts = sorted(reply["facts"],
