@@ -661,7 +661,17 @@
       "cover_text": "*EGG* CARTON CODES",
       "media_id": "18251180359312362",
       "permalink": "https://www.instagram.com/reel/De9Ge6_zwI7/",
-      "posted_at": "2026-10-26T10:48:01+00:00"
+      "posted_at": "2026-10-26T10:48:01+00:00",
+      "metrics": {
+        "views": 149,
+        "reach": 120,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4894
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610261513",
@@ -718,6 +728,20 @@
       "media_id": "18061559618535666",
       "permalink": "https://www.instagram.com/reel/DfCRzsptIpw/",
       "posted_at": "2026-10-28T11:03:25+00:00"
+    },
+    {
+      "id": "202610281513",
+      "title": "The Sunscreen Timer",
+      "series": "The Label Decoder",
+      "hook": "Your sunscreen number involves UV light",
+      "fact": "The “SPF” number on sunscreen is the ratio of UV light needed to cause reddening on protected skin versus unprotected skin.",
+      "narration": "Your sunscreen number involves UV light. How does it help you? It measures how much longer you can stay in the sun. SPF 30 can help you stay outside up to thirty times longer before burning, so",
+      "caption": "The secret of the sunscreen SPF number is pretty simple. Most people think a higher number means it is stronger, but it is about the amount of light needed to burn. If your skin starts turning red after a few minutes in the sun, SPF 30 gives you thirty times that much time. That may provide hours of protection before you start to burn. Just remember that water and sweat can wash it off. Save this for the next time you go outside. 🏖️\n\nFollow for a new one every day.\n\n#sunscreen #skincare #spf #summer #beachday #aigenerated",
+      "hook_text": "YOUR SUNSCREEN IS A *TIMER*",
+      "cover_text": "*SUNSCREEN* TIMER",
+      "media_id": "18109807817617148",
+      "permalink": "https://www.instagram.com/reel/DfCxOWrKdAz/",
+      "posted_at": "2026-10-28T15:37:42+00:00"
     }
   ],
   "pending": null,
