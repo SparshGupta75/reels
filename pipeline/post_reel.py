@@ -209,19 +209,26 @@ def groq(system, user, schema, check, models=None):
                    + json.dumps(schema))
     last = "not tried"
     for model in CFG.get("groq_models", []) if models is None else models:
-        body = {"model": model, "temperature": 1 if schema else 0,
+        # max_tokens caps the answer so a request fits the free 8,000-tokens-a-minute limit
+        # (Groq counts the cap, not the real answer). gpt-oss thinks before answering; "low"
+        # keeps that short. Its strict JSON mode kept failing, so it answers as plain text
+        # and the JSON is picked out of the reply below.
+        body = {"model": model, "temperature": 1 if schema else 0, "max_tokens": 3000,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
-        if schema:
+        if "gpt-oss" in model:
+            body["reasoning_effort"] = "low"
+        elif schema:
             body["response_format"] = {"type": "json_object"}
         try:
-            r = requests.post("https://api.groq.com/openai/v1/chat/completions", json=body, timeout=180,
-                              headers={"Authorization": f"Bearer {key}"})
-            if r.status_code == 400 and schema:
-                # Groq's strict JSON mode often refuses gpt-oss output; ask again without it.
-                log(f"Groq {model}: JSON mode refused ({' '.join(r.text.split())[:120]}); retrying as plain text")
-                body.pop("response_format", None)
+            for attempt in range(2):
                 r = requests.post("https://api.groq.com/openai/v1/chat/completions", json=body, timeout=180,
                                   headers={"Authorization": f"Bearer {key}"})
+                if r.status_code != 429 or attempt:
+                    break
+                # Over the per-minute limit: wait as long as Groq asks (at most a minute), once.
+                wait = min(float(r.headers.get("retry-after", 20) or 20), 60)
+                log(f"Groq {model}: busy for {wait:.0f}s, waiting")
+                time.sleep(wait)
         except requests.RequestException as e:
             last = f"{model}: {type(e).__name__}"
             continue
