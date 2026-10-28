@@ -914,6 +914,15 @@ def main():
                              headers={"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"})
             for m in g.json().get("data", []):
                 print("GROQ", m.get("id"))
+            # Groq states its limits in the headers of every answer.
+            for model in CFG.get("groq_models", []):
+                t = requests.post("https://api.groq.com/openai/v1/chat/completions", timeout=60,
+                                  headers={"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"},
+                                  json={"model": model, "messages": [{"role": "user", "content": "Say OK"}]})
+                lim = {k: v for k, v in t.headers.items() if k.lower().startswith("x-ratelimit")}
+                print(f"GROQLIMIT {model}: HTTP {t.status_code} {lim}")
+        if not os.environ.get("TEST_GEMINI"):
+            return    # the Gemini test below spends one of each model's few free requests
         # Then a one-word test of every model in the config, showing Google's full answer on failure.
         for model in CFG["gemini_models"]:
             try:
