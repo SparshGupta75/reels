@@ -392,7 +392,7 @@ def pick_fact(state):
     system = open(os.path.join(ROOT, "pipeline", "ideas_prompt.txt")).read()
     # Every fact ever used is remembered, not just recent ones.
     used = [p.get("fact") or p["title"] for p in state["posts"]]
-    recent = used
+    recent = used[-40:]     # only the latest go in the request (keeps it short); the code still checks all
     user = (f"Topic area: {CFG['niche']}\n"
             f"Series: {', '.join(CFG['series'])}\n"
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
@@ -578,7 +578,7 @@ def write_quiz(state, seed):
         "required": ["title", "statements", "why_true", "myths_corrected", "opening_picture", "pause_picture",
                      "reveal_pictures", "myth_pictures", "caption", "hashtags"]}
     user = (f"Topic area: {CFG['niche']}\nAlready used, do not repeat any of these facts or myths: "
-            f"{'; '.join(used) or 'none'}")
+            f"{'; '.join(used[-40:]) or 'none'}")
 
     def check(q):
         st = q["statements"]
@@ -644,7 +644,7 @@ def write_three(state):
                      "cover_text", "caption", "hashtags"]}
     recent = [p["title"] for p in state["posts"][-20:]]
     user = (f"Topic area: {CFG['niche']}\nSubjects and facts already used, choose a different subject: "
-            f"{'; '.join(used) or 'none'}\nRecent Reels; do not pick any subject they are about: "
+            f"{'; '.join(used[-40:]) or 'none'}\nRecent Reels; do not pick any subject they are about: "
             f"{'; '.join(recent) or 'none'}")
 
     def check(t):
