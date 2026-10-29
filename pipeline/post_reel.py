@@ -427,6 +427,28 @@ def pick_fact(state):
                 and f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8
                 and not repeat_kind(f))
 
+    # The fact bank: hand-written, checked facts in pipeline/fact_bank.json, used in order.
+    # Each still has to pass both fact checkers; a fact they reject is never offered again.
+    # When the bank runs out (or is switched off), the writer brainstorms as before.
+    if CFG.get("fact_bank"):
+        bank = json.load(open(os.path.join(ROOT, "pipeline", "fact_bank.json")))
+        rejected = set(state.get("bank_rejected", []))
+        posted = {p.get("bank_id") for p in state["posts"]}
+        for _ in range(2):
+            fresh = [b for b in bank if b["id"] not in rejected | posted and not already_used(b["fact"], used)
+                     and not repeat_kind({"series": b["kind"]})][:3]
+            if not fresh:
+                log("Fact bank: no unused facts left that fit this week")
+                break
+            for b in fresh:
+                log(f"Checking bank fact {b['id']}: {b['fact']}")
+            for b, ok in zip(fresh, both_checks([b["fact"] for b in fresh])):
+                if ok:
+                    log(f"Fact bank: using {b['id']} ({len(bank) - len(rejected | posted) - 1} left)")
+                    return {"series": b["kind"], "fact": b["fact"], "why": b["why"], "bank_id": b["id"]}
+                rejected.add(b["id"])
+                state["bank_rejected"] = sorted(rejected)
+
     for _ in range(5):
         # Ideas need the strongest models: Google's main ones, else Groq's gpt-oss (never the small ones).
         reply = creative(system, user, IDEAS_SCHEMA,
@@ -496,6 +518,8 @@ def write_script(state):
         log(f"Editing pass skipped ({str(e)[:100]})")
     plan["fact"] = fact["fact"]
     plan["series"] = fact["series"]
+    if fact.get("bank_id"):
+        plan["bank_id"] = fact["bank_id"]
     return plan
 
 
@@ -1025,6 +1049,7 @@ def main():
             "id": job_id,
             "title": plan["title"],
             "series": plan.get("series", ""),
+            "bank_id": plan.get("bank_id"),
             "hook": plan["narration"].split(". ")[0][:120],
             "fact": plan["fact"],
             "narration": plan["narration"],

@@ -16,6 +16,9 @@ posts.update({p["id"]: p for p in mine.get("posts", [])})        # this run's co
 merged = dict(latest)
 merged.update(mine)
 merged["posts"] = sorted(posts.values(), key=lambda p: p.get("posted_at", ""))
+rejected = set(latest.get("bank_rejected", [])) | set(mine.get("bank_rejected", []))
+if rejected:
+    merged["bank_rejected"] = sorted(rejected)
 followers = {f["date"]: f for f in latest.get("followers", []) + mine.get("followers", [])}
 if followers:
     merged["followers"] = [followers[d] for d in sorted(followers)]

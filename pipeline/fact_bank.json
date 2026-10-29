@@ -1,0 +1,566 @@
+[
+ {
+  "id": "b001",
+  "kind": "how fruit ripens",
+  "fact": "Avocados never ripen on the tree; they only start to soften after they are picked.",
+  "why": "The tree itself seems to hold ripening back, so growers can leave avocados hanging for months and pick them when they need them."
+ },
+ {
+  "id": "b002",
+  "kind": "food that can catch fire",
+  "fact": "Big stored piles of pistachios can heat up and catch fire all by themselves.",
+  "why": "Pistachios are full of oil, and in huge piles the oil slowly reacts with air and gives off heat that has nowhere to go, so shipping rules treat bulk pistachios as a fire risk."
+ },
+ {
+  "id": "b003",
+  "kind": "why ice looks cloudy",
+  "fact": "Ice cubes go cloudy in the middle because they freeze from the outside in.",
+  "why": "As the outside freezes first, the tiny air bubbles and minerals in the water get pushed towards the centre, which freezes last and traps them there."
+ },
+ {
+  "id": "b004",
+  "kind": "cooking myth",
+  "fact": "Salting your pasta water barely changes its boiling point: a normal spoonful raises it by less than one degree.",
+  "why": "You would need far more salt than anyone uses to make a real difference; the salt is there for flavour, not to make the water hotter."
+ },
+ {
+  "id": "b005",
+  "kind": "food storage mistake",
+  "fact": "Bread goes stale faster in the fridge than on the kitchen counter.",
+  "why": "Going stale is the starch slowly hardening back into crystals, and that happens fastest at fridge temperature; freezing stops it, but chilling speeds it up."
+ },
+ {
+  "id": "b006",
+  "kind": "food storage mistake",
+  "fact": "Keeping tomatoes in the fridge makes them taste of almost nothing.",
+  "why": "Cold switches off the genes that make tomato flavour, and the loss after about a week in the fridge does not fully come back, so whole tomatoes taste best kept on the counter."
+ },
+ {
+  "id": "b007",
+  "kind": "caffeine surprise",
+  "fact": "A shot of espresso usually has less caffeine than a regular mug of filter coffee.",
+  "why": "Espresso is stronger per sip, but a single shot is tiny, around 60 milligrams of caffeine, while a full mug of filter coffee often has about 90 or more."
+ },
+ {
+  "id": "b008",
+  "kind": "where food heat hides",
+  "fact": "Most of a chilli's heat is in the pale ribs inside it, not in the seeds.",
+  "why": "The burning substance is made in the white ribs that hold the seeds; the seeds only taste hot because they touch them, so cutting out the ribs tames a chilli."
+ },
+ {
+  "id": "b009",
+  "kind": "why your mouth feels cold",
+  "fact": "Mint feels cold in your mouth even though it does not change its temperature at all.",
+  "why": "Menthol in mint switches on the same nerve sensor that normally detects cold, so your brain is told something cold is there."
+ },
+ {
+  "id": "b010",
+  "kind": "why popcorn fails",
+  "fact": "Popcorn kernels that won't pop have usually just dried out.",
+  "why": "A kernel pops when the water sealed inside turns to steam and bursts the shell; old kernels lose that water, so there is no steam to burst them."
+ },
+ {
+  "id": "b011",
+  "kind": "hidden design of a can",
+  "fact": "The bottom of a drink can is curved inwards so the can can be made with less metal.",
+  "why": "The dome shape spreads the pressure of the fizzy drink evenly, so a much thinner sheet of aluminium can hold it without bulging."
+ },
+ {
+  "id": "b012",
+  "kind": "what a nut really is",
+  "fact": "An almond is the seed of a fruit that is a close cousin of the peach.",
+  "why": "Almond trees grow a fuzzy green fruit that looks like an unripe peach; the almond is the stone inside, which is why the two trees are so alike."
+ },
+ {
+  "id": "b013",
+  "kind": "fruit that is a copy",
+  "fact": "Every navel orange is a copy of one single tree that grew in Brazil about two hundred years ago.",
+  "why": "Navel oranges have no seeds, so new trees can only be made by grafting branches from older ones, all going back to that one unusual tree."
+ },
+ {
+  "id": "b014",
+  "kind": "how seedless fruit is made",
+  "fact": "Seedless watermelons are not made in a lab; they come from crossing two kinds of watermelon plant.",
+  "why": "The cross gives a plant whose seeds never develop properly, the same way crossing a horse and a donkey gives a mule that cannot have young."
+ },
+ {
+  "id": "b015",
+  "kind": "vegetables that are one plant",
+  "fact": "Broccoli, cauliflower, cabbage, kale and Brussels sprouts are all the same plant.",
+  "why": "They all come from one wild cabbage that farmers bred in different directions, picking plants with bigger flowers, bigger leaves or bigger buds."
+ },
+ {
+  "id": "b016",
+  "kind": "where a flavour comes from",
+  "fact": "Most vanilla flavour in shop-bought food has never been near a vanilla bean.",
+  "why": "Real vanilla is slow and costly to grow, so most of the flavour is the same main taste chemical made more cheaply from other sources."
+ },
+ {
+  "id": "b017",
+  "kind": "why cheese has holes",
+  "fact": "The holes in Swiss cheese are made by gas from bacteria while the cheese ripens.",
+  "why": "The bacteria give off carbon dioxide, which gathers in bubbles in the soft cheese; tiny specks of hay in the milk help the bubbles start."
+ },
+ {
+  "id": "b018",
+  "kind": "where bubbles come from",
+  "fact": "The bubbles in a fizzy drink almost all start from tiny scratches and specks on the glass.",
+  "why": "The gas needs a rough spot to gather on before it can form a bubble, which is why bubbles rise in steady streams from the same few points."
+ },
+ {
+  "id": "b019",
+  "kind": "why a stain has a ring",
+  "fact": "A coffee spill dries with a dark ring at its edge because the liquid flows outwards as it dries.",
+  "why": "The edge dries fastest, so liquid keeps flowing out to replace it and carries the coffee grains with it, piling them up at the rim."
+ },
+ {
+  "id": "b020",
+  "kind": "why cereal clumps",
+  "fact": "The last pieces of cereal in your bowl drift together and stick to the side on their own.",
+  "why": "Each floating piece bends the milk's surface slightly, and those dents pull towards each other and towards the curved edge of the bowl."
+ },
+ {
+  "id": "b021",
+  "kind": "what you are really buying",
+  "fact": "Most baby carrots are full-size carrots that have been cut and peeled into small pieces.",
+  "why": "Farmers started cutting up wonky carrots that shops would not take, and the small smooth pieces became more popular than whole carrots."
+ },
+ {
+  "id": "b022",
+  "kind": "the stringy bits on fruit",
+  "fact": "The stringy bits on a peeled banana are tubes that fed the banana while it grew.",
+  "why": "They carried water and sugars along the banana from the bunch, a bit like veins, and they are perfectly fine to eat."
+ },
+ {
+  "id": "b023",
+  "kind": "what decides egg colour",
+  "fact": "You can usually guess a hen's egg colour from her earlobes: white earlobes, white eggs; red earlobes, brown eggs.",
+  "why": "Egg colour is set by the hen's breed, and in most breeds the earlobe colour goes with it; brown and white eggs are the same inside."
+ },
+ {
+  "id": "b024",
+  "kind": "hidden design of a bottle cap",
+  "fact": "The metal cap on a glass bottle almost always has exactly 21 ridges.",
+  "why": "Twenty-one became the standard because it grips the bottle neck tightly enough to hold the fizz, and bottling machines are built around it."
+ },
+ {
+  "id": "b025",
+  "kind": "kitchen myth",
+  "fact": "It makes almost no difference which side of the kitchen foil faces the food.",
+  "why": "The shiny and dull sides come from the last step of making it, when two sheets are rolled together; only the outside faces touch the polished rollers."
+ },
+ {
+  "id": "b026",
+  "kind": "caffeine surprise",
+  "fact": "A cup of decaf coffee still has a little caffeine in it.",
+  "why": "Decaffeinating removes about 97 percent of it, so a cup usually still has a few milligrams, roughly a twentieth of a normal cup."
+ },
+ {
+  "id": "b027",
+  "kind": "why a machine has a part",
+  "fact": "A microwave has a turning plate because it heats in hot and cold spots.",
+  "why": "The waves bounce around inside and pile up in some places and cancel out in others, so turning the food moves it through the hot spots."
+ },
+ {
+  "id": "b028",
+  "kind": "hidden design of a door",
+  "fact": "The metal mesh in a microwave door lets you see in but keeps the microwaves trapped inside.",
+  "why": "The holes are far smaller than the microwaves themselves, which are about 12 centimetres long, so the waves cannot fit through, but light easily can."
+ },
+ {
+  "id": "b029",
+  "kind": "why your wifi drops",
+  "fact": "Your Wi-Fi can slow down while the microwave is running because they use the same kind of radio waves.",
+  "why": "Microwave ovens and most Wi-Fi both work at about 2.4 gigahertz, and the tiny bit of energy that leaks from the oven drowns out the signal nearby."
+ },
+ {
+  "id": "b030",
+  "kind": "how to store food better",
+  "fact": "A full freezer stays cold better than an almost empty one.",
+  "why": "Frozen food holds the cold, so when you open the door only a little warm air gets in and the food keeps the temperature steady."
+ },
+ {
+  "id": "b031",
+  "kind": "what a fruit really is",
+  "fact": "Each little seed on the outside of a strawberry is actually a tiny fruit of its own.",
+  "why": "Every one of those specks has a real seed inside; the red flesh is the swollen base of the flower, not the fruit itself."
+ },
+ {
+  "id": "b032",
+  "kind": "what is inside a battery",
+  "fact": "Many 9-volt batteries have six small batteries stacked inside them.",
+  "why": "Each small cell gives 1.5 volts, and six of them joined in a row add up to nine, all wrapped in one rectangular case."
+ },
+ {
+  "id": "b033",
+  "kind": "check it with your phone",
+  "fact": "Your phone camera can see the invisible light from your TV remote.",
+  "why": "Remotes send their signal as infrared light our eyes can't see, but many phone cameras pick it up, so the tip seems to flash when you press a button."
+ },
+ {
+  "id": "b034",
+  "kind": "check it with your phone",
+  "fact": "A drop of water on your phone screen shows that every colour is made of tiny red, green and blue dots.",
+  "why": "The drop acts like a small magnifying glass, and the screen mixes those three colours in different strengths to make every colour you see, even white."
+ },
+ {
+  "id": "b035",
+  "kind": "what is inside a gadget",
+  "fact": "Many smoke alarms contain a tiny speck of radioactive material.",
+  "why": "It gently charges the air inside a small chamber; smoke getting in disturbs that, and the alarm goes off. The amount is far too small to harm you."
+ },
+ {
+  "id": "b036",
+  "kind": "why something moves on its own",
+  "fact": "The shower curtain blows inwards towards you because the spray makes the air inside spin.",
+  "why": "The falling water drags air with it and sets up a swirl, and the low pressure in the middle of that swirl pulls the light curtain in."
+ },
+ {
+  "id": "b037",
+  "kind": "try it at home physics",
+  "fact": "A rubber band gets warm when you stretch it quickly.",
+  "why": "Stretching lines up the long tangled chains inside the rubber, and that releases a little heat you can feel if you touch it to your lip."
+ },
+ {
+  "id": "b038",
+  "kind": "why things feel cold",
+  "fact": "A metal spoon and a wooden spoon in the same room are the same temperature, but the metal one feels colder.",
+  "why": "Metal pulls heat out of your skin much faster than wood, and your skin feels that loss of heat as cold."
+ },
+ {
+  "id": "b039",
+  "kind": "how a receipt is printed",
+  "fact": "Most shop receipts are printed without any ink.",
+  "why": "The paper is coated with a layer that turns dark when heated, and the printer simply heats tiny dots; that is also why old receipts fade."
+ },
+ {
+  "id": "b040",
+  "kind": "label meaning",
+  "fact": "The number inside the recycling triangle on plastic only tells you what kind of plastic it is, not that it can be recycled.",
+  "why": "The code was made to help sort plastics; many of the types it names are not collected in most places, despite the arrows."
+ },
+ {
+  "id": "b041",
+  "kind": "label meaning",
+  "fact": "The dots inside the washing tub symbol on your clothes label tell you the hottest wash it can take.",
+  "why": "One dot means about 30 degrees, two dots about 40, three about 50 and so on, so you can read the temperature without any words."
+ },
+ {
+  "id": "b042",
+  "kind": "hidden extra with new clothes",
+  "fact": "The tiny square of fabric that comes with spare buttons is there so you can test how the fabric washes.",
+  "why": "You can try a stain remover or a hot wash on the swatch first, instead of risking the clothes themselves."
+ },
+ {
+  "id": "b043",
+  "kind": "hidden design of shoes",
+  "fact": "The extra hole at the top of many trainers is for a special knot that stops your heel slipping.",
+  "why": "Threading the lace through it makes a small loop that pulls the shoe tight around your ankle, which runners use to prevent blisters."
+ },
+ {
+  "id": "b044",
+  "kind": "why a screen goes dark",
+  "fact": "Polarised sunglasses can make a phone screen look black when you tilt your head.",
+  "why": "Both the lenses and the screen only let light through in one direction, so when the two directions cross, almost no light gets through."
+ },
+ {
+  "id": "b045",
+  "kind": "why clothes shrink",
+  "fact": "Wool shrinks in a hot wash because its fibres have tiny scales that lock together.",
+  "why": "Heat and rubbing make the scales on each fibre slide over each other and catch, pulling the whole jumper tighter and smaller."
+ },
+ {
+  "id": "b046",
+  "kind": "where it really comes from",
+  "fact": "The fluff in a tumble dryer's filter is made of your clothes slowly wearing away.",
+  "why": "Every tumble rubs loose tiny fibres from the fabric, which is why clothes that are dried in a machine thin out over time."
+ },
+ {
+  "id": "b047",
+  "kind": "hidden design of buttons",
+  "fact": "The little raised bump on the 5 key of keypads lets you find your place without looking.",
+  "why": "It sits in the middle of the number grid, so your finger can feel it and reach every other number around it, which is a big help for blind users."
+ },
+ {
+  "id": "b048",
+  "kind": "home myth",
+  "fact": "Houseplants don't really clean the air in your home.",
+  "why": "The famous claim came from tests in small sealed chambers; in a real room you would need hundreds of plants to match what an open window does."
+ },
+ {
+  "id": "b049",
+  "kind": "why you hear something",
+  "fact": "The ocean sound you hear in a seashell is really the noise of the room around you.",
+  "why": "The curved inside of the shell catches the quiet everyday sounds nearby and makes some of them louder, which sounds like waves."
+ },
+ {
+  "id": "b050",
+  "kind": "why your voice sounds strange",
+  "fact": "Your voice sounds strange on a recording because you normally hear it through your own head.",
+  "why": "When you talk, much of the sound reaches your ears through the bones of your skull, which makes it sound deeper to you than to everyone else."
+ },
+ {
+  "id": "b051",
+  "kind": "hidden design of money",
+  "fact": "The ridges on the edge of some coins were first added to stop people shaving off the metal.",
+  "why": "When coins were made of real silver and gold, people trimmed the edges to keep the metal; ridges made any trimming easy to spot."
+ },
+ {
+  "id": "b052",
+  "kind": "label meaning",
+  "fact": "The last digit of your bank card number is a check digit that catches typing mistakes.",
+  "why": "It is worked out from all the other digits with a simple formula, so if you mistype one number, a website can tell straight away."
+ },
+ {
+  "id": "b053",
+  "kind": "what your phone can do offline",
+  "fact": "Your phone's GPS works with no internet or mobile signal at all.",
+  "why": "GPS only listens to signals from satellites, which are free and everywhere; the internet is only needed to download the map itself."
+ },
+ {
+  "id": "b054",
+  "kind": "why your phone does that",
+  "fact": "Your phone charges slower near the end on purpose, to protect the battery.",
+  "why": "Pushing charge in quickly when the battery is almost full wears it out, so phones charge fast at first and slow down as they get near 100 percent."
+ },
+ {
+  "id": "b055",
+  "kind": "how your camera cheats",
+  "fact": "Your phone's night mode takes many photos in a row and blends them into one.",
+  "why": "Each quick photo is dark and grainy, but combining them cancels out the grain and adds up the light, which is why you have to hold still."
+ },
+ {
+  "id": "b056",
+  "kind": "why something is always the same",
+  "fact": "On upright traffic lights, red is always at the top so colour-blind drivers can still tell which light is on.",
+  "why": "Keeping the same order everywhere means drivers can read the signal from its position, not only its colour."
+ },
+ {
+  "id": "b057",
+  "kind": "why a mirror is different",
+  "fact": "The passenger-side car mirror is curved, which is why things in it look further away than they are.",
+  "why": "The outward curve squeezes a wider view into the small mirror, but it also makes every car in it look smaller and so further away."
+ },
+ {
+  "id": "b058",
+  "kind": "weather that seems impossible",
+  "fact": "Your car can be covered in frost even on a night when the air never drops below freezing.",
+  "why": "On clear nights the car's roof loses heat to the open sky faster than the air does, so the metal gets colder than the air around it."
+ },
+ {
+  "id": "b059",
+  "kind": "why something looks white",
+  "fact": "Snow looks white even though ice is clear.",
+  "why": "Snow is millions of tiny ice crystals with air between them, and light bounces off all their surfaces in every direction, which looks white."
+ },
+ {
+  "id": "b060",
+  "kind": "what a rainbow really is",
+  "fact": "Every rainbow is actually a full circle; the ground just hides the bottom half.",
+  "why": "Rainbows form at the same angle all around the point opposite the Sun, so from a plane or a tall building you can sometimes see the whole ring."
+ },
+ {
+  "id": "b061",
+  "kind": "why leaves change colour",
+  "fact": "The yellow in autumn leaves was in the leaves all summer, hidden under the green.",
+  "why": "When the tree stops making the green colouring before winter, the yellow and orange that were always there finally show through."
+ },
+ {
+  "id": "b062",
+  "kind": "what a smell really is",
+  "fact": "The smell of freshly cut grass is the grass sending out an emergency signal.",
+  "why": "Damaged grass releases a burst of chemicals that help seal its wounds and can attract insects that eat the pests attacking it."
+ },
+ {
+  "id": "b063",
+  "kind": "your body changes daily",
+  "fact": "You are about a centimetre taller when you wake up than when you go to bed.",
+  "why": "During the day the soft discs between the bones of your back get squashed by gravity, and they spread back out while you lie down at night."
+ },
+ {
+  "id": "b064",
+  "kind": "why ice cream hurts",
+  "fact": "Brain freeze is caused by cold hitting the roof of your mouth, and pressing your tongue there can stop it.",
+  "why": "The cold makes blood vessels there tighten and then quickly widen, which nerves report as a headache; your warm tongue helps them settle."
+ },
+ {
+  "id": "b065",
+  "kind": "why alarms are loud",
+  "fact": "In deep sleep your nose is very unlikely to wake you, even to a strong smell like smoke.",
+  "why": "Tests on sleeping people found smells rarely woke them while sounds did, which is why a smoke alarm has to be loud rather than relying on you smelling smoke."
+ },
+ {
+  "id": "b066",
+  "kind": "brushing teeth mistake",
+  "fact": "Rinsing your mouth with water right after brushing washes away most of the toothpaste's protection.",
+  "why": "The fluoride works best if it stays on your teeth, so dentists advise spitting out the extra toothpaste and not rinsing."
+ },
+ {
+  "id": "b067",
+  "kind": "how soap works",
+  "fact": "Soap mostly doesn't kill germs; it lifts them off your skin so water can wash them away.",
+  "why": "One end of each soap molecule grabs oil and dirt and the other grabs water, so germs stuck in the oil on your hands get carried off down the drain."
+ },
+ {
+  "id": "b068",
+  "kind": "body myth",
+  "fact": "Shaving doesn't make hair grow back thicker or darker.",
+  "why": "A razor cuts each hair straight across, leaving a blunt tip that feels coarser as it grows; the hair itself is unchanged."
+ },
+ {
+  "id": "b069",
+  "kind": "parenting myth",
+  "fact": "Sugar doesn't actually make children hyperactive.",
+  "why": "In careful tests where neither parents nor children knew who had sugar, behaviour was the same; parents who thought their child had sugar rated them as more hyper."
+ },
+ {
+  "id": "b070",
+  "kind": "body myth",
+  "fact": "You don't lose most of your body heat through your head.",
+  "why": "Your head loses heat at about the same rate as any other uncovered part of your body; the myth came from an old test where only the head was left bare."
+ },
+ {
+  "id": "b071",
+  "kind": "what your cat is saying",
+  "fact": "Adult cats hardly ever meow at each other; meowing is mostly for humans.",
+  "why": "Kittens meow to their mothers, but grown cats mostly use body language and smells with each other, and keep meowing for the people who feed them."
+ },
+ {
+  "id": "b072",
+  "kind": "what your cat is saying",
+  "fact": "When your cat slowly blinks at you, it is a friendly sign, and blinking slowly back makes it more likely to come to you.",
+  "why": "A study found cats blinked back at owners who slowly blinked at them and were more likely to approach strangers who did the same."
+ },
+ {
+  "id": "b073",
+  "kind": "how pets drink",
+  "fact": "A cat drinks by lifting a little column of water with the tip of its tongue, not by scooping.",
+  "why": "The tongue just touches the surface and pulls up fast, and the cat snaps its mouth shut on the water before the column falls back, about four times a second."
+ },
+ {
+  "id": "b074",
+  "kind": "how pets drink",
+  "fact": "A dog drinks by curling the tip of its tongue backwards into a scoop.",
+  "why": "It slaps the curled tongue into the water and pulls it back quickly, throwing a column of water up into its mouth, which is why dogs are such messy drinkers."
+ },
+ {
+  "id": "b075",
+  "kind": "why your dog does that",
+  "fact": "Dogs kick the ground after pooping to spread their scent from glands in their paws.",
+  "why": "The pads of their feet have scent glands, so the scratching adds an extra smell mark, and the scuffed ground works as a visible sign too."
+ },
+ {
+  "id": "b076",
+  "kind": "hidden design of a dog's nose",
+  "fact": "The slits on the sides of a dog's nose let it breathe out without blowing away the smells it is sniffing.",
+  "why": "Air comes in through the front and goes out through the side slits, so a dog can keep sniffing almost without a break."
+ },
+ {
+  "id": "b077",
+  "kind": "hidden design of a cat's tongue",
+  "fact": "The tiny hooks on a cat's tongue are hollow, and they soak up saliva to clean right down to the skin.",
+  "why": "Researchers found each little spine has a scoop-shaped tip that wicks spit deep into the fur when the cat grooms."
+ },
+ {
+  "id": "b078",
+  "kind": "how pets keep cool",
+  "fact": "Dogs sweat mostly through the pads of their paws.",
+  "why": "They have very few sweat glands that help them cool down anywhere else, so they rely mainly on panting, which is why you can see damp paw prints on hot days."
+ },
+ {
+  "id": "b079",
+  "kind": "pet you can identify",
+  "fact": "Every dog's nose print is unique, like a human fingerprint.",
+  "why": "The pattern of ridges and bumps on the nose is different on every dog, and some services have used nose prints to identify lost pets."
+ },
+ {
+  "id": "b080",
+  "kind": "food myth with a story",
+  "fact": "The idea that carrots help you see in the dark was spread as a wartime cover story.",
+  "why": "In the Second World War the British said pilots ate carrots to hide that they were really using new radar; carrots only help if you lack vitamin A."
+ },
+ {
+  "id": "b081",
+  "kind": "hidden switch at home",
+  "fact": "Many ceiling fans have a small switch that reverses them, which helps keep a room warmer in winter.",
+  "why": "Spinning the other way gently pushes the warm air that collects near the ceiling back down into the room."
+ },
+ {
+  "id": "b082",
+  "kind": "food storage mistake",
+  "fact": "The fridge door is the warmest part of the fridge, so it is the worst place to keep milk.",
+  "why": "The door warms up every time you open it, so milk keeps longer on a shelf inside, while the door suits sauces and drinks."
+ },
+ {
+  "id": "b083",
+  "kind": "hidden design of a bottle",
+  "fact": "Fizzy drink bottles have bumpy, flower-shaped bottoms because a flat bottom would bulge out.",
+  "why": "The gas pushes hard on the plastic, and the little feet spread that push out so the bottle can still stand up; still water bottles can be flat."
+ },
+ {
+  "id": "b084",
+  "kind": "hidden design of a car",
+  "fact": "The black dotted band around a car windscreen protects the glue that holds the glass in.",
+  "why": "The black edge shields the glue from sunlight, which would weaken it, and the dots fade it out gently so the glass doesn't heat unevenly."
+ },
+ {
+  "id": "b085",
+  "kind": "why planes do that",
+  "fact": "Planes dim the cabin lights for a night landing so your eyes are ready if you need to get out in the dark.",
+  "why": "Your eyes take a while to adjust to darkness, so dimming early means passengers could see straight away in an emergency."
+ },
+ {
+  "id": "b086",
+  "kind": "hidden safety feature",
+  "fact": "The brushes along the sides of an escalator are there to keep your shoes away from the gap.",
+  "why": "Shoes and loose clothes can get caught between the moving steps and the side panel, and the bristles gently nudge them away."
+ },
+ {
+  "id": "b087",
+  "kind": "hidden safety feature",
+  "fact": "The little button in the middle of a jar lid tells you whether the jar has been opened.",
+  "why": "The jar is sealed with low pressure inside, which pulls the button down; if it pops up or clicks, air got in and the seal was broken."
+ },
+ {
+  "id": "b088",
+  "kind": "hidden safety feature",
+  "fact": "The tiny hole in many pen lids is there so you can still breathe if a child swallows one.",
+  "why": "Pen makers added the hole so that air can still pass through a lid stuck in the throat, giving time to get help."
+ },
+ {
+  "id": "b089",
+  "kind": "why glass breaks that way",
+  "fact": "A car's side windows shatter into tiny cubes on purpose, while the windscreen cracks but stays in one piece.",
+  "why": "Side windows are toughened glass that crumbles into blunt pieces, and the windscreen is two layers glued to a plastic sheet so it holds together."
+ },
+ {
+  "id": "b090",
+  "kind": "how a machine knows",
+  "fact": "A kettle knows the water has boiled because a little metal disc bends when the steam hits it.",
+  "why": "The disc is made of two metals that grow by different amounts when heated, so hot steam makes it snap into a new shape and flick the switch off."
+ },
+ {
+  "id": "b091",
+  "kind": "why something has colours",
+  "fact": "The colours on a soap bubble show how thick its skin is at each spot.",
+  "why": "Light bounces off the inside and outside of the very thin film, and depending on the thickness some colours cancel out and others get brighter."
+ },
+ {
+  "id": "b092",
+  "kind": "kitchen trick that works",
+  "fact": "Chilling an onion before you cut it means fewer tears.",
+  "why": "Cutting an onion sets off a reaction that releases a gas that stings your eyes, and cold slows that reaction down."
+ },
+ {
+  "id": "b093",
+  "kind": "why food tastes different",
+  "fact": "Melted ice cream tastes much sweeter than frozen ice cream.",
+  "why": "Your tongue senses sweetness less well when it is very cold, so ice cream is made extra sweet to taste right while frozen."
+ },
+ {
+  "id": "b094",
+  "kind": "kitchen trick that works",
+  "fact": "Garlic only makes its strong flavour once it is cut or crushed.",
+  "why": "A whole clove keeps two ingredients apart in different cells; crushing it mixes them, and they react to make the sharp garlic taste."
+ }
+]
