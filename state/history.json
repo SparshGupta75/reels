@@ -709,7 +709,17 @@
       "cover_text": "*PEANUT* BUTTER DATE",
       "media_id": "18344327671287382",
       "permalink": "https://www.instagram.com/reel/De_Qxk4zsYg/",
-      "posted_at": "2026-10-27T06:56:23+00:00"
+      "posted_at": "2026-10-27T06:56:23+00:00",
+      "metrics": {
+        "views": 219,
+        "reach": 183,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4875
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610271007",
