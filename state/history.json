@@ -685,7 +685,17 @@
       "cover_text": "*MILK* DATE",
       "media_id": "18496794832105724",
       "permalink": "https://www.instagram.com/reel/De9oPiLSp10/",
-      "posted_at": "2026-10-26T15:43:18+00:00"
+      "posted_at": "2026-10-26T15:43:18+00:00",
+      "metrics": {
+        "views": 182,
+        "reach": 144,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5173
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610270627",
@@ -742,6 +752,20 @@
       "media_id": "18109807817617148",
       "permalink": "https://www.instagram.com/reel/DfCxOWrKdAz/",
       "posted_at": "2026-10-28T15:37:42+00:00"
+    },
+    {
+      "id": "202610290627",
+      "title": "Paper Towel Egg Lift",
+      "series": "That Shouldn't Work",
+      "hook": "A paper towel can lift a raw egg",
+      "fact": "A paper towel can lift a raw egg without breaking it.",
+      "narration": "A paper towel can lift a raw egg. So why does it work? The sheet wraps around like a tiny hammock, sharing the weight so no single spot feels enough push to break the shell, which is why",
+      "caption": "A paper towel lifting a raw egg without breaking it. I tried this experiment expecting a mess, but it worked. When you hold an egg with just your fingers, force hits a few spots and can crack the shell. But the towel curves around the egg and spreads that weight over a large area. That keeps the force per square centimetre below what it takes to break it. Send this to the person who loves doing science tricks! 🥚\n\nFollow for a new one every day.\n\n#kitchenhacks #physics #papertowel #eggtrick #kitchenscience #aigenerated",
+      "hook_text": "A PAPER TOWEL *LIFTS* EGGS",
+      "cover_text": "*PAPER* TOWEL TRICK",
+      "media_id": "18098789960650438",
+      "permalink": "https://www.instagram.com/reel/DfEZzNqhEOa/",
+      "posted_at": "2026-10-29T06:51:58+00:00"
     }
   ],
   "pending": null,
