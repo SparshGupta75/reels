@@ -179,7 +179,7 @@ IDEAS_SCHEMA = {
     "properties": {"facts": {"type": "ARRAY", "items": {
         "type": "OBJECT",
         "properties": {
-            "series": {"type": "STRING", "enum": CFG["series"]},
+            "series": {"type": "STRING"},     # the kind of fact, in a few words
             "fact": {"type": "STRING"},
             "why": {"type": "STRING"},
             "subject_familiarity": {"type": "INTEGER"},
@@ -253,7 +253,8 @@ def groq(system, user, schema, check, models=None):
     return None, last
 
 
-def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True, backwards=False):
+def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakest=True, backwards=False,
+           strong_only=False):
     """Ask Gemini. With a schema the reply is parsed JSON, otherwise plain text.
     check(reply) returns an error string to retry, or None. search=True lets it use Google."""
     body = {
@@ -277,7 +278,8 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
         # Groq's strongest model is asked before Google's small "lite" models: it checks facts
         # more carefully, and Gemini's main models still write first.
         lite = [m for m in order if "lite" in m]
-        order = [m for m in order if "lite" not in m] + (["groq:strong"] if lite else []) + lite
+        order = [m for m in order if "lite" not in m] + (["groq:strong"] if lite or strong_only else []) + \
+            ([] if strong_only else lite)
         for model in order:
             if model == "groq:strong":
                 if os.environ.get("GROQ_API_KEY") and CFG.get("groq_models"):
@@ -310,19 +312,22 @@ def gemini(system, user, schema=None, check=None, search=False, rounds=6, weakes
                 return reply
             log(f"Gemini {model} rejected: {last}")
         if os.environ.get("GROQ_API_KEY"):
-            reply, why = groq(system, user, schema, check, CFG.get("groq_models", [])[1:])
+            reply, why = groq(system, user, schema, check,
+                              [m for m in CFG.get("groq_models", [])[1:] if not strong_only or "gpt-oss" in m])
             if why is None:
                 return reply
             last = f"Groq {why}"
     raise RuntimeError(f"Gemini failed: {last}")
 
 
-def creative(system, user, schema, check):
+def creative(system, user, schema, check, strong_only=False):
     """For the steps where quality matters most: wait ~25 minutes for a strong model
     before settling for the weakest one."""
     try:
-        return gemini(system, user, schema, check, weakest=False)
+        return gemini(system, user, schema, check, weakest=False, strong_only=strong_only)
     except RuntimeError as e:
+        if strong_only:
+            raise
         log(f"Strong models unavailable ({str(e)[:80]}); using the backup model")
         return gemini(system, user, schema, check, rounds=4)
 
@@ -400,28 +405,33 @@ def pick_fact(state):
     # Every fact ever used is remembered, not just recent ones.
     used = [p.get("fact") or p["title"] for p in state["posts"]]
     recent = used[-40:]     # only the latest go in the request (keeps it short); the code still checks all
+    # No two Reels of the same kind of fact within a week (three date-on-a-label facts in a row
+    # was what prompted this). A kind is a few words; sharing one meaningful word counts as the same.
+    week_ago = now() - dt.timedelta(days=7)
+    this_week = [p for p in state["posts"] if dt.datetime.fromisoformat(p["posted_at"]) > week_ago]
+    kinds = [p.get("series") or p["title"] for p in this_week]
+    generic = {"hidden", "secret", "everyday", "thing", "detail", "why", "the", "fact", "feature"}
+    taken = set().union(*[keywords(k) for k in kinds]) - generic if kinds else set()
     user = (f"Topic area: {CFG['niche']}\n"
-            f"Series: {', '.join(CFG['series'])}\n"
+            f"Kinds of fact used this week, do not use these kinds or subjects again: "
+            f"{'; '.join(kinds + [p['title'] for p in this_week]) or 'none'}\n"
             f"Already used, do not repeat: {'; '.join(recent) or 'none'}" + feedback_text(state))
 
-    # Each series has its own bar. Familiarity is about the subject (the higher the better);
-    # "familiarity" is about the detail (the lower the better).
-    BARS = {
-        "The Hidden Feature": dict(subject=8, personal=9, wow=8, known=6, filmable=8),
-        "The Label Decoder": dict(subject=8, personal=9, wow=7, known=5, filmable=7),
-        "Why Is There No...": dict(subject=8, personal=7, wow=8, known=4, filmable=8),
-        "That Shouldn't Work": dict(subject=8, personal=8, wow=8, known=4, filmable=8),
-    }
+    def repeat_kind(f):
+        return bool((keywords(f.get("series", "")) - generic) & taken)
 
+    # Familiarity is about the subject (the higher the better); "familiarity" is about the
+    # detail (the lower the better). One strict bar for every kind of fact.
     def good(f):
-        bar = BARS.get(f.get("series"), BARS["The Hidden Feature"])
-        return (f.get("subject_familiarity", 0) >= bar["subject"] and f["personal"] >= bar["personal"]
-                and f["wow"] >= bar["wow"] and f["familiarity"] <= bar["known"]
-                and f["certainty"] >= 9 and f["filmable"] >= bar["filmable"])
+        return (f.get("subject_familiarity", 0) >= 8 and f["personal"] >= 8 and f["wow"] >= 8
+                and f["familiarity"] <= 3 and f["certainty"] >= 9 and f["filmable"] >= 8
+                and not repeat_kind(f))
 
     for _ in range(5):
+        # Ideas need the strongest models: Google's main ones, else Groq's gpt-oss (never the small ones).
         reply = creative(system, user, IDEAS_SCHEMA,
-                         lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings")
+                         lambda r: None if any(good(f) for f in r["facts"]) else "no fact passed the ratings",
+                         strong_only=True)
         facts = sorted(reply["facts"],
                        key=lambda f: (-f["wow"] - f["personal"] - f.get("subject_familiarity", 0), f["familiarity"]))
         for f in facts:
