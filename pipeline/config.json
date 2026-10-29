@@ -6,7 +6,7 @@
     "Why Is There No...",
     "That Shouldn't Work"
   ],
-  "scenes": 10,
+  "scenes": 8,
   "quality": "fast",
   "voice": "chatterbox",
   "kaggle_user": "sparshgupta75",
@@ -24,8 +24,8 @@
   "min_posts_for_feedback": 6,
   "render_timeout_minutes": 270,
   "narration_words": [
-    55,
-    65
+    40,
+    48
   ],
   "share_to_story": true,
   "caption_follow_line": "Follow for a new one every day.",
