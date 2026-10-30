@@ -1026,7 +1026,9 @@ def main():
         job_id = now().strftime("%Y%m%d%H%M")
         # The growth plan is a single-fact Reel every slot; quiz and three-things stay
         # available by hand (--format quiz / three) until a series proves itself.
-        fmt = "regular" if args.format == "auto" else args.format
+        # Evening slot: "three things" (Three Things About Lemons was the best Reel by far);
+        # the other slots are regular Reels from the fact bank.
+        fmt = ("three" if ist_slot(now())[1] == 2 else "regular") if args.format == "auto" else args.format
         log(f"Format: {fmt}")
         try:
             if fmt == "quiz":
