@@ -733,7 +733,17 @@
       "cover_text": "*EXPIRATION* DATE",
       "media_id": "18180237301433380",
       "permalink": "https://www.instagram.com/reel/De_qbYpKTna/",
-      "posted_at": "2026-10-27T10:40:34+00:00"
+      "posted_at": "2026-10-27T10:40:34+00:00",
+      "metrics": {
+        "views": 191,
+        "reach": 165,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 3819
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610281026",
@@ -791,6 +801,21 @@
       "media_id": "18573558358073194",
       "permalink": "https://www.instagram.com/reel/DfEsgvKpg_k/",
       "posted_at": "2026-10-29T09:35:04+00:00"
+    },
+    {
+      "id": "202610300627",
+      "title": "Why Pistachios Catch Fire",
+      "series": "food that can catch fire",
+      "bank_id": "b002",
+      "hook": "Giant piles of pistachios can catch fire",
+      "fact": "Big stored piles of pistachios can heat up and catch fire all by themselves.",
+      "narration": "Giant piles of pistachios can catch fire. Why does that even happen? They are full of oils. Stacked in huge mounds, the oil reacts with air and gives off heat that has nowhere to go. This is why shipping rules treat bulk pistachios as a fire risk.",
+      "caption": "Pistachios catching fire in storage is a real hazard. Pistachio nuts are full of oil. When huge amounts are piled together, the oil reacts with air and slowly warms up. Because the heat has nowhere to go, the temperature can keep climbing until it can ignite. Shipping rules treat bulk pistachios as a fire risk for this reason. Send this to the person who loves pistachios.\n\nFollow for a new one every day.\n\n#foodscience #cargoshipping #pistachios #spontaneouscombustion #shippinghazards #aigenerated",
+      "hook_text": "PISTACHIOS CAN *CATCH* FIRE",
+      "cover_text": "*PISTACHIO* FIRES",
+      "media_id": "17954290629298346",
+      "permalink": "https://www.instagram.com/reel/DfG-qFoOuv6/",
+      "posted_at": "2026-10-30T06:52:02+00:00"
     }
   ],
   "pending": null,
