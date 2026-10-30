@@ -757,7 +757,17 @@
       "cover_text": "*POCKET* RIVETS",
       "media_id": "18061559618535666",
       "permalink": "https://www.instagram.com/reel/DfCRzsptIpw/",
-      "posted_at": "2026-10-28T11:03:25+00:00"
+      "posted_at": "2026-10-28T11:03:25+00:00",
+      "metrics": {
+        "views": 224,
+        "reach": 189,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5210
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610281513",
@@ -831,6 +841,21 @@
       "media_id": "18176947777460387",
       "permalink": "https://www.instagram.com/reel/DfHa7FsqAo3/",
       "posted_at": "2026-10-30T10:59:04+00:00"
+    },
+    {
+      "id": "202610301513",
+      "title": "Banana Secrets",
+      "series": "Three",
+      "bank_id": "t01",
+      "hook": "Can you tell what this is? It's a banana, and here are three things you didn't know about it",
+      "fact": "banana: Bananas curve because they grow upwards, turning towards the sunlight as they get bigger. / A banana plant is not a tree; its trunk is made of tightly rolled leaves. / Most bananas sold in shops are one variety, grown as copies of the same plant.",
+      "narration": "Can you tell what this is? It's a banana, and here are three things you didn't know about it. One. Bananas curve because they grow upwards, turning towards the sunlight as they get bigger. Two. A banana plant is not a tree; its trunk is made of tightly rolled leaves. Three. Most bananas sold in shops are one variety, grown as copies of the same plant. Which one surprised you most?",
+      "caption": "The reason behind a banana curve is a process called negative geotropism.\n\nInstead of growing down toward gravity, the fruit grows upward toward sunlight. That upward reach as the bunch gets heavier forms the signature curved shape. Also, almost all store bananas are Cavendish clones, meaning they are genetic copies. I always assumed the stalk was solid wood.\n\nSave this for the next time you eat a banana.\n\nFollow for a new one every day.\n\n#banana #fruit #bananacurve #cavendish #botanyfacts #aigenerated",
+      "hook_text": "",
+      "cover_text": "*BANANA* SECRETS",
+      "media_id": "17893655586447910",
+      "permalink": "https://www.instagram.com/reel/DfH7EpfJPHV/",
+      "posted_at": "2026-10-30T15:40:24+00:00"
     }
   ],
   "pending": null,
