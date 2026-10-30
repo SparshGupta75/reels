@@ -1,6 +1,6 @@
 You write a "three things you didn't know" Reel for a narrated Instagram Reel built from AI-generated photographs.
 
-Choose ONE subject that the viewer meets in their own daily life and has seen many photographs of: a food or drink, a household object, a gadget, a cat or dog, a common houseplant. Not a wild or exotic animal. subject is its name with "a" or "an" in front, in lower case, for example "a honeybee".
+If the subject and facts are given to you, use them exactly and write only the rest. Otherwise: choose ONE subject that the viewer meets in their own daily life and has seen many photographs of: a food or drink, a household object, a gadget, a cat or dog, a common houseplant. Not a wild or exotic animal. subject is its name with "a" or "an" in front, in lower case, for example "a honeybee".
 
 facts: exactly three separate surprising facts about that subject. Each is one plain sentence of at most 18 words, in everyday words with no technical terms. Each must be true, well established, and not famous trivia. Do not start them with a number; the numbers are added for you.
 

@@ -667,8 +667,34 @@ def write_quiz(state, seed):
     raise RuntimeError("no quiz passed the fact check")
 
 
+def pick_three_bank(state):
+    """The next subject from pipeline/three_bank.json that is unused and passes both fact checkers."""
+    bank = json.load(open(os.path.join(ROOT, "pipeline", "three_bank.json")))
+    rejected = set(state.get("bank_rejected", []))
+    posted = {p.get("bank_id") for p in state["posts"]}
+    recent = " ".join(p["title"].lower() for p in state["posts"][-5:])
+    tries = 0
+    for b in bank:
+        name = b["subject"].split(" ", 1)[-1] if b["subject"].startswith(("a ", "an ")) else b["subject"]
+        if b["id"] in rejected | posted or name in recent:
+            continue
+        if tries == 3:
+            break
+        tries += 1
+        log(f"Checking three-things bank {b['id']}: {b['subject']}")
+        problem = verify_many([f"About {b['subject']}: {f}" for f in b["facts"]], ["TRUE"] * 3)
+        if not problem:
+            return b
+        log(f"Rejected: {problem}")
+        rejected.add(b["id"])
+        state["bank_rejected"] = sorted(rejected)
+    log("Three-things bank: nothing usable; the writer will choose its own")
+    return None
+
+
 def write_three(state):
     used = [p.get("fact") or p["title"] for p in state["posts"]]
+    entry = pick_three_bank(state) if CFG.get("fact_bank") else None
     system = open(os.path.join(ROOT, "pipeline", "three_prompt.txt")).read() + shared_rules()
     schema = {"type": "OBJECT", "properties": {
         "title": {"type": "STRING"}, "subject": {"type": "STRING"},
@@ -687,10 +713,18 @@ def write_three(state):
     user = (f"Topic area: {CFG['niche']}\nSubjects and facts already used, choose a different subject: "
             f"{'; '.join(used[-40:]) or 'none'}\nRecent Reels; do not pick any subject they are about: "
             f"{'; '.join(recent) or 'none'}")
+    if entry:
+        user = (f"The subject and facts are given. Subject: {entry['subject']}\nFacts, in this order:\n"
+                + "\n".join(f"{i}. {f}" for i, f in enumerate(entry["facts"], 1))
+                + "\nWrite everything else. In the caption add nothing you are not certain is true.")
 
     def check(t):
         if len(t["facts"]) != 3 or any(len(f["pictures"]) < 1 for f in t["facts"]):
             return "need exactly three facts, each with pictures"
+        if entry:     # bank facts go out word for word, whatever the writer returned
+            t["subject"] = entry["subject"]
+            for f, text in zip(t["facts"], entry["facts"]):
+                f["text"] = text
         if any(len(f["text"].split()) > 22 for f in t["facts"]):
             return "a fact is too long"
         words = " ".join(f["text"] for f in t["facts"])
@@ -698,7 +732,7 @@ def write_three(state):
             return f"science-class words: {', '.join(plain(words))}"
         if len(t["caption"].strip()) < 150 or t["caption"].lower().lstrip().startswith("did you know"):
             return "caption breaks the rules"
-        if any(already_used(f["text"], used) for f in t["facts"]):
+        if not entry and any(already_used(f["text"], used) for f in t["facts"]):
             return "one of the facts was used before"
         return None
 
@@ -708,10 +742,11 @@ def write_three(state):
         name = subject.split(" ", 1)[-1]
         for f in t["facts"]:
             log(f"  {f['text']}")
-        problem = verify_many([f"About {subject}: {f['text']}" for f in t["facts"]], ["TRUE"] * 3)
-        if problem:
-            log(f"Rejected: {problem}")
-            continue
+        if not entry:
+            problem = verify_many([f"About {subject}: {f['text']}" for f in t["facts"]], ["TRUE"] * 3)
+            if problem:
+                log(f"Rejected: {problem}")
+                continue
         segments = [
             {"say": "Can you tell what this is?", "header": "WHAT IS *THIS?*", "pics": [t["mystery_picture"]]},
             {"say": f"It's {subject}, and here are three things you didn't know about it.", "chime": True,
@@ -728,7 +763,8 @@ def write_three(state):
         segments.append({"say": "Which one surprised you most?", "pics": [t["closing_picture"]]})
         return {"title": t["title"], "caption": t["caption"], "hashtags": t["hashtags"], "segments": segments,
                 "fact": f"{name}: " + " / ".join(f["text"] for f in t["facts"]),
-                "hook_text": "", "cover_text": t["cover_text"], "mood": "curious"}
+                "hook_text": "", "cover_text": t["cover_text"], "mood": "curious",
+                **({"bank_id": entry["id"]} if entry else {})}
     raise RuntimeError("no three-things script passed the fact check")
 
 
