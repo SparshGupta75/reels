@@ -781,7 +781,17 @@
       "cover_text": "*SUNSCREEN* TIMER",
       "media_id": "18109807817617148",
       "permalink": "https://www.instagram.com/reel/DfCxOWrKdAz/",
-      "posted_at": "2026-10-28T15:37:42+00:00"
+      "posted_at": "2026-10-28T15:37:42+00:00",
+      "metrics": {
+        "views": 73,
+        "reach": 55,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4001
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610290627",
@@ -856,6 +866,21 @@
       "media_id": "17893655586447910",
       "permalink": "https://www.instagram.com/reel/DfH7EpfJPHV/",
       "posted_at": "2026-10-30T15:40:24+00:00"
+    },
+    {
+      "id": "202610310627",
+      "title": "The Pasta Water Salt Myth",
+      "series": "cooking myth",
+      "bank_id": "b004",
+      "hook": "Salting pasta water barely makes it boil faster",
+      "fact": "Salting your pasta water barely changes its boiling point: a normal spoonful raises it by less than one degree.",
+      "narration": "Salting pasta water barely makes it boil faster. So why do you add it? A normal spoonful raises the boiling point by less than one degree, barely changing your cooking time. You add it for flavour, letting noodles absorb seasoning, even if people forget that",
+      "caption": "Salting pasta water will barely make it boil faster. I used to dump salt into water thinking it would save time, but the math just does not work out. A normal spoonful of salt raises the boiling point by less than one degree. To make a real difference, you would need far more salt than anyone uses. The reason to salt the water is for flavour, not to make the water hotter. Send this to the person who often rushes dinner.\n\nFollow for a new one every day.\n\n#cooking #foodscience #pastawater #kitchenmyths #cookingtips #aigenerated",
+      "hook_text": "SALT WON'T *BOIL* WATER FASTER",
+      "cover_text": "*BOILING* WATER MYTH",
+      "media_id": "17998171284101464",
+      "permalink": "https://www.instagram.com/reel/DfJkApYzgQj/",
+      "posted_at": "2026-10-31T06:56:53+00:00"
     }
   ],
   "pending": null,
