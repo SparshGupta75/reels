@@ -805,7 +805,17 @@
       "cover_text": "*PAPER* TOWEL TRICK",
       "media_id": "18098789960650438",
       "permalink": "https://www.instagram.com/reel/DfEZzNqhEOa/",
-      "posted_at": "2026-10-29T06:51:58+00:00"
+      "posted_at": "2026-10-29T06:51:58+00:00",
+      "metrics": {
+        "views": 214,
+        "reach": 171,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5817
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610290908",
@@ -820,7 +830,17 @@
       "cover_text": "*NEVER* RIPEN",
       "media_id": "18573558358073194",
       "permalink": "https://www.instagram.com/reel/DfEsgvKpg_k/",
-      "posted_at": "2026-10-29T09:35:04+00:00"
+      "posted_at": "2026-10-29T09:35:04+00:00",
+      "metrics": {
+        "views": 251,
+        "reach": 188,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 1,
+        "ig_reels_avg_watch_time": 7186
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610300627",
@@ -881,6 +901,21 @@
       "media_id": "17998171284101464",
       "permalink": "https://www.instagram.com/reel/DfJkApYzgQj/",
       "posted_at": "2026-10-31T06:56:53+00:00"
+    },
+    {
+      "id": "202610311026",
+      "title": "Espresso vs Filter Coffee Caffeine",
+      "series": "caffeine surprise",
+      "bank_id": "b007",
+      "hook": "Your espresso usually has less caffeine than filter coffee",
+      "fact": "A shot of espresso usually has less caffeine than a regular mug of filter coffee.",
+      "narration": "Your espresso usually has less caffeine than filter coffee. Why does it feel stronger? It comes down to the amount you drink. A small shot has about sixty milligrams, while a full mug packs ninety or more. It is like comparing a small battery to a huge...",
+      "caption": "espresso vs filter coffee caffeine\n\nI thought a shot of espresso was a massive energy boost. It turns out that while it tastes more intense, a standard shot has about sixty milligrams of caffeine. A full mug of filter coffee usually has ninety or more because there is more liquid. It is all about the size of the serving. I might stick to a big mug for mornings.\n\nSend this to the person who drinks multiple espressos a day ☕\n\nFollow for a new one every day.\n\n#coffee #caffeine #espresso #filtercoffee #morningroutine #aigenerated",
+      "hook_text": "YOUR ESPRESSO HAS *LESS* CAFFEINE",
+      "cover_text": "*LESS* CAFFEINE",
+      "media_id": "18094140839208361",
+      "permalink": "https://www.instagram.com/reel/DfJ-laZvXrq/",
+      "posted_at": "2026-10-31T10:49:27+00:00"
     }
   ],
   "pending": null,
