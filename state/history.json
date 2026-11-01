@@ -615,15 +615,15 @@
       "permalink": "https://www.instagram.com/reel/De5-uDKBlKF/",
       "posted_at": "2026-10-25T05:42:58+00:00",
       "metrics": {
-        "views": 1919,
-        "reach": 1474,
+        "views": 1920,
+        "reach": 1475,
         "likes": 20,
         "comments": 3,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 19670
+        "ig_reels_avg_watch_time": 19658
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "trial-airplane-1025c",
@@ -931,6 +931,21 @@
       "media_id": "18130059391876404",
       "permalink": "https://www.instagram.com/reel/DfKiuZxxhr6/",
       "posted_at": "2026-10-31T16:05:56+00:00"
+    },
+    {
+      "id": "202611010627",
+      "title": "Why Popcorn Fails to Pop",
+      "series": "why popcorn fails",
+      "bank_id": "b010",
+      "hook": "Popcorn kernels that won't pop have usually just dried out",
+      "fact": "Popcorn kernels that won't pop have usually just dried out.",
+      "narration": "Popcorn kernels that won't pop have usually just dried out. Why do they need moisture? A good kernel has water sealed inside. Heat turns that water into steam that bursts the shell. Without that moisture, there is no steam to burst them.",
+      "caption": "Popcorn kernels that do not pop have usually just dried out.\n\nI used to think the duds at the bottom of the bowl were just defective or burnt. Turns out a kernel needs water sealed inside its shell to pop. As you heat it up, that water turns to steam and bursts the shell. When old kernels sit around, they lose that water, so there is no steam left to burst them.\n\nSend this to the person who leaves the unpopped kernels in the bowl.\n\nFollow for a new one every day.\n\n#foodscience #snackhacks #popcornkernels #unpoppedpopcorn #popcorntips #aigenerated",
+      "hook_text": "YOUR UNPOPPED POPCORN IS *DRY*",
+      "cover_text": "*DRY* POPCORN",
+      "media_id": "18439223587176649",
+      "permalink": "https://www.instagram.com/reel/DfMIhNxy4T3/",
+      "posted_at": "2026-11-01T06:54:20+00:00"
     }
   ],
   "pending": null,
@@ -943,5 +958,8 @@
       "date": "2026-10-25",
       "count": 2
     }
+  ],
+  "bank_rejected": [
+    "b009"
   ]
 }
