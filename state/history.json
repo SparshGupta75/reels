@@ -905,7 +905,17 @@
       "cover_text": "*BANANA* SECRETS",
       "media_id": "17893655586447910",
       "permalink": "https://www.instagram.com/reel/DfH7EpfJPHV/",
-      "posted_at": "2026-10-30T15:40:24+00:00"
+      "posted_at": "2026-10-30T15:40:24+00:00",
+      "metrics": {
+        "views": 238,
+        "reach": 186,
+        "likes": 2,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 10955
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610310627",
@@ -966,20 +976,24 @@
       "media_id": "18439223587176649",
       "permalink": "https://www.instagram.com/reel/DfMIhNxy4T3/",
       "posted_at": "2026-11-01T06:54:20+00:00"
+    },
+    {
+      "id": "202611011658",
+      "title": "Three Tea Facts",
+      "series": "Three",
+      "bank_id": "t03",
+      "hook": "Can you tell what this is? It's tea, and here are three things you didn't know about it",
+      "fact": "tea: Black, green, white and oolong tea all come from the very same plant. / Weight for weight, dry tea leaves contain more caffeine than coffee beans. / The thin skin on top of a cup of tea comes from minerals in hard water.",
+      "narration": "Can you tell what this is? It's tea, and here are three things you didn't know about it. One. Black, green, white and oolong tea all come from the very same plant. Two. Weight for weight, dry tea leaves contain more caffeine than coffee beans. Three. The thin skin on top of a cup of tea comes from minerals in hard water. Which one surprised you most?",
+      "caption": "The thin film on tea comes from hard water minerals.\n\nI always wondered why a mug of tea sometimes gets that weird floating skin on top. Calcium and carbonates in tap water react with the natural polyphenols extracted from the tea leaves. Together they form an insoluble layer of calcium carbonate and organic salts. Brewing with filtered water prevents the reaction entirely and leaves the surface clear. It took me years to realize my mug was clean all along.\n\nSend this to the person who makes tea every morning.\n\nFollow for a new one every day.\n\n#tea #tealovers #camelliasinensis #teascience #hardwater #aigenerated",
+      "hook_text": "",
+      "cover_text": "*TEA* SECRETS",
+      "media_id": "18085826462335054",
+      "permalink": "https://www.instagram.com/reel/DfNQ0H3ILoo/",
+      "posted_at": "2026-11-01T17:26:06+00:00"
     }
   ],
-  "pending": {
-    "id": "202611011513",
-    "title": "Three Tea Facts",
-    "series": "Three",
-    "bank_id": "t03",
-    "hook": "Can you tell what this is? It's tea, and here are three things you didn't know about it",
-    "fact": "tea: Black, green, white and oolong tea all come from the very same plant. / Weight for weight, dry tea leaves contain more caffeine than coffee beans. / The thin skin on top of a cup of tea comes from minerals in hard water.",
-    "narration": "Can you tell what this is? It's tea, and here are three things you didn't know about it. One. Black, green, white and oolong tea all come from the very same plant. Two. Weight for weight, dry tea leaves contain more caffeine than coffee beans. Three. The thin skin on top of a cup of tea comes from minerals in hard water. Which one surprised you most?",
-    "caption": "The tea scum film on your morning brew is not oil.\n\nThat thin iridescent skin that forms on black tea comes from calcium carbonate in hard tap water. When hot water extracts tannins called polyphenols from the leaves, they bind with calcium ions and oxygen to form an insoluble mineral layer. Brew the exact same tea with bottled or filtered water containing under 20 milligrams of calcium per liter, and that film completely disappears. It looks strange, but it is totally harmless.\n\nSend this to the person who always drinks tea.\n\nFollow for a new one every day.\n\n#tea #teatime #teafacts #teascience #camelliasinensis #aigenerated",
-    "hook_text": "",
-    "cover_text": "*TEA* SECRETS"
-  },
+  "pending": null,
   "followers": [
     {
       "date": "2026-10-11",
