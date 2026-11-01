@@ -639,15 +639,15 @@
       "permalink": "https://www.instagram.com/reel/De6Q0bQPcGk/",
       "posted_at": "2026-10-25T08:21:34+00:00",
       "metrics": {
-        "views": 483,
-        "reach": 339,
+        "views": 487,
+        "reach": 342,
         "likes": 4,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 8569
+        "ig_reels_avg_watch_time": 8566
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610261026",
@@ -855,7 +855,17 @@
       "cover_text": "*PISTACHIO* FIRES",
       "media_id": "17954290629298346",
       "permalink": "https://www.instagram.com/reel/DfG-qFoOuv6/",
-      "posted_at": "2026-10-30T06:52:02+00:00"
+      "posted_at": "2026-10-30T06:52:02+00:00",
+      "metrics": {
+        "views": 262,
+        "reach": 200,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7934
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610301026",
@@ -948,7 +958,18 @@
       "posted_at": "2026-11-01T06:54:20+00:00"
     }
   ],
-  "pending": null,
+  "pending": {
+    "id": "202611011026",
+    "title": "What an Almond Really Is",
+    "series": "what a nut really is",
+    "bank_id": "b012",
+    "hook": "Your almond is not a real nut",
+    "fact": "An almond is the seed of a fruit that is a close cousin of the peach.",
+    "narration": "Your almond is not a real nut. So what are you eating? It is actually the hidden stone of a fuzzy green fruit that looks just like an unripe peach. When the outer flesh dries and splits open, it reveals why the two trees are so alike.",
+    "caption": "Almonds are not actually nuts.\n\nI was today years old when I learned that almond trees are close cousins of peach trees. The fuzzy green fruit that grows on an almond tree looks like an unripe peach. Instead of eating the soft flesh around the pit, we eat the stone inside. It kind of blew my mind when I realized my favorite snack is the seed of a close cousin of the peach. 🍑\n\nSend this to the person who eats almonds every day.\n\nFollow for a new one every day.\n\n#almondfacts #foodfacts #almondtree #peachcousin #whatisanut #aigenerated",
+    "hook_text": "ALMONDS ARE *NOT* NUTS",
+    "cover_text": "*NOT* NUTS"
+  },
   "followers": [
     {
       "date": "2026-10-11",
@@ -960,6 +981,7 @@
     }
   ],
   "bank_rejected": [
-    "b009"
+    "b009",
+    "b011"
   ]
 }
