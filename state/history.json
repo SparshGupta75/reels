@@ -663,15 +663,15 @@
       "permalink": "https://www.instagram.com/reel/De9Ge6_zwI7/",
       "posted_at": "2026-10-26T10:48:01+00:00",
       "metrics": {
-        "views": 149,
-        "reach": 120,
+        "views": 153,
+        "reach": 121,
         "likes": 0,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 4894
+        "ig_reels_avg_watch_time": 4972
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610261513",
@@ -955,7 +955,17 @@
       "cover_text": "*LESS* CAFFEINE",
       "media_id": "18094140839208361",
       "permalink": "https://www.instagram.com/reel/DfJ-laZvXrq/",
-      "posted_at": "2026-10-31T10:49:27+00:00"
+      "posted_at": "2026-10-31T10:49:27+00:00",
+      "metrics": {
+        "views": 203,
+        "reach": 163,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7079
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610311513",
@@ -1031,6 +1041,21 @@
       "media_id": "18138807898649033",
       "permalink": "https://www.instagram.com/reel/DfPIDMIz1EJ/",
       "posted_at": "2026-11-02T10:48:02+00:00"
+    },
+    {
+      "id": "202611021317",
+      "title": "Egg Secrets",
+      "series": "Three",
+      "bank_id": "t04",
+      "hook": "Can you tell what this is? It's an egg, and here are three things you didn't know about it",
+      "fact": "egg: An eggshell has thousands of tiny holes, so a growing chick can breathe through it. / Older eggs are easier to peel after boiling than very fresh ones. / The green ring around a boiled yolk appears when an egg has been cooked too long.",
+      "narration": "Can you tell what this is? It's an egg, and here are three things you didn't know about it. One. An eggshell has thousands of tiny holes, so a growing chick can breathe through it. Two. Older eggs are easier to peel after boiling than very fresh ones. Three. The green ring around a boiled yolk appears when an egg has been cooked too long. Which one surprised you most?",
+      "caption": "The green ring around a boiled egg yolk comes down to simple cooking chemistry.\n\nWhen you boil an egg too long, the iron in the yolk reacts with sulfur from the white. They form iron sulfide, creating that dull greenish layer right where the two meet. It's totally safe to eat, but the yolk ends up dry and chalky. I drop my eggs into ice water after nine minutes on the stove, and the yolks stay bright yellow every time.\n\nSave this for the next time you make hard-boiled eggs. 🥚\n\nFollow for a new one every day.\n\n#eggs #cooking #boiledeggs #eggfacts #kitchenscience #aigenerated",
+      "hook_text": "",
+      "cover_text": "*EGG* SECRETS",
+      "media_id": "18201640630387405",
+      "permalink": "https://www.instagram.com/reel/DfPdFK-um_g/",
+      "posted_at": "2026-11-02T13:52:22+00:00"
     }
   ],
   "pending": null,
