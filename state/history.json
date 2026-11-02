@@ -930,7 +930,17 @@
       "cover_text": "*BOILING* WATER MYTH",
       "media_id": "17998171284101464",
       "permalink": "https://www.instagram.com/reel/DfJkApYzgQj/",
-      "posted_at": "2026-10-31T06:56:53+00:00"
+      "posted_at": "2026-10-31T06:56:53+00:00",
+      "metrics": {
+        "views": 290,
+        "reach": 227,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7299
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202610311026",
@@ -1006,6 +1016,21 @@
       "media_id": "17993081496061754",
       "permalink": "https://www.instagram.com/reel/DfOuSS0AoOk/",
       "posted_at": "2026-11-02T07:02:54+00:00"
+    },
+    {
+      "id": "202611021026",
+      "title": "Vegetables That Are One Plant",
+      "series": "vegetables that are one plant",
+      "bank_id": "b015",
+      "hook": "Five of your everyday vegetables are one plant",
+      "fact": "Broccoli, cauliflower, cabbage, kale and Brussels sprouts are all the same plant.",
+      "narration": "Five of your everyday vegetables are one plant. So how did that happen? Farmers bred one wild cabbage by picking different traits. Choosing bigger flowers created broccoli, while picking bigger buds gave us Brussels sprouts. It is just one plant in different outfits, so",
+      "caption": "Five common vegetables are actually the exact same plant.\n\nBroccoli, cauliflower, cabbage, kale, and Brussels sprouts all originate from a single wild cabbage. Farmers selectively bred this plant for specific traits. Selecting for bigger leaves gave us cabbage, while picking plants with bigger buds produced Brussels sprouts.\n\nSend this to the person who refuses to eat their greens.\n\nFollow for a new one every day.\n\n#vegetablefacts #plantbiology #broccoli #foodscience #gardeningtips #aigenerated",
+      "hook_text": "THESE VEGETABLES ARE *ONE* PLANT",
+      "cover_text": "*ONE* VEGETABLE",
+      "media_id": "18138807898649033",
+      "permalink": "https://www.instagram.com/reel/DfPIDMIz1EJ/",
+      "posted_at": "2026-11-02T10:48:02+00:00"
     }
   ],
   "pending": null,
