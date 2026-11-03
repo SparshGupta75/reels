@@ -695,7 +695,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5173
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610270627",
@@ -980,7 +980,17 @@
       "cover_text": "*POTATO* SECRETS",
       "media_id": "18130059391876404",
       "permalink": "https://www.instagram.com/reel/DfKiuZxxhr6/",
-      "posted_at": "2026-10-31T16:05:56+00:00"
+      "posted_at": "2026-10-31T16:05:56+00:00",
+      "metrics": {
+        "views": 141,
+        "reach": 128,
+        "likes": 4,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6481
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611010627",
@@ -1056,6 +1066,21 @@
       "media_id": "18201640630387405",
       "permalink": "https://www.instagram.com/reel/DfPdFK-um_g/",
       "posted_at": "2026-11-02T13:52:22+00:00"
+    },
+    {
+      "id": "202611030627",
+      "title": "Where Vanilla Flavour Comes From",
+      "series": "where a flavour comes from",
+      "bank_id": "b016",
+      "hook": "Most vanilla ice cream has no real vanilla",
+      "fact": "Most vanilla flavour in shop-bought food has never been near a vanilla bean.",
+      "narration": "Most vanilla ice cream has no real vanilla. So how do they make it? Growing real vanilla is slow and costly, making natural pods ridiculously expensive. So food makers recreate that main taste chemical from other sources instead. Most of what you taste starts as...",
+      "caption": "Most vanilla flavour in shop-bought food never comes from a real vanilla bean.\n\nReal vanilla is slow and costly to grow. That makes natural vanilla pods very expensive. Food makers recreate the main taste chemical from cheaper sources instead. Honestly, you probably can't even tell the difference in baked foods.\n\nSave this for the next time you buy ice cream at the store.\n\nFollow for a new one every day.\n\n#vanilla #foodfacts #vanillabean #icecreamfacts #foodcraft #aigenerated",
+      "hook_text": "YOUR VANILLA IS *NOT* VANILLA",
+      "cover_text": "*FAKE* VANILLA",
+      "media_id": "18388066534229041",
+      "permalink": "https://www.instagram.com/reel/DfRSANNBNJG/",
+      "posted_at": "2026-11-03T06:53:29+00:00"
     }
   ],
   "pending": null,
