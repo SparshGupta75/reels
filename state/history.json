@@ -711,15 +711,15 @@
       "permalink": "https://www.instagram.com/reel/De_Qxk4zsYg/",
       "posted_at": "2026-10-27T06:56:23+00:00",
       "metrics": {
-        "views": 219,
-        "reach": 183,
+        "views": 226,
+        "reach": 186,
         "likes": 0,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 4875
+        "ig_reels_avg_watch_time": 4987
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610271007",
@@ -1005,7 +1005,17 @@
       "cover_text": "*DRY* POPCORN",
       "media_id": "18439223587176649",
       "permalink": "https://www.instagram.com/reel/DfMIhNxy4T3/",
-      "posted_at": "2026-11-01T06:54:20+00:00"
+      "posted_at": "2026-11-01T06:54:20+00:00",
+      "metrics": {
+        "views": 171,
+        "reach": 138,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6188
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611011658",
@@ -1081,6 +1091,21 @@
       "media_id": "18388066534229041",
       "permalink": "https://www.instagram.com/reel/DfRSANNBNJG/",
       "posted_at": "2026-11-03T06:53:29+00:00"
+    },
+    {
+      "id": "202611031026",
+      "title": "Why Swiss Cheese Has Holes",
+      "series": "why cheese has holes",
+      "bank_id": "b017",
+      "hook": "Swiss cheese holes are trapped gas bubbles",
+      "fact": "The holes in Swiss cheese are made by gas from bacteria while the cheese ripens.",
+      "narration": "Swiss cheese holes are trapped gas bubbles. So why are they there? Bacteria release gas while the cheese ripens. Tiny specks of hay in the milk give those pockets a starting spot, just like fizz forming around a straw, which is why",
+      "caption": "Swiss cheese holes are gas bubbles trapped as the cheese ripens. While the cheese ripens, bacteria release gas. As they do, they create tiny pockets of gas that get trapped inside. Tiny specks of hay in the milk give the gas a starting point to form bubbles. 🧀 I honestly thought makers punched the holes in by hand. Save this for the next time you build a sandwich.\n\nFollow for a new one every day.\n\n#foodfacts #cheese #swisscheese #cheesemaking #everydayscience #aigenerated",
+      "hook_text": "CHEESE HOLES ARE *TRAPPED* GAS",
+      "cover_text": "*CHEESE* HOLES",
+      "media_id": "17980877493070472",
+      "permalink": "https://www.instagram.com/reel/DfRs_C5K6ik/",
+      "posted_at": "2026-11-03T10:49:15+00:00"
     }
   ],
   "pending": null,
