@@ -735,15 +735,15 @@
       "permalink": "https://www.instagram.com/reel/De_qbYpKTna/",
       "posted_at": "2026-10-27T10:40:34+00:00",
       "metrics": {
-        "views": 191,
-        "reach": 165,
-        "likes": 0,
+        "views": 192,
+        "reach": 166,
+        "likes": 1,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 3819
+        "ig_reels_avg_watch_time": 3812
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610281026",
@@ -1106,6 +1106,21 @@
       "media_id": "17980877493070472",
       "permalink": "https://www.instagram.com/reel/DfRs_C5K6ik/",
       "posted_at": "2026-11-03T10:49:15+00:00"
+    },
+    {
+      "id": "202611031241",
+      "title": "Apple Secrets",
+      "series": "Three",
+      "bank_id": "t05",
+      "hook": "Can you tell what this is? It's an apple, and here are three things you didn't know about it",
+      "fact": "apple: An apple floats in water because about a quarter of it is air. / Plant a seed from your favourite apple and the tree will grow a completely different apple. / One rotten apple really can spoil the rest, because it gives off a gas that speeds up ripening.",
+      "narration": "Can you tell what this is? It's an apple, and here are three things you didn't know about it. One. An apple floats in water because about a quarter of it is air. Two. Plant a seed from your favourite apple and the tree will grow a completely different apple. Three. One rotten apple really can spoil the rest, because it gives off a gas that speeds up ripening. Which one surprised you most?",
+      "caption": "An apple floating in water happens because a quarter of its volume is trapped air.\n\nI always wondered why they bobbed so easily when I was a kid. About 25 percent of an apple is actually open air space packed between the cells inside the flesh. That pocket of air keeps the fruit lightweight enough to stay on top of the water instead of sinking. It was pretty surprising to learn just how porous they really are.\n\nSave this for the next time you buy fresh fruit at the store. 🍎\n\nFollow for a new one every day.\n\n#apples #fruit #applefacts #botanyfacts #fruitscience #aigenerated",
+      "hook_text": "",
+      "cover_text": "*APPLE* SECRETS",
+      "media_id": "18182784784437527",
+      "permalink": "https://www.instagram.com/reel/DfR8bAhTNcz/",
+      "posted_at": "2026-11-03T13:04:42+00:00"
     }
   ],
   "pending": null,
