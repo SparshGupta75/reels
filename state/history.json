@@ -767,7 +767,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5210
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610281513",
@@ -1080,7 +1080,17 @@
       "cover_text": "*ONE* VEGETABLE",
       "media_id": "18138807898649033",
       "permalink": "https://www.instagram.com/reel/DfPIDMIz1EJ/",
-      "posted_at": "2026-11-02T10:48:02+00:00"
+      "posted_at": "2026-11-02T10:48:02+00:00",
+      "metrics": {
+        "views": 93,
+        "reach": 73,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5409
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611021317",
@@ -1171,6 +1181,21 @@
       "media_id": "17912451537474338",
       "permalink": "https://www.instagram.com/reel/DfUR0IDxobs/",
       "posted_at": "2026-11-04T10:49:35+00:00"
+    },
+    {
+      "id": "202611041251",
+      "title": "Three Things About Pencils",
+      "series": "Three",
+      "bank_id": "t06",
+      "hook": "Can you tell what this is? It's a pencil, and here are three things you didn't know about it",
+      "fact": "pencil: The lead in a pencil has never been lead; it is graphite mixed with clay. / A thick pencil line can carry a tiny electric current, because graphite conducts electricity. / More clay makes a pencil harder and its line lighter, which is what the letters on it mean.",
+      "narration": "Can you tell what this is? It's a pencil, and here are three things you didn't know about it. One. The lead in a pencil has never been lead; it is graphite mixed with clay. Two. A thick pencil line can carry a tiny electric current, because graphite conducts electricity. Three. More clay makes a pencil harder and its line lighter, which is what the letters on it mean. Which one surprised you most?",
+      "caption": "Pencil lead is actually a mix of graphite and clay.\n\nPeople called it lead because the huge graphite deposit found in England back in the 1500s looked just like black lead ore. Pencils never had real lead in them at all. Manufacturers bake purified graphite powder with wet clay inside a kiln to make the writing core. Adding extra clay creates a harder pencil that leaves a pale line, while extra graphite leaves a soft, dark mark. I honestly had no idea the H and B scale was just a recipe ratio.\n\nSend this to the person who always steals your favorite drawing pencil.\n\nFollow for a new one every day.\n\n#stationery #drawing #pencillead #graphiteart #pencildrawing #aigenerated",
+      "hook_text": "",
+      "cover_text": "*PENCIL* SECRETS",
+      "media_id": "18114648047595572",
+      "permalink": "https://www.instagram.com/reel/DfUjUNzBPkV/",
+      "posted_at": "2026-11-04T13:23:34+00:00"
     }
   ],
   "pending": null,
