@@ -1055,7 +1055,17 @@
       "cover_text": "*FRUIT* SEED",
       "media_id": "17993081496061754",
       "permalink": "https://www.instagram.com/reel/DfOuSS0AoOk/",
-      "posted_at": "2026-11-02T07:02:54+00:00"
+      "posted_at": "2026-11-02T07:02:54+00:00",
+      "metrics": {
+        "views": 209,
+        "reach": 156,
+        "likes": 5,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8374
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611021026",
@@ -1146,6 +1156,21 @@
       "media_id": "17887717710689579",
       "permalink": "https://www.instagram.com/reel/DfT28navj72/",
       "posted_at": "2026-11-04T06:55:12+00:00"
+    },
+    {
+      "id": "202611041026",
+      "title": "Why Cereal Clumps",
+      "series": "why cereal clumps",
+      "bank_id": "b020",
+      "hook": "The last pieces of cereal tend to clump together",
+      "fact": "The last pieces of cereal in your bowl drift together and stick to the side on their own.",
+      "narration": "The last pieces of cereal tend to clump together. So why does it happen? Each floating piece creates a tiny dent on top of the milk. Those little dips pull toward each other, drawing them to the bowl's edge because...",
+      "caption": "Why cereal clumps together in milk.\n\nI wondered why those last few cereal pieces float into a cluster. It turns out that every floating piece bends the liquid surface just enough to create a small dip. Those dents pull toward each other and toward the curved edge of the bowl.\n\nSave this for the next time you eat breakfast.\n\nFollow for a new one every day.\n\n#cereal #breakfast #cerealeffect #breakfastfacts #foodscience #aigenerated",
+      "hook_text": "YOUR CEREAL *ATTRACTS* ITSELF",
+      "cover_text": "*CEREAL* CLUMPS",
+      "media_id": "17912451537474338",
+      "permalink": "https://www.instagram.com/reel/DfUR0IDxobs/",
+      "posted_at": "2026-11-04T10:49:35+00:00"
     }
   ],
   "pending": null,
