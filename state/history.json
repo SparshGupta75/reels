@@ -1030,7 +1030,17 @@
       "cover_text": "*TEA* SECRETS",
       "media_id": "18085826462335054",
       "permalink": "https://www.instagram.com/reel/DfNQ0H3ILoo/",
-      "posted_at": "2026-11-01T17:26:06+00:00"
+      "posted_at": "2026-11-01T17:26:06+00:00",
+      "metrics": {
+        "views": 145,
+        "reach": 121,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4267
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611020627",
@@ -1121,6 +1131,21 @@
       "media_id": "18182784784437527",
       "permalink": "https://www.instagram.com/reel/DfR8bAhTNcz/",
       "posted_at": "2026-11-03T13:04:42+00:00"
+    },
+    {
+      "id": "202611040627",
+      "title": "The Coffee Ring Effect",
+      "series": "why a stain has a ring",
+      "bank_id": "b019",
+      "hook": "Liquid flows outward as it dries",
+      "fact": "A coffee spill dries with a dark ring at its edge because the liquid flows outwards as it dries.",
+      "narration": "Liquid flows outward as it dries. So why does it work? The rim dries fastest, so the liquid in the center flows out to replace it. It carries coffee grains along, piling them up like a wall of sand. This happens because...",
+      "caption": "The coffee stain ring effect is a weird bit of nature. It happens because the edge of the spill dries up faster than the middle. This creates a current that pulls coffee bits outward to the rim. By the time it is dry, the dark color is stuck in that circle at the edge. I did not realize the liquid was moving while it just sat there. Send this to the person who leaves coffee rings on the table.\n\nFollow for a new one every day.\n\n#coffee #sciencefacts #stains #coffeering #howitworks #aigenerated",
+      "hook_text": "LIQUID FLOWS *OUTWARD* WHILE DRYING",
+      "cover_text": "*COFFEE* RING",
+      "media_id": "17887717710689579",
+      "permalink": "https://www.instagram.com/reel/DfT28navj72/",
+      "posted_at": "2026-11-04T06:55:12+00:00"
     }
   ],
   "pending": null,
