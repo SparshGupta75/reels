@@ -1155,7 +1155,17 @@
       "cover_text": "*CHEESE* HOLES",
       "media_id": "17980877493070472",
       "permalink": "https://www.instagram.com/reel/DfRs_C5K6ik/",
-      "posted_at": "2026-11-03T10:49:15+00:00"
+      "posted_at": "2026-11-03T10:49:15+00:00",
+      "metrics": {
+        "views": 187,
+        "reach": 155,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6643
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611031241",
@@ -1246,6 +1256,21 @@
       "media_id": "17959878672018307",
       "permalink": "https://www.instagram.com/reel/DfW3W2whozX/",
       "posted_at": "2026-11-05T10:56:12+00:00"
+    },
+    {
+      "id": "202611051259",
+      "title": "A Mirror's Secret",
+      "series": "Three",
+      "bank_id": "t07",
+      "hook": "Can you tell what this is? It's a mirror, and here are three things you didn't know about it",
+      "fact": "mirror: A mirror doesn't really swap left and right; it swaps front and back. / Most mirrors are a very thin layer of metal, such as aluminium or silver, behind glass. / Mirrors are very slightly green, which you can see when two face each other.",
+      "narration": "Can you tell what this is? It's a mirror, and here are three things you didn't know about it. One. A mirror doesn't really swap left and right; it swaps front and back. Two. Most mirrors are a very thin layer of metal, such as aluminium or silver, behind glass. Three. Mirrors are very slightly green, which you can see when two face each other. Which one surprised you most?",
+      "caption": "A mirror swaps front and back instead of left and right.\n\nThe glass in your bathroom has iron in it which gives it that subtle green tint. You only see it when light bounces back and forth many times between two mirrors. The silver metal on the back is usually less than a hair's width thick. It's basically a 3D inversion of everything in the room.\n\nSend this to the person who spends the most time in front of the mirror 🪞\n\nFollow for a new one every day.\n\n#mirror #physics #lightreflection #opticalillusion #glassart #aigenerated",
+      "hook_text": "",
+      "cover_text": "*MIRROR* SECRETS",
+      "media_id": "18129885043865282",
+      "permalink": "https://www.instagram.com/reel/DfXIR06gI7F/",
+      "posted_at": "2026-11-05T13:25:03+00:00"
     }
   ],
   "pending": null,
