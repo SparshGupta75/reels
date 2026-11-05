@@ -791,7 +791,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 4001
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610290627",
@@ -1105,7 +1105,17 @@
       "cover_text": "*EGG* SECRETS",
       "media_id": "18201640630387405",
       "permalink": "https://www.instagram.com/reel/DfPdFK-um_g/",
-      "posted_at": "2026-11-02T13:52:22+00:00"
+      "posted_at": "2026-11-02T13:52:22+00:00",
+      "metrics": {
+        "views": 1445,
+        "reach": 1114,
+        "likes": 16,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 12237
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611030627",
@@ -1196,6 +1206,21 @@
       "media_id": "18114648047595572",
       "permalink": "https://www.instagram.com/reel/DfUjUNzBPkV/",
       "posted_at": "2026-11-04T13:23:34+00:00"
+    },
+    {
+      "id": "202611050627",
+      "title": "What You Are Really Buying: Baby Carrots",
+      "series": "what you are really buying",
+      "bank_id": "b021",
+      "hook": "Baby carrots are just carved regular carrots",
+      "fact": "Most baby carrots are full-size carrots that have been cut and peeled into small pieces.",
+      "narration": "Baby carrots are just carved regular carrots. So why do we buy them? Farmers once had wonky carrots that shops would not take because stores refused ugly produce. Farmers shaved those vegetables into small smooth pieces, and they became more popular than whole carrots. Which proves that most",
+      "caption": "The truth about baby carrots being made from full size carrots is simple.\n\nIn the past, farmers had wonky carrots that shops would not take because stores rejected crooked produce. Farmers decided to take those ugly full-size carrots and run them through a cutter and peeler to create small smooth pieces. People loved the convenient bite-sized pieces so much that they became more popular than whole carrots. Today, most baby carrots are full-size carrots cut into small pieces.\n\nSave this for the next time you buy a veggie tray.\n\nFollow for a new one every day.\n\n#carrots #foodfacts #babycarrots #groceries #produce #aigenerated",
+      "hook_text": "BABY CARROTS ARE *FAKE*",
+      "cover_text": "*BABY* CARROTS",
+      "media_id": "18035449676675645",
+      "permalink": "https://www.instagram.com/reel/DfWcCh7vFkO/",
+      "posted_at": "2026-11-05T06:57:27+00:00"
     }
   ],
   "pending": null,
