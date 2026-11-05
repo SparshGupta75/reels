@@ -815,7 +815,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5817
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610290908",
@@ -832,15 +832,15 @@
       "permalink": "https://www.instagram.com/reel/DfEsgvKpg_k/",
       "posted_at": "2026-10-29T09:35:04+00:00",
       "metrics": {
-        "views": 251,
+        "views": 253,
         "reach": 188,
-        "likes": 2,
+        "likes": 3,
         "comments": 0,
         "saved": 0,
         "shares": 1,
-        "ig_reels_avg_watch_time": 7186
+        "ig_reels_avg_watch_time": 7185
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610300627",
@@ -1130,7 +1130,17 @@
       "cover_text": "*FAKE* VANILLA",
       "media_id": "18388066534229041",
       "permalink": "https://www.instagram.com/reel/DfRSANNBNJG/",
-      "posted_at": "2026-11-03T06:53:29+00:00"
+      "posted_at": "2026-11-03T06:53:29+00:00",
+      "metrics": {
+        "views": 360,
+        "reach": 267,
+        "likes": 3,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 9039
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611031026",
@@ -1221,6 +1231,21 @@
       "media_id": "18035449676675645",
       "permalink": "https://www.instagram.com/reel/DfWcCh7vFkO/",
       "posted_at": "2026-11-05T06:57:27+00:00"
+    },
+    {
+      "id": "202611051026",
+      "title": "How Seedless Watermelon Is Made",
+      "series": "how seedless fruit is made",
+      "bank_id": "b014",
+      "hook": "Seedless watermelons are not made in labs",
+      "fact": "Seedless watermelons are not made in a lab; they come from crossing two kinds of watermelon plant.",
+      "narration": "Seedless watermelons are not made in labs. So how do they grow? Farmers simply cross two kinds of watermelon plants. The resulting plant's seeds never develop properly, just like a mule born from a horse and donkey cannot have young. That is why every sweet slice of...",
+      "caption": "How seedless watermelon is actually grown without labs.\n\nI always assumed seedless watermelons were made in a lab, but the real process is surprisingly simple. Farmers cross two kinds of watermelon plants. The resulting plant produces fruit whose seeds never develop properly. It is the same way crossing a horse and a donkey gives a mule that cannot have young.\n\nSend this to the person who loves eating watermelon all summer.\n\nFollow for a new one every day.\n\n#watermelon #gardening #fruitfacts #seedlesswatermelon #plantbreeding #aigenerated",
+      "hook_text": "SEEDLESS WATERMELONS AREN'T *LAB* MADE",
+      "cover_text": "*NOT* LAB-MADE",
+      "media_id": "17959878672018307",
+      "permalink": "https://www.instagram.com/reel/DfW3W2whozX/",
+      "posted_at": "2026-11-05T10:56:12+00:00"
     }
   ],
   "pending": null,
