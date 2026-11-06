@@ -865,7 +865,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7934
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610301026",
@@ -1205,7 +1205,17 @@
       "cover_text": "*COFFEE* RING",
       "media_id": "17887717710689579",
       "permalink": "https://www.instagram.com/reel/DfT28navj72/",
-      "posted_at": "2026-11-04T06:55:12+00:00"
+      "posted_at": "2026-11-04T06:55:12+00:00",
+      "metrics": {
+        "views": 178,
+        "reach": 150,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5447
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611041026",
@@ -1296,6 +1306,21 @@
       "media_id": "18093658412676756",
       "permalink": "https://www.instagram.com/reel/DfY_22xiHC_/",
       "posted_at": "2026-11-06T06:49:18+00:00"
+    },
+    {
+      "id": "202611061026",
+      "title": "Why Bread Goes Stale in the Fridge",
+      "series": "food storage mistake",
+      "bank_id": "b005",
+      "hook": "Your bread goes stale faster inside the fridge",
+      "fact": "Bread goes stale faster in the fridge than on the kitchen counter.",
+      "narration": "Your bread goes stale faster inside the fridge. So why does that happen? Fridge temperatures cause the starch inside to harden into crystals, fast. Keeping it on your counter works better, or freeze it to stop the hardening completely, because...",
+      "caption": "Why bread goes stale in the fridge.\n\nStoring your bread in the refrigerator actually speeds up the staling process. Fridge temperatures cause the starch inside to harden into crystals much faster than at room temperature. Freezing bread completely stops this process. For everyday eating, keeping your loaf on the counter is your best bet.\n\nSend this to someone who keeps their bread in the fridge!\n\nFollow for a new one every day.\n\n#foodhacks #kitchenhacks #breadstorage #foodstorage #breadtips #aigenerated",
+      "hook_text": "YOUR BREAD *HATES* THE FRIDGE",
+      "cover_text": "*STALE* BREAD",
+      "media_id": "18358450168175993",
+      "permalink": "https://www.instagram.com/reel/DfZbX-_SYv2/",
+      "posted_at": "2026-11-06T10:49:20+00:00"
     }
   ],
   "pending": null,
