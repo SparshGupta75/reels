@@ -882,15 +882,15 @@
       "permalink": "https://www.instagram.com/reel/DfHa7FsqAo3/",
       "posted_at": "2026-10-30T10:59:04+00:00",
       "metrics": {
-        "views": 1680,
-        "reach": 1301,
+        "views": 1682,
+        "reach": 1303,
         "likes": 11,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 8311
+        "ig_reels_avg_watch_time": 8309
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610301513",
@@ -1230,7 +1230,17 @@
       "cover_text": "*CEREAL* CLUMPS",
       "media_id": "17912451537474338",
       "permalink": "https://www.instagram.com/reel/DfUR0IDxobs/",
-      "posted_at": "2026-11-04T10:49:35+00:00"
+      "posted_at": "2026-11-04T10:49:35+00:00",
+      "metrics": {
+        "views": 209,
+        "reach": 168,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7139
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611041251",
@@ -1321,6 +1331,21 @@
       "media_id": "18358450168175993",
       "permalink": "https://www.instagram.com/reel/DfZbX-_SYv2/",
       "posted_at": "2026-11-06T10:49:20+00:00"
+    },
+    {
+      "id": "202611061247",
+      "title": "Smartphone Hidden Sensors",
+      "series": "Three",
+      "bank_id": "t08",
+      "hook": "Can you tell what this is? It's a smartphone, and here are three things you didn't know about it",
+      "fact": "smartphone: Your phone knows which way up it is because a tiny sensor inside feels gravity. / Your phone's compass works using a tiny sensor that detects the Earth's magnetic field. / A second tiny microphone on your phone listens to background noise so it can remove it from calls.",
+      "narration": "Can you tell what this is? It's a smartphone, and here are three things you didn't know about it. One. Your phone knows which way up it is because a tiny sensor inside feels gravity. Two. Your phone's compass works using a tiny sensor that detects the Earth's magnetic field. Three. A second tiny microphone on your phone listens to background noise so it can remove it from calls. Which one surprised you most?",
+      "caption": "A smartphone relies on microscopic internal hardware to know its position and clean up audio.\n\nInside the casing, microscopic mechanical parts flex when you tilt the device. That movement tells your screen exactly which way to rotate, which still impresses me every time. A tiny second microphone near the top edge listens to room noise simultaneously. The phone subtracts that background noise from your call in real time.\n\nSend this to the person who takes calls in noisy coffee shops.\n\nFollow for a new one every day.\n\n#smartphones #mobiletech #phonehardware #microphonesensor #techfacts #aigenerated",
+      "hook_text": "",
+      "cover_text": "*SMARTPHONE* SECRETS",
+      "media_id": "18115576381844704",
+      "permalink": "https://www.instagram.com/reel/DfZtPIbhOQ9/",
+      "posted_at": "2026-11-06T13:25:22+00:00"
     }
   ],
   "pending": null,
