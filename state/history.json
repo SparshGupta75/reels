@@ -1180,7 +1180,17 @@
       "cover_text": "*APPLE* SECRETS",
       "media_id": "18182784784437527",
       "permalink": "https://www.instagram.com/reel/DfR8bAhTNcz/",
-      "posted_at": "2026-11-03T13:04:42+00:00"
+      "posted_at": "2026-11-03T13:04:42+00:00",
+      "metrics": {
+        "views": 206,
+        "reach": 172,
+        "likes": 6,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 9609
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611040627",
@@ -1271,6 +1281,21 @@
       "media_id": "18129885043865282",
       "permalink": "https://www.instagram.com/reel/DfXIR06gI7F/",
       "posted_at": "2026-11-05T13:25:03+00:00"
+    },
+    {
+      "id": "202611060627",
+      "title": "What Decides Egg Colour",
+      "series": "what decides egg colour",
+      "bank_id": "b023",
+      "hook": "You can usually guess a hen's egg colour from her earlobes",
+      "fact": "You can usually guess a hen's egg colour from her earlobes: white earlobes, white eggs; red earlobes, brown eggs.",
+      "narration": "You can usually guess a hen's egg colour from her earlobes. How can you tell? In most breeds, these colour traits go together. White earlobes mean white shells, while red earlobes mean brown eggs. Inside they are the same, so you will usually know what comes next because",
+      "caption": "A hen's earlobes can usually show her egg colour before she lays.\n\nI used to think brown eggs were somehow more natural or nutritious, but shell colour comes down to breed genetics. Hens with white earlobes produce white shells, while breeds with red lobes lay brown eggs. Crack both open and brown and white eggs are the same inside.\n\nSend this to the person who buys brown eggs thinking they are healthier.\n\nFollow for a new one every day.\n\n#backyardchickens #farming #chickenfacts #eggcolor #homesteadlife #aigenerated",
+      "hook_text": "CHICKEN *EARLOBES* PREDICT EGGS",
+      "cover_text": "*EARLOBE* EGGS",
+      "media_id": "18093658412676756",
+      "permalink": "https://www.instagram.com/reel/DfY_22xiHC_/",
+      "posted_at": "2026-11-06T06:49:18+00:00"
     }
   ],
   "pending": null,
