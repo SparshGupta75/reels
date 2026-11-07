@@ -957,15 +957,15 @@
       "permalink": "https://www.instagram.com/reel/DfJ-laZvXrq/",
       "posted_at": "2026-10-31T10:49:27+00:00",
       "metrics": {
-        "views": 203,
-        "reach": 163,
+        "views": 204,
+        "reach": 164,
         "likes": 2,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 7079
+        "ig_reels_avg_watch_time": 7043
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610311513",
@@ -1305,7 +1305,17 @@
       "cover_text": "*NOT* LAB-MADE",
       "media_id": "17959878672018307",
       "permalink": "https://www.instagram.com/reel/DfW3W2whozX/",
-      "posted_at": "2026-11-05T10:56:12+00:00"
+      "posted_at": "2026-11-05T10:56:12+00:00",
+      "metrics": {
+        "views": 150,
+        "reach": 107,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 10404
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611051259",
@@ -1320,7 +1330,17 @@
       "cover_text": "*MIRROR* SECRETS",
       "media_id": "18129885043865282",
       "permalink": "https://www.instagram.com/reel/DfXIR06gI7F/",
-      "posted_at": "2026-11-05T13:25:03+00:00"
+      "posted_at": "2026-11-05T13:25:03+00:00",
+      "metrics": {
+        "views": 361,
+        "reach": 295,
+        "likes": 5,
+        "comments": 0,
+        "saved": 0,
+        "shares": 1,
+        "ig_reels_avg_watch_time": 11310
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611060627",
@@ -1396,6 +1416,21 @@
       "media_id": "17914163349481224",
       "permalink": "https://www.instagram.com/reel/DfcCGoEqObE/",
       "posted_at": "2026-11-07T11:07:40+00:00"
+    },
+    {
+      "id": "202611071513",
+      "title": "Washing Machine Secrets",
+      "series": "Three",
+      "bank_id": "t10",
+      "hook": "Can you tell what this is? It's a washing machine, and here are three things you didn't know about it",
+      "fact": "washing machine: Many washing machines hide a heavy concrete block that stops them walking across the floor. / Most of the energy a hot wash uses goes on heating the water. / Using too much detergent can leave clothes dirtier, because leftover soap attracts dirt.",
+      "narration": "Can you tell what this is? It's a washing machine, and here are three things you didn't know about it. One. Many washing machines hide a heavy concrete block that stops them walking across the floor. Two. Most of the energy a hot wash uses goes on heating the water. Three. Using too much detergent can leave clothes dirtier, because leftover soap attracts dirt. Which one surprised you most?",
+      "caption": "Using too much washing machine detergent actually traps grime in your clothes.\n\nMost people fill the measuring cap to the top, but you only need about two tablespoons of liquid soap for a normal load. When you add too much, the rinse cycle cannot wash all the suds away. That leftover soap dries into a thin film on the fabric threads. Every time you wear the clothes, that residue grabs dust and skin oils like glue.\n\nSend this to the person who always pours a full cap of detergent into every wash.\n\nFollow for a new one every day.\n\n#laundry #appliances #washingmachine #laundrytips #laundryhacks #aigenerated",
+      "hook_text": "",
+      "cover_text": "*WASHING* SECRETS",
+      "media_id": "18119865062105076",
+      "permalink": "https://www.instagram.com/reel/DfchNWStXm9/",
+      "posted_at": "2026-11-07T15:38:02+00:00"
     }
   ],
   "pending": null,
