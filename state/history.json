@@ -915,7 +915,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 10955
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610310627",
@@ -1255,7 +1255,17 @@
       "cover_text": "*PENCIL* SECRETS",
       "media_id": "18114648047595572",
       "permalink": "https://www.instagram.com/reel/DfUjUNzBPkV/",
-      "posted_at": "2026-11-04T13:23:34+00:00"
+      "posted_at": "2026-11-04T13:23:34+00:00",
+      "metrics": {
+        "views": 159,
+        "reach": 123,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 12487
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611050627",
@@ -1346,6 +1356,21 @@
       "media_id": "18115576381844704",
       "permalink": "https://www.instagram.com/reel/DfZtPIbhOQ9/",
       "posted_at": "2026-11-06T13:25:22+00:00"
+    },
+    {
+      "id": "202611070627",
+      "title": "Why Bottle Caps Have 21 Ridges",
+      "series": "hidden design of a bottle cap",
+      "bank_id": "b024",
+      "hook": "The metal cap on a glass bottle almost always has twenty-one ridges",
+      "fact": "The metal cap on a glass bottle almost always has exactly 21 ridges.",
+      "narration": "The metal cap on a glass bottle almost always has twenty-one ridges. So why that exact number? Twenty-one became the standard because bottling machines are built around it, while gripping the bottle neck tightly enough to trap all the fizz. It worked so reliably that today...",
+      "caption": "Count the ridges on a metal bottle cap and you will almost always find twenty-one. Twenty-one became the standard because it grips the bottle neck tightly enough to hold the fizz, and bottling machines are built around it. Having twenty-one ridges gives just enough grip to hold the carbonation securely. Check the crimped metal edge on your next drink to see for yourself. Send this to the person who always opens your drinks.\n\nFollow for a new one every day.\n\n#industrialdesign #everydayobjects #bottlecaps #crowncork #producthistory #aigenerated",
+      "hook_text": "YOUR CAP HAS *21* RIDGES",
+      "cover_text": "*21* RIDGES",
+      "media_id": "18096974072558991",
+      "permalink": "https://www.instagram.com/reel/DfblLTQBBMO/",
+      "posted_at": "2026-11-07T06:53:28+00:00"
     }
   ],
   "pending": null,
