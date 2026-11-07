@@ -940,7 +940,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7299
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202610311026",
@@ -1280,7 +1280,17 @@
       "cover_text": "*BABY* CARROTS",
       "media_id": "18035449676675645",
       "permalink": "https://www.instagram.com/reel/DfWcCh7vFkO/",
-      "posted_at": "2026-11-05T06:57:27+00:00"
+      "posted_at": "2026-11-05T06:57:27+00:00",
+      "metrics": {
+        "views": 169,
+        "reach": 118,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 11875
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611051026",
@@ -1371,6 +1381,21 @@
       "media_id": "18096974072558991",
       "permalink": "https://www.instagram.com/reel/DfblLTQBBMO/",
       "posted_at": "2026-11-07T06:53:28+00:00"
+    },
+    {
+      "id": "202611071026",
+      "title": "The Kitchen Foil Myth",
+      "series": "kitchen myth",
+      "bank_id": "b025",
+      "hook": "Kitchen foil sides work almost the exact same way",
+      "fact": "It makes almost no difference which side of the kitchen foil faces the food.",
+      "narration": "Kitchen foil sides work almost the exact same way. Why is one side dull? In the last step of making it, two sheets are rolled together. Only outer faces touch the polished rollers, leaving the insides dull. Either side bakes your food with almost no difference, proving that",
+      "caption": "Kitchen foil shiny side versus dull side makes almost no difference in your cooking.\n\nI used to think the shiny side had to face the food to reflect heat back in. It turns out the shiny and dull sides come from the last step of making foil, when two sheets are rolled together. The sides touching the polished rollers come out shiny, while the inside faces come out dull. It makes almost no difference which side faces the food, so just tear off a sheet and do not stress about it.\n\nSend this to someone who argues about which side faces up.\n\nFollow for a new one every day.\n\n#kitchenhacks #cookingtips #aluminumfoil #kitchenfoil #kitchenmyths #aigenerated",
+      "hook_text": "FOIL SIDES DO *NOT* MATTER",
+      "cover_text": "*FOIL* SIDES",
+      "media_id": "17914163349481224",
+      "permalink": "https://www.instagram.com/reel/DfcCGoEqObE/",
+      "posted_at": "2026-11-07T11:07:40+00:00"
     }
   ],
   "pending": null,
