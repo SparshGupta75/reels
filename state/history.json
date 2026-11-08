@@ -1380,7 +1380,17 @@
       "cover_text": "*STALE* BREAD",
       "media_id": "18358450168175993",
       "permalink": "https://www.instagram.com/reel/DfZbX-_SYv2/",
-      "posted_at": "2026-11-06T10:49:20+00:00"
+      "posted_at": "2026-11-06T10:49:20+00:00",
+      "metrics": {
+        "views": 185,
+        "reach": 161,
+        "likes": 4,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6064
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611061247",
@@ -1395,7 +1405,17 @@
       "cover_text": "*SMARTPHONE* SECRETS",
       "media_id": "18115576381844704",
       "permalink": "https://www.instagram.com/reel/DfZtPIbhOQ9/",
-      "posted_at": "2026-11-06T13:25:22+00:00"
+      "posted_at": "2026-11-06T13:25:22+00:00",
+      "metrics": {
+        "views": 127,
+        "reach": 105,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 10263
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611070627",
@@ -1471,6 +1491,21 @@
       "media_id": "18341511301302551",
       "permalink": "https://www.instagram.com/reel/DfelnW-SKmw/",
       "posted_at": "2026-11-08T10:55:58+00:00"
+    },
+    {
+      "id": "202611081513",
+      "title": "Hidden Fridge Mechanics",
+      "series": "Three",
+      "bank_id": "t09",
+      "hook": "Can you tell what this is? It's a fridge, and here are three things you didn't know about it",
+      "fact": "fridge: A fridge doesn't make cold; it moves heat from inside to the outside. / Leaving the fridge door open actually warms your kitchen up overall. / The small hole at the back of the inside is a drain for melted frost.",
+      "narration": "Can you tell what this is? It's a fridge, and here are three things you didn't know about it. One. A fridge doesn't make cold; it moves heat from inside to the outside. Two. Leaving the fridge door open actually warms your kitchen up overall. Three. The small hole at the back of the inside is a drain for melted frost. Which one surprised you most?",
+      "caption": "I just learned how a fridge drain hole works.\n\nYour refrigerator does not actually generate cold air. It uses a pump to draw heat out of your food and discharge that energy into the room through back coils. Running the compressor with the door open generates extra heat from the motor, making the room warmer. Liquid from melted ice runs down the inside wall into the tiny hole, draining to a small pan above the warm motor where it safely evaporates.\n\nSave this for the next time you clear out your food shelf.\n\nFollow for a new one every day.\n\n#refrigerator #appliances #fridgedrain #kitchenhacks #appliancetips #aigenerated",
+      "hook_text": "",
+      "cover_text": "*FRIDGE* SECRETS",
+      "media_id": "18104135681529959",
+      "permalink": "https://www.instagram.com/reel/DffH4oqzu1q/",
+      "posted_at": "2026-11-08T15:54:49+00:00"
     }
   ],
   "pending": null,
