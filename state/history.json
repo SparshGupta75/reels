@@ -1015,7 +1015,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6188
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611011658",
@@ -1355,7 +1355,17 @@
       "cover_text": "*EARLOBE* EGGS",
       "media_id": "18093658412676756",
       "permalink": "https://www.instagram.com/reel/DfY_22xiHC_/",
-      "posted_at": "2026-11-06T06:49:18+00:00"
+      "posted_at": "2026-11-06T06:49:18+00:00",
+      "metrics": {
+        "views": 1479,
+        "reach": 1115,
+        "likes": 8,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8868
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611061026",
@@ -1446,6 +1456,21 @@
       "media_id": "17965927635218490",
       "permalink": "https://www.instagram.com/reel/DfeKggqB0uy/",
       "posted_at": "2026-11-08T06:58:46+00:00"
+    },
+    {
+      "id": "202611081026",
+      "title": "Why Your Microwave Kills Wi-Fi",
+      "series": "why your wifi drops",
+      "bank_id": "b029",
+      "hook": "Your microwave can slow down your Wi-Fi signal",
+      "fact": "Your Wi-Fi can slow down while the microwave is running because they use the same kind of radio waves.",
+      "narration": "Your microwave can slow down your Wi-Fi signal. Why does that happen? Both machines use the same kind of radio waves. The tiny bit of energy leaking from the oven drowns out the signal nearby, like someone shouting over a whisper. Moving them further apart helps stop how...",
+      "caption": "Your microwave can actually slow down your Wi-Fi.\n\nMost Wi-Fi networks work at about 2.4 gigahertz, using the same kind of radio waves microwave ovens use to heat up food. A tiny bit of energy can leak from the oven whenever it runs. That stray energy is enough to drown out the signal nearby. Switching your gadgets over to a 5 gigahertz band can help avoid the issue.\n\nSend this to the person whose connection drops during dinner.\n\nFollow for a new one every day.\n\n#hometech #wifiproblems #microwaveoven #wifitips #techfacts #aigenerated",
+      "hook_text": "YOUR MICROWAVE RUINS *WI-FI*",
+      "cover_text": "*WIFI* KILLER",
+      "media_id": "18341511301302551",
+      "permalink": "https://www.instagram.com/reel/DfelnW-SKmw/",
+      "posted_at": "2026-11-08T10:55:58+00:00"
     }
   ],
   "pending": null,
