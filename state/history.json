@@ -982,15 +982,15 @@
       "permalink": "https://www.instagram.com/reel/DfKiuZxxhr6/",
       "posted_at": "2026-10-31T16:05:56+00:00",
       "metrics": {
-        "views": 141,
-        "reach": 128,
+        "views": 144,
+        "reach": 129,
         "likes": 4,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 6481
+        "ig_reels_avg_watch_time": 6607
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611010627",
@@ -1431,6 +1431,21 @@
       "media_id": "18119865062105076",
       "permalink": "https://www.instagram.com/reel/DfchNWStXm9/",
       "posted_at": "2026-11-07T15:38:02+00:00"
+    },
+    {
+      "id": "202611080627",
+      "title": "Why Microwaves Have Turntables",
+      "series": "why a machine has a part",
+      "bank_id": "b027",
+      "hook": "Your microwave heats in hot and cold spots",
+      "fact": "A microwave has a turning plate because it heats in hot and cold spots.",
+      "narration": "Your microwave heats in hot and cold spots. So why does it spin? The waves bounce around inside, piling up in some places and canceling out in others, leaving cold spots. Spinning your plate moves your food through the hot spots so it heats more evenly",
+      "caption": "The reason your microwave has a turning plate.\n\nMicrowave ovens don't heat food evenly on their own. The energy bounces around inside, creating areas where the waves pile up and areas where they cancel out. That leaves hot spots and cold spots. The rotating tray is there to move your food through the hot spots so heat can spread through the dish.\n\nSend this to the person who gets cold spots in their leftovers.\n\nFollow for a new one every day.\n\n#kitchenappliances #howthingswork #microwavecooking #microwaves #kitchensecrets #aigenerated",
+      "hook_text": "YOUR MICROWAVE *HEATS* IN SPOTS",
+      "cover_text": "*MICROWAVE* TURNTABLE",
+      "media_id": "17965927635218490",
+      "permalink": "https://www.instagram.com/reel/DfeKggqB0uy/",
+      "posted_at": "2026-11-08T06:58:46+00:00"
     }
   ],
   "pending": null,
