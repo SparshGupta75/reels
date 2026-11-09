@@ -1040,7 +1040,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 4267
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611020627",
@@ -1506,6 +1506,21 @@
       "media_id": "18104135681529959",
       "permalink": "https://www.instagram.com/reel/DffH4oqzu1q/",
       "posted_at": "2026-11-08T15:54:49+00:00"
+    },
+    {
+      "id": "202611090627",
+      "title": "What Is Inside a 9-Volt Battery",
+      "series": "what is inside a battery",
+      "bank_id": "b032",
+      "hook": "Many nine volt batteries are actually six small batteries stacked inside",
+      "fact": "Many 9-volt batteries have six small batteries stacked inside them.",
+      "narration": "Many nine volt batteries are actually six small batteries stacked inside. Why are they there? Each small cell holds one and a half volts, the same as a common battery. Joining six together in a row adds up to nine, which means that...",
+      "caption": "A rectangular nine volt battery contains six small batteries inside its case. Standard small cells produce 1.5 volts each. To reach nine volts, six of these smaller cells are linked together. That combination creates the total electrical force in one block.\n\nFollow for a new one every day.\n\n#everydayobjects #electronics #ninevolt #batteryhacks #howitworks #aigenerated",
+      "hook_text": "YOUR 9V HAS *SIX* BATTERIES",
+      "cover_text": "*SIX* BATTERIES",
+      "media_id": "17875449423602057",
+      "permalink": "https://www.instagram.com/reel/DfgvIzQvd3y/",
+      "posted_at": "2026-11-09T06:57:15+00:00"
     }
   ],
   "pending": null,
