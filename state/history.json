@@ -1065,7 +1065,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 8374
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611021026",
@@ -1430,7 +1430,17 @@
       "cover_text": "*21* RIDGES",
       "media_id": "18096974072558991",
       "permalink": "https://www.instagram.com/reel/DfblLTQBBMO/",
-      "posted_at": "2026-11-07T06:53:28+00:00"
+      "posted_at": "2026-11-07T06:53:28+00:00",
+      "metrics": {
+        "views": 159,
+        "reach": 126,
+        "likes": 4,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8935
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611071026",
@@ -1521,6 +1531,21 @@
       "media_id": "17875449423602057",
       "permalink": "https://www.instagram.com/reel/DfgvIzQvd3y/",
       "posted_at": "2026-11-09T06:57:15+00:00"
+    },
+    {
+      "id": "202611091026",
+      "title": "Phone Camera Sees TV Remote Light",
+      "series": "check it with your phone",
+      "bank_id": "b033",
+      "hook": "Your phone camera sees invisible light",
+      "fact": "Your phone camera can see the invisible light from your TV remote.",
+      "narration": "Your phone camera sees invisible light. So how do you test it? Point a plain TV remote at your camera lens and hold down any button. Your screen instantly reveals a flashing glow like a tiny flashlight, proving the secret fact that...",
+      "caption": "Your phone camera can see invisible light from your TV remote.\n\nTV remotes send signals using infrared light that our eyes cannot see. Many smartphone cameras pick these rays up, especially the front selfie lens. When you aim the remote at the camera, your screen turns those unseen light pulses into a flashing purple dot. I use this trick to test if remote batteries are dead.\n\nSave this for the next time your TV remote stops working! 💡\n\nFollow for a new one every day.\n\n#phonehacks #techfacts #tvremote #secrettech #cameratricks #aigenerated",
+      "hook_text": "YOUR PHONE SEES *INVISIBLE* LIGHT",
+      "cover_text": "*INVISIBLE* LIGHT",
+      "media_id": "18096174359172788",
+      "permalink": "https://www.instagram.com/reel/DfhLedkP6rt/",
+      "posted_at": "2026-11-09T11:04:18+00:00"
     }
   ],
   "pending": null,
