@@ -1090,7 +1090,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5409
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611021317",
@@ -1455,7 +1455,17 @@
       "cover_text": "*FOIL* SIDES",
       "media_id": "17914163349481224",
       "permalink": "https://www.instagram.com/reel/DfcCGoEqObE/",
-      "posted_at": "2026-11-07T11:07:40+00:00"
+      "posted_at": "2026-11-07T11:07:40+00:00",
+      "metrics": {
+        "views": 1443,
+        "reach": 1066,
+        "likes": 7,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 11230
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611071513",
@@ -1546,6 +1556,21 @@
       "media_id": "18096174359172788",
       "permalink": "https://www.instagram.com/reel/DfhLedkP6rt/",
       "posted_at": "2026-11-09T11:04:18+00:00"
+    },
+    {
+      "id": "202611091342",
+      "title": "Toothpaste Truths",
+      "series": "Three",
+      "bank_id": "t11",
+      "hook": "Can you tell what this is? It's toothpaste, and here are three things you didn't know about it",
+      "fact": "toothpaste: Orange juice tastes bitter after brushing because a foaming ingredient in toothpaste dulls your taste for sweetness. / Toothpaste scrubs your teeth with a very fine powder, often chalk or silica. / The foam doesn't do the cleaning; it just helps spread the toothpaste around your mouth.",
+      "narration": "Can you tell what this is? It's toothpaste, and here are three things you didn't know about it. One. Orange juice tastes bitter after brushing because a foaming ingredient in toothpaste dulls your taste for sweetness. Two. Toothpaste scrubs your teeth with a very fine powder, often chalk or silica. Three. The foam doesn't do the cleaning; it just helps spread the toothpaste around your mouth. Which one surprised you most?",
+      "caption": "Searching for why toothpaste orange juice tastes so bad led me to this.\n\nSodium laureth sulfate is the foaming agent that messes with your taste buds. It blocks your sweet receptors while it breaks down the fats that normally hide bitterness. I always wondered if it was just the mint flavor, but it is actually a chemical reaction.\n\nSend this to the person who always drinks juice right after brushing. 🍊\n\nFollow for a new one every day.\n\n#toothpaste #hygiene #orangejuice #dentalcare #bathroomhacks #aigenerated",
+      "hook_text": "",
+      "cover_text": "*TOOTHPASTE* SECRETS",
+      "media_id": "17997627441107275",
+      "permalink": "https://www.instagram.com/reel/DfhiK_XNaCI/",
+      "posted_at": "2026-11-09T14:23:07+00:00"
     }
   ],
   "pending": null,
