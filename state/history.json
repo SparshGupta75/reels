@@ -1115,7 +1115,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 12237
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611030627",
@@ -1480,7 +1480,17 @@
       "cover_text": "*WASHING* SECRETS",
       "media_id": "18119865062105076",
       "permalink": "https://www.instagram.com/reel/DfchNWStXm9/",
-      "posted_at": "2026-11-07T15:38:02+00:00"
+      "posted_at": "2026-11-07T15:38:02+00:00",
+      "metrics": {
+        "views": 134,
+        "reach": 119,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7108
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611080627",
@@ -1571,6 +1581,21 @@
       "media_id": "17997627441107275",
       "permalink": "https://www.instagram.com/reel/DfhiK_XNaCI/",
       "posted_at": "2026-11-09T14:23:07+00:00"
+    },
+    {
+      "id": "202611100627",
+      "title": "Why your shower curtain blows inwards",
+      "series": "why something moves on its own",
+      "bank_id": "b036",
+      "hook": "Your shower curtain often blows inward toward you",
+      "fact": "The shower curtain blows inwards towards you because the spray makes the air inside spin.",
+      "narration": "Your shower curtain often blows inward toward you. The fast water spray drags the surrounding air, creating a small swirling motion. That swirl lowers the pressure in the middle, pulling the light fabric toward your legs like a mini vacuum, which is why it moves.",
+      "caption": "Why your shower curtain blows inward during a shower. The water spray drags air and creates a swirl that reduces pressure, pulling the lightweight curtain toward you. Using a heavier curtain or weighted bottom can help keep it in place. 🚿\n\nFollow for a new one every day.\n\n#physics #homehacks #showercurtain #fluidmechanics #everydayobjects #aigenerated",
+      "hook_text": "YOUR SHOWER CURTAIN *BLOWS* INWARD",
+      "cover_text": "*SHOWER* CURTAIN MYSTERY",
+      "media_id": "18158846134518037",
+      "permalink": "https://www.instagram.com/reel/DfjT80ytXG7/",
+      "posted_at": "2026-11-10T06:56:51+00:00"
     }
   ],
   "pending": null,
