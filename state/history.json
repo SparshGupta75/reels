@@ -1165,7 +1165,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6643
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611031241",
@@ -1190,7 +1190,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 9609
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611040627",
@@ -1530,7 +1530,17 @@
       "cover_text": "*WIFI* KILLER",
       "media_id": "18341511301302551",
       "permalink": "https://www.instagram.com/reel/DfelnW-SKmw/",
-      "posted_at": "2026-11-08T10:55:58+00:00"
+      "posted_at": "2026-11-08T10:55:58+00:00",
+      "metrics": {
+        "views": 133,
+        "reach": 117,
+        "likes": 2,
+        "comments": 1,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5282
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611081513",
@@ -1621,6 +1631,21 @@
       "media_id": "17995613904052058",
       "permalink": "https://www.instagram.com/reel/Dfjv9c8h3dc/",
       "posted_at": "2026-11-10T11:01:36+00:00"
+    },
+    {
+      "id": "202611101321",
+      "title": "Three Chocolate Facts",
+      "series": "Three",
+      "bank_id": "t12",
+      "hook": "Can you tell what this is? It's chocolate, and here are three things you didn't know about it",
+      "fact": "chocolate: Chocolate melts in your mouth because cocoa butter melts just below body temperature. / The white film on old chocolate is only fat or sugar that rose to the surface. / Cocoa pods grow straight out of the trunk of the tree, not just on its branches.",
+      "narration": "Can you tell what this is? It's chocolate, and here are three things you didn't know about it. One. Chocolate melts in your mouth because cocoa butter melts just below body temperature. Two. The white film on old chocolate is only fat or sugar that rose to the surface. Three. Cocoa pods grow straight out of the trunk of the tree, not just on its branches. Which one surprised you most?",
+      "caption": "Chocolate bloom on old sweets isn't mold.\n\nThat chalky white layer happens when cocoa butter melts out of alignment and settles on the surface. It changes the texture slightly, but it is completely safe to eat. Cocoa butter melts at ninety-three degrees Fahrenheit, right below human body temperature. I definitely threw away perfectly good bars before learning this. 🍫\n\nSend this to the person who always throws away old chocolate.\n\nFollow for a new one every day.\n\n#chocolate #foodfacts #cocoabutter #chocolatebloom #cacao #aigenerated",
+      "hook_text": "",
+      "cover_text": "*CHOCOLATE* SECRETS",
+      "media_id": "18115194227331660",
+      "permalink": "https://www.instagram.com/reel/DfkL-0UhX6_/",
+      "posted_at": "2026-11-10T15:06:26+00:00"
     }
   ],
   "pending": null,
