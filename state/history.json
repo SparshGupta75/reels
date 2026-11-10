@@ -1140,7 +1140,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 9039
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611031026",
@@ -1505,7 +1505,17 @@
       "cover_text": "*MICROWAVE* TURNTABLE",
       "media_id": "17965927635218490",
       "permalink": "https://www.instagram.com/reel/DfeKggqB0uy/",
-      "posted_at": "2026-11-08T06:58:46+00:00"
+      "posted_at": "2026-11-08T06:58:46+00:00",
+      "metrics": {
+        "views": 169,
+        "reach": 131,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7444
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611081026",
@@ -1596,6 +1606,21 @@
       "media_id": "18158846134518037",
       "permalink": "https://www.instagram.com/reel/DfjT80ytXG7/",
       "posted_at": "2026-11-10T06:56:51+00:00"
+    },
+    {
+      "id": "202611101026",
+      "title": "Where Soda Bubbles Come From",
+      "series": "where bubbles come from",
+      "bank_id": "b018",
+      "hook": "Soda bubbles form on tiny glass scratches",
+      "fact": "The bubbles in a fizzy drink almost all start from tiny scratches and specks on the glass.",
+      "narration": "Soda bubbles form on tiny glass scratches. So why does that happen? Gas needs help building a bubble in smooth liquid. It needs a tiny rough spot to gather on, just like grabbing a handle. That is why steady streams rise right where...",
+      "caption": "Your fizzy drink bubbles start on tiny glass scratches. When you pour a drink into a glass, gas turns into bubbles. Smooth liquid doesn't give the gas much traction to group together. It relies on tiny scratches or specks on the glass wall to get started. Once enough gas gathers at a scratch, a bubble breaks free, leaving behind a start for the next one. It might look like bubbles just pop up everywhere. Save this for the next time you pour a drink.\n\nFollow for a new one every day.\n\n#soda #sparklingwater #fizzywater #drinkscience #glassware #aigenerated",
+      "hook_text": "BUBBLES FORM ON TINY *SCRATCHES*",
+      "cover_text": "*GLASS* BUBBLES",
+      "media_id": "17995613904052058",
+      "permalink": "https://www.instagram.com/reel/Dfjv9c8h3dc/",
+      "posted_at": "2026-11-10T11:01:36+00:00"
     }
   ],
   "pending": null,
