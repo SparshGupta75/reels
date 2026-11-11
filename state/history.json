@@ -1240,7 +1240,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7139
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611041251",
@@ -1605,7 +1605,17 @@
       "cover_text": "*INVISIBLE* LIGHT",
       "media_id": "18096174359172788",
       "permalink": "https://www.instagram.com/reel/DfhLedkP6rt/",
-      "posted_at": "2026-11-09T11:04:18+00:00"
+      "posted_at": "2026-11-09T11:04:18+00:00",
+      "metrics": {
+        "views": 271,
+        "reach": 201,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 11533
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611091342",
@@ -1696,6 +1706,21 @@
       "media_id": "18130268654301024",
       "permalink": "https://www.instagram.com/reel/DfmTT_4Cu72/",
       "posted_at": "2026-11-11T10:50:28+00:00"
+    },
+    {
+      "id": "202611111232",
+      "title": "Coffee Bean Secrets",
+      "series": "Three",
+      "bank_id": "t13",
+      "hook": "Can you tell what this is? It's a coffee bean, and here are three things you didn't know about it",
+      "fact": "coffee bean: A coffee bean is the seed of a small red fruit called a coffee cherry. / Raw coffee beans are green and smell more like grass than coffee. / Dark roast coffee does not have more caffeine than light roast, even though it tastes stronger.",
+      "narration": "Can you tell what this is? It's a coffee bean, and here are three things you didn't know about it. One. A coffee bean is the seed of a small red fruit called a coffee cherry. Two. Raw coffee beans are green and smell more like grass than coffee. Three. Dark roast coffee does not have more caffeine than light roast, even though it tastes stronger. Which one surprised you most?",
+      "caption": "Learning about a coffee bean caffeine level changed how I pick my brew.\n\nIt turns out coffee beans are actually seeds inside bright red berries that grow on tropical bushes. Raw unroasted beans are pale green and smell like fresh lawn clippings until heat changes their chemistry. Roasting beans longer makes them puff up and lose water, which slightly lowers their caffeine density by weight. Light roasts stay smaller and retain a tiny bit more caffeine per bean. I was honestly shocked to find out my morning cup comes from a fruit.\n\nSave this for the next time you order a roast at a cafe.\n\nFollow for a new one every day.\n\n#coffeebean #coffeelover #coffeefacts #roastlevels #coffeebeans #aigenerated",
+      "hook_text": "",
+      "cover_text": "*COFFEE* SECRETS",
+      "media_id": "18101530799541581",
+      "permalink": "https://www.instagram.com/reel/Dfmj6F1N29h/",
+      "posted_at": "2026-11-11T13:15:17+00:00"
     }
   ],
   "pending": null,
