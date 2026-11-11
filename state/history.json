@@ -1555,7 +1555,17 @@
       "cover_text": "*FRIDGE* SECRETS",
       "media_id": "18104135681529959",
       "permalink": "https://www.instagram.com/reel/DffH4oqzu1q/",
-      "posted_at": "2026-11-08T15:54:49+00:00"
+      "posted_at": "2026-11-08T15:54:49+00:00",
+      "metrics": {
+        "views": 154,
+        "reach": 129,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 9019
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611090627",
@@ -1646,6 +1656,21 @@
       "media_id": "18115194227331660",
       "permalink": "https://www.instagram.com/reel/DfkL-0UhX6_/",
       "posted_at": "2026-11-10T15:06:26+00:00"
+    },
+    {
+      "id": "202611110627",
+      "title": "Why Stretched Rubber Bands Get Warm",
+      "series": "try it at home physics",
+      "bank_id": "b037",
+      "hook": "Stretching a rubber band quickly makes it warm",
+      "fact": "A rubber band gets warm when you stretch it quickly.",
+      "narration": "Stretching a rubber band quickly makes it warm. Why does that happen? Inside, stretching lines up the long tangled chains, which releases a little heat. Touch it to your lip right after stretching it, and you can feel that heat.",
+      "caption": "Rubber band heat from stretching.\n\nYou can try this with a rubber band and feel it work. Stretching it quickly lines up the long tangled chains inside the rubber, which releases a little heat. If you stretch it fast and touch it to your lip, you can feel the warmth.\n\nSave this for the next time you want an easy trick to try at your desk.\n\nFollow for a new one every day.\n\n#physicsfacts #everydayscience #rubberband #scienceexperiment #thermalphysics #aigenerated",
+      "hook_text": "YOUR RUBBER BAND GETS *WARM*",
+      "cover_text": "*WARM* RUBBER BAND",
+      "media_id": "18129043966981033",
+      "permalink": "https://www.instagram.com/reel/Dfl36tkswte/",
+      "posted_at": "2026-11-11T06:49:37+00:00"
     }
   ],
   "pending": null,
