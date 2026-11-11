@@ -1215,7 +1215,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5447
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611041026",
@@ -1580,7 +1580,17 @@
       "cover_text": "*SIX* BATTERIES",
       "media_id": "17875449423602057",
       "permalink": "https://www.instagram.com/reel/DfgvIzQvd3y/",
-      "posted_at": "2026-11-09T06:57:15+00:00"
+      "posted_at": "2026-11-09T06:57:15+00:00",
+      "metrics": {
+        "views": 252,
+        "reach": 219,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6286
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611091026",
@@ -1671,6 +1681,21 @@
       "media_id": "18129043966981033",
       "permalink": "https://www.instagram.com/reel/Dfl36tkswte/",
       "posted_at": "2026-11-11T06:49:37+00:00"
+    },
+    {
+      "id": "202611111026",
+      "title": "Why Metal Feels Colder Than Wood",
+      "series": "why things feel cold",
+      "bank_id": "b038",
+      "hook": "That cold spoon is lying",
+      "fact": "A metal spoon and a wooden spoon in the same room are the same temperature, but the metal one feels colder.",
+      "narration": "That cold spoon is lying. So why does it feel freezing? Resting in the same room, wood and metal are the exact same temperature. Your skin doesn't just tell how warm things are. It feels heat rushing away, and metal steals warmth much faster than wood, which means",
+      "caption": "Why metal spoons feel colder than wooden spoons.\n\nIf you leave a metal spoon and a wooden spoon in the same room, they sit at the exact same temperature. People often think metal is naturally colder, but our skin doesn't just measure temperature directly. It feels heat leaving your body. Metal pulls heat away from your skin much faster than wood, making it feel colder.\n\nSave this for the next time you touch a freezing metal handle.\n\nFollow for a new one every day.\n\n#everydayscience #physicsfacts #thermalconduction #kitchenscience #heattransfer #aigenerated",
+      "hook_text": "YOUR SPOON IS *NOT* COLD",
+      "cover_text": "*COLD* SPOON TRICK",
+      "media_id": "18130268654301024",
+      "permalink": "https://www.instagram.com/reel/DfmTT_4Cu72/",
+      "posted_at": "2026-11-11T10:50:28+00:00"
     }
   ],
   "pending": null,
