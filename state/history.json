@@ -1290,7 +1290,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 11875
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611051026",
@@ -1655,7 +1655,17 @@
       "cover_text": "*SHOWER* CURTAIN MYSTERY",
       "media_id": "18158846134518037",
       "permalink": "https://www.instagram.com/reel/DfjT80ytXG7/",
-      "posted_at": "2026-11-10T06:56:51+00:00"
+      "posted_at": "2026-11-10T06:56:51+00:00",
+      "metrics": {
+        "views": 207,
+        "reach": 171,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6656
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611101026",
@@ -1746,6 +1756,21 @@
       "media_id": "17899105857615222",
       "permalink": "https://www.instagram.com/reel/Dfoezx-yN_Z/",
       "posted_at": "2026-11-12T07:08:17+00:00"
+    },
+    {
+      "id": "202611121026",
+      "title": "What Plastic Recycling Numbers Actually Mean",
+      "series": "label meaning",
+      "bank_id": "b040",
+      "hook": "That recycling triangle does not mean an item can be recycled",
+      "fact": "The number inside the recycling triangle on plastic only tells you what kind of plastic it is, not that it can be recycled.",
+      "narration": "That recycling triangle does not mean an item can be recycled. So what is it for? It just identifies the plastic type to help sort them. Many of these plastic types are not collected in most places, despite the arrows. So check the bottom today, because...",
+      "caption": "The plastic recycling triangle numbers on your packaging do not mean the item gets recycled.\n\nThe chasing arrows symbol was created just to label the material type and help sort plastics. Many of the types it names are not collected in most places, despite the arrows. Checking the code before binning your container keeps non-recyclable plastic out of the system. I honestly had no idea I was putting the wrong items in my bin for so long ♻️\n\nSave this for the next time you sort your household recycling.\n\nFollow for a new one every day.\n\n#recycling #plastic #recyclingcodes #sustainabilitytips #wastereduction #aigenerated",
+      "hook_text": "RECYCLING NUMBERS *DONT* MEAN RECYCLABLE",
+      "cover_text": "*RECYCLING* CODES",
+      "media_id": "17985159773908525",
+      "permalink": "https://www.instagram.com/reel/Dfo5aN9P-Yi/",
+      "posted_at": "2026-11-12T11:00:26+00:00"
     }
   ],
   "pending": null,
