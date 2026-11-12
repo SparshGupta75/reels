@@ -1315,7 +1315,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 10404
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611051259",
@@ -1332,15 +1332,15 @@
       "permalink": "https://www.instagram.com/reel/DfXIR06gI7F/",
       "posted_at": "2026-11-05T13:25:03+00:00",
       "metrics": {
-        "views": 361,
-        "reach": 295,
+        "views": 362,
+        "reach": 296,
         "likes": 5,
         "comments": 0,
         "saved": 0,
         "shares": 1,
-        "ig_reels_avg_watch_time": 11310
+        "ig_reels_avg_watch_time": 11274
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611060627",
@@ -1680,7 +1680,17 @@
       "cover_text": "*GLASS* BUBBLES",
       "media_id": "17995613904052058",
       "permalink": "https://www.instagram.com/reel/Dfjv9c8h3dc/",
-      "posted_at": "2026-11-10T11:01:36+00:00"
+      "posted_at": "2026-11-10T11:01:36+00:00",
+      "metrics": {
+        "views": 196,
+        "reach": 166,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6334
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611101321",
@@ -1771,6 +1781,21 @@
       "media_id": "17985159773908525",
       "permalink": "https://www.instagram.com/reel/Dfo5aN9P-Yi/",
       "posted_at": "2026-11-12T11:00:26+00:00"
+    },
+    {
+      "id": "202611121338",
+      "title": "3 Salt Secrets",
+      "series": "Three",
+      "bank_id": "t14",
+      "hook": "Can you tell what this is? It's salt, and here are three things you didn't know about it",
+      "fact": "salt: Most of the salt mined in the world never reaches a plate; industry and icy roads use it. / A pinch of salt makes bitter food taste less bitter, even coffee. / Fancy sea salt and ordinary table salt contain about the same amount of sodium by weight.",
+      "narration": "Can you tell what this is? It's salt, and here are three things you didn't know about it. One. Most of the salt mined in the world never reaches a plate; industry and icy roads use it. Two. A pinch of salt makes bitter food taste less bitter, even coffee. Three. Fancy sea salt and ordinary table salt contain about the same amount of sodium by weight. Which one surprised you most?",
+      "caption": "I just learned why adding salt to coffee works so well.\n\nSodium ions physically block the bitterness receptors on your tongue before the bitter compounds reach them. This suppresses bitterness even better than adding sugar. Less than ten percent of global salt production actually goes into food, with most used for chemical manufacturing and road melting. Both sea salt and fine table salt consist of roughly forty percent sodium by weight.\n\nSave this for the next time your morning coffee tastes too bitter.\n\nFollow for a new one every day.\n\n#salt #cooking #kitchenhacks #coffeetips #foodscience #aigenerated",
+      "hook_text": "",
+      "cover_text": "*SALT* SECRETS",
+      "media_id": "18116384245861242",
+      "permalink": "https://www.instagram.com/reel/DfpPWiHFUyf/",
+      "posted_at": "2026-11-12T14:12:38+00:00"
     }
   ],
   "pending": null,
