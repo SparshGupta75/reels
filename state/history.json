@@ -1265,7 +1265,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 12487
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611050627",
@@ -1630,7 +1630,17 @@
       "cover_text": "*TOOTHPASTE* SECRETS",
       "media_id": "17997627441107275",
       "permalink": "https://www.instagram.com/reel/DfhiK_XNaCI/",
-      "posted_at": "2026-11-09T14:23:07+00:00"
+      "posted_at": "2026-11-09T14:23:07+00:00",
+      "metrics": {
+        "views": 1320,
+        "reach": 1129,
+        "likes": 16,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 10233
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611100627",
@@ -1721,6 +1731,21 @@
       "media_id": "18101530799541581",
       "permalink": "https://www.instagram.com/reel/Dfmj6F1N29h/",
       "posted_at": "2026-11-11T13:15:17+00:00"
+    },
+    {
+      "id": "202611120627",
+      "title": "How Receipts Print Without Ink",
+      "series": "how a receipt is printed",
+      "bank_id": "b039",
+      "hook": "Most store receipts have zero ink on them",
+      "fact": "Most shop receipts are printed without any ink.",
+      "narration": "Most store receipts have zero ink on them. So how do they print? The paper itself has a coating that turns dark when heated. Inside, the printer simply heats tiny dots, writing like a miniature iron. That coating fades over time, reminding you that...",
+      "caption": "Most paper store receipts have zero ink on them.\n\nI always thought store printers ran out of ink cartridges, but most don't use ink at all. Receipt paper is coated in a layer that darkens whenever heat touches it. The printer simply warms up tiny spots on the paper as it rolls through to form letters. That is also why old receipts fade over time.\n\nSave this for the next time you leave an important receipt on your car dashboard.\n\nFollow for a new one every day.\n\n#lifehacks #everydayobjects #receipts #thermalpaper #howitworks #aigenerated",
+      "hook_text": "YOUR RECEIPT HAS *ZERO* INK",
+      "cover_text": "*ZERO* INK RECEIPT",
+      "media_id": "17899105857615222",
+      "permalink": "https://www.instagram.com/reel/Dfoezx-yN_Z/",
+      "posted_at": "2026-11-12T07:08:17+00:00"
     }
   ],
   "pending": null,
