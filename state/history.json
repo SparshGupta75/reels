@@ -1705,7 +1705,17 @@
       "cover_text": "*CHOCOLATE* SECRETS",
       "media_id": "18115194227331660",
       "permalink": "https://www.instagram.com/reel/DfkL-0UhX6_/",
-      "posted_at": "2026-11-10T15:06:26+00:00"
+      "posted_at": "2026-11-10T15:06:26+00:00",
+      "metrics": {
+        "views": 174,
+        "reach": 141,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 9175
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611110627",
@@ -1796,6 +1806,21 @@
       "media_id": "18116384245861242",
       "permalink": "https://www.instagram.com/reel/DfpPWiHFUyf/",
       "posted_at": "2026-11-12T14:12:38+00:00"
+    },
+    {
+      "id": "202611130627",
+      "title": "The Secret Purpose of Banana Strings",
+      "series": "the stringy bits on fruit",
+      "bank_id": "b022",
+      "hook": "Your banana has built-in feeding tubes",
+      "fact": "The stringy bits on a peeled banana are tubes that fed the banana while it grew.",
+      "narration": "Your banana has built-in feeding tubes. So why are they there? These stringy bits act a bit like veins. They carry water and sugars from the bunch to help the fruit grow. They are fine to eat. Because without them...",
+      "caption": "Your banana stringy bits are actually feeding tubes. These fibers are like tubes that move water and sugar throughout the fruit while it is growing on the bunch. Some pull them off because they look messy, but they are edible. They are a reason the fruit tastes sweet. Send this to the person who often picks the strings off their fruit.\n\nFollow for a new one every day.\n\n#banana #fruitfacts #healthyeating #foodhacks #kitchenhacks #aigenerated",
+      "hook_text": "BANANAS HAVE *FEEDING* TUBES",
+      "cover_text": "*FEEDING* TUBES",
+      "media_id": "18096500810491221",
+      "permalink": "https://www.instagram.com/reel/DfrB6ARIlQK/",
+      "posted_at": "2026-11-13T06:53:05+00:00"
     }
   ],
   "pending": null,
