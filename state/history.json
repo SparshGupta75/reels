@@ -1382,15 +1382,15 @@
       "permalink": "https://www.instagram.com/reel/DfZbX-_SYv2/",
       "posted_at": "2026-11-06T10:49:20+00:00",
       "metrics": {
-        "views": 185,
-        "reach": 161,
-        "likes": 4,
+        "views": 189,
+        "reach": 163,
+        "likes": 5,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 6064
+        "ig_reels_avg_watch_time": 6108
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611061247",
@@ -1755,7 +1755,17 @@
       "cover_text": "*COLD* SPOON TRICK",
       "media_id": "18130268654301024",
       "permalink": "https://www.instagram.com/reel/DfmTT_4Cu72/",
-      "posted_at": "2026-11-11T10:50:28+00:00"
+      "posted_at": "2026-11-11T10:50:28+00:00",
+      "metrics": {
+        "views": 166,
+        "reach": 133,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8326
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611111232",
@@ -1846,6 +1856,21 @@
       "media_id": "18022241549736455",
       "permalink": "https://www.instagram.com/reel/DfrdQE0p5SK/",
       "posted_at": "2026-11-13T10:52:05+00:00"
+    },
+    {
+      "id": "202611131255",
+      "title": "Dog Secrets",
+      "series": "Three",
+      "bank_id": "t15",
+      "hook": "Can you tell what this is? It's a dog, and here are three things you didn't know about it",
+      "fact": "dog: Dogs have a third eyelid that sweeps across the eye to protect it. / Puppies are born both blind and deaf, and depend on smell and touch at first. / Sleeping dogs show the same kind of brain activity that people have when dreaming.",
+      "narration": "Can you tell what this is? It's a dog, and here are three things you didn't know about it. One. Dogs have a third eyelid that sweeps across the eye to protect it. Two. Puppies are born both blind and deaf, and depend on smell and touch at first. Three. Sleeping dogs show the same kind of brain activity that people have when dreaming. Which one surprised you most?",
+      "caption": "a dog third eyelid is a helpful little feature that keeps their eyes clean while they play. That small pink corner piece is actually a membrane that moves horizontally to clear away dust. Puppies arrive into the world with their ears and eyes sealed shut because their brains need another two weeks to fully develop. When you see them twitching on the rug it's because they have the same sleep cycles we do. It's funny to think about what they're actually chasing. Send this to the person who always lets their dog sleep on the bed.\n\nFollow for a new one every day.\n\n#dogs #pets #puppyhealth #dogvision #caninescience #aigenerated",
+      "hook_text": "",
+      "cover_text": "*DOG* SECRETS",
+      "media_id": "18081134072436395",
+      "permalink": "https://www.instagram.com/reel/DfrujpFswzh/",
+      "posted_at": "2026-11-13T13:24:51+00:00"
     }
   ],
   "pending": null,
