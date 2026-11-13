@@ -1357,15 +1357,15 @@
       "permalink": "https://www.instagram.com/reel/DfY_22xiHC_/",
       "posted_at": "2026-11-06T06:49:18+00:00",
       "metrics": {
-        "views": 1479,
-        "reach": 1115,
+        "views": 1480,
+        "reach": 1116,
         "likes": 8,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 8868
+        "ig_reels_avg_watch_time": 8874
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611061026",
@@ -1730,7 +1730,17 @@
       "cover_text": "*WARM* RUBBER BAND",
       "media_id": "18129043966981033",
       "permalink": "https://www.instagram.com/reel/Dfl36tkswte/",
-      "posted_at": "2026-11-11T06:49:37+00:00"
+      "posted_at": "2026-11-11T06:49:37+00:00",
+      "metrics": {
+        "views": 1998,
+        "reach": 1604,
+        "likes": 8,
+        "comments": 2,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7192
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611111026",
@@ -1821,6 +1831,21 @@
       "media_id": "18096500810491221",
       "permalink": "https://www.instagram.com/reel/DfrB6ARIlQK/",
       "posted_at": "2026-11-13T06:53:05+00:00"
+    },
+    {
+      "id": "202611131026",
+      "title": "The Hidden Purpose of Clothes Swatches",
+      "series": "hidden extra with new clothes",
+      "bank_id": "b042",
+      "hook": "That extra fabric sample isn't for patches",
+      "fact": "The tiny square of fabric that comes with spare buttons is there so you can test how the fabric washes.",
+      "narration": "That extra fabric sample isn't for patches. So why is it there? It is a test strip for your laundry. You can try a hot wash or stain remover on this small piece first, instead of risking your brand new clothes, because",
+      "caption": "new clothes extra fabric sample has a hidden purpose.\n\nThat tiny swatch of cloth that comes with spare buttons isn't meant for mending tears. It is actually provided so you can test stain removers and hot water before washing the garment itself. Testing the sample first helps protect your actual clothes from damage.\n\nSave this for the next time you buy new clothes.\n\nFollow for a new one every day.\n\n#clothingcare #laundrytips #fabricswatch #laundryhacks #clothescare #aigenerated",
+      "hook_text": "NEW CLOTHES HAVE A *TEST* STRIP",
+      "cover_text": "*TEST* STRIP",
+      "media_id": "18022241549736455",
+      "permalink": "https://www.instagram.com/reel/DfrdQE0p5SK/",
+      "posted_at": "2026-11-13T10:52:05+00:00"
     }
   ],
   "pending": null,
