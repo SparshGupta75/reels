@@ -1432,15 +1432,15 @@
       "permalink": "https://www.instagram.com/reel/DfblLTQBBMO/",
       "posted_at": "2026-11-07T06:53:28+00:00",
       "metrics": {
-        "views": 159,
-        "reach": 126,
+        "views": 163,
+        "reach": 128,
         "likes": 4,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 8935
+        "ig_reels_avg_watch_time": 8828
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611071026",
@@ -1805,7 +1805,17 @@
       "cover_text": "*ZERO* INK RECEIPT",
       "media_id": "17899105857615222",
       "permalink": "https://www.instagram.com/reel/Dfoezx-yN_Z/",
-      "posted_at": "2026-11-12T07:08:17+00:00"
+      "posted_at": "2026-11-12T07:08:17+00:00",
+      "metrics": {
+        "views": 288,
+        "reach": 230,
+        "likes": 4,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8251
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611121026",
@@ -1896,6 +1906,21 @@
       "media_id": "17988472020121433",
       "permalink": "https://www.instagram.com/reel/DftnfiVz1Wo/",
       "posted_at": "2026-11-14T07:00:00+00:00"
+    },
+    {
+      "id": "202611141026",
+      "title": "Why Microwave Doors Have Holes",
+      "series": "hidden design of a door",
+      "bank_id": "b028",
+      "hook": "Your microwave door is full of holes",
+      "fact": "The metal mesh in a microwave door lets you see in but keeps the microwaves trapped inside.",
+      "narration": "Your microwave door is full of holes. Why don't the waves escape? Those cooking waves are about twelve centimetres long, bouncing off the tiny holes like tennis balls against a fence. Light waves easily sail straight through, which explains why",
+      "caption": "The metal mesh on a microwave door keeps microwaves trapped inside.\n\nThe dark dotted screen behind the glass is actually a metal mesh full of tiny holes. The waves that heat your food measure about 12 centimetres long, so they cannot fit through the gaps and stay trapped inside. Light easily passes through, which is why your eyes can see through effortlessly. Take a close look at the inside of your door today and you will spot the metal layer right away.\n\nSend this to the person who stares at their food heating up.\n\nFollow for a new one every day.\n\n#kitchenappliances #everydayphysics #microwavedoor #howthingswork #appliancescience #aigenerated",
+      "hook_text": "YOUR MICROWAVE DOOR HAS *HOLES*",
+      "cover_text": "*MICROWAVE* DOOR HOLES",
+      "media_id": "17896433868437090",
+      "permalink": "https://www.instagram.com/reel/DfuWlNbSGVe/",
+      "posted_at": "2026-11-14T13:51:30+00:00"
     }
   ],
   "pending": null,
