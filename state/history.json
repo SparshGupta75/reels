@@ -1407,15 +1407,15 @@
       "permalink": "https://www.instagram.com/reel/DfZtPIbhOQ9/",
       "posted_at": "2026-11-06T13:25:22+00:00",
       "metrics": {
-        "views": 127,
-        "reach": 105,
+        "views": 128,
+        "reach": 106,
         "likes": 2,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 10263
+        "ig_reels_avg_watch_time": 10412
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611070627",
@@ -1780,7 +1780,17 @@
       "cover_text": "*COFFEE* SECRETS",
       "media_id": "18101530799541581",
       "permalink": "https://www.instagram.com/reel/Dfmj6F1N29h/",
-      "posted_at": "2026-11-11T13:15:17+00:00"
+      "posted_at": "2026-11-11T13:15:17+00:00",
+      "metrics": {
+        "views": 259,
+        "reach": 214,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 9005
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611120627",
@@ -1871,6 +1881,21 @@
       "media_id": "18081134072436395",
       "permalink": "https://www.instagram.com/reel/DfrujpFswzh/",
       "posted_at": "2026-11-13T13:24:51+00:00"
+    },
+    {
+      "id": "202611140627",
+      "title": "Where Chilli Heat Actually Hides",
+      "series": "where food heat hides",
+      "bank_id": "b008",
+      "hook": "Most chilli heat is not in the seeds",
+      "fact": "Most of a chilli's heat is in the pale ribs inside it, not in the seeds.",
+      "narration": "Most chilli heat is not in the seeds. So what burns your tongue? Most of the fire comes from the pale ribs holding them, like spicy little sponges. Seeds only taste hot by touching them, so slicing out that white strip tames your food, because",
+      "caption": "The secret to chilli heat is in the pale ribs.\n\nMany people scrape out the seeds thinking that is where the fire comes from. The burning substance is actually made in the pale ribs holding the seeds. The seeds themselves only taste hot because they touch that white tissue. Slicing out that pale strip removes most of the burn while keeping the fresh pepper flavour.\n\nSend this to someone who orders their food mild.\n\nFollow for a new one every day.\n\n#cookingtips #foodscience #chilipeppers #spicyfoodhacks #kitchensecrets #aigenerated",
+      "hook_text": "CHILLI SEEDS ARE *NOT* HOT",
+      "cover_text": "*CHILLI* HEAT SECRET",
+      "media_id": "17988472020121433",
+      "permalink": "https://www.instagram.com/reel/DftnfiVz1Wo/",
+      "posted_at": "2026-11-14T07:00:00+00:00"
     }
   ],
   "pending": null,
@@ -1893,6 +1918,7 @@
     }
   ],
   "bank_rejected": [
+    "b006",
     "b009",
     "b011"
   ]
