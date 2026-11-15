@@ -1540,7 +1540,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5282
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611081513",
@@ -1905,7 +1905,17 @@
       "cover_text": "*TEST* STRIP",
       "media_id": "18022241549736455",
       "permalink": "https://www.instagram.com/reel/DfrdQE0p5SK/",
-      "posted_at": "2026-11-13T10:52:05+00:00"
+      "posted_at": "2026-11-13T10:52:05+00:00",
+      "metrics": {
+        "views": 1977,
+        "reach": 1381,
+        "likes": 11,
+        "comments": 0,
+        "saved": 3,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 10339
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611131255",
@@ -1981,6 +1991,21 @@
       "media_id": "17951618739353375",
       "permalink": "https://www.instagram.com/reel/DfwumFwpgXa/",
       "posted_at": "2026-11-15T11:59:49+00:00"
+    },
+    {
+      "id": "202611151235",
+      "title": "Three Cactus Secrets",
+      "series": "Three",
+      "bank_id": "t16",
+      "hook": "Can you tell what this is? It's a cactus, and here are three things you didn't know about it",
+      "fact": "cactus: The spines on a cactus are actually its leaves, changed over time to save water. / A cactus makes its food in its green stem, doing the job that leaves do on other plants. / A cactus breathes at night, keeping its tiny pores shut during the day to save water.",
+      "narration": "Can you tell what this is? It's a cactus, and here are three things you didn't know about it. One. The spines on a cactus are actually its leaves, changed over time to save water. Two. A cactus makes its food in its green stem, doing the job that leaves do on other plants. Three. A cactus breathes at night, keeping its tiny pores shut during the day to save water. Which one surprised you most?",
+      "caption": "A cactus breathes at night to save water in dry heat.\n\nMost plants open their surface pores during the day to capture carbon dioxide. A cactus does the opposite because hot daytime air would dry it out in just a few hours. It clamps its pores shut all day and opens them only after darkness falls. Then it stores the gas until morning light lets it finish making food. It is wild how smart simple desert survival really is. 🌵\n\nSend this to the person who keeps buying desert houseplants.\n\nFollow for a new one every day.\n\n#houseplants #succulents #cactuscare #desertplants #plantbiology #aigenerated",
+      "hook_text": "",
+      "cover_text": "*CACTUS* SECRETS",
+      "media_id": "18193210723412311",
+      "permalink": "https://www.instagram.com/reel/Dfw2NB7hw0W/",
+      "posted_at": "2026-11-15T13:06:47+00:00"
     }
   ],
   "pending": null,
