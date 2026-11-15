@@ -1457,15 +1457,15 @@
       "permalink": "https://www.instagram.com/reel/DfcCGoEqObE/",
       "posted_at": "2026-11-07T11:07:40+00:00",
       "metrics": {
-        "views": 1443,
-        "reach": 1066,
+        "views": 1444,
+        "reach": 1067,
         "likes": 7,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 11230
+        "ig_reels_avg_watch_time": 11222
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611071513",
@@ -1490,7 +1490,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7108
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611080627",
@@ -1830,7 +1830,17 @@
       "cover_text": "*RECYCLING* CODES",
       "media_id": "17985159773908525",
       "permalink": "https://www.instagram.com/reel/Dfo5aN9P-Yi/",
-      "posted_at": "2026-11-12T11:00:26+00:00"
+      "posted_at": "2026-11-12T11:00:26+00:00",
+      "metrics": {
+        "views": 234,
+        "reach": 201,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7456
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611121338",
@@ -1845,7 +1855,17 @@
       "cover_text": "*SALT* SECRETS",
       "media_id": "18116384245861242",
       "permalink": "https://www.instagram.com/reel/DfpPWiHFUyf/",
-      "posted_at": "2026-11-12T14:12:38+00:00"
+      "posted_at": "2026-11-12T14:12:38+00:00",
+      "metrics": {
+        "views": 168,
+        "reach": 136,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 9773
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611130627",
@@ -1921,6 +1941,21 @@
       "media_id": "17896433868437090",
       "permalink": "https://www.instagram.com/reel/DfuWlNbSGVe/",
       "posted_at": "2026-11-14T13:51:30+00:00"
+    },
+    {
+      "id": "202611150627",
+      "title": "Why Your Phone Screen Goes Black With Sunglasses",
+      "series": "why a screen goes dark",
+      "bank_id": "b044",
+      "hook": "Polarised sunglasses can make your phone screen look black when you tilt your head",
+      "fact": "Polarised sunglasses can make a phone screen look black when you tilt your head.",
+      "narration": "Polarised sunglasses can make your phone screen look black when you tilt your head. So why does that happen? Both your lenses and screen only let light through in one direction. When tilted, those directions cross and almost no light gets through. Turning your phone fixes it, but",
+      "caption": "I couldn't figure out why my phone screen went dark with polarised sunglasses.\n\nBoth polarised sunglass lenses and phone screens only let light through in one direction. When you look normally, light passes through. But when you tilt your head, those two directions cross and almost no light gets through.\n\nSave this for the next time your phone screen looks black in the sun. 🕶️\n\nFollow for a new one every day.\n\n#techfacts #everydayphysics #polarisedsunglasses #phonescreen #optics #aigenerated",
+      "hook_text": "YOUR PHONE SCREEN TURNS *BLACK*",
+      "cover_text": "*BLACK* SCREEN",
+      "media_id": "18004856774796691",
+      "permalink": "https://www.instagram.com/reel/DfwMf9nTPRs/",
+      "posted_at": "2026-11-15T07:02:08+00:00"
     }
   ],
   "pending": null,
