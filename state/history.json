@@ -1515,7 +1515,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7444
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611081026",
@@ -1880,7 +1880,17 @@
       "cover_text": "*FEEDING* TUBES",
       "media_id": "18096500810491221",
       "permalink": "https://www.instagram.com/reel/DfrB6ARIlQK/",
-      "posted_at": "2026-11-13T06:53:05+00:00"
+      "posted_at": "2026-11-13T06:53:05+00:00",
+      "metrics": {
+        "views": 205,
+        "reach": 157,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 11620
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611131026",
@@ -1956,6 +1966,21 @@
       "media_id": "18004856774796691",
       "permalink": "https://www.instagram.com/reel/DfwMf9nTPRs/",
       "posted_at": "2026-11-15T07:02:08+00:00"
+    },
+    {
+      "id": "202611151026",
+      "title": "Why Your Recorded Voice Sounds Strange",
+      "series": "why your voice sounds strange",
+      "bank_id": "b050",
+      "hook": "Your recorded voice often sounds strange",
+      "fact": "Your voice sounds strange on a recording because you normally hear it through your own head.",
+      "narration": "Your recorded voice often sounds strange. Why does that happen? When you speak, much of the sound reaches your ears through the bones of your skull, deepening what you hear. A recording captures sound moving through the air, which is why",
+      "caption": "The reason your recorded voice sounds strange.\n\nWhenever I hear an audio message of myself, I immediately cringe. When you talk out loud, sound reaches your ears through the bones of your skull. The bones of your skull make your voice sound deeper to you than to everyone else. Everyone else hears the sound traveling through the air.\n\nSend this to the person who hates hearing their own voice memos.\n\nFollow for a new one every day.\n\n#acoustics #hearing #boneconduction #recordedvoice #humanvoice #aigenerated",
+      "hook_text": "YOUR RECORDED VOICE SOUNDS *STRANGE*",
+      "cover_text": "*RECORDED* VOICE",
+      "media_id": "17951618739353375",
+      "permalink": "https://www.instagram.com/reel/DfwumFwpgXa/",
+      "posted_at": "2026-11-15T11:59:49+00:00"
     }
   ],
   "pending": null,
