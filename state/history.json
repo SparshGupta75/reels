@@ -1615,7 +1615,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 11533
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611091342",
@@ -2056,6 +2056,21 @@
       "media_id": "18070416221785530",
       "permalink": "https://www.instagram.com/reel/DfzMX3iPI5m/",
       "posted_at": "2026-11-16T10:58:58+00:00"
+    },
+    {
+      "id": "202611161327",
+      "title": "Jeans Secrets",
+      "series": "Three",
+      "bank_id": "t17",
+      "hook": "Can you tell what this is? It's a pair of jeans, and here are three things you didn't know about it",
+      "fact": "pair of jeans: Jeans fade because the blue dye only coats the outside of each thread. / Jeans are paler on the inside because only one set of threads is dyed blue. / Look closely at denim and you'll see the threads run in tiny diagonal lines.",
+      "narration": "Can you tell what this is? It's a pair of jeans, and here are three things you didn't know about it. One. Jeans fade because the blue dye only coats the outside of each thread. Two. Jeans are paler on the inside because only one set of threads is dyed blue. Three. Look closely at denim and you'll see the threads run in tiny diagonal lines. Which one surprised you most?",
+      "caption": "A pair of jeans fades over time because indigo dye only coats the outside of the threads.\n\nDuring the rope-dyeing process, indigo dye stays on the outer surface of cotton yarn instead of penetrating to the core. Every time denim rubs against something or goes through a wash, a tiny layer of blue dye flakes off and exposes the white center. This outer coating method is what gives old denim its classic washed look. I had no idea the inside of each thread was actually plain white.\n\nSend this to the person who lives in their favorite denim.\n\nFollow for a new one every day.\n\n#denim #jeans #indigo #denimfabric #weaving #aigenerated",
+      "hook_text": "",
+      "cover_text": "*JEANS* SECRETS",
+      "media_id": "18084259397342279",
+      "permalink": "https://www.instagram.com/reel/DfzhNNVgpM8/",
+      "posted_at": "2026-11-16T14:01:33+00:00"
     }
   ],
   "pending": null,
