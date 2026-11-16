@@ -1590,7 +1590,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6286
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611091026",
@@ -1955,7 +1955,17 @@
       "cover_text": "*CHILLI* HEAT SECRET",
       "media_id": "17988472020121433",
       "permalink": "https://www.instagram.com/reel/DftnfiVz1Wo/",
-      "posted_at": "2026-11-14T07:00:00+00:00"
+      "posted_at": "2026-11-14T07:00:00+00:00",
+      "metrics": {
+        "views": 173,
+        "reach": 136,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7361
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611141026",
@@ -2031,6 +2041,21 @@
       "media_id": "18486476512112532",
       "permalink": "https://www.instagram.com/reel/Dfyw74MOoq9/",
       "posted_at": "2026-11-16T06:59:13+00:00"
+    },
+    {
+      "id": "202611161026",
+      "title": "Radioactive Material in Smoke Alarms",
+      "series": "what is inside a gadget",
+      "bank_id": "b035",
+      "hook": "Many smoke alarms contain a tiny speck of radioactive material",
+      "fact": "Many smoke alarms contain a tiny speck of radioactive material.",
+      "narration": "Many smoke alarms contain a tiny speck of radioactive material. It gently charges the air inside a small chamber. When smoke enters, it disturbs that current and the alarm goes off. The amount of material is too small to harm you.",
+      "caption": "Many smoke alarms contain a tiny speck of radioactive material. It works by charging the air inside a small chamber, and the alarm sounds if smoke enters and disrupts that flow. The amount of material is too small to cause harm.\n\nFollow for a new one every day.\n\n#homegadgets #techfacts #smokealarm #safetyfacts #everydayobjects #aigenerated",
+      "hook_text": "YOUR SMOKE ALARM IS *RADIOACTIVE*",
+      "cover_text": "*RADIOACTIVE* ALARM",
+      "media_id": "18070416221785530",
+      "permalink": "https://www.instagram.com/reel/DfzMX3iPI5m/",
+      "posted_at": "2026-11-16T10:58:58+00:00"
     }
   ],
   "pending": null,
