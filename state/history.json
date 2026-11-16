@@ -1565,7 +1565,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 9019
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611090627",
@@ -1930,7 +1930,17 @@
       "cover_text": "*DOG* SECRETS",
       "media_id": "18081134072436395",
       "permalink": "https://www.instagram.com/reel/DfrujpFswzh/",
-      "posted_at": "2026-11-13T13:24:51+00:00"
+      "posted_at": "2026-11-13T13:24:51+00:00",
+      "metrics": {
+        "views": 138,
+        "reach": 121,
+        "likes": 2,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6894
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611140627",
@@ -2006,6 +2016,21 @@
       "media_id": "18193210723412311",
       "permalink": "https://www.instagram.com/reel/Dfw2NB7hw0W/",
       "posted_at": "2026-11-15T13:06:47+00:00"
+    },
+    {
+      "id": "202611160627",
+      "title": "How Your Camera Cheats in Night Mode",
+      "series": "how your camera cheats",
+      "bank_id": "b055",
+      "hook": "Your phone camera cheats in the dark",
+      "fact": "Your phone's night mode takes many photos in a row and blends them into one.",
+      "narration": "Your phone camera cheats in the dark. So how does it work? Instead of one picture, it snaps many grainy photos in a row. It stacks them like tracing paper to add up the light and smooth the mess. That is why you must hold still when",
+      "caption": "Your smartphone camera night mode isn't taking just one photo.\n\nWhen you tap the shutter in the dark, your phone actually snaps many photos in a row. Each single shot is dark and full of rough specks. The camera stacks them together like sheets of tracing paper, blending out the noise while building up the light. It feels like magic, but it is just clever software.\n\nSend this to the person who takes a while to hold still for night photos.\n\nFollow for a new one every day.\n\n#smartphonephotography #cameratricks #nightmode #phonecamera #photographytips #aigenerated",
+      "hook_text": "YOUR PHONE *BLENDS* NIGHT PHOTOS",
+      "cover_text": "*CAMERA* CHEATS",
+      "media_id": "18486476512112532",
+      "permalink": "https://www.instagram.com/reel/Dfyw74MOoq9/",
+      "posted_at": "2026-11-16T06:59:13+00:00"
     }
   ],
   "pending": null,
