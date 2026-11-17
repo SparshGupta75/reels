@@ -1657,15 +1657,15 @@
       "permalink": "https://www.instagram.com/reel/DfjT80ytXG7/",
       "posted_at": "2026-11-10T06:56:51+00:00",
       "metrics": {
-        "views": 207,
-        "reach": 171,
+        "views": 209,
+        "reach": 173,
         "likes": 2,
         "comments": 0,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 6656
+        "ig_reels_avg_watch_time": 6648
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611101026",
@@ -2005,7 +2005,17 @@
       "cover_text": "*BLACK* SCREEN",
       "media_id": "18004856774796691",
       "permalink": "https://www.instagram.com/reel/DfwMf9nTPRs/",
-      "posted_at": "2026-11-15T07:02:08+00:00"
+      "posted_at": "2026-11-15T07:02:08+00:00",
+      "metrics": {
+        "views": 154,
+        "reach": 133,
+        "likes": 3,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5883
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611151026",
@@ -2096,6 +2106,21 @@
       "media_id": "18062860844799693",
       "permalink": "https://www.instagram.com/reel/Df1Usw_MQJt/",
       "posted_at": "2026-11-17T06:49:45+00:00"
+    },
+    {
+      "id": "202611171026",
+      "title": "Why You Hear the Ocean in a Seashell",
+      "series": "why you hear something",
+      "bank_id": "b049",
+      "hook": "You don't hear waves inside a seashell",
+      "fact": "The ocean sound you hear in a seashell is really the noise of the room around you.",
+      "narration": "You don't hear waves inside a seashell. So why do you hear them? It is actually the everyday noise from the room around you. The curved walls catch those quiet sounds and make them louder. It works like a chamber for the sounds nearby...",
+      "caption": "seashell ocean sound The shell acts like a chamber. It catches the quiet noise of the room and makes it sound like waves. This works because the curved shape captures the sound and makes it louder. You can even test this with other curved objects at home. I used to believe the ocean was inside too. Send this to the person who still has a shell on their shelf.\n\nFollow for a new one every day.\n\n#seashells #naturefacts #oceansound #beachfinds #soundscience #aigenerated",
+      "hook_text": "SEASHELLS DON'T *CONTAIN* THE OCEAN",
+      "cover_text": "*SEASHELL* ROAR",
+      "media_id": "17916484659559517",
+      "permalink": "https://www.instagram.com/reel/Df143vTBgki/",
+      "posted_at": "2026-11-17T12:05:49+00:00"
     }
   ],
   "pending": null,
