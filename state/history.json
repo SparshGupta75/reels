@@ -1690,7 +1690,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6334
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611101321",
@@ -2030,7 +2030,17 @@
       "cover_text": "*RECORDED* VOICE",
       "media_id": "17951618739353375",
       "permalink": "https://www.instagram.com/reel/DfwumFwpgXa/",
-      "posted_at": "2026-11-15T11:59:49+00:00"
+      "posted_at": "2026-11-15T11:59:49+00:00",
+      "metrics": {
+        "views": 190,
+        "reach": 144,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6983
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611151235",
@@ -2045,7 +2055,17 @@
       "cover_text": "*CACTUS* SECRETS",
       "media_id": "18193210723412311",
       "permalink": "https://www.instagram.com/reel/Dfw2NB7hw0W/",
-      "posted_at": "2026-11-15T13:06:47+00:00"
+      "posted_at": "2026-11-15T13:06:47+00:00",
+      "metrics": {
+        "views": 203,
+        "reach": 170,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8849
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611160627",
@@ -2121,6 +2141,21 @@
       "media_id": "17916484659559517",
       "permalink": "https://www.instagram.com/reel/Df143vTBgki/",
       "posted_at": "2026-11-17T12:05:49+00:00"
+    },
+    {
+      "id": "202611171413",
+      "title": "Candle Science Secrets",
+      "series": "Three",
+      "bank_id": "t18",
+      "hook": "Can you tell what this is? It's a candle, and here are three things you didn't know about it",
+      "fact": "candle: A candle doesn't burn solid wax; the flame burns the wax after it has turned to vapour. / In space, a candle flame becomes a round blue ball instead of a pointed shape. / You can relight a candle from a small distance by touching a flame to its smoke.",
+      "narration": "Can you tell what this is? It's a candle, and here are three things you didn't know about it. One. A candle doesn't burn solid wax; the flame burns the wax after it has turned to vapour. Two. In space, a candle flame becomes a round blue ball instead of a pointed shape. Three. You can relight a candle from a small distance by touching a flame to its smoke. Which one surprised you most?",
+      "caption": "I just learned that candle flame vapour is what actually keeps the fire going.\n\nThe heat from the wick turns the solid wax into a liquid and then into gas. The fire is actually burning that invisible gas right above the wick. It's essentially a gas lamp that creates its own fuel as it goes. I had no idea it was that complex 🕯️.\n\nSend this to the person who always has a candle burning.\n\nFollow for a new one every day.\n\n#candles #wax #firescience #homedecor #wick #aigenerated",
+      "hook_text": "",
+      "cover_text": "*CANDLE* SECRETS",
+      "media_id": "17904067908386167",
+      "permalink": "https://www.instagram.com/reel/Df2K6wohc2Q/",
+      "posted_at": "2026-11-17T14:44:09+00:00"
     }
   ],
   "pending": null,
