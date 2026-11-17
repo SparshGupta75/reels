@@ -1632,15 +1632,15 @@
       "permalink": "https://www.instagram.com/reel/DfhiK_XNaCI/",
       "posted_at": "2026-11-09T14:23:07+00:00",
       "metrics": {
-        "views": 1320,
-        "reach": 1129,
+        "views": 1325,
+        "reach": 1132,
         "likes": 16,
         "comments": 0,
         "saved": 1,
         "shares": 0,
-        "ig_reels_avg_watch_time": 10233
+        "ig_reels_avg_watch_time": 10211
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611100627",
@@ -1980,7 +1980,17 @@
       "cover_text": "*MICROWAVE* DOOR HOLES",
       "media_id": "17896433868437090",
       "permalink": "https://www.instagram.com/reel/DfuWlNbSGVe/",
-      "posted_at": "2026-11-14T13:51:30+00:00"
+      "posted_at": "2026-11-14T13:51:30+00:00",
+      "metrics": {
+        "views": 178,
+        "reach": 129,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8009
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611150627",
@@ -2071,6 +2081,21 @@
       "media_id": "18084259397342279",
       "permalink": "https://www.instagram.com/reel/DfzhNNVgpM8/",
       "posted_at": "2026-11-16T14:01:33+00:00"
+    },
+    {
+      "id": "202611170627",
+      "title": "Water Drop Screen Pixels",
+      "series": "check it with your phone",
+      "bank_id": "b034",
+      "hook": "Water reveals tiny dots on your screen",
+      "fact": "A drop of water on your phone screen shows that every colour is made of tiny red, green and blue dots.",
+      "narration": "Water reveals tiny dots on your screen. How does it do that? The curved droplet acts just like a small magnifying glass. Every colour you see, even solid white, is really tiny red, green, and blue dots mixed in different strengths. Any time you look closely,",
+      "caption": "A single water drop reveals phone screen colors.\n\nI put one tiny drop of water on a plain white screen and could not believe what appeared. The surface of the water acts like a small magnifying glass on the display. Instead of flat white light, you see tiny red, green, and blue dots. The screen mixes those three colours in different strengths to make every colour you see, even white.\n\nSave this for the next time you have a glass of water nearby.\n\nFollow for a new one every day.\n\n#technology #smartphones #phonescreen #screendetail #macroworld #aigenerated",
+      "hook_text": "YOUR SCREEN IS ALL *DOTS*",
+      "cover_text": "*HIDDEN* DOTS",
+      "media_id": "18062860844799693",
+      "permalink": "https://www.instagram.com/reel/Df1Usw_MQJt/",
+      "posted_at": "2026-11-17T06:49:45+00:00"
     }
   ],
   "pending": null,
