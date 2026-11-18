@@ -1715,7 +1715,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 9175
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611110627",
@@ -2156,6 +2156,21 @@
       "media_id": "17904067908386167",
       "permalink": "https://www.instagram.com/reel/Df2K6wohc2Q/",
       "posted_at": "2026-11-17T14:44:09+00:00"
+    },
+    {
+      "id": "202611180627",
+      "title": "Where Dryer Lint Really Comes From",
+      "series": "where it really comes from",
+      "bank_id": "b046",
+      "hook": "Dryer fluff is literally your clothes slowly wearing away",
+      "fact": "The fluff in a tumble dryer's filter is made of your clothes slowly wearing away.",
+      "narration": "Dryer fluff is literally your clothes slowly wearing away. Where does it come from? Every tumble rubs loose tiny fibres from the fabric, causing clothes to thin out over time. The dryer blows those loose strands into the trap, which means",
+      "caption": "Tumble dryer lint is actually your clothes slowly wearing away.\n\nEvery tumble rubs loose tiny fibres from the fabric as your laundry spins. That soft layer you pull out of the filter is made of tiny fibres that used to be part of your clothes. Over time, clothes that are dried in a machine can noticeably thin out just from drying. I honestly stopped machine drying my favourite clothes after finding this out.\n\nSave this for the next time you clean your lint trap.\n\nFollow for a new one every day.\n\n#laundrytips #homeappliances #dryerlint #fabriccare #clothesmaintenance #aigenerated",
+      "hook_text": "DRYER LINT IS *YOUR* CLOTHES",
+      "cover_text": "*DRYER* LINT",
+      "media_id": "18129801217970693",
+      "permalink": "https://www.instagram.com/reel/Df36JolSkIe/",
+      "posted_at": "2026-11-18T06:55:36+00:00"
     }
   ],
   "pending": null,
