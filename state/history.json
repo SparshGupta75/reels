@@ -1732,15 +1732,15 @@
       "permalink": "https://www.instagram.com/reel/Dfl36tkswte/",
       "posted_at": "2026-11-11T06:49:37+00:00",
       "metrics": {
-        "views": 1998,
+        "views": 1999,
         "reach": 1604,
         "likes": 8,
         "comments": 2,
         "saved": 0,
         "shares": 0,
-        "ig_reels_avg_watch_time": 7192
+        "ig_reels_avg_watch_time": 7193
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611111026",
@@ -2080,7 +2080,17 @@
       "cover_text": "*CAMERA* CHEATS",
       "media_id": "18486476512112532",
       "permalink": "https://www.instagram.com/reel/Dfyw74MOoq9/",
-      "posted_at": "2026-11-16T06:59:13+00:00"
+      "posted_at": "2026-11-16T06:59:13+00:00",
+      "metrics": {
+        "views": 156,
+        "reach": 131,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 4906
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611161026",
@@ -2171,6 +2181,21 @@
       "media_id": "18129801217970693",
       "permalink": "https://www.instagram.com/reel/Df36JolSkIe/",
       "posted_at": "2026-11-18T06:55:36+00:00"
+    },
+    {
+      "id": "202611181026",
+      "title": "Houseplants Air Myth",
+      "series": "home myth",
+      "bank_id": "b048",
+      "hook": "Your houseplants do not really clean your air",
+      "fact": "Houseplants don't really clean the air in your home.",
+      "narration": "Your houseplants do not really clean your air. So why do people claim it? Old tests used small sealed chambers, not real rooms. You would need hundreds of potted plants to match a single open window. That is why everyone keeps saying",
+      "caption": "The claim that houseplants clean indoor air is actually a myth.\n\nFamous claims came from testing plants inside small sealed chambers. Real rooms constantly swap air with the outdoors through cracks and vents. To match the fresh air flow of opening a window, you would need hundreds of plants packed into one room. Houseplants look great, but they do not replace fresh air.\n\nSend this to the person who turned their home into a plant jungle. 🪴\n\nFollow for a new one every day.\n\n#houseplants #homefacts #indoorplants #plantmyths #airquality #aigenerated",
+      "hook_text": "HOUSEPLANTS DO *NOT* CLEAN AIR",
+      "cover_text": "*PLANT* AIR MYTH",
+      "media_id": "18122011808089356",
+      "permalink": "https://www.instagram.com/reel/Df4ZGSOMoMm/",
+      "posted_at": "2026-11-18T11:25:54+00:00"
     }
   ],
   "pending": null,
