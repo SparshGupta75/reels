@@ -1765,7 +1765,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 8326
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611111232",
@@ -1790,7 +1790,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 9005
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611120627",
@@ -2105,7 +2105,17 @@
       "cover_text": "*RADIOACTIVE* ALARM",
       "media_id": "18070416221785530",
       "permalink": "https://www.instagram.com/reel/DfzMX3iPI5m/",
-      "posted_at": "2026-11-16T10:58:58+00:00"
+      "posted_at": "2026-11-16T10:58:58+00:00",
+      "metrics": {
+        "views": 170,
+        "reach": 127,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7219
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611161327",
@@ -2196,6 +2206,21 @@
       "media_id": "18122011808089356",
       "permalink": "https://www.instagram.com/reel/Df4ZGSOMoMm/",
       "posted_at": "2026-11-18T11:25:54+00:00"
+    },
+    {
+      "id": "202611181344",
+      "title": "Milk Secrets",
+      "series": "Three",
+      "bank_id": "t20",
+      "hook": "Can you tell what this is? It's milk, and here are three things you didn't know about it",
+      "fact": "milk: Milk is white because tiny droplets of fat and other particles scatter all the light. / Skimmed milk can look slightly blue because most of its fat has been removed. / Most milk is forced through tiny holes at high pressure so the cream doesn't rise to the top.",
+      "narration": "Can you tell what this is? It's milk, and here are three things you didn't know about it. One. Milk is white because tiny droplets of fat and other particles scatter all the light. Two. Skimmed milk can look slightly blue because most of its fat has been removed. Three. Most milk is forced through tiny holes at high pressure so the cream doesn't rise to the top. Which one surprised you most?",
+      "caption": "Milk turns white thanks to tiny fat droplets scattering light.\n\nWhen the fat is stripped away, skimmed milk takes on a barely‑there blue shade. The industry pushes milk through microscopic holes at high pressure, keeping cream from floating up.\n\nSave this for the next time you stare at a glass and wonder why it looks that way.\n\nFollow for a new one every day.\n\n#milk #dairy #foodscience #skimmedmilk #milkprocessing #aigenerated",
+      "hook_text": "",
+      "cover_text": "*MILK* FACTS",
+      "media_id": "18214301533369211",
+      "permalink": "https://www.instagram.com/reel/Df4y4yAOFLL/",
+      "posted_at": "2026-11-18T15:11:14+00:00"
     }
   ],
   "pending": null,
@@ -2224,6 +2249,7 @@
   "bank_rejected": [
     "b006",
     "b009",
-    "b011"
+    "b011",
+    "t19"
   ]
 }
