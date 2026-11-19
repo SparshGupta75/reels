@@ -2130,7 +2130,17 @@
       "cover_text": "*JEANS* SECRETS",
       "media_id": "18084259397342279",
       "permalink": "https://www.instagram.com/reel/DfzhNNVgpM8/",
-      "posted_at": "2026-11-16T14:01:33+00:00"
+      "posted_at": "2026-11-16T14:01:33+00:00",
+      "metrics": {
+        "views": 136,
+        "reach": 119,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7602
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611170627",
@@ -2221,6 +2231,21 @@
       "media_id": "18214301533369211",
       "permalink": "https://www.instagram.com/reel/Df4y4yAOFLL/",
       "posted_at": "2026-11-18T15:11:14+00:00"
+    },
+    {
+      "id": "202611190627",
+      "title": "Why passenger side mirrors are curved",
+      "series": "why a mirror is different",
+      "bank_id": "b057",
+      "hook": "Your passenger mirror is actually *curved*",
+      "fact": "The passenger-side car mirror is curved, which is why things in it look further away than they are.",
+      "narration": "Your passenger mirror is actually *curved*. Why does it do that? This shape squeezes a much wider view into the small glass than a flat surface could. It works like a tiny fish-eye lens, but objects look smaller and further away, so keep that in mind.",
+      "caption": "Your passenger mirror is actually curved\n\nThat weird curve is there to give you a wider view of the road behind you. By squeezing more area into that small piece of glass, you can see more lanes at once. It just makes cars look smaller and further away than they actually are. Be sure to check your shoulder before you switch lanes.\n\nSave this for the next time you are driving.\n\nFollow for a new one every day.\n\n#cars #safety #drivingtips #carmirror #sciencefacts #aigenerated",
+      "hook_text": "YOUR MIRROR IS *CURVED*",
+      "cover_text": "*CURVED* MIRROR",
+      "media_id": "18106990703377047",
+      "permalink": "https://www.instagram.com/reel/Df6gQGSBNFJ/",
+      "posted_at": "2026-11-19T07:06:51+00:00"
     }
   ],
   "pending": null,
