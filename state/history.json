@@ -1815,7 +1815,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 8251
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611121026",
@@ -2155,7 +2155,17 @@
       "cover_text": "*HIDDEN* DOTS",
       "media_id": "18062860844799693",
       "permalink": "https://www.instagram.com/reel/Df1Usw_MQJt/",
-      "posted_at": "2026-11-17T06:49:45+00:00"
+      "posted_at": "2026-11-17T06:49:45+00:00",
+      "metrics": {
+        "views": 161,
+        "reach": 132,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6987
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611171026",
@@ -2246,6 +2256,21 @@
       "media_id": "18106990703377047",
       "permalink": "https://www.instagram.com/reel/Df6gQGSBNFJ/",
       "posted_at": "2026-11-19T07:06:51+00:00"
+    },
+    {
+      "id": "202611191026",
+      "title": "The Frost Phenomenon",
+      "series": "weather that seems impossible",
+      "bank_id": "b058",
+      "hook": "Your car gets frost on nights above freezing",
+      "fact": "Your car can be covered in frost even on a night when the air never drops below freezing.",
+      "narration": "Your car gets frost on nights above freezing. So how does it happen? On clear nights, the metal roof loses its heat to the open sky faster than the air does. This makes the metal colder than the air around it. That means...",
+      "caption": "car frost above freezing.\n\nIt can be confusing seeing frost on your roof when the air is above freezing. It happens because your car loses its heat to the open sky faster than the air does. The metal ends up colder than the air around it, creating frost. It is basically losing heat to the sky. 🧊\n\nSave this for the next time you have to scrape your windows on a clear morning.\n\nFollow for a new one every day.\n\n#weather #cars #frosty #nightsky #winterhacks #aigenerated",
+      "hook_text": "YOUR CAR CAN *FREEZE*",
+      "cover_text": "*FROZEN* CAR",
+      "media_id": "17929985820434302",
+      "permalink": "https://www.instagram.com/reel/Df67XyKhAcA/",
+      "posted_at": "2026-11-19T11:03:52+00:00"
     }
   ],
   "pending": null,
