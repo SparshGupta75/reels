@@ -1840,7 +1840,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7456
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611121338",
@@ -1865,7 +1865,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 9773
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611130627",
@@ -2180,7 +2180,17 @@
       "cover_text": "*SEASHELL* ROAR",
       "media_id": "17916484659559517",
       "permalink": "https://www.instagram.com/reel/Df143vTBgki/",
-      "posted_at": "2026-11-17T12:05:49+00:00"
+      "posted_at": "2026-11-17T12:05:49+00:00",
+      "metrics": {
+        "views": 200,
+        "reach": 158,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7834
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611171413",
@@ -2271,6 +2281,21 @@
       "media_id": "17929985820434302",
       "permalink": "https://www.instagram.com/reel/Df67XyKhAcA/",
       "posted_at": "2026-11-19T11:03:52+00:00"
+    },
+    {
+      "id": "202611191413",
+      "title": "Three Mango Secrets",
+      "series": "Three",
+      "bank_id": "t21",
+      "hook": "Can you tell what this is? It's a mango, and here are three things you didn't know about it",
+      "fact": "mango: Mangoes are related to cashews and poison ivy, and their peel can give some people a rash. / A mango can be perfectly ripe while still green, so colour is a poor guide. / India grows more mangoes than any other country, around 40 percent of the world's crop.",
+      "narration": "Can you tell what this is? It's a mango, and here are three things you didn't know about it. One. Mangoes are related to cashews and poison ivy, and their peel can give some people a rash. Two. A mango can be perfectly ripe while still green, so colour is a poor guide. Three. India grows more mangoes than any other country, around 40 percent of the world's crop. Which one surprised you most?",
+      "caption": "Mango skin contains the exact same compound as poison ivy.\n\nIt is an oily sap chemical called urushiol, found in the skin and stems. Biting straight into an unpeeled mango can trigger an itchy rash or swollen lips if you are sensitive to it. I always wondered why my fingers felt irritated after prepping them until I found this out. The sweet flesh inside is completely safe to eat once the rind is gone.\n\nSend this to the person who eats a lot of mangoes.\n\nFollow for a new one every day.\n\n#fruit #foodscience #mangoes #urushiol #produce #aigenerated",
+      "hook_text": "",
+      "cover_text": "*MANGO* SECRETS",
+      "media_id": "18108592526565126",
+      "permalink": "https://www.instagram.com/reel/Df7XSxiTlMM/",
+      "posted_at": "2026-11-19T15:07:47+00:00"
     }
   ],
   "pending": null,
