@@ -1907,15 +1907,15 @@
       "permalink": "https://www.instagram.com/reel/DfrdQE0p5SK/",
       "posted_at": "2026-11-13T10:52:05+00:00",
       "metrics": {
-        "views": 1977,
-        "reach": 1381,
+        "views": 1978,
+        "reach": 1383,
         "likes": 11,
         "comments": 0,
         "saved": 3,
         "shares": 0,
-        "ig_reels_avg_watch_time": 10339
+        "ig_reels_avg_watch_time": 10332
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611131255",
@@ -1940,7 +1940,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6894
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611140627",
@@ -2255,7 +2255,17 @@
       "cover_text": "*PLANT* AIR MYTH",
       "media_id": "18122011808089356",
       "permalink": "https://www.instagram.com/reel/Df4ZGSOMoMm/",
-      "posted_at": "2026-11-18T11:25:54+00:00"
+      "posted_at": "2026-11-18T11:25:54+00:00",
+      "metrics": {
+        "views": 138,
+        "reach": 106,
+        "likes": 2,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6789
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611181344",
@@ -2346,6 +2356,21 @@
       "media_id": "18102333044436012",
       "permalink": "https://www.instagram.com/reel/Df9fKBfxLsJ/",
       "posted_at": "2026-11-20T10:55:03+00:00"
+    },
+    {
+      "id": "202611201355",
+      "title": "Glass Bottle Facts",
+      "series": "Three",
+      "bank_id": "t22",
+      "hook": "Can you tell what this is? It's a glass bottle, and here are three things you didn't know about it",
+      "fact": "glass bottle: Glass is made mostly of ordinary sand, melted at very high temperatures. / A glass bottle can be recycled again and again without losing its quality. / Beer bottles are often brown because the colour blocks light that would spoil the taste.",
+      "narration": "Can you tell what this is? It's a glass bottle, and here are three things you didn't know about it. One. Glass is made mostly of ordinary sand, melted at very high temperatures. Two. A glass bottle can be recycled again and again without losing its quality. Three. Beer bottles are often brown because the colour blocks light that would spoil the taste. Which one surprised you most?",
+      "caption": "I just learned how a glass bottle protects your drink from light.\n\nSand melts at over 3,000 degrees Fahrenheit to form pure glass. Hops in beer react to light waves and ruin the taste in minutes. Dark brown glass blocks those rays completely. Because glass does not break down during recycling, one bottle can be remade endlessly.\n\nSend this to the person who always buys glass bottles.\n\nFollow for a new one every day.\n\n#glassbottle #recycling #glassmaking #amberglass #packagingdesign #aigenerated",
+      "hook_text": "",
+      "cover_text": "*GLASS* BOTTLE SECRETS",
+      "media_id": "17945994402389465",
+      "permalink": "https://www.instagram.com/reel/Df93W8wBQti/",
+      "posted_at": "2026-11-20T14:26:32+00:00"
     }
   ],
   "pending": null,
