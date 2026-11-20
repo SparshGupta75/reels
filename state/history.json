@@ -1890,7 +1890,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 11620
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611131026",
@@ -2230,7 +2230,17 @@
       "cover_text": "*DRYER* LINT",
       "media_id": "18129801217970693",
       "permalink": "https://www.instagram.com/reel/Df36JolSkIe/",
-      "posted_at": "2026-11-18T06:55:36+00:00"
+      "posted_at": "2026-11-18T06:55:36+00:00",
+      "metrics": {
+        "views": 267,
+        "reach": 215,
+        "likes": 3,
+        "comments": 0,
+        "saved": 1,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6162
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611181026",
@@ -2321,6 +2331,21 @@
       "media_id": "18130237357918410",
       "permalink": "https://www.instagram.com/reel/Df9EOiAMrCm/",
       "posted_at": "2026-11-20T06:59:44+00:00"
+    },
+    {
+      "id": "202611201026",
+      "title": "What a Strawberry Seed Really Is",
+      "series": "what a fruit really is",
+      "bank_id": "b031",
+      "hook": "Every little seed on a strawberry is actually a whole fruit",
+      "fact": "Each little seed on the outside of a strawberry is actually a tiny fruit of its own.",
+      "narration": "Every little seed on a strawberry is actually a whole fruit. So how does that work? The red sweet flesh is just the swollen flower base. Those yellow specks on top are the real fruits, each carrying its own seed. So you aren't just eating one, because...",
+      "caption": "Strawberry seeds are actually tiny individual fruits. When you eat a strawberry, the red sweet part isn't the true fruit at all. It is actually the swollen base of the flower. The real fruits are those little yellow specks on the outside, and every single one has its own seed inside. I honestly had no idea I was eating so many fruits at once. Send this to the person who loves fresh strawberries.\n\nFollow for a new one every day.\n\n#botany #foodfacts #strawberry #fruitfacts #plantscience #aigenerated",
+      "hook_text": "STRAWBERRY SEEDS ARE *FRUITS*",
+      "cover_text": "*STRAWBERRY* SEEDS",
+      "media_id": "18102333044436012",
+      "permalink": "https://www.instagram.com/reel/Df9fKBfxLsJ/",
+      "posted_at": "2026-11-20T10:55:03+00:00"
     }
   ],
   "pending": null,
