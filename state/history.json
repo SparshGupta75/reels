@@ -2205,7 +2205,17 @@
       "cover_text": "*CANDLE* SECRETS",
       "media_id": "17904067908386167",
       "permalink": "https://www.instagram.com/reel/Df2K6wohc2Q/",
-      "posted_at": "2026-11-17T14:44:09+00:00"
+      "posted_at": "2026-11-17T14:44:09+00:00",
+      "metrics": {
+        "views": 1415,
+        "reach": 1136,
+        "likes": 15,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 13219
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611180627",
@@ -2296,6 +2306,21 @@
       "media_id": "18108592526565126",
       "permalink": "https://www.instagram.com/reel/Df7XSxiTlMM/",
       "posted_at": "2026-11-19T15:07:47+00:00"
+    },
+    {
+      "id": "202611200627",
+      "title": "What Clothes Tag Dots Actually Mean",
+      "series": "label meaning",
+      "bank_id": "b041",
+      "hook": "The dots inside the tub symbol on your laundry tag tell you the hottest wash it can take",
+      "fact": "The dots inside the washing tub symbol on your clothes label tell you the hottest wash it can take.",
+      "narration": "The dots inside the tub symbol on your laundry tag tell you the hottest wash it can take. So how do they work? One dot means about thirty degrees, two means about forty, and three means about fifty. It saves your shirts from shrinking, all because...",
+      "caption": "Clothes label washing dots explain your wash temperature.\n\nI spent years ignoring the little care tags on the inside seam of my shirts until I finally looked them up. That tiny wash tub icon uses dots so brands don't need to print words in multiple languages. One dot means about thirty degrees Celsius, two dots means about forty, and three dots means about fifty. Each extra dot adds about ten degrees of heat. Checking the tag before you turn the dial takes a moment and stops your sweaters from shrinking.\n\nSave this for the next time you do laundry.\n\nFollow for a new one every day.\n\n#laundrytips #clothingcare #laundrysymbols #washtags #fabriccare #aigenerated",
+      "hook_text": "YOUR LAUNDRY *DOTS* MEAN HEAT",
+      "cover_text": "*LAUNDRY* DOTS",
+      "media_id": "18130237357918410",
+      "permalink": "https://www.instagram.com/reel/Df9EOiAMrCm/",
+      "posted_at": "2026-11-20T06:59:44+00:00"
     }
   ],
   "pending": null,
