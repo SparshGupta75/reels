@@ -2280,7 +2280,17 @@
       "cover_text": "*MILK* FACTS",
       "media_id": "18214301533369211",
       "permalink": "https://www.instagram.com/reel/Df4y4yAOFLL/",
-      "posted_at": "2026-11-18T15:11:14+00:00"
+      "posted_at": "2026-11-18T15:11:14+00:00",
+      "metrics": {
+        "views": 172,
+        "reach": 152,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6328
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611190627",
@@ -2371,6 +2381,21 @@
       "media_id": "17945994402389465",
       "permalink": "https://www.instagram.com/reel/Df93W8wBQti/",
       "posted_at": "2026-11-20T14:26:32+00:00"
+    },
+    {
+      "id": "202611210627",
+      "title": "Why Wool Shrinks in the Wash",
+      "series": "why clothes shrink",
+      "bank_id": "b045",
+      "hook": "Ever wondered why your wool sweater shrinks in a hot wash? Every wool fibre is covered in tiny scales",
+      "fact": "Wool shrinks in a hot wash because its fibres have tiny scales that lock together.",
+      "narration": "Ever wondered why your wool sweater shrinks in a hot wash? Every wool fibre is covered in tiny scales. Heat and rubbing make them slide over each other and catch, pulling the knit tighter and smaller. They lock together, which is why",
+      "caption": "The reason wool sweaters shrink in hot water isn't what most people think. Wool fibres are naturally covered in tiny scales, almost like shingles on a roof. In cold still water, the scales stay flat and glide past each other without catching. But add heat and the rubbing motion of a wash, and those scales slide over each other. As they rub against neighbouring strands, they catch and lock together, pulling the entire knit tighter and smaller. Send this to the person who ruins their knitwear in the laundry.\n\nFollow for a new one every day.\n\n#clothingcare #laundrytips #woolcare #sweaterweather #knitweartips #aigenerated",
+      "hook_text": "YOUR WOOL DOES *NOT* SHRINK",
+      "cover_text": "*SHRUNKEN* SWEATER",
+      "media_id": "18136953058664117",
+      "permalink": "https://www.instagram.com/reel/Df_sQi3R_do/",
+      "posted_at": "2026-11-21T07:28:29+00:00"
     }
   ],
   "pending": null,
