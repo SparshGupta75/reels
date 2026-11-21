@@ -1965,7 +1965,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7361
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611141026",
@@ -2305,7 +2305,17 @@
       "cover_text": "*CURVED* MIRROR",
       "media_id": "18106990703377047",
       "permalink": "https://www.instagram.com/reel/Df6gQGSBNFJ/",
-      "posted_at": "2026-11-19T07:06:51+00:00"
+      "posted_at": "2026-11-19T07:06:51+00:00",
+      "metrics": {
+        "views": 153,
+        "reach": 137,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6011
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611191026",
@@ -2396,6 +2406,21 @@
       "media_id": "18136953058664117",
       "permalink": "https://www.instagram.com/reel/Df_sQi3R_do/",
       "posted_at": "2026-11-21T07:28:29+00:00"
+    },
+    {
+      "id": "202611211026",
+      "title": "Full Freezer Cold Secret",
+      "series": "how to store food better",
+      "bank_id": "b030",
+      "hook": "Your freezer stays cold better when it is full",
+      "fact": "A full freezer stays cold better than an almost empty one.",
+      "narration": "Your freezer stays cold better when it is full. Why does it work? All that frozen food holds the cold. If it is empty, more warm air gets in every time you open the door. Keeping it full ensures that",
+      "caption": "full freezer cold trick\n\nIt is about the air inside. Air loses its chill when the door opens, but frozen food stays cold. If you fill up the empty space, the food helps stop the warm air from taking over. This keeps the temperature steady.\n\nSave this for the next time you clear out your kitchen. ❄️\n\nFollow for a new one every day.\n\n#freezerhacks #foodstorage #kitchenefficiency #energytips #mealprep #aigenerated",
+      "hook_text": "YOUR FREEZER *MUST* BE FULL",
+      "cover_text": "*FULL* FREEZER",
+      "media_id": "18111720470279849",
+      "permalink": "https://www.instagram.com/reel/DgAfvEiB5Ik/",
+      "posted_at": "2026-11-21T14:57:50+00:00"
     }
   ],
   "pending": null,
