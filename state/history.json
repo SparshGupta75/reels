@@ -2015,7 +2015,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5883
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611151026",
@@ -2380,7 +2380,17 @@
       "cover_text": "*LAUNDRY* DOTS",
       "media_id": "18130237357918410",
       "permalink": "https://www.instagram.com/reel/Df9EOiAMrCm/",
-      "posted_at": "2026-11-20T06:59:44+00:00"
+      "posted_at": "2026-11-20T06:59:44+00:00",
+      "metrics": {
+        "views": 186,
+        "reach": 156,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6039
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611201026",
@@ -2458,7 +2468,18 @@
       "posted_at": "2026-11-22T07:23:07+00:00"
     }
   ],
-  "pending": null,
+  "pending": {
+    "id": "202611221026",
+    "title": "What a Rainbow Really Is",
+    "series": "what a rainbow really is",
+    "bank_id": "b060",
+    "hook": "Every rainbow is actually a full circle",
+    "fact": "Every rainbow is actually a full circle; the ground just hides the bottom half.",
+    "narration": "Every rainbow is actually a full circle. So why do you see half? The ground simply blocks the bottom part from your eyes. Sunshine bounces through mist in an even ring, like a giant colorful hoop. If you fly high enough, you will see that...",
+    "caption": "I was today years old when I learned that every rainbow being a full circle is real.\n\nWe usually see a semi-circle because the ground gets in the way. Light bounces off mist at an exact angle all around you, creating a full 360-degree loop. If you are in an airplane or on a tall building, the full ring can appear. It blew my mind when I first saw one.\n\nSend this to the person who loves looking at rainbows.\n\nFollow for a new one every day.\n\n#rainbows #weatherfacts #circularrainbow #atmosphericoptics #skyfacts #aigenerated",
+    "hook_text": "RAINBOWS ARE *FULL* CIRCLES",
+    "cover_text": "*FULL* CIRCLE RAINBOW"
+  },
   "followers": [
     {
       "date": "2026-10-11",
