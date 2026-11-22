@@ -1990,7 +1990,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 8009
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611150627",
@@ -2330,7 +2330,17 @@
       "cover_text": "*FROZEN* CAR",
       "media_id": "17929985820434302",
       "permalink": "https://www.instagram.com/reel/Df67XyKhAcA/",
-      "posted_at": "2026-11-19T11:03:52+00:00"
+      "posted_at": "2026-11-19T11:03:52+00:00",
+      "metrics": {
+        "views": 157,
+        "reach": 128,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5257
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611191413",
@@ -2345,7 +2355,17 @@
       "cover_text": "*MANGO* SECRETS",
       "media_id": "18108592526565126",
       "permalink": "https://www.instagram.com/reel/Df7XSxiTlMM/",
-      "posted_at": "2026-11-19T15:07:47+00:00"
+      "posted_at": "2026-11-19T15:07:47+00:00",
+      "metrics": {
+        "views": 178,
+        "reach": 163,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 5870
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611200627",
@@ -2421,6 +2441,21 @@
       "media_id": "18111720470279849",
       "permalink": "https://www.instagram.com/reel/DgAfvEiB5Ik/",
       "posted_at": "2026-11-21T14:57:50+00:00"
+    },
+    {
+      "id": "202611220627",
+      "title": "The Hidden Purpose of the Extra Shoe Hole",
+      "series": "hidden design of shoes",
+      "bank_id": "b043",
+      "hook": "That top extra shoe hole has a purpose",
+      "fact": "The extra hole at the top of many trainers is for a special knot that stops your heel slipping.",
+      "narration": "That top extra shoe hole has a purpose. So why is it there? Threading your lace back through creates a loop that locks your ankle tight. It stops your heel from slipping, helping to prevent painful blisters. Every time you run,",
+      "caption": "That running shoe extra hole is actually meant for locking your heel in place.\n\nIf you look at the top rim of your trainers right near the ankle, there is an extra eyelet pushed off to the side that usually stays empty. Threading your shoelace back through it creates a loop that secures your ankle firmly. It cuts down heel slipping so your socks stop rubbing against the fabric. I tried it on my last jog and my heels felt locked down.\n\nSave this for the next time you lace up your running shoes.\n\nFollow for a new one every day.\n\n#runningshoes #sneakerdesign #heellock #shoelacing #runnersloop #aigenerated",
+      "hook_text": "YOUR TRAINERS HAVE AN *EXTRA* HOLE",
+      "cover_text": "*EXTRA* SHOE HOLE",
+      "media_id": "18155345554514802",
+      "permalink": "https://www.instagram.com/reel/DgCQd_3N_hE/",
+      "posted_at": "2026-11-22T07:23:07+00:00"
     }
   ],
   "pending": null,
