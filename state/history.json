@@ -2040,7 +2040,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6983
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611151235",
@@ -2065,7 +2065,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 8849
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611160627",
@@ -2405,7 +2405,17 @@
       "cover_text": "*STRAWBERRY* SEEDS",
       "media_id": "18102333044436012",
       "permalink": "https://www.instagram.com/reel/Df9fKBfxLsJ/",
-      "posted_at": "2026-11-20T10:55:03+00:00"
+      "posted_at": "2026-11-20T10:55:03+00:00",
+      "metrics": {
+        "views": 1873,
+        "reach": 1387,
+        "likes": 13,
+        "comments": 0,
+        "saved": 2,
+        "shares": 6,
+        "ig_reels_avg_watch_time": 10047
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611201355",
@@ -2420,7 +2430,17 @@
       "cover_text": "*GLASS* BOTTLE SECRETS",
       "media_id": "17945994402389465",
       "permalink": "https://www.instagram.com/reel/Df93W8wBQti/",
-      "posted_at": "2026-11-20T14:26:32+00:00"
+      "posted_at": "2026-11-20T14:26:32+00:00",
+      "metrics": {
+        "views": 372,
+        "reach": 307,
+        "likes": 4,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 10430
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611210627",
@@ -2469,16 +2489,16 @@
     }
   ],
   "pending": {
-    "id": "202611221026",
-    "title": "What a Rainbow Really Is",
-    "series": "what a rainbow really is",
-    "bank_id": "b060",
-    "hook": "Every rainbow is actually a full circle",
-    "fact": "Every rainbow is actually a full circle; the ground just hides the bottom half.",
-    "narration": "Every rainbow is actually a full circle. So why do you see half? The ground simply blocks the bottom part from your eyes. Sunshine bounces through mist in an even ring, like a giant colorful hoop. If you fly high enough, you will see that...",
-    "caption": "I was today years old when I learned that every rainbow being a full circle is real.\n\nWe usually see a semi-circle because the ground gets in the way. Light bounces off mist at an exact angle all around you, creating a full 360-degree loop. If you are in an airplane or on a tall building, the full ring can appear. It blew my mind when I first saw one.\n\nSend this to the person who loves looking at rainbows.\n\nFollow for a new one every day.\n\n#rainbows #weatherfacts #circularrainbow #atmosphericoptics #skyfacts #aigenerated",
-    "hook_text": "RAINBOWS ARE *FULL* CIRCLES",
-    "cover_text": "*FULL* CIRCLE RAINBOW"
+    "id": "202611221514",
+    "title": "Door Lock Secrets",
+    "series": "Three",
+    "bank_id": "t23",
+    "hook": "Can you tell what this is? It's a door lock, and here are three things you didn't know about it",
+    "fact": "door lock: The bumps on a key lift tiny pins inside the lock to exactly the right height. / Many house keys are made of brass, a metal that naturally kills germs on its surface. / Locksmiths often use graphite powder rather than oil, because oil collects dirt inside a lock.",
+    "narration": "Can you tell what this is? It's a door lock, and here are three things you didn't know about it. One. The bumps on a key lift tiny pins inside the lock to exactly the right height. Two. Many house keys are made of brass, a metal that naturally kills germs on its surface. Three. Locksmiths often use graphite powder rather than oil, because oil collects dirt inside a lock. Which one surprised you most?",
+    "caption": "A door lock uses brass keys to kill surface germs naturally.\n\nThe high copper content in brass creates a natural reaction that breaks down bacterial cells within hours. Key makers originally chose brass because it was easy to cut, but the self-cleaning property turned out to be a major bonus. Using dry graphite powder instead of oil keeps the inside mechanism clean so those internal pins move smoothly for decades.\n\nSave this for the next time your front door lock feels sticky.\n\nFollow for a new one every day.\n\n#doorlock #homehardware #brasskey #locksmithtips #keyhole #aigenerated",
+    "hook_text": "",
+    "cover_text": "*DOOR LOCK* SECRETS"
   },
   "followers": [
     {
