@@ -2140,7 +2140,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7602
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611170627",
@@ -2480,7 +2480,17 @@
       "cover_text": "*FULL* FREEZER",
       "media_id": "18111720470279849",
       "permalink": "https://www.instagram.com/reel/DgAfvEiB5Ik/",
-      "posted_at": "2026-11-21T14:57:50+00:00"
+      "posted_at": "2026-11-21T14:57:50+00:00",
+      "metrics": {
+        "views": 156,
+        "reach": 122,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7087
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611220627",
@@ -2511,6 +2521,21 @@
       "media_id": "17950378329361033",
       "permalink": "https://www.instagram.com/reel/DgFTM9FihV-/",
       "posted_at": "2026-11-23T11:44:40+00:00"
+    },
+    {
+      "id": "202611231513",
+      "title": "Door Lock Secrets",
+      "series": "Three",
+      "bank_id": "t23",
+      "hook": "Can you tell what this is? It's a door lock, and here are three things you didn't know about it",
+      "fact": "door lock: The bumps on a key lift tiny pins inside the lock to exactly the right height. / Many house keys are made of brass, a metal that naturally kills germs on its surface. / Locksmiths often use graphite powder rather than oil, because oil collects dirt inside a lock.",
+      "narration": "Can you tell what this is? It's a door lock, and here are three things you didn't know about it. One. The bumps on a key lift tiny pins inside the lock to exactly the right height. Two. Many house keys are made of brass, a metal that naturally kills germs on its surface. Three. Locksmiths often use graphite powder rather than oil, because oil collects dirt inside a lock. Which one surprised you most?",
+      "caption": "A door lock pins mechanism is surprisingly precise.\n\nInside the cylinder, usually five small metal pins block the internal plug from turning. When you slide your key in, the specific depth of each groove lifts the pins up to a single flat line inside. If even one pin is off by a fraction of a millimeter, the lock stays stuck. I always wondered how such simple mechanics worked so reliably.\n\nSave this for the next time you use your house keys. 🔑\n\nFollow for a new one every day.\n\n#doorlock #keys #locksmithing #brasskey #homehardware #aigenerated",
+      "hook_text": "",
+      "cover_text": "*DOOR LOCK* SECRETS",
+      "media_id": "18181844800435755",
+      "permalink": "https://www.instagram.com/reel/DgFuGuCB--O/",
+      "posted_at": "2026-11-23T15:40:36+00:00"
     }
   ],
   "pending": null,
