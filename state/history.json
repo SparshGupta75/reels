@@ -2090,7 +2090,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 4906
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611161026",
@@ -2115,7 +2115,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7219
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611161327",
@@ -2455,7 +2455,17 @@
       "cover_text": "*SHRUNKEN* SWEATER",
       "media_id": "18136953058664117",
       "permalink": "https://www.instagram.com/reel/Df_sQi3R_do/",
-      "posted_at": "2026-11-21T07:28:29+00:00"
+      "posted_at": "2026-11-21T07:28:29+00:00",
+      "metrics": {
+        "views": 601,
+        "reach": 482,
+        "likes": 4,
+        "comments": 0,
+        "saved": 1,
+        "shares": 1,
+        "ig_reels_avg_watch_time": 7277
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611211026",
@@ -2486,20 +2496,24 @@
       "media_id": "18155345554514802",
       "permalink": "https://www.instagram.com/reel/DgCQd_3N_hE/",
       "posted_at": "2026-11-22T07:23:07+00:00"
+    },
+    {
+      "id": "202611231105",
+      "title": "What a rainbow really is",
+      "series": "what a rainbow really is",
+      "bank_id": "b060",
+      "hook": "Every rainbow is actually a full circle",
+      "fact": "Every rainbow is actually a full circle; the ground just hides the bottom half.",
+      "narration": "Every rainbow is actually a full circle. So why do you see half? The ground blocks the bottom half from your eyes. If you get high up in an airplane, the full ring can open up before you, revealing that",
+      "caption": "Every rainbow is actually a full circle in the sky.\n\nWe usually see a curved arch because the ground cuts off the bottom portion. Rainbows form at the same angle all around the point opposite the sun. When you stand on the ground, the lower half gets blocked by the earth. From a plane or tall building, you can sometimes see the full ring. 🌈\n\nSave this for the next time you see a rainbow after a storm.\n\nFollow for a new one every day.\n\n#rainbows #weather #fullcirclerainbow #atmosphericoptics #skyfacts #aigenerated",
+      "hook_text": "RAINBOWS ARE ACTUALLY A *CIRCLE*",
+      "cover_text": "*RAINBOW* CIRCLES",
+      "media_id": "17950378329361033",
+      "permalink": "https://www.instagram.com/reel/DgFTM9FihV-/",
+      "posted_at": "2026-11-23T11:44:40+00:00"
     }
   ],
-  "pending": {
-    "id": "202611230627",
-    "title": "What a Rainbow Really Is",
-    "series": "what a rainbow really is",
-    "bank_id": "b060",
-    "hook": "Every rainbow is actually a full circle",
-    "fact": "Every rainbow is actually a full circle; the ground just hides the bottom half.",
-    "narration": "Every rainbow is actually a full circle. So why do you see half? The ground beneath your feet blocks the bottom half, cutting off the rest of the light. High up in an airplane, you can catch the whole hidden ring, because",
-    "caption": "A rainbow is actually a full circle.\n\nWe usually see a simple arch because the ground blocks the bottom half from view. Rainbows form at the same angle around the spot directly opposite the sun. When you get high enough in a plane or on a skyscraper, the lower part of the ring reveals itself. I honestly thought this was fake until seeing it from a flight.\n\nSend this to the person who loves looking for rainbows.\n\nFollow for a new one every day.\n\n#rainbow #weather #fullcirclerainbow #skyMagic #naturefacts #aigenerated",
-    "hook_text": "RAINBOWS ARE *FULL* CIRCLES",
-    "cover_text": "*FULL* CIRCLE"
-  },
+  "pending": null,
   "followers": [
     {
       "date": "2026-10-11",
