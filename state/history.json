@@ -2165,7 +2165,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6987
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611171026",
@@ -2505,7 +2505,17 @@
       "cover_text": "*EXTRA* SHOE HOLE",
       "media_id": "18155345554514802",
       "permalink": "https://www.instagram.com/reel/DgCQd_3N_hE/",
-      "posted_at": "2026-11-22T07:23:07+00:00"
+      "posted_at": "2026-11-22T07:23:07+00:00",
+      "metrics": {
+        "views": 1331,
+        "reach": 1058,
+        "likes": 6,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 7808
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611231105",
@@ -2553,7 +2563,18 @@
       "posted_at": "2026-11-24T08:04:25+00:00"
     }
   ],
-  "pending": null,
+  "pending": {
+    "id": "202611241026",
+    "title": "What Your Phone Can Do Offline",
+    "series": "what your phone can do offline",
+    "bank_id": "b053",
+    "hook": "Your phone's GPS works without any cell signal or internet",
+    "fact": "Your phone's GPS works with no internet or mobile signal at all.",
+    "narration": "Your phone's GPS works without any cell signal or internet. So how does it work? Your phone is just a tiny receiver listening to signals floating down from space, like a car radio playing music without Wi-Fi. Internet is only needed to download the map itself, which means",
+    "caption": "Your phone's offline GPS feature is something many people don't realize exists.\n\nYour phone has a built-in receiver that listens to signals from space. It does not cost anything and it doesn't need cell service or Wi-Fi to figure out your location. The reason your maps app looks blank offline is because it needs data to download the map itself. If you download your maps before heading out, your phone can navigate completely offline. I had no idea this worked until I tried it.\n\nSave this for your next trip with no cell service.\n\nFollow for a new one every day.\n\n#tech #smartphones #gps #offlinemaps #navigationtips #aigenerated",
+    "hook_text": "YOUR GPS WORKS *WITHOUT* SIGNAL",
+    "cover_text": "*OFFLINE* GPS"
+  },
   "followers": [
     {
       "date": "2026-10-11",
