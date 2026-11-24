@@ -2190,7 +2190,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 7834
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611171413",
@@ -2215,7 +2215,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 13219
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611180627",
@@ -2561,20 +2561,24 @@
       "media_id": "17886797205527397",
       "permalink": "https://www.instagram.com/reel/DgHe0DRBD8s/",
       "posted_at": "2026-11-24T08:04:25+00:00"
+    },
+    {
+      "id": "202611241513",
+      "title": "Zip Secrets",
+      "series": "Three",
+      "bank_id": "t24",
+      "hook": "Can you tell what this is? It's a zip, and here are three things you didn't know about it",
+      "fact": "zip: The slider has a Y-shaped channel inside that presses the two rows of teeth together. / A stuck zip often frees up if you rub a pencil along its teeth. / One of the earliest zips was invented to fasten boots, not clothes.",
+      "narration": "Can you tell what this is? It's a zip, and here are three things you didn't know about it. One. The slider has a Y-shaped channel inside that presses the two rows of teeth together. Two. A stuck zip often frees up if you rub a pencil along its teeth. Three. One of the earliest zips was invented to fasten boots, not clothes. Which one surprised you most?",
+      "caption": "The zip slider’s hidden Y‑channel is the secret behind smooth closing.\n\nInside the tiny metal slider lives a grain‑size Y‑shaped groove that pushes the teeth together. When a zip gets stuck, a simple graphite pencil rubbed along the teeth can lubricate the groove and free it in seconds. The very first zip was made for leather boots back in the 1920s, long before it became a wardrobe staple.\n\nSend this to the friend who’s always battling jammed zippers.\n\nFollow for a new one every day.\n\n#zip #fastener #ychannel #pencilhack #bootorigin #aigenerated",
+      "hook_text": "",
+      "cover_text": "*ZIP* HIDDEN",
+      "media_id": "18087448007707487",
+      "permalink": "https://www.instagram.com/reel/DgIph04heVL/",
+      "posted_at": "2026-11-24T18:57:20+00:00"
     }
   ],
-  "pending": {
-    "id": "202611241026",
-    "title": "What Your Phone Can Do Offline",
-    "series": "what your phone can do offline",
-    "bank_id": "b053",
-    "hook": "Your phone's GPS works without any cell signal or internet",
-    "fact": "Your phone's GPS works with no internet or mobile signal at all.",
-    "narration": "Your phone's GPS works without any cell signal or internet. So how does it work? Your phone is just a tiny receiver listening to signals floating down from space, like a car radio playing music without Wi-Fi. Internet is only needed to download the map itself, which means",
-    "caption": "Your phone's offline GPS feature is something many people don't realize exists.\n\nYour phone has a built-in receiver that listens to signals from space. It does not cost anything and it doesn't need cell service or Wi-Fi to figure out your location. The reason your maps app looks blank offline is because it needs data to download the map itself. If you download your maps before heading out, your phone can navigate completely offline. I had no idea this worked until I tried it.\n\nSave this for your next trip with no cell service.\n\nFollow for a new one every day.\n\n#tech #smartphones #gps #offlinemaps #navigationtips #aigenerated",
-    "hook_text": "YOUR GPS WORKS *WITHOUT* SIGNAL",
-    "cover_text": "*OFFLINE* GPS"
-  },
+  "pending": null,
   "followers": [
     {
       "date": "2026-10-11",
