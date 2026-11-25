@@ -2265,7 +2265,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6789
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611181344",
@@ -2290,7 +2290,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6328
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611190627",
@@ -2530,7 +2530,17 @@
       "cover_text": "*RAINBOW* CIRCLES",
       "media_id": "17950378329361033",
       "permalink": "https://www.instagram.com/reel/DgFTM9FihV-/",
-      "posted_at": "2026-11-23T11:44:40+00:00"
+      "posted_at": "2026-11-23T11:44:40+00:00",
+      "metrics": {
+        "views": 46,
+        "reach": 28,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 14150
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611231513",
@@ -2591,6 +2601,21 @@
       "media_id": "18154109776524886",
       "permalink": "https://www.instagram.com/reel/DgKb35RNVcz/",
       "posted_at": "2026-11-25T11:37:00+00:00"
+    },
+    {
+      "id": "202611251513",
+      "title": "Battery Secrets",
+      "series": "Three",
+      "bank_id": "t26",
+      "hook": "Can you tell what this is? It's a battery, and here are three things you didn't know about it",
+      "fact": "battery: A dead AA battery bounces higher than a fresh one when dropped on its end. / Batteries slowly lose their charge even when they are never used. / Keeping ordinary batteries in the fridge doesn't help, and damp can even damage them.",
+      "narration": "Can you tell what this is? It's a battery, and here are three things you didn't know about it. One. A dead AA battery bounces higher than a fresh one when dropped on its end. Two. Batteries slowly lose their charge even when they are never used. Three. Keeping ordinary batteries in the fridge doesn't help, and damp can even damage them. Which one surprised you most?",
+      "caption": "I finally tried the dead AA battery bounce test after finding a random pile in my kitchen. As an alkaline battery dies, the liquid gel inside turns into solid zinc oxide, which acts like a tiny spring inside the casing. A fully charged battery stays liquid, absorbing the impact so it falls right over without bouncing. They also self-discharge by about two percent each year just sitting in a drawer. I stored mine in the refrigerator for years thinking it helped, but cold temperatures don't extend normal battery life at all.\n\nSave this for the next time you need to check if your batteries are still good.\n\nFollow for a new one every day.\n\n#batteries #electronics #aabattery #batteryhack #alkalinebattery #aigenerated",
+      "hook_text": "",
+      "cover_text": "*BATTERY* SECRETS",
+      "media_id": "18136694812684693",
+      "permalink": "https://www.instagram.com/reel/DgLAAsWg86E/",
+      "posted_at": "2026-11-25T16:52:36+00:00"
     }
   ],
   "pending": null,
@@ -2624,6 +2649,7 @@
     "b006",
     "b009",
     "b011",
-    "t19"
+    "t19",
+    "t25"
   ]
 }
