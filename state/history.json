@@ -2240,7 +2240,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6162
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611181026",
@@ -2576,6 +2576,21 @@
       "media_id": "18087448007707487",
       "permalink": "https://www.instagram.com/reel/DgIph04heVL/",
       "posted_at": "2026-11-24T18:57:20+00:00"
+    },
+    {
+      "id": "202611251026",
+      "title": "Your Phone GPS Works Offline",
+      "series": "what your phone can do offline",
+      "bank_id": "b053",
+      "hook": "Your phone GPS works without any internet",
+      "fact": "Your phone's GPS works with no internet or mobile signal at all.",
+      "narration": "Your phone GPS works without any internet. So how does it work? Your phone just listens like a tiny radio to free signals sent from space. The internet is only needed to load the visual map picture. If you download your maps ahead of time,",
+      "caption": "Your phone GPS works offline anywhere in the world.\n\nI used to think GPS needed cell service to track location, but it turns out the receiver inside your phone is completely passive. It just listens to radio signals coming from satellites orbiting high above Earth. The main reason your phone seems useless without service is that it cannot load the actual image of the map background. If you download offline maps on your navigation app before leaving home, location tracking works even in the middle of nowhere 📍\n\nSave this for your next road trip off the grid.\n\nFollow for a new one every day.\n\n#techfacts #smartphonetips #offlinegps #phonehacks #traveltips #aigenerated",
+      "hook_text": "YOUR GPS WORKS *OFFLINE*",
+      "cover_text": "*OFFLINE* GPS",
+      "media_id": "18154109776524886",
+      "permalink": "https://www.instagram.com/reel/DgKb35RNVcz/",
+      "posted_at": "2026-11-25T11:37:00+00:00"
     }
   ],
   "pending": null,
