@@ -2555,7 +2555,17 @@
       "cover_text": "*DOOR LOCK* SECRETS",
       "media_id": "18181844800435755",
       "permalink": "https://www.instagram.com/reel/DgFuGuCB--O/",
-      "posted_at": "2026-11-23T15:40:36+00:00"
+      "posted_at": "2026-11-23T15:40:36+00:00",
+      "metrics": {
+        "views": 158,
+        "reach": 144,
+        "likes": 5,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6724
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611240627",
@@ -2616,6 +2626,21 @@
       "media_id": "18136694812684693",
       "permalink": "https://www.instagram.com/reel/DgLAAsWg86E/",
       "posted_at": "2026-11-25T16:52:36+00:00"
+    },
+    {
+      "id": "202611260627",
+      "title": "Why snow is white",
+      "series": "why something looks white",
+      "bank_id": "b059",
+      "hook": "Snow looks white despite being clear ice",
+      "fact": "Snow looks white even though ice is clear.",
+      "narration": "Snow looks white despite being clear ice. How does that happen? Think of it like crushed glass. A single piece is see-through, but once you break it into millions of tiny bits, they reflect light in every direction. That scattering makes it look white, and",
+      "caption": "Snow is white even though it is actually made of clear ice. \n\nEach flake is just a collection of tiny crystals. Light bounces off the surface of these crystals in every direction. This scattering of light reflections makes it look white to your eyes. It is the same reason crushed ice looks white. \n\nSave this for your next snowy day.\n\nFollow for a new one every day.\n\n#weather #science #snow #ice #optics #aigenerated",
+      "hook_text": "SNOW IS *NOT* WHITE",
+      "cover_text": "*SNOW* COLOR",
+      "media_id": "17947037793390499",
+      "permalink": "https://www.instagram.com/reel/DgMiS98Bv8b/",
+      "posted_at": "2026-11-26T07:11:18+00:00"
     }
   ],
   "pending": null,
@@ -2649,6 +2674,7 @@
     "b006",
     "b009",
     "b011",
+    "b056",
     "t19",
     "t25"
   ]
