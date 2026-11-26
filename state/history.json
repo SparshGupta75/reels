@@ -2315,7 +2315,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6011
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611191026",
@@ -2580,7 +2580,17 @@
       "cover_text": "*HIDDEN* LEAF COLOURS",
       "media_id": "17886797205527397",
       "permalink": "https://www.instagram.com/reel/DgHe0DRBD8s/",
-      "posted_at": "2026-11-24T08:04:25+00:00"
+      "posted_at": "2026-11-24T08:04:25+00:00",
+      "metrics": {
+        "views": 142,
+        "reach": 116,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6404
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611241513",
@@ -2641,6 +2651,21 @@
       "media_id": "17947037793390499",
       "permalink": "https://www.instagram.com/reel/DgMiS98Bv8b/",
       "posted_at": "2026-11-26T07:11:18+00:00"
+    },
+    {
+      "id": "202611261026",
+      "title": "Why Freshly Cut Grass Smells Like an Alarm",
+      "series": "what a smell really is",
+      "bank_id": "b062",
+      "hook": "Freshly cut grass smells like an alarm",
+      "fact": "The smell of freshly cut grass is the grass sending out an emergency signal.",
+      "narration": "Freshly cut grass smells like an alarm. So why that scent? Damaged grass releases chemicals that seal the wound, like a tiny bandage. Those smells also attract insects that eat pests, protecting the grass. So next time you notice that scent, know the grass is …",
+      "caption": "grass smell emergency signal. When damaged, grass releases chemicals that help seal the cut, like a tiny bandage. Those same scents can attract insects that eat pests, giving the plant protection. The smell is the plant’s SOS. Send this to a friend who knows that smell.\n\nFollow for a new one every day.\n\n#grass #smell #mowing #plantdefense #insectcontrol #aigenerated",
+      "hook_text": "GRASS SMELLS LIKE *ALARM*",
+      "cover_text": "*ALARM* SMELL",
+      "media_id": "18120827989812365",
+      "permalink": "https://www.instagram.com/reel/DgM9x49h4B7/",
+      "posted_at": "2026-11-26T11:11:11+00:00"
     }
   ],
   "pending": null,
