@@ -2340,7 +2340,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5257
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611191413",
@@ -2666,6 +2666,21 @@
       "media_id": "18120827989812365",
       "permalink": "https://www.instagram.com/reel/DgM9x49h4B7/",
       "posted_at": "2026-11-26T11:11:11+00:00"
+    },
+    {
+      "id": "202611261453",
+      "title": "How toilets work",
+      "series": "Three",
+      "bank_id": "t27",
+      "hook": "Can you tell what this is? It's a toilet, and here are three things you didn't know about it",
+      "fact": "toilet: The bend in a toilet pipe holds water that stops smells coming back up. / A toilet flush works by siphon: rushing water pulls the bowl empty all at once. / Flushing with the lid up sends a fine spray of tiny droplets into the air.",
+      "narration": "Can you tell what this is? It's a toilet, and here are three things you didn't know about it. One. The bend in a toilet pipe holds water that stops smells coming back up. Two. A toilet flush works by siphon: rushing water pulls the bowl empty all at once. Three. Flushing with the lid up sends a fine spray of tiny droplets into the air. Which one surprised you most?",
+      "caption": "I never realized how far toilet spray actually travels.\n\nThat fine mist can land on your towels or even your toothbrush if they are close by. Closing the lid before you hit the button stops the plume from spreading around the room. It is a tiny habit that makes a massive difference in keeping things clean. I am definitely closing mine from now on 🚽\n\nSend this to the person who always leaves the lid up.\n\nFollow for a new one every day.\n\n#toilet #bathroom #plumbing #siphon #hygiene #aigenerated",
+      "hook_text": "",
+      "cover_text": "*TOILET* SECRETS",
+      "media_id": "18134282459308648",
+      "permalink": "https://www.instagram.com/reel/DgNb6wJu4QL/",
+      "posted_at": "2026-11-26T15:35:36+00:00"
     }
   ],
   "pending": null,
