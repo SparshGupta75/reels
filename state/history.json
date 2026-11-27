@@ -2415,7 +2415,7 @@
         "shares": 6,
         "ig_reels_avg_watch_time": 10047
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611201355",
@@ -2440,7 +2440,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 10430
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611210627",
@@ -2630,7 +2630,17 @@
       "cover_text": "*OFFLINE* GPS",
       "media_id": "18154109776524886",
       "permalink": "https://www.instagram.com/reel/DgKb35RNVcz/",
-      "posted_at": "2026-11-25T11:37:00+00:00"
+      "posted_at": "2026-11-25T11:37:00+00:00",
+      "metrics": {
+        "views": 129,
+        "reach": 100,
+        "likes": 0,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 6731
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611251513",
@@ -2721,6 +2731,21 @@
       "media_id": "18140540725633619",
       "permalink": "https://www.instagram.com/reel/DgPgQWQRoeD/",
       "posted_at": "2026-11-27T10:51:00+00:00"
+    },
+    {
+      "id": "202611271450",
+      "title": "Sticky Tape Secrets",
+      "series": "Three",
+      "bank_id": "t28",
+      "hook": "Can you tell what this is? It's sticky tape, and here are three things you didn't know about it",
+      "fact": "tape: Peeling sticky tape in a vacuum gives off X-rays, which scientists measured in 2008. / Sticky tape works through pressure alone; its glue never dries or hardens to hold. / Clear tape turns yellow with age because its glue slowly breaks down.",
+      "narration": "Can you tell what this is? It's sticky tape, and here are three things you didn't know about it. One. Peeling sticky tape in a vacuum gives off X-rays, which scientists measured in 2008. Two. Sticky tape works through pressure alone; its glue never dries or hardens to hold. Three. Clear tape turns yellow with age because its glue slowly breaks down. Which one surprised you most?",
+      "caption": "I just found out sticky tape produces X-rays when peeled in a vacuum.\n\nWhen you pull tape off the roll quickly, static electric charge builds up right where the adhesive pulls away. In normal air that energy dissipates quietly into the room. But in a vacuum, without air molecules in the way, the charge releases in high-energy bursts strong enough to generate real X-rays. Researchers back in 2008 actually unspooled tape inside a vacuum chamber and took a clear X-ray photo of a human finger. I still can't believe regular desk supplies can do that.\n\nSave this for the next time you use a roll of tape.\n\nFollow for a new one every day.\n\n#stickytape #stationery #triboluminescence #adhesive #physicsfacts #aigenerated",
+      "hook_text": "",
+      "cover_text": "*STICKY* TAPE SECRETS",
+      "media_id": "18134868394773379",
+      "permalink": "https://www.instagram.com/reel/DgQAdc4ANL5/",
+      "posted_at": "2026-11-27T15:32:48+00:00"
     }
   ],
   "pending": null,
