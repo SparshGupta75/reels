@@ -2390,7 +2390,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 6039
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611201026",
@@ -2706,6 +2706,21 @@
       "media_id": "17947381362090454",
       "permalink": "https://www.instagram.com/reel/DgPFI3hucTq/",
       "posted_at": "2026-11-27T06:54:31+00:00"
+    },
+    {
+      "id": "202611271026",
+      "title": "The Secret Purpose of the Last Digit on Your Bank Card",
+      "series": "label meaning",
+      "bank_id": "b052",
+      "hook": "Your card's last digit is a test",
+      "fact": "The last digit of your bank card number is a check digit that catches typing mistakes.",
+      "narration": "Your card's last digit is a test. So how does it work? A simple formula uses all the other numbers to calculate this final one. If you mistype even a single number online, the system checks the math instantly like a spellchecker, which is why...",
+      "caption": "Your bank card last digit isn't just a random number.\n\nIt is actually a check digit designed to catch typos instantly. Every time you buy something online, a simple formula works it out from all the other digits. If your final number doesn't match the result, the site can tell straight away. I had no idea my card was doing math every time I shopped.\n\nSave this for the next time you type your card number online.\n\nFollow for a new one every day.\n\n#bankcard #fintech #creditcard #shoppingtips #moneyhacks #aigenerated",
+      "hook_text": "YOUR CARD'S LAST DIGIT IS A",
+      "cover_text": "*LAST* DIGIT TEST",
+      "media_id": "18140540725633619",
+      "permalink": "https://www.instagram.com/reel/DgPgQWQRoeD/",
+      "posted_at": "2026-11-27T10:51:00+00:00"
     }
   ],
   "pending": null,
