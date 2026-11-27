@@ -2365,7 +2365,7 @@
         "shares": 0,
         "ig_reels_avg_watch_time": 5870
       },
-      "metrics_stage": "48h"
+      "metrics_stage": "7d"
     },
     {
       "id": "202611200627",
@@ -2605,7 +2605,17 @@
       "cover_text": "*ZIP* HIDDEN",
       "media_id": "18087448007707487",
       "permalink": "https://www.instagram.com/reel/DgIph04heVL/",
-      "posted_at": "2026-11-24T18:57:20+00:00"
+      "posted_at": "2026-11-24T18:57:20+00:00",
+      "metrics": {
+        "views": 281,
+        "reach": 253,
+        "likes": 1,
+        "comments": 0,
+        "saved": 0,
+        "shares": 0,
+        "ig_reels_avg_watch_time": 8260
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611251026",
@@ -2681,6 +2691,21 @@
       "media_id": "18134282459308648",
       "permalink": "https://www.instagram.com/reel/DgNb6wJu4QL/",
       "posted_at": "2026-11-26T15:35:36+00:00"
+    },
+    {
+      "id": "202611270627",
+      "title": "Why Ice Cream Hurts",
+      "series": "why ice cream hurts",
+      "bank_id": "b064",
+      "hook": "Your tongue can stop brain freeze",
+      "fact": "Brain freeze is caused by cold hitting the roof of your mouth, and pressing your tongue there can stop it.",
+      "narration": "Your tongue can stop brain freeze. So why does it work? Cold on the roof of your mouth makes blood vessels tighten then quickly widen. Your nerves report that as a headache, but your warm tongue helps them settle. Which is why",
+      "caption": "ice cream brain freeze can be stopped.\n\nWhen something cold hits the roof of your mouth, the blood vessels up there tighten. Right after that, they quickly widen. Nerves report that as a headache. Pressing your warm tongue against the roof of your mouth helps those vessels settle and can stop it. It actually works.\n\nSave this for the next time you eat ice cream too fast.\n\nFollow for a new one every day.\n\n#icecream #headache #brainfreeze #icecreamlover #eatinghacks #aigenerated",
+      "hook_text": "YOUR TONGUE STOPS *BRAIN* FREEZE",
+      "cover_text": "*BRAIN* FREEZE",
+      "media_id": "17947381362090454",
+      "permalink": "https://www.instagram.com/reel/DgPFI3hucTq/",
+      "posted_at": "2026-11-27T06:54:31+00:00"
     }
   ],
   "pending": null,
