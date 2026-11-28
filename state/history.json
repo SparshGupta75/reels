@@ -2655,7 +2655,17 @@
       "cover_text": "*BATTERY* SECRETS",
       "media_id": "18136694812684693",
       "permalink": "https://www.instagram.com/reel/DgLAAsWg86E/",
-      "posted_at": "2026-11-25T16:52:36+00:00"
+      "posted_at": "2026-11-25T16:52:36+00:00",
+      "metrics": {
+        "views": 1273,
+        "reach": 1081,
+        "likes": 6,
+        "comments": 0,
+        "saved": 1,
+        "shares": 1,
+        "ig_reels_avg_watch_time": 10056
+      },
+      "metrics_stage": "48h"
     },
     {
       "id": "202611260627",
@@ -2746,6 +2756,21 @@
       "media_id": "18134868394773379",
       "permalink": "https://www.instagram.com/reel/DgQAdc4ANL5/",
       "posted_at": "2026-11-27T15:32:48+00:00"
+    },
+    {
+      "id": "202611280627",
+      "title": "Why Smoke Alarms Are Loud",
+      "series": "why alarms are loud",
+      "bank_id": "b065",
+      "hook": "In deep sleep, your nose is very unlikely to wake you",
+      "fact": "In deep sleep your nose is very unlikely to wake you, even to a strong smell like smoke.",
+      "narration": "In deep sleep, your nose is very unlikely to wake you. So why is that? Tests show that strong smells rarely wake a sleeping brain. Sound can wake you instead, which is why a smoke alarm has to be loud.",
+      "caption": "Smoke alarms are loud for a reason you might not expect. When you drop into deep sleep, your nose is very unlikely to wake you. Tests on sleeping people found that smells, even strong ones like smoke, rarely woke them, while sounds did. This is why smoke alarms rely on loud noise rather than smell. Save this so you remember to test your batteries today. Send this to the person who sleeps through everything.\n\nFollow for a new one every day.\n\n#sleepscience #homesafety #smokealarm #sleepingfacts #safetyfacts #aigenerated",
+      "hook_text": "YOUR NOSE *SLEEPS* TOO",
+      "cover_text": "*SLEEPING* NOSE",
+      "media_id": "18157974628531490",
+      "permalink": "https://www.instagram.com/reel/DgR46WMPpwH/",
+      "posted_at": "2026-11-28T09:04:53+00:00"
     }
   ],
   "pending": null,
